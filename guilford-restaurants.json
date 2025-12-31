@@ -1,0 +1,50 @@
+{
+  "featured": [
+    {
+      "name": "Mexitale",
+      "category": "Mexican",
+      "address": "1080 Boston Post Rd, Guilford",
+      "phone": "475-223-6083",
+      "website": "https://mexitale.com/",
+      "image": "guilford-logos/Mexitale-web-1.png"
+    }
+  ],
+  "restaurants": [
+    {"name": "Mexitale", "category": "Mexican", "phone": "475-223-6083"},
+    {"name": "The Place", "category": "Seafood", "phone": "203-453-9276"},
+    {"name": "Chapter One Food & Drink", "category": "American", "phone": "203-453-5133"},
+    {"name": "Guilford Lobster Pound", "category": "Seafood", "phone": "203-453-6122"},
+    {"name": "The Stone House", "category": "Seafood", "phone": "203-458-3700"},
+    {"name": "Guilford Bistro & Bar", "category": "American", "phone": "203-458-8444"},
+    {"name": "South Lane Bistro", "category": "American", "phone": "203-533-8049"},
+    {"name": "Prime on Whitfield", "category": "Steakhouse", "phone": "203-533-8001"},
+    {"name": "Pa's Place", "category": "American", "phone": "203-453-0800"},
+    {"name": "Belle Vie Cafe", "category": "Café & Bakery", "phone": "203-453-4350"},
+    {"name": "Quattro's Italian Restaurant", "category": "Italian", "phone": "203-453-6575"},
+    {"name": "Pasta Avest & Pizzeria", "category": "Italian", "phone": "203-453-4549"},
+    {"name": "Naples Restaurant & Pizza", "category": "Pizza", "phone": "203-453-4080"},
+    {"name": "Shoreline Prime", "category": "Steakhouse", "phone": "203-453-4300"},
+    {"name": "The Greenery", "category": "American", "phone": "203-453-5262"},
+    {"name": "JAIPORE Xpress", "category": "Indian", "phone": "203-458-8988"},
+    {"name": "Amarone", "category": "Italian", "phone": "203-458-0870"},
+    {"name": "Cilantro Mexican Grill", "category": "Mexican", "phone": "203-689-5058"},
+    {"name": "Moon Shots Juice Co.", "category": "Café & Bakery", "phone": "203-689-5665"},
+    {"name": "Bufalina", "category": "Italian", "phone": "203-453-5900"},
+    {"name": "Chip's Family Restaurant", "category": "American", "phone": "203-453-2408"},
+    {"name": "Dunkin'", "category": "Café & Bakery", "phone": "203-458-8811"},
+    {"name": "Subway", "category": "Fast Food", "phone": "203-458-9000"},
+    {"name": "McDonald's", "category": "Fast Food", "phone": "203-453-4640"},
+    {"name": "Shoreline Diner", "category": "American", "phone": "203-458-7380"},
+    {"name": "Colony Pizza", "category": "Pizza", "phone": "203-453-5756"},
+    {"name": "Whitfield's on Guilford Green", "category": "American", "phone": "203-453-5454"},
+    {"name": "China Pavilion", "category": "Chinese", "phone": "203-453-0091"},
+    {"name": "Sake Japanese Restaurant", "category": "Japanese", "phone": "203-458-0888"},
+    {"name": "Thai Basil", "category": "Thai", "phone": "203-458-0800"},
+    {"name": "Starbucks", "category": "Café & Bakery", "phone": "203-458-8050"},
+    {"name": "Page Hardware Cafe", "category": "Café & Bakery", "phone": "203-453-6801"},
+    {"name": "The Marketplace", "category": "American", "phone": "203-453-5600"},
+    {"name": "Guilford Food Center Deli", "category": "American", "phone": "203-453-6146"},
+    {"name": "Donahue's Madison Beach Grille", "category": "Seafood", "phone": "203-245-8440"}
+  ],
+  "categories": ["All", "American", "Italian", "Mexican", "Seafood", "Steakhouse", "Indian", "Chinese", "Japanese", "Thai", "Café & Bakery", "Pizza", "Fast Food"]
+}
