@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Bite of Nutmeg - CT Shoreline Dining Guide</title>
+    <meta name="description" content="Discover the best restaurants along Connecticut's shoreline from East Haven to Old Saybrook">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <img src="A Bite of Nutmeg_Fin-01.png" alt="A Bite of Nutmeg" class="hero-logo">
+            <h1>CT Shoreline Dining Guide</h1>
+            <p>Explore the best restaurants from East Haven to Old Saybrook</p>
+        </div>
+    </section>
+
+    <section class="towns-section" id="towns">
+        <h2>Explore by Town</h2>
+        <div class="town-badges">
+            <a href="east-haven.html" class="town-badge">
+                <span class="badge-name">East Haven</span>
+            </a>
+            <a href="branford.html" class="town-badge">
+                <span class="badge-name">Branford</span>
+            </a>
+            <a href="guilford.html" class="town-badge">
+                <span class="badge-name">Guilford</span>
+            </a>
+            <a href="madison.html" class="town-badge">
+                <span class="badge-name">Madison</span>
+            </a>
+            <a href="clinton.html" class="town-badge">
+                <span class="badge-name">Clinton</span>
+            </a>
+            <a href="westbrook.html" class="town-badge">
+                <span class="badge-name">Westbrook</span>
+            </a>
+            <a href="old-saybrook.html" class="town-badge">
+                <span class="badge-name">Old Saybrook</span>
+            </a>
+        </div>
+    </section>
+
+    <section class="filters hidden" id="search">
+        <div class="filters-content">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search restaurants...">
+            </div>
+            <div class="filter-group">
+                <label for="townFilter">Town:</label>
+                <select id="townFilter">
+                    <option value="">All Towns</option>
+                    <option value="East Haven">East Haven</option>
+                    <option value="Branford">Branford</option>
+                    <option value="Guilford">Guilford</option>
+                    <option value="Madison">Madison</option>
+                    <option value="Clinton">Clinton</option>
+                    <option value="Westbrook">Westbrook</option>
+                    <option value="Old Saybrook">Old Saybrook</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="cuisineFilter">Cuisine:</label>
+                <select id="cuisineFilter">
+                    <option value="">All Cuisines</option>
+                    <option value="American">American</option>
+                    <option value="Italian">Italian</option>
+                    <option value="Seafood">Seafood</option>
+                    <option value="Mexican">Mexican</option>
+                    <option value="Asian">Asian</option>
+                    <option value="Pizza">Pizza</option>
+                    <option value="Breakfast">Breakfast</option>
+                    <option value="Pub">Pub</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="priceFilter">Price:</label>
+                <select id="priceFilter">
+                    <option value="">All Prices</option>
+                    <option value="$">$ - Budget</option>
+                    <option value="$$">$$ - Moderate</option>
+                    <option value="$$$">$$$ - Upscale</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <section class="map-section" id="map">
+        <h2>Explore the Shoreline</h2>
+        <div id="mapContainer"></div>
+    </section>
+
+    <section class="restaurants" id="restaurants">
+        <h2>Restaurants</h2>
+        <div class="results-count"><span id="resultsCount">0</span> restaurants found</div>
+        <div class="restaurant-grid" id="restaurantGrid">
+            <!-- Restaurants will be loaded here -->
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="about-content">
+            <h2>About A Bite of Nutmeg</h2>
+            <p>Your guide to discovering the best dining experiences along Connecticut's beautiful shoreline. From fresh seafood shacks to fine dining, we've got you covered from East Haven to Old Saybrook.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <img src="A Bite of Nutmeg_Fin-01.png" alt="A Bite of Nutmeg" class="footer-logo">
+            <p>&copy; 2025 A Bite of Nutmeg. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

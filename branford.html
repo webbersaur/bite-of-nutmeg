@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dining in Branford CT - A Bite of Nutmeg</title>
+    <meta name="description" content="Discover the diverse dining scene in Branford, CT featuring fresh seafood, Italian cuisine, cafes, and more.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="branford-styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="branford-page">
+    <!-- Header -->
+    <header class="branford-header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img src="A Bite of Nutmeg_Fin-01.png" alt="A Bite of Nutmeg">
+            </a>
+            <nav class="main-nav">
+                <a href="index.html">HOME</a>
+                <a href="#restaurants" class="active">DINE</a>
+                <a href="#about">ABOUT</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="branford-hero">
+        <h1>Discover Branford Dining</h1>
+        <p>Explore Branford's vibrant culinary scene, from coastal seafood to international flavors</p>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search restaurants...">
+        </div>
+        <div class="search-results" id="searchResults"></div>
+    </section>
+
+    <!-- Featured Restaurants -->
+    <section class="featured-section">
+        <h2>Featured Restaurants</h2>
+        <div class="featured-grid" id="featuredGrid">
+            <!-- Featured restaurants loaded via JS -->
+        </div>
+    </section>
+
+    <!-- Category Tabs -->
+    <section class="category-section" id="restaurants">
+        <div class="category-tabs" id="categoryTabs">
+            <!-- Tabs loaded via JS -->
+        </div>
+        <div class="results-info">
+            Showing <span id="resultsCount">0</span> restaurants
+        </div>
+    </section>
+
+    <!-- Restaurant List -->
+    <section class="restaurant-list-section">
+        <div class="restaurant-list" id="restaurantList">
+            <!-- Restaurant list loaded via JS -->
+        </div>
+    </section>
+
+    <!-- About Branford Dining -->
+    <section class="about-dining" id="about">
+        <h2>Experience Diverse Dining in Branford, CT</h2>
+        <p class="intro">Branford, CT, a picturesque coastal town, offers an impressive array of dining experiences that cater to every taste and preference. Whether you're in the mood for fresh seafood, Italian delicacies, trendy cafe fare, or casual eats, Branford's vibrant culinary scene promises a memorable meal for both locals and visitors.</p>
+
+        <div class="dining-categories">
+            <div class="dining-category">
+                <h3>Seafood Extravaganza</h3>
+                <p>As a coastal town, Branford is renowned for its fresh and delicious seafood. Many local eateries specialize in seafood dishes, serving everything from succulent lobster and creamy clam chowder to grilled fish and crispy calamari.</p>
+            </div>
+            <div class="dining-category">
+                <h3>Authentic Italian Cuisine</h3>
+                <p>Branford's dining scene shines with its selection of Italian cuisine. Numerous restaurants offer handmade pasta, wood-fired pizzas, and classic Italian desserts in warm, inviting atmospheres.</p>
+            </div>
+            <div class="dining-category">
+                <h3>Trendy Cafes and Casual Bites</h3>
+                <p>For a more laid-back experience, Branford boasts trendy cafes and casual eateries perfect for grabbing a quick bite or enjoying a relaxing coffee break with artisanal coffee and freshly baked pastries.</p>
+            </div>
+            <div class="dining-category">
+                <h3>Family-Friendly Options</h3>
+                <p>Branford is home to numerous family-friendly establishments offering diverse menus sure to please diners of all ages, from American classics to pizzas and comfort foods.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="branford-footer">
+        <div class="footer-content">
+            <a href="index.html">
+                <img src="A Bite of Nutmeg_Fin-01.png" alt="A Bite of Nutmeg" class="footer-logo">
+            </a>
+            <p>&copy; 2025 A Bite of Nutmeg. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="branford-page.js"></script>
+</body>
+</html>

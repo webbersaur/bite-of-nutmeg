@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>East Haven Restaurants - A Bite of Nutmeg</title>
+    <meta name="description" content="Discover the best restaurants in East Haven, CT">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <section class="hero town-hero">
+        <div class="hero-content">
+            <a href="index.html"><img src="A Bite of Nutmeg_Fin-01.png" alt="A Bite of Nutmeg" class="hero-logo"></a>
+            <h1>East Haven</h1>
+            <p>Dining along the shoreline</p>
+            <a href="index.html" class="back-link">← Back to All Towns</a>
+        </div>
+    </section>
+
+    <section class="map-section" id="map">
+        <h2>East Haven Restaurants</h2>
+        <div id="mapContainer"></div>
+    </section>
+
+    <section class="restaurants" id="restaurants">
+        <div class="results-count"><span id="resultsCount">0</span> restaurants found</div>
+        <div class="restaurant-grid" id="restaurantGrid">
+            <!-- Restaurants will be loaded here -->
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <img src="A Bite of Nutmeg_Fin-01.png" alt="A Bite of Nutmeg" class="footer-logo">
+            <p>&copy; 2025 A Bite of Nutmeg. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="town-page.js" data-town="East Haven"></script>
+</body>
+</html>
