@@ -1,0 +1,26 @@
+{
+  "featured": [],
+  "restaurants": [
+    {"name": "Liv's Oyster Bar", "category": "Seafood", "phone": "860-395-5577"},
+    {"name": "Fresh Salt", "category": "American", "phone": "860-388-1111"},
+    {"name": "Penny Lane Pub", "category": "American", "phone": "860-388-9646"},
+    {"name": "Pizzetta", "category": "Pizza", "phone": "860-661-7229"},
+    {"name": "Cafe Routier", "category": "French", "phone": "860-399-8700"},
+    {"name": "Aspen Restaurant", "category": "American", "phone": "860-395-0003"},
+    {"name": "Luigi's Restaurant", "category": "Italian", "phone": "860-388-9190"},
+    {"name": "Pat's Kountry Kitchen", "category": "American", "phone": "860-388-4784"},
+    {"name": "Cloud Nine Deli", "category": "American", "phone": "860-388-9877"},
+    {"name": "Saybrook Fish House", "category": "Seafood", "phone": "860-388-4836"},
+    {"name": "Alchemy Juice Bar + Cafe", "category": "Cafe & Bakery", "phone": "860-388-1610"},
+    {"name": "Thai Taste", "category": "Thai", "phone": "860-395-0609"},
+    {"name": "Super Sushi", "category": "Japanese", "phone": "860-395-1666"},
+    {"name": "Casa Mia Trattoria", "category": "Italian", "phone": "860-395-1230"},
+    {"name": "Old Saybrook Pizza", "category": "Pizza", "phone": "860-388-1727"},
+    {"name": "Paperback Cafe", "category": "Cafe & Bakery", "phone": "860-388-9065"},
+    {"name": "Monkey Farm", "category": "Cafe & Bakery", "phone": "860-388-4090"},
+    {"name": "Dunkin'", "category": "Cafe & Bakery", "phone": "860-388-2024"},
+    {"name": "Subway", "category": "Fast Food", "phone": "860-388-9620"},
+    {"name": "McDonald's", "category": "Fast Food", "phone": "860-388-0023"}
+  ],
+  "categories": ["All", "American", "Italian", "Seafood", "French", "Thai", "Japanese", "Cafe & Bakery", "Pizza", "Fast Food"]
+}

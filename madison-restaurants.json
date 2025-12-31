@@ -1,0 +1,24 @@
+{
+  "featured": [],
+  "restaurants": [
+    {"name": "Donahue's Madison Beach Grille", "category": "Seafood", "phone": "203-245-8440"},
+    {"name": "Cafe Allegre", "category": "Italian", "phone": "203-245-7773"},
+    {"name": "Lenny & Joe's Fish Tale", "category": "Seafood", "phone": "203-245-7289"},
+    {"name": "RJ Julia Cafe", "category": "Cafe & Bakery", "phone": "203-245-3959"},
+    {"name": "Ristorante Amalfi", "category": "Italian", "phone": "203-245-1262"},
+    {"name": "Madison Beach Hotel", "category": "American", "phone": "203-245-1404"},
+    {"name": "Cilantro", "category": "Mexican", "phone": "203-245-7770"},
+    {"name": "Friends & Company", "category": "American", "phone": "203-245-0462"},
+    {"name": "Bar Bouchee", "category": "French", "phone": "203-318-8555"},
+    {"name": "Madison Pizza & Restaurant", "category": "Pizza", "phone": "203-245-7577"},
+    {"name": "China Pavilion", "category": "Chinese", "phone": "203-245-8880"},
+    {"name": "Hammonasset Coffee Bar", "category": "Cafe & Bakery", "phone": "203-245-7055"},
+    {"name": "Seoul BBQ", "category": "Korean", "phone": "203-245-8882"},
+    {"name": "Wall Street Pizza", "category": "Pizza", "phone": "203-245-1300"},
+    {"name": "Starbucks", "category": "Cafe & Bakery", "phone": "203-245-4210"},
+    {"name": "Dunkin'", "category": "Cafe & Bakery", "phone": "203-245-1414"},
+    {"name": "Subway", "category": "Fast Food", "phone": "203-245-9200"},
+    {"name": "McDonald's", "category": "Fast Food", "phone": "203-245-8887"}
+  ],
+  "categories": ["All", "American", "Italian", "Seafood", "Mexican", "French", "Korean", "Chinese", "Cafe & Bakery", "Pizza", "Fast Food"]
+}

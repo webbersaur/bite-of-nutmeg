@@ -454,6 +454,55 @@
     font-size: 0.9rem;
 }
 
+/* Homepage Styles */
+.homepage {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #FDF6EC;
+}
+
+.homepage h1,
+.homepage h2,
+.homepage h3 {
+    font-family: 'Playfair Display', serif;
+}
+
+/* Card Tags Row (for homepage with town badges) */
+.featured-card .card-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.75rem;
+}
+
+.featured-card .town-tag {
+    display: inline-block;
+    background-color: #1e3a6e;
+    color: #fff;
+    padding: 0.35rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.featured-card .town-tag:hover {
+    background-color: #2a4a8a;
+}
+
+/* Homepage towns section override */
+.homepage .towns-section {
+    background-color: #F5EDE0;
+    padding: 3rem 2rem;
+}
+
+.homepage .towns-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .branford-header .header-container {

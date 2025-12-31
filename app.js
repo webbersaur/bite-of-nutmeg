@@ -1,7 +1,8 @@
 // A Bite of Nutmeg - CT Shoreline Dining Guide
 // Main Application JavaScript
 
-let restaurants = [];
+let featuredRestaurants = [];
+let allRestaurants = [];
 let map = null;
 let markers = [];
 
@@ -9,18 +10,51 @@ let markers = [];
 document.addEventListener('DOMContentLoaded', async () => {
     await loadRestaurants();
     initMap();
-    renderRestaurants(restaurants);
+    renderRestaurants(featuredRestaurants);
 });
 
-// Load featured restaurant data from JSON file
+// Town data files to load
+const townFiles = [
+    { file: 'branford-restaurants.json', town: 'Branford' },
+    { file: 'guilford-restaurants.json', town: 'Guilford' },
+    { file: 'easthaven-restaurants.json', town: 'East Haven' },
+    { file: 'madison-restaurants.json', town: 'Madison' },
+    { file: 'clinton-restaurants.json', town: 'Clinton' },
+    { file: 'westbrook-restaurants.json', town: 'Westbrook' },
+    { file: 'old-saybrook-restaurants.json', town: 'Old Saybrook' }
+];
+
+// Load restaurant data from JSON files
 async function loadRestaurants() {
     try {
-        const response = await fetch('featured-restaurants.json');
-        const data = await response.json();
-        restaurants = data.featured || [];
+        // Load featured restaurants
+        const featuredResponse = await fetch('featured-restaurants.json');
+        const featuredData = await featuredResponse.json();
+        featuredRestaurants = featuredData.featured || [];
+
+        // Load all restaurants from each town file
+        allRestaurants = [];
+        for (const townData of townFiles) {
+            try {
+                const response = await fetch(townData.file);
+                const data = await response.json();
+                if (data.restaurants) {
+                    // Add town name to each restaurant
+                    const restaurantsWithTown = data.restaurants.map(r => ({
+                        ...r,
+                        town: townData.town
+                    }));
+                    allRestaurants = allRestaurants.concat(restaurantsWithTown);
+                }
+            } catch (e) {
+                // Town file doesn't exist yet, skip it
+                console.log(`No data file for ${townData.town} yet`);
+            }
+        }
     } catch (error) {
         console.error('Error loading restaurants:', error);
-        restaurants = [];
+        featuredRestaurants = [];
+        allRestaurants = [];
     }
 }
 
@@ -37,8 +71,8 @@ function initMap() {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
-    // Add markers for all restaurants
-    addMarkersToMap(restaurants);
+    // Add markers for featured restaurants
+    addMarkersToMap(featuredRestaurants);
 }
 
 // Add markers to the map
@@ -72,12 +106,13 @@ function addMarkersToMap(restaurantList) {
 
     restaurantList.forEach(restaurant => {
         if (restaurant.lat && restaurant.lng) {
+            const cuisine = restaurant.category || restaurant.cuisine;
             const marker = L.marker([restaurant.lat, restaurant.lng], { icon: customIcon })
                 .addTo(map)
                 .bindPopup(`
                     <div class="map-popup">
                         <h4>${restaurant.name}</h4>
-                        <p class="popup-cuisine">${restaurant.category}</p>
+                        <p class="popup-cuisine">${cuisine}</p>
                         <p>${restaurant.town}</p>
                         <p>${restaurant.address}</p>
                         ${restaurant.website ? `<a href="${restaurant.website}" target="_blank" rel="noopener noreferrer" style="color: #2EA3F2; text-decoration: none;">Visit Website →</a>` : ''}
@@ -96,23 +131,31 @@ function addMarkersToMap(restaurantList) {
 }
 
 // Render restaurant cards to the grid
-function renderRestaurants(restaurantList) {
+function renderRestaurants(restaurantList, isSearchResult = false) {
     const grid = document.getElementById('restaurantGrid');
     const countElement = document.getElementById('resultsCount');
+    const headerText = document.querySelector('.restaurants h2');
 
     countElement.textContent = restaurantList.length;
+
+    // Update header based on whether showing search results or featured
+    if (headerText) {
+        headerText.textContent = isSearchResult ? 'Search Results' : 'Featured Restaurants';
+    }
 
     if (restaurantList.length === 0) {
         grid.innerHTML = `
             <div class="no-results">
                 <h3>No restaurants found</h3>
-                <p>Check back soon for featured restaurants.</p>
+                <p>${isSearchResult ? 'Try a different search term.' : 'Check back soon for featured restaurants.'}</p>
             </div>
         `;
         return;
     }
 
-    grid.innerHTML = restaurantList.map(restaurant => `
+    grid.innerHTML = restaurantList.map(restaurant => {
+        const cuisine = restaurant.category || restaurant.cuisine;
+        return `
         <article class="restaurant-card">
             ${restaurant.image ? `
             <div class="card-logo${restaurant.darkBg ? ' dark-bg' : ''}">
@@ -121,7 +164,7 @@ function renderRestaurants(restaurantList) {
             ` : ''}
             <div class="card-header">
                 <h3>${restaurant.name}</h3>
-                <span class="cuisine">${restaurant.category}</span>
+                <span class="cuisine">${cuisine}</span>
             </div>
             <div class="card-body">
                 <span class="town">${restaurant.town}</span>
@@ -134,7 +177,7 @@ function renderRestaurants(restaurantList) {
             </div>
             ` : ''}
         </article>
-    `).join('');
+    `}).join('');
 }
 
 // Smooth scroll for navigation links
@@ -161,18 +204,20 @@ function initHeroSearch() {
     function performSearch() {
         const query = searchInput.value.toLowerCase().trim();
         if (!query) {
-            renderRestaurants(restaurants);
-            addMarkersToMap(restaurants);
+            renderRestaurants(featuredRestaurants, false);
+            addMarkersToMap(featuredRestaurants);
             return;
         }
 
-        const filtered = restaurants.filter(r =>
+        // Search ALL restaurants
+        const filtered = allRestaurants.filter(r =>
             r.name.toLowerCase().includes(query) ||
-            r.category.toLowerCase().includes(query) ||
+            (r.cuisine && r.cuisine.toLowerCase().includes(query)) ||
+            (r.category && r.category.toLowerCase().includes(query)) ||
             r.town.toLowerCase().includes(query)
         );
 
-        renderRestaurants(filtered);
+        renderRestaurants(filtered, true);
         addMarkersToMap(filtered);
 
         // Scroll to results

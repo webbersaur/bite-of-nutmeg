@@ -1,0 +1,22 @@
+{
+  "featured": [],
+  "restaurants": [
+    {"name": "Lobster Landing", "category": "Seafood", "phone": "860-669-2005"},
+    {"name": "Chamard Vineyards Bistro", "category": "American", "phone": "860-664-0299"},
+    {"name": "Chips Pub", "category": "American", "phone": "860-669-2231"},
+    {"name": "Aqua Restaurant", "category": "Seafood", "phone": "860-664-3777"},
+    {"name": "Clinton Diner", "category": "American", "phone": "860-669-4341"},
+    {"name": "Log Cabin", "category": "American", "phone": "860-669-6253"},
+    {"name": "Nardelli's Grinder Shoppe", "category": "American", "phone": "860-664-0140"},
+    {"name": "G Cafe", "category": "Cafe & Bakery", "phone": "860-552-4220"},
+    {"name": "Chan's Garden", "category": "Chinese", "phone": "860-669-1862"},
+    {"name": "Hunan Restaurant", "category": "Chinese", "phone": "860-669-0988"},
+    {"name": "Yuki Hana", "category": "Japanese", "phone": "860-669-8989"},
+    {"name": "Shoreline Bagel", "category": "Cafe & Bakery", "phone": "860-669-0777"},
+    {"name": "Dunkin'", "category": "Cafe & Bakery", "phone": "860-669-8050"},
+    {"name": "McDonald's", "category": "Fast Food", "phone": "860-669-0074"},
+    {"name": "Subway", "category": "Fast Food", "phone": "860-669-2535"},
+    {"name": "Pizza Palace", "category": "Pizza", "phone": "860-669-1424"}
+  ],
+  "categories": ["All", "American", "Seafood", "Chinese", "Japanese", "Cafe & Bakery", "Pizza", "Fast Food"]
+}

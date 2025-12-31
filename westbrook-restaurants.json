@@ -1,0 +1,21 @@
+{
+  "featured": [],
+  "restaurants": [
+    {"name": "Bill's Seafood Restaurant", "category": "Seafood", "phone": "860-399-7224"},
+    {"name": "Westbrook Lobster", "category": "Seafood", "phone": "860-664-9464"},
+    {"name": "Edd's Place", "category": "American", "phone": "860-399-9559"},
+    {"name": "Cafe Routier", "category": "French", "phone": "860-399-8700"},
+    {"name": "The Hangry Elephant", "category": "American", "phone": "860-399-5544"},
+    {"name": "Water's Edge Resort", "category": "American", "phone": "860-399-5901"},
+    {"name": "Westbrook Pizza Palace", "category": "Pizza", "phone": "860-399-5141"},
+    {"name": "Denny's", "category": "American", "phone": "860-399-2881"},
+    {"name": "Westbrook Diner", "category": "American", "phone": "860-399-9355"},
+    {"name": "Vinny's Apizza", "category": "Pizza", "phone": "860-391-8446"},
+    {"name": "Jade Garden", "category": "Chinese", "phone": "860-399-5988"},
+    {"name": "India", "category": "Indian", "phone": "860-399-3500"},
+    {"name": "Dunkin'", "category": "Cafe & Bakery", "phone": "860-399-5520"},
+    {"name": "Subway", "category": "Fast Food", "phone": "860-399-2782"},
+    {"name": "McDonald's", "category": "Fast Food", "phone": "860-399-7210"}
+  ],
+  "categories": ["All", "American", "Seafood", "French", "Indian", "Chinese", "Cafe & Bakery", "Pizza", "Fast Food"]
+}
