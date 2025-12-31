@@ -3,41 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>East Haven Restaurants - A Bite of Nutmeg</title>
-    <meta name="description" content="Discover the best restaurants in East Haven, CT">
+    <title>Dining in East Haven CT - A Bite of Nutmeg</title>
+    <meta name="description" content="Discover the diverse dining scene in East Haven, CT featuring fresh seafood, Mediterranean cuisine, and more.">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="branford-styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
-<body>
-    <section class="hero town-hero">
-        <div class="hero-content">
-            <a href="index.html"><img src="A Bite of Nutmeg_Fin-01.png" alt="A Bite of Nutmeg" class="hero-logo"></a>
-            <h1>East Haven</h1>
-            <p>Dining along the shoreline</p>
-            <a href="index.html" class="back-link">← Back to All Towns</a>
+<body class="branford-page">
+    <!-- Header -->
+    <header class="branford-header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img src="A Bite of Nutmeg_Fin-01.png" alt="A Bite of Nutmeg">
+            </a>
+            <nav class="main-nav">
+                <a href="index.html">HOME</a>
+                <a href="#restaurants" class="active">DINE</a>
+                <a href="#about">ABOUT</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="branford-hero">
+        <h1>Discover East Haven Dining</h1>
+        <p>Explore East Haven's diverse culinary scene, from waterfront seafood to international flavors</p>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search restaurants...">
+        </div>
+        <div class="search-results" id="searchResults"></div>
+    </section>
+
+    <!-- Featured Restaurants -->
+    <section class="featured-section">
+        <h2>Featured Restaurants</h2>
+        <div class="featured-grid" id="featuredGrid">
+            <!-- Featured restaurants loaded via JS -->
         </div>
     </section>
 
-    <section class="map-section" id="map">
-        <h2>East Haven Restaurants</h2>
-        <div id="mapContainer"></div>
-    </section>
-
-    <section class="restaurants" id="restaurants">
-        <div class="results-count"><span id="resultsCount">0</span> restaurants found</div>
-        <div class="restaurant-grid" id="restaurantGrid">
-            <!-- Restaurants will be loaded here -->
+    <!-- Category Tabs -->
+    <section class="category-section" id="restaurants">
+        <div class="category-tabs" id="categoryTabs">
+            <!-- Tabs loaded via JS -->
+        </div>
+        <div class="results-info">
+            Showing <span id="resultsCount">0</span> restaurants
         </div>
     </section>
 
-    <footer class="footer">
+    <!-- Restaurant List -->
+    <section class="restaurant-list-section">
+        <div class="restaurant-list" id="restaurantList">
+            <!-- Restaurant list loaded via JS -->
+        </div>
+    </section>
+
+    <!-- About East Haven Dining -->
+    <section class="about-dining" id="about">
+        <h2>Experience Diverse Dining in East Haven, CT</h2>
+        <p class="intro">East Haven, CT, offers a surprisingly diverse dining scene along the Connecticut shoreline. From beloved waterfront seafood spots to Mediterranean tapas and international cuisine, East Haven delivers memorable meals for every palate.</p>
+
+        <div class="dining-categories">
+            <div class="dining-category">
+                <h3>Waterfront Seafood</h3>
+                <p>East Haven's Cosey Beach area is home to beloved seafood spots like The Lobster Shack and Sandpiper Restaurant, offering fresh catches with stunning waterfront views of Long Island Sound.</p>
+            </div>
+            <div class="dining-category">
+                <h3>Mediterranean & European</h3>
+                <p>Discover Mediterranean flavors at Bistro Mediterranean & Tapas Bar or European cuisine at Transilvania Restaurant and Bar, bringing international sophistication to the shoreline.</p>
+            </div>
+            <div class="dining-category">
+                <h3>Classic American</h3>
+                <p>From The Rib House's finger-licking barbecue to cozy diners and taverns, East Haven serves up hearty American comfort food that keeps locals coming back.</p>
+            </div>
+            <div class="dining-category">
+                <h3>Pizza Paradise</h3>
+                <p>With legendary spots like Frank Pepe's and numerous local pizzerias, East Haven is part of Connecticut's proud New Haven-style pizza tradition.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="branford-footer">
         <div class="footer-content">
-            <img src="A Bite of Nutmeg_Fin-01.png" alt="A Bite of Nutmeg" class="footer-logo">
+            <a href="index.html">
+                <img src="A Bite of Nutmeg_Fin-01.png" alt="A Bite of Nutmeg" class="footer-logo">
+            </a>
             <p>&copy; 2025 A Bite of Nutmeg. All rights reserved.</p>
         </div>
     </footer>
 
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="town-page.js" data-town="East Haven"></script>
+    <script src="easthaven-page.js"></script>
 </body>
 </html>

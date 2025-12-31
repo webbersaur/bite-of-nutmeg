@@ -1,0 +1,45 @@
+{
+  "featured": [
+    {
+      "name": "Longley's",
+      "category": "American",
+      "address": "249 W Main St, Branford",
+      "phone": "203-488-5553",
+      "website": "https://longleysct.com/",
+      "image": "branford-logos/longleysblack.png"
+    }
+  ],
+  "restaurants": [
+    {"name": "The Lobster Shack", "category": "Seafood", "phone": "203-469-1320"},
+    {"name": "Sandpiper Restaurant", "category": "Seafood", "phone": "203-469-7544"},
+    {"name": "Bistro Mediterranean & Tapas Bar", "category": "Mediterranean", "phone": "203-469-2722"},
+    {"name": "Transilvania Restaurant and Bar", "category": "European", "phone": "203-469-3156"},
+    {"name": "The Rib House", "category": "American", "phone": "203-469-7427"},
+    {"name": "Amarante's Sea Cliff", "category": "Italian", "phone": "203-469-0550"},
+    {"name": "Chow", "category": "Asian", "phone": "203-469-2469"},
+    {"name": "Tavern On State", "category": "American", "phone": "203-469-3348"},
+    {"name": "Number One Chinese Restaurant", "category": "Chinese", "phone": "203-469-8999"},
+    {"name": "John and Maria's Pizzeria", "category": "Pizza", "phone": "203-469-3478"},
+    {"name": "Ziggy's Family Pizza", "category": "Pizza", "phone": "203-467-0707"},
+    {"name": "Sabor Latino Deli CT", "category": "Latin American", "phone": "203-469-5656"},
+    {"name": "The Little Colombia Restaurant", "category": "Latin American", "phone": "203-469-4616"},
+    {"name": "Stop And Go Deli", "category": "American", "phone": "203-469-8595"},
+    {"name": "East Haven Diner", "category": "American", "phone": "203-469-2490"},
+    {"name": "Parthenon Diner", "category": "Greek", "phone": "203-469-1920"},
+    {"name": "Four Seas Restaurant", "category": "Chinese", "phone": "203-469-8981"},
+    {"name": "East Garden Chinese Restaurant", "category": "Chinese", "phone": "203-468-2838"},
+    {"name": "Dunkin'", "category": "Café & Bakery", "phone": "203-469-8388"},
+    {"name": "McDonald's", "category": "Fast Food", "phone": "203-467-2204"},
+    {"name": "Subway", "category": "Fast Food", "phone": "203-469-1200"},
+    {"name": "Taco Bell", "category": "Fast Food", "phone": "203-469-5400"},
+    {"name": "Wendy's", "category": "Fast Food", "phone": "203-469-8611"},
+    {"name": "Domino's Pizza", "category": "Pizza", "phone": "203-469-2900"},
+    {"name": "Cosey Beach Apizza", "category": "Pizza", "phone": "203-469-4949"},
+    {"name": "Frank Pepe's Pizzeria", "category": "Pizza", "phone": "203-467-7373"},
+    {"name": "East Haven Pizza House", "category": "Pizza", "phone": "203-468-3555"},
+    {"name": "Starbucks", "category": "Café & Bakery", "phone": "203-469-0055"},
+    {"name": "Italian Corner", "category": "Italian", "phone": "203-469-6282"},
+    {"name": "El Amigo Felix", "category": "Mexican", "phone": "203-469-1784"}
+  ],
+  "categories": ["All", "American", "Italian", "Seafood", "Pizza", "Chinese", "Asian", "Mediterranean", "European", "Latin American", "Mexican", "Greek", "Café & Bakery", "Fast Food"]
+}
