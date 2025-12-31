@@ -160,6 +160,46 @@
     color: #666;
 }
 
+/* Town Navigation */
+.town-nav-section {
+    background-color: #F5EDE0;
+    padding: 1.5rem 2rem;
+    text-align: center;
+}
+
+.town-nav-badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.town-nav-badge {
+    display: inline-block;
+    padding: 0.6rem 1.25rem;
+    background-color: #fff;
+    color: #333;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: 2px solid #e0e0e0;
+    transition: all 0.3s;
+}
+
+.town-nav-badge:hover {
+    border-color: #2EA3F2;
+    color: #2EA3F2;
+}
+
+.town-nav-badge.active {
+    background-color: #2EA3F2;
+    border-color: #2EA3F2;
+    color: #fff;
+}
+
 /* Featured Section */
 .featured-section {
     padding: 3rem 2rem;
