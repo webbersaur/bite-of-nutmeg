@@ -582,23 +582,30 @@ body {
 }
 
 .leaflet-popup-content {
-    margin: 12px;
+    margin: 16px;
+    min-width: 200px;
 }
 
 .map-popup h4 {
     color: var(--navy);
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
 }
 
 .map-popup p {
     color: var(--gray);
-    font-size: 0.85rem;
-    margin: 0.25rem 0;
+    font-size: 1rem;
+    margin: 0.35rem 0;
 }
 
 .map-popup .popup-cuisine {
     color: var(--gold-dark);
     font-weight: 500;
+    font-size: 1rem;
+}
+
+.map-popup a {
+    font-size: 1rem;
 }
 
 /* No Results Message */
