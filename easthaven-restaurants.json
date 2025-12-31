@@ -7,6 +7,14 @@
       "phone": "203-469-5550",
       "website": "https://www.capotortos.com/",
       "image": "easthven-logos/capotortos530.png"
+    },
+    {
+      "name": "Longley's",
+      "category": "American",
+      "address": "249 W Main St, Branford",
+      "phone": "203-488-5553",
+      "website": "https://longleysct.com/",
+      "image": "branford-logos/longleysblack.png"
     }
   ],
   "restaurants": [
