@@ -1,0 +1,89 @@
+{
+  "featured": [
+    {
+      "name": "Capotorto's",
+      "category": "Italian",
+      "town": "East Haven",
+      "address": "85 Cosey Beach Ave, East Haven",
+      "phone": "203-469-5550",
+      "website": "https://www.capotortos.com/",
+      "image": "easthven-logos/capotortos530.png",
+      "pageLink": "east-haven.html",
+      "lat": 41.3211572380681,
+      "lng": -72.85231130143995
+    },
+    {
+      "name": "Dockside Seafood & Grill",
+      "category": "Seafood",
+      "town": "Branford",
+      "address": "145 Block Island Rd, Branford",
+      "phone": "203-488-3007",
+      "website": "https://docksidebranford.com/",
+      "image": "branford-logos/docksidelogoweb-300x150.png",
+      "pageLink": "branford.html",
+      "lat": 41.26318319677834,
+      "lng": -72.80744049768902
+    },
+    {
+      "name": "Hornet's Nest Deli",
+      "category": "American",
+      "town": "Branford",
+      "address": "208 Main St, Branford",
+      "phone": "203-488-0717",
+      "website": "https://www.hornetsnestdeli.com/",
+      "image": "branford-logos/HS-without-Branford.png",
+      "pageLink": "branford.html",
+      "lat": 41.293489149907074,
+      "lng": -72.79274959259837
+    },
+    {
+      "name": "La Luna Ristorante",
+      "category": "Italian",
+      "town": "Branford",
+      "address": "113 Main St, Branford",
+      "phone": "203-483-9995",
+      "website": "https://lalunact.com/",
+      "image": "branford-logos/lalunahomere.png",
+      "pageLink": "branford.html",
+      "lat": 41.28935156467897,
+      "lng": -72.81280428222095
+    },
+    {
+      "name": "Longley's",
+      "category": "American",
+      "town": "Branford",
+      "address": "249 W Main St, Branford",
+      "phone": "203-488-5553",
+      "website": "https://longleysct.com/",
+      "image": "branford-logos/longleysblack.png",
+      "pageLink": "branford.html",
+      "lat": 41.27733376959013,
+      "lng": -72.85373976256747
+    },
+    {
+      "name": "Mexitale",
+      "category": "Mexican",
+      "town": "Guilford",
+      "address": "1080 Boston Post Rd, Guilford",
+      "phone": "475-223-6083",
+      "website": "https://mexitalekitchen.com/",
+      "image": "guilford-logos/Mexitale-web-1.png",
+      "pageLink": "guilford.html",
+      "lat": 41.30850266494618,
+      "lng": -72.7192274202633
+    },
+    {
+      "name": "Parthenon Diner Restaurant",
+      "category": "Greek",
+      "town": "Branford",
+      "address": "374 E Main St, Branford",
+      "phone": "203-481-0333",
+      "website": "https://parthenondiner.com/",
+      "image": "branford-logos/DINER-2-2.webp",
+      "darkBg": true,
+      "pageLink": "branford.html",
+      "lat": 41.296517886253156,
+      "lng": -72.78165539020812
+    }
+  ]
+}

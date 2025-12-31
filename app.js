@@ -9,15 +9,15 @@ let markers = [];
 document.addEventListener('DOMContentLoaded', async () => {
     await loadRestaurants();
     initMap();
-    initFilters();
     renderRestaurants(restaurants);
 });
 
-// Load restaurant data from JSON file
+// Load featured restaurant data from JSON file
 async function loadRestaurants() {
     try {
-        const response = await fetch('restaurants.json');
-        restaurants = await response.json();
+        const response = await fetch('featured-restaurants.json');
+        const data = await response.json();
+        restaurants = data.featured || [];
     } catch (error) {
         console.error('Error loading restaurants:', error);
         restaurants = [];
@@ -77,9 +77,10 @@ function addMarkersToMap(restaurantList) {
                 .bindPopup(`
                     <div class="map-popup">
                         <h4>${restaurant.name}</h4>
-                        <p class="popup-cuisine">${restaurant.cuisine} • ${restaurant.price}</p>
+                        <p class="popup-cuisine">${restaurant.category}</p>
                         <p>${restaurant.town}</p>
                         <p>${restaurant.address}</p>
+                        ${restaurant.website ? `<a href="${restaurant.website}" target="_blank" rel="noopener noreferrer" style="color: #2EA3F2; text-decoration: none;">Visit Website →</a>` : ''}
                     </div>
                 `);
 
@@ -94,51 +95,6 @@ function addMarkersToMap(restaurantList) {
     }
 }
 
-// Initialize filter event listeners
-function initFilters() {
-    const searchInput = document.getElementById('searchInput');
-    const townFilter = document.getElementById('townFilter');
-    const cuisineFilter = document.getElementById('cuisineFilter');
-    const priceFilter = document.getElementById('priceFilter');
-
-    // Add event listeners for all filters
-    searchInput.addEventListener('input', applyFilters);
-    townFilter.addEventListener('change', applyFilters);
-    cuisineFilter.addEventListener('change', applyFilters);
-    priceFilter.addEventListener('change', applyFilters);
-}
-
-// Apply all filters and update the display
-function applyFilters() {
-    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-    const townValue = document.getElementById('townFilter').value;
-    const cuisineValue = document.getElementById('cuisineFilter').value;
-    const priceValue = document.getElementById('priceFilter').value;
-
-    const filtered = restaurants.filter(restaurant => {
-        // Search filter
-        const matchesSearch = searchTerm === '' ||
-            restaurant.name.toLowerCase().includes(searchTerm) ||
-            restaurant.cuisine.toLowerCase().includes(searchTerm) ||
-            restaurant.description.toLowerCase().includes(searchTerm) ||
-            restaurant.town.toLowerCase().includes(searchTerm);
-
-        // Town filter
-        const matchesTown = townValue === '' || restaurant.town === townValue;
-
-        // Cuisine filter
-        const matchesCuisine = cuisineValue === '' || restaurant.cuisine === cuisineValue;
-
-        // Price filter
-        const matchesPrice = priceValue === '' || restaurant.price === priceValue;
-
-        return matchesSearch && matchesTown && matchesCuisine && matchesPrice;
-    });
-
-    renderRestaurants(filtered);
-    addMarkersToMap(filtered);
-}
-
 // Render restaurant cards to the grid
 function renderRestaurants(restaurantList) {
     const grid = document.getElementById('restaurantGrid');
@@ -150,7 +106,7 @@ function renderRestaurants(restaurantList) {
         grid.innerHTML = `
             <div class="no-results">
                 <h3>No restaurants found</h3>
-                <p>Try adjusting your filters or search terms.</p>
+                <p>Check back soon for featured restaurants.</p>
             </div>
         `;
         return;
@@ -158,16 +114,19 @@ function renderRestaurants(restaurantList) {
 
     grid.innerHTML = restaurantList.map(restaurant => `
         <article class="restaurant-card">
+            ${restaurant.image ? `
+            <div class="card-logo${restaurant.darkBg ? ' dark-bg' : ''}">
+                <img src="${restaurant.image}" alt="${restaurant.name} logo">
+            </div>
+            ` : ''}
             <div class="card-header">
                 <h3>${restaurant.name}</h3>
-                <span class="cuisine">${restaurant.cuisine}</span>
+                <span class="cuisine">${restaurant.category}</span>
             </div>
             <div class="card-body">
                 <span class="town">${restaurant.town}</span>
                 <p class="address">${restaurant.address}</p>
                 <p class="phone">${restaurant.phone}</p>
-                <span class="price">${restaurant.price}</span>
-                <p class="description">${restaurant.description}</p>
             </div>
             ${restaurant.website ? `
             <div class="card-footer">
@@ -191,3 +150,43 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
+// Hero search functionality
+function initHeroSearch() {
+    const searchInput = document.getElementById('heroSearch');
+    const searchBtn = document.getElementById('heroSearchBtn');
+
+    if (!searchInput || !searchBtn) return;
+
+    function performSearch() {
+        const query = searchInput.value.toLowerCase().trim();
+        if (!query) {
+            renderRestaurants(restaurants);
+            addMarkersToMap(restaurants);
+            return;
+        }
+
+        const filtered = restaurants.filter(r =>
+            r.name.toLowerCase().includes(query) ||
+            r.category.toLowerCase().includes(query) ||
+            r.town.toLowerCase().includes(query)
+        );
+
+        renderRestaurants(filtered);
+        addMarkersToMap(filtered);
+
+        // Scroll to results
+        document.getElementById('restaurants').scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }
+
+    searchBtn.addEventListener('click', performSearch);
+    searchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') performSearch();
+    });
+}
+
+// Initialize search after DOM loads
+document.addEventListener('DOMContentLoaded', initHeroSearch);

@@ -70,24 +70,153 @@ body {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+    background: linear-gradient(135deg, var(--navy-light) 0%, var(--navy) 100%);
+    background-image:
+        radial-gradient(circle at 20% 50%, rgba(240, 179, 35, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(240, 179, 35, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.08) 0%, transparent 30%),
+        linear-gradient(135deg, var(--navy-light) 0%, var(--navy) 100%);
     color: var(--white);
-    padding: 3rem 2rem;
+    padding: 3rem 2rem 5rem;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f0b323' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
 }
 
 .hero-content {
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    gap: 1rem;
+    justify-content: center;
+    gap: 3rem;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-text {
+    text-align: left;
 }
 
 .hero-logo {
-    height: 120px;
+    height: 216px;
     width: auto;
+    animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hero Search */
+.hero-search {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    width: 100%;
+    max-width: 500px;
+    animation: fadeInUp 1s ease-out 0.2s backwards;
+}
+
+.hero-search input {
+    flex: 1;
+    padding: 0.875rem 1.25rem;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    transition: all 0.3s;
+}
+
+.hero-search input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.hero-search input:focus {
+    outline: none;
+    border-color: var(--gold);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.hero-search button {
+    padding: 0.875rem 1.5rem;
+    background: var(--gold);
+    color: var(--navy-dark);
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.hero-search button:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+}
+
+/* CTA Button */
+.cta-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: var(--gold);
+    color: var(--navy-dark);
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(240, 179, 35, 0.3);
+    animation: fadeInUp 1s ease-out 0.4s backwards;
+}
+
+.cta-button:hover {
+    background: var(--gold-light);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(240, 179, 35, 0.4);
+}
+
+/* Wave Divider */
+.wave-divider {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.wave-divider svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 60px;
+}
+
+.wave-divider path {
+    fill: var(--off-white);
 }
 
 .hero h1 {
@@ -305,6 +434,26 @@ body {
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
+.card-logo {
+    background-color: var(--white);
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 140px;
+    border-bottom: 1px solid var(--gray-light);
+}
+
+.card-logo.dark-bg {
+    background-color: var(--navy-dark);
+}
+
+.card-logo img {
+    width: 80%;
+    height: 100px;
+    object-fit: contain;
+}
+
 .card-header {
     background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
     color: var(--white);
@@ -474,6 +623,19 @@ body {
 
     .nav {
         gap: 1rem;
+    }
+
+    .hero-content {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .hero-text {
+        text-align: center;
+    }
+
+    .hero-logo {
+        height: 120px;
     }
 
     .hero h1 {
