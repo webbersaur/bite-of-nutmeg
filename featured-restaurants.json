@@ -84,6 +84,19 @@
       "pageLink": "branford.html",
       "lat": 41.296517886253156,
       "lng": -72.78165539020812
+    },
+    {
+      "name": "Parthenon Diner Restaurant",
+      "category": "Greek",
+      "town": "Old Saybrook",
+      "address": "869 Boston Post Rd, Old Saybrook",
+      "phone": "860-388-3533",
+      "website": "https://parthenondiner.com/",
+      "image": "branford-logos/DINER-2-2.webp",
+      "darkBg": true,
+      "pageLink": "old-saybrook.html",
+      "lat": 41.29256948653025,
+      "lng": -72.38376819510408
     }
   ]
 }

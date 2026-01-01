@@ -1,6 +1,17 @@
 {
-  "featured": [],
+  "featured": [
+    {
+      "name": "Parthenon Diner Restaurant",
+      "category": "Greek",
+      "address": "869 Boston Post Rd, Old Saybrook",
+      "phone": "860-388-3533",
+      "website": "https://parthenondiner.com/",
+      "image": "branford-logos/DINER-2-2.webp",
+      "darkBg": true
+    }
+  ],
   "restaurants": [
+    {"name": "Parthenon Diner Restaurant", "category": "Greek", "phone": "860-388-3533"},
     {"name": "Liv's Oyster Bar", "category": "Seafood", "phone": "860-395-5577"},
     {"name": "Fresh Salt", "category": "American", "phone": "860-388-1111"},
     {"name": "Penny Lane Pub", "category": "American", "phone": "860-388-9646"},
@@ -22,5 +33,5 @@
     {"name": "Subway", "category": "Fast Food", "phone": "860-388-9620"},
     {"name": "McDonald's", "category": "Fast Food", "phone": "860-388-0023"}
   ],
-  "categories": ["All", "American", "Italian", "Seafood", "French", "Thai", "Japanese", "Cafe & Bakery", "Pizza", "Fast Food"]
+  "categories": ["All", "American", "Italian", "Greek", "Seafood", "French", "Thai", "Japanese", "Cafe & Bakery", "Pizza", "Fast Food"]
 }
