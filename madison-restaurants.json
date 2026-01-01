@@ -18,7 +18,23 @@
     {"name": "Starbucks", "category": "Cafe & Bakery", "phone": "203-245-4210"},
     {"name": "Dunkin'", "category": "Cafe & Bakery", "phone": "203-245-1414"},
     {"name": "Subway", "category": "Fast Food", "phone": "203-245-9200"},
-    {"name": "McDonald's", "category": "Fast Food", "phone": "203-245-8887"}
+    {"name": "McDonald's", "category": "Fast Food", "phone": "203-245-8887"},
+    {"name": "Madison Prime Steakhouse", "category": "Steakhouse", "phone": "203-245-4900"},
+    {"name": "Fat Duck Tavern", "category": "American", "phone": "203-245-3825"},
+    {"name": "Comomango", "category": "Mexican", "phone": "203-245-7005"},
+    {"name": "Steamed", "category": "Seafood", "phone": "203-245-1817"},
+    {"name": "Shipwreck Tavern", "category": "American", "phone": "203-245-5400"},
+    {"name": "The Wharf Restaurant", "category": "Seafood", "phone": "203-350-6073"},
+    {"name": "Pho Madison", "category": "Vietnamese", "phone": "203-245-8686"},
+    {"name": "Ashley's Ice Cream", "category": "Dessert", "phone": "203-245-1113"},
+    {"name": "James Madison House", "category": "American", "phone": "203-245-0200"},
+    {"name": "Jia Mei Asian Kitchen", "category": "Asian", "phone": "203-245-8898"},
+    {"name": "Life Bowls", "category": "Cafe & Bakery", "phone": "203-421-4647"},
+    {"name": "Clam Castle", "category": "Seafood", "phone": "203-245-4911"},
+    {"name": "What's Cookin", "category": "American", "phone": "203-245-5422"},
+    {"name": "Nick's Place", "category": "American", "phone": "203-245-7227"},
+    {"name": "Old Schoolhouse Deli", "category": "American", "phone": "203-245-1610"},
+    {"name": "Petrillo's Pizza Pub", "category": "Pizza", "phone": "203-245-7111"}
   ],
-  "categories": ["All", "American", "Italian", "Seafood", "Mexican", "French", "Korean", "Chinese", "Cafe & Bakery", "Pizza", "Fast Food"]
+  "categories": ["All", "American", "Italian", "Seafood", "Mexican", "French", "Korean", "Chinese", "Vietnamese", "Asian", "Steakhouse", "Dessert", "Cafe & Bakery", "Pizza", "Fast Food"]
 }
