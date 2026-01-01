@@ -31,7 +31,20 @@
     {"name": "Monkey Farm", "category": "Cafe & Bakery", "phone": "860-388-4090"},
     {"name": "Dunkin'", "category": "Cafe & Bakery", "phone": "860-388-2024"},
     {"name": "Subway", "category": "Fast Food", "phone": "860-388-9620"},
-    {"name": "McDonald's", "category": "Fast Food", "phone": "860-388-0023"}
+    {"name": "McDonald's", "category": "Fast Food", "phone": "860-388-0023"},
+    {"name": "Little Pub Old Saybrook", "category": "American", "phone": "860-339-5955"},
+    {"name": "Sip Wine Bar", "category": "Wine Bar", "phone": "860-388-2747"},
+    {"name": "Alforno Trattoria", "category": "Italian", "phone": "860-395-4600"},
+    {"name": "Himalaya Cafe", "category": "Indian", "phone": "860-388-9696"},
+    {"name": "The Essex", "category": "American", "phone": "860-767-1776"},
+    {"name": "AJ Noodle Bar", "category": "Asian", "phone": "860-388-8838"},
+    {"name": "Farm Table", "category": "American", "phone": "860-388-8700"},
+    {"name": "Nori", "category": "Japanese", "phone": "860-388-6674"},
+    {"name": "Comfort Cafe", "category": "Cafe & Bakery", "phone": "860-388-3588"},
+    {"name": "Rabbit Hole Tavern", "category": "American", "phone": "860-388-0050"},
+    {"name": "La Marea", "category": "Italian", "phone": "860-388-1600"},
+    {"name": "Shakahari", "category": "Vegetarian", "phone": "860-388-2221"},
+    {"name": "Sammy's Restaurant", "category": "American", "phone": "860-388-9780"}
   ],
-  "categories": ["All", "American", "Italian", "Greek", "Seafood", "French", "Thai", "Japanese", "Cafe & Bakery", "Pizza", "Fast Food"]
+  "categories": ["All", "American", "Italian", "Greek", "Seafood", "French", "Thai", "Japanese", "Indian", "Asian", "Vegetarian", "Wine Bar", "Cafe & Bakery", "Pizza", "Fast Food"]
 }
