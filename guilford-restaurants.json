@@ -26,7 +26,7 @@
     {"name": "Shoreline Prime", "category": "Steakhouse", "phone": "203-453-4300"},
     {"name": "The Greenery", "category": "American", "phone": "203-453-5262"},
     {"name": "JAIPORE Xpress", "category": "Indian", "phone": "203-458-8988"},
-    {"name": "Amarone", "category": "Italian", "phone": "203-458-0870"},
+    {"name": "Char & Lemon", "category": "Italian", "phone": "203-533-7074"},
     {"name": "Cilantro Mexican Grill", "category": "Mexican", "phone": "203-689-5058"},
     {"name": "Moon Shots Juice Co.", "category": "Café & Bakery", "phone": "203-689-5665"},
     {"name": "Bufalina", "category": "Italian", "phone": "203-453-5900"},
@@ -44,7 +44,17 @@
     {"name": "Page Hardware Cafe", "category": "Café & Bakery", "phone": "203-453-6801"},
     {"name": "The Marketplace", "category": "American", "phone": "203-453-5600"},
     {"name": "Guilford Food Center Deli", "category": "American", "phone": "203-453-6146"},
-    {"name": "Donahue's Madison Beach Grille", "category": "Seafood", "phone": "203-245-8440"}
+    {"name": "The WAVE", "category": "American", "phone": "203-453-9283"},
+    {"name": "Ashley's Ice Cream", "category": "Dessert", "phone": "203-458-3040"},
+    {"name": "KC's Restaurant and Pub", "category": "American", "phone": "203-453-3200"},
+    {"name": "La Cucina Prepared Meals", "category": "Italian", "phone": "203-453-6801"},
+    {"name": "Bishop's Orchard Farm Market", "category": "Cafe & Bakery", "phone": "203-453-2338"},
+    {"name": "Som Siam Thai Restaurant", "category": "Thai", "phone": "203-453-2822"},
+    {"name": "The Brownstone Family Restaurant", "category": "American", "phone": "203-453-9844"},
+    {"name": "Fresh Monkee", "category": "Cafe & Bakery", "phone": "203-689-5400"},
+    {"name": "Mr. J Asian Bistro", "category": "Asian", "phone": "203-453-3355"},
+    {"name": "Mooyah Burgers Fries Shakes", "category": "American", "phone": "203-689-5115"},
+    {"name": "Drift", "category": "Seafood", "phone": "203-458-2500"}
   ],
-  "categories": ["All", "American", "Italian", "Mexican", "Seafood", "Steakhouse", "Indian", "Chinese", "Japanese", "Thai", "Café & Bakery", "Pizza", "Fast Food"]
+  "categories": ["All", "American", "Italian", "Mexican", "Seafood", "Steakhouse", "Indian", "Chinese", "Japanese", "Thai", "Asian", "Dessert", "Cafe & Bakery", "Pizza", "Fast Food"]
 }
