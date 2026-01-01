@@ -44,7 +44,8 @@
     {"name": "Rabbit Hole Tavern", "category": "American", "phone": "860-388-0050"},
     {"name": "La Marea", "category": "Italian", "phone": "860-388-1600"},
     {"name": "Shakahari", "category": "Vegetarian", "phone": "860-388-2221"},
-    {"name": "Sammy's Restaurant", "category": "American", "phone": "860-388-9780"}
+    {"name": "Sammy's Restaurant", "category": "American", "phone": "860-388-9780"},
+    {"name": "Cuckoo's Nest", "category": "Mexican", "phone": "860-399-8189"}
   ],
-  "categories": ["All", "American", "Italian", "Greek", "Seafood", "French", "Thai", "Japanese", "Indian", "Asian", "Vegetarian", "Wine Bar", "Cafe & Bakery", "Pizza", "Fast Food"]
+  "categories": ["All", "American", "Italian", "Greek", "Mexican", "Seafood", "French", "Thai", "Japanese", "Indian", "Asian", "Vegetarian", "Wine Bar", "Cafe & Bakery", "Pizza", "Fast Food"]
 }

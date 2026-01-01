@@ -15,7 +15,15 @@
     {"name": "India", "category": "Indian", "phone": "860-399-3500"},
     {"name": "Dunkin'", "category": "Cafe & Bakery", "phone": "860-399-5520"},
     {"name": "Subway", "category": "Fast Food", "phone": "860-399-2782"},
-    {"name": "McDonald's", "category": "Fast Food", "phone": "860-399-7210"}
+    {"name": "McDonald's", "category": "Fast Food", "phone": "860-399-7210"},
+    {"name": "Turtle Cafe", "category": "American", "phone": "860-399-7768"},
+    {"name": "Bacari Social", "category": "Seafood", "phone": "860-661-5736"},
+    {"name": "Shayna B's By The Sea", "category": "Vegan", "phone": "860-661-5289"},
+    {"name": "Coastline Brewing", "category": "Brewery", "phone": "860-661-4700"},
+    {"name": "Dattilo Fine Italian", "category": "Italian", "phone": "860-399-5901"},
+    {"name": "Hartford Grinder", "category": "American", "phone": "860-661-4357"},
+    {"name": "Taqueria 5", "category": "Mexican", "phone": "860-399-5050"},
+    {"name": "Little Pub Westbrook", "category": "American", "phone": "860-399-2322"}
   ],
-  "categories": ["All", "American", "Seafood", "French", "Indian", "Chinese", "Cafe & Bakery", "Pizza", "Fast Food"]
+  "categories": ["All", "American", "Seafood", "French", "Italian", "Indian", "Chinese", "Mexican", "Vegan", "Brewery", "Cafe & Bakery", "Pizza", "Fast Food"]
 }
