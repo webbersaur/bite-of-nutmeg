@@ -16,7 +16,15 @@
     {"name": "Dunkin'", "category": "Cafe & Bakery", "phone": "860-669-8050"},
     {"name": "McDonald's", "category": "Fast Food", "phone": "860-669-0074"},
     {"name": "Subway", "category": "Fast Food", "phone": "860-669-2535"},
-    {"name": "Pizza Palace", "category": "Pizza", "phone": "860-669-1424"}
+    {"name": "Pizza Palace", "category": "Pizza", "phone": "860-669-1424"},
+    {"name": "J & M's Dockside", "category": "Seafood", "phone": "860-669-5388"},
+    {"name": "Shanks Waterfront Dining", "category": "Seafood", "phone": "860-664-4100"},
+    {"name": "Chow Food & Beverage", "category": "American", "phone": "860-552-4135"},
+    {"name": "Nataz", "category": "Fine Dining", "phone": "860-669-2272"},
+    {"name": "Taste of China", "category": "Chinese", "phone": "860-664-4454"},
+    {"name": "Hanami Japanese Restaurant", "category": "Japanese", "phone": "860-669-8288"},
+    {"name": "Grand Apizza Shoreline", "category": "Pizza", "phone": "860-669-1204"},
+    {"name": "Coffee Break", "category": "Cafe & Bakery", "phone": "860-669-1517"}
   ],
-  "categories": ["All", "American", "Seafood", "Chinese", "Japanese", "Cafe & Bakery", "Pizza", "Fast Food"]
+  "categories": ["All", "American", "Seafood", "Chinese", "Japanese", "Fine Dining", "Cafe & Bakery", "Pizza", "Fast Food"]
 }
