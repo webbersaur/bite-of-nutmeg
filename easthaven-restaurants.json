@@ -24,8 +24,7 @@
     {"name": "Transilvania Restaurant and Bar", "category": "European", "phone": "203-469-3156"},
     {"name": "The Rib House", "category": "American", "phone": "203-469-7427"},
     {"name": "Amarante's Sea Cliff", "category": "Italian", "phone": "203-469-0550"},
-    {"name": "Chow", "category": "Asian", "phone": "203-469-2469"},
-    {"name": "Tavern On State", "category": "American", "phone": "203-469-3348"},
+        {"name": "Tavern On State", "category": "American", "phone": "203-469-3348"},
     {"name": "Number One Chinese Restaurant", "category": "Chinese", "phone": "203-469-8999"},
     {"name": "Capotorto's", "category": "Italian", "phone": "203-469-5550"},
     {"name": "Ziggy's Family Pizza", "category": "Pizza", "phone": "203-467-0707"},
@@ -33,8 +32,7 @@
     {"name": "The Little Colombia Restaurant", "category": "Latin American", "phone": "203-469-4616"},
     {"name": "Stop And Go Deli", "category": "American", "phone": "203-469-8595"},
     {"name": "East Haven Diner", "category": "American", "phone": "203-469-2490"},
-    {"name": "Parthenon Diner", "category": "Greek", "phone": "203-469-1920"},
-    {"name": "Four Seas Restaurant", "category": "Chinese", "phone": "203-469-8981"},
+        {"name": "Four Seas Restaurant", "category": "Chinese", "phone": "203-469-8981"},
     {"name": "East Garden Chinese Restaurant", "category": "Chinese", "phone": "203-468-2838"},
     {"name": "Dunkin'", "category": "Café & Bakery", "phone": "203-469-8388"},
     {"name": "McDonald's", "category": "Fast Food", "phone": "203-467-2204"},
@@ -47,7 +45,10 @@
     {"name": "East Haven Pizza House", "category": "Pizza", "phone": "203-468-3555"},
     {"name": "Starbucks", "category": "Café & Bakery", "phone": "203-469-0055"},
     {"name": "Italian Corner", "category": "Italian", "phone": "203-469-6282"},
-    {"name": "El Amigo Felix", "category": "Mexican", "phone": "203-469-1784"}
+    {"name": "El Amigo Felix", "category": "Mexican", "phone": "203-469-1784"},
+    {"name": "Tolli's Apizza & Restaurant", "category": "Pizza", "phone": "203-469-9582"},
+    {"name": "Moxie Breakfast", "category": "American", "phone": "203-691-8191"},
+    {"name": "John & Maria's Pizzeria", "category": "Pizza", "phone": "203-466-1550"}
   ],
-  "categories": ["All", "American", "Italian", "Seafood", "Pizza", "Chinese", "Asian", "Mediterranean", "European", "Latin American", "Mexican", "Greek", "Café & Bakery", "Fast Food"]
+  "categories": ["All", "American", "Italian", "Seafood", "Pizza", "Chinese", "Mediterranean", "European", "Latin American", "Mexican", "Café & Bakery", "Fast Food"]
 }

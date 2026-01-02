@@ -4,7 +4,6 @@ Bistro Mediterranean & Tapas Bar
 Transilvania Restaurant and Bar
 The Rib House
 Amarante's Sea Cliff
-Chow
 Tavern On State
 Number One Chinese Restaurant
 Capotorto's
@@ -13,7 +12,6 @@ Sabor Latino Deli CT
 The Little Colombia Restaurant
 Stop And Go Deli
 East Haven Diner
-Parthenon Diner
 Four Seas Restaurant
 East Garden Chinese Restaurant
 Dunkin'
@@ -28,3 +26,6 @@ East Haven Pizza House
 Starbucks
 Italian Corner
 El Amigo Felix
+Tolli's Apizza & Restaurant
+Moxie Breakfast
+John & Maria's Pizzeria
