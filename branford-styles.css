@@ -88,8 +88,14 @@
     margin: 0 auto;
 }
 
+.search-container.near-me-container {
+    display: flex;
+    gap: 0.5rem;
+    max-width: 600px;
+}
+
 .search-container input {
-    width: 100%;
+    flex: 1;
     padding: 1rem 1.5rem;
     border: none;
     border-radius: 50px;
@@ -100,6 +106,42 @@
 
 .search-container input:focus {
     box-shadow: 0 4px 20px rgba(46, 163, 242, 0.2);
+}
+
+/* Near Me Button for Town Pages */
+.search-container .near-me-btn {
+    padding: 1rem 1.5rem;
+    background: #1e3a6e;
+    color: white;
+    border: 2px solid #f0b323;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.3s;
+}
+
+.search-container .near-me-btn:hover {
+    background: #2a4a8a;
+}
+
+.search-container .near-me-btn.loading {
+    opacity: 0.7;
+    cursor: wait;
+}
+
+/* Distance badge */
+.distance-badge {
+    display: inline-block;
+    background: #f0b323;
+    color: #1e3a6e;
+    padding: 0.2rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    margin-left: 0.5rem;
+    font-family: 'Montserrat', sans-serif;
 }
 
 /* Search Results */
