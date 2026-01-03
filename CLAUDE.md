@@ -140,3 +140,18 @@ Edit `featured-restaurants.json` - homepage automatically loads these
 
 ### Update town page content
 Edit the `<section class="about-dining">` in the town's HTML file
+
+### Cross-reference restaurants from official source
+
+When updating restaurant lists from an official source (e.g., RTF file export):
+
+1. Add the source file to the project root (e.g., `newbranford.rtf`)
+2. Compare with existing `[town]-restaurants.json` to identify:
+   - **New restaurants** to add (in source but not in JSON)
+   - **Restaurants to remove** (in JSON but not in source)
+3. For new restaurants, search for phone numbers before adding
+4. Add new entries in alphabetical order within the `restaurants` array
+5. Update the `categories` array if new cuisine types are needed
+6. Commit and push changes regularly throughout the process
+7. Deploy with `vercel --prod --yes`
+8. Delete the source file after processing
