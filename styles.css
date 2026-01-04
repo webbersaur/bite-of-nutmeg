@@ -20,12 +20,16 @@
     box-sizing: border-box;
 }
 
+html, body {
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
     line-height: 1.6;
     color: var(--gray-dark);
     background-color: var(--off-white);
-    overflow-x: hidden;
 }
 
 /* Header */
@@ -221,7 +225,7 @@ body {
 .wave-divider svg {
     position: relative;
     display: block;
-    width: calc(100% + 1.3px);
+    width: 100%;
     height: 60px;
 }
 
@@ -739,6 +743,10 @@ body {
         padding: 2rem 1rem;
     }
 
+    .towns-section {
+        padding: 1.5rem 1rem;
+    }
+
     .filters {
         padding: 1rem;
     }
@@ -746,5 +754,9 @@ body {
     .map-section,
     .restaurants {
         padding: 1rem;
+    }
+
+    .footer {
+        padding: 1.5rem 1rem;
     }
 }
