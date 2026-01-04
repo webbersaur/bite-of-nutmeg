@@ -25,9 +25,16 @@ function initMapToggle() {
         const isShowing = mapContainer.classList.toggle('show');
         toggleBtn.textContent = isShowing ? 'Hide Map' : 'Show Map';
 
-        // Invalidate map size when shown (fixes rendering issues)
+        // Fix map rendering and zoom when shown
         if (isShowing && map) {
-            setTimeout(() => map.invalidateSize(), 100);
+            setTimeout(() => {
+                map.invalidateSize();
+                // Re-fit bounds to show all markers
+                if (markers.length > 0) {
+                    const group = L.featureGroup(markers);
+                    map.fitBounds(group.getBounds().pad(0.1));
+                }
+            }, 100);
         }
     });
 }
