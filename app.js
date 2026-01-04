@@ -180,7 +180,7 @@ function renderRestaurants(restaurantList, isSearchResult = false) {
     }
 
     grid.innerHTML = restaurantList.map(restaurant => {
-        const cuisine = restaurant.category || restaurant.cuisine;
+        const cuisine = restaurant.category || restaurant.cuisine || '';
         return `
         <article class="restaurant-card">
             ${restaurant.image ? `
@@ -193,9 +193,9 @@ function renderRestaurants(restaurantList, isSearchResult = false) {
                 <span class="cuisine">${cuisine}</span>
             </div>
             <div class="card-body">
-                <span class="town">${restaurant.town}</span>
-                <p class="address">${restaurant.address}</p>
-                <p class="phone">${restaurant.phone}</p>
+                ${restaurant.town ? `<span class="town">${restaurant.town}</span>` : ''}
+                ${restaurant.address ? `<p class="address">${restaurant.address}</p>` : ''}
+                ${restaurant.phone ? `<p class="phone">${restaurant.phone}</p>` : ''}
             </div>
             ${restaurant.website ? `
             <div class="card-footer">
