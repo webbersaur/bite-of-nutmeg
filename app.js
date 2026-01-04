@@ -11,7 +11,26 @@ document.addEventListener('DOMContentLoaded', async () => {
     await loadRestaurants();
     initMap();
     renderRestaurants(featuredRestaurants);
+    initMapToggle();
 });
+
+// Map toggle for mobile
+function initMapToggle() {
+    const toggleBtn = document.getElementById('mapToggle');
+    const mapContainer = document.getElementById('mapContainer');
+
+    if (!toggleBtn || !mapContainer) return;
+
+    toggleBtn.addEventListener('click', () => {
+        const isShowing = mapContainer.classList.toggle('show');
+        toggleBtn.textContent = isShowing ? 'Hide Map' : 'Show Map';
+
+        // Invalidate map size when shown (fixes rendering issues)
+        if (isShowing && map) {
+            setTimeout(() => map.invalidateSize(), 100);
+        }
+    });
+}
 
 // Town data files to load
 const townFiles = [
