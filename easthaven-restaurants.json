@@ -20,7 +20,6 @@
   "restaurants": [
     {"name": "Aniello's Pizza & Restaurant", "category": "Italian", "phone": "203-467-5694"},
     {"name": "Apizza Abate'", "category": "Pizza", "phone": "203-891-7086"},
-    {"name": "Beachside Restaurant", "category": "American", "phone": "203-919-2210"},
     {"name": "Bistro Mediterranean & Tapas Bar", "category": "Mediterranean", "phone": "203-469-2722"},
     {"name": "Briellies Gelato & Cafe", "category": "Café & Bakery", "phone": "203-903-5028"},
     {"name": "Capotorto's", "category": "Italian", "phone": "203-469-5550"},
