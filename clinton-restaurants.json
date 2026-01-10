@@ -33,7 +33,6 @@
     {"name": "Starbucks", "category": "Cafe & Bakery", "phone": "860-744-0010", "lat": 41.28982, "lng": -72.5291},
     {"name": "Subway", "category": "Fast Food", "phone": "860-669-2535", "lat": 41.2769364, "lng": -72.5371671},
     {"name": "Taste of China", "category": "Chinese", "phone": "860-664-4454", "lat": 41.2718778, "lng": -72.5041278},
-    {"name": "Tea & Tarot", "category": "Cafe & Bakery", "phone": "475-655-8295", "lat": 41.2763792, "lng": -72.5163095},
     {"name": "Westbrook Lobster", "category": "Seafood", "phone": "860-664-9464", "lat": 41.2731539, "lng": -72.4879906}
   ],
   "categories": ["All", "American", "Seafood", "Chinese", "Japanese", "Thai", "Mexican", "Italian", "Fine Dining", "Cafe & Bakery", "Pizza", "Dessert", "Fast Food"]
