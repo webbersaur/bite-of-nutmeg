@@ -27,7 +27,6 @@
     {"name": "Pica Chica Tacos", "category": "Mexican", "phone": "860-552-6916", "lat": 41.278615, "lng": -72.534278},
     {"name": "Rockys Aqua", "category": "Seafood", "phone": "860-664-3777", "lat": 41.2688604, "lng": -72.5311585},
     {"name": "Saldamarco's Deli", "category": "Italian", "phone": "860-669-3469", "lat": 41.2770196, "lng": -72.5200739},
-    {"name": "Salt Leaf", "category": "Cafe & Bakery", "phone": "860-993-1829", "lat": 41.2790757, "lng": -72.5294255},
     {"name": "Scottish Dave's Pub", "category": "American", "phone": "860-552-4727", "lat": 41.2783105, "lng": -72.5254972},
     {"name": "Shanks", "category": "Seafood", "phone": "860-664-4100", "lat": 41.2691075, "lng": -72.5284301},
     {"name": "Starbucks", "category": "Cafe & Bakery", "phone": "860-744-0010", "lat": 41.28982, "lng": -72.5291},
