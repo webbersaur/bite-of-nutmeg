@@ -20,7 +20,6 @@
     {"name": "Sammy's Restaurant", "category": "Italian", "phone": "860-339-3680", "lat": 41.2804954, "lng": -72.4275252},
     {"name": "Scoops & Slices", "category": "Deli", "phone": "959-746-2001", "lat": 41.2828522, "lng": -72.4548399},
     {"name": "Shayna B's By The Sea", "category": "Vegan", "phone": "860-661-5289", "lat": 41.2780641, "lng": -72.4652714},
-    {"name": "Still Delicious", "category": "Bakery", "phone": "860-552-4662", "lat": 41.2736181, "lng": -72.4867112},
     {"name": "Subway", "category": "Fast Food", "phone": "860-399-2782", "lat": 41.285736, "lng": -72.45081},
     {"name": "Taqueria Cinco", "category": "Mexican", "phone": "860-399-5050", "lat": 41.2857691, "lng": -72.4508435},
     {"name": "The Deck", "category": "Bar & Grill", "phone": "860-339-5277", "lat": 41.2749002, "lng": -72.4742326},
