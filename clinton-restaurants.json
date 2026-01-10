@@ -20,7 +20,6 @@
     {"name": "Land of Thai", "category": "Thai", "phone": "860-552-4444", "lat": 41.2734314, "lng": -72.4872481},
     {"name": "Lobster Landing", "category": "Seafood", "phone": "860-669-2005", "lat": 41.2690161, "lng": -72.5281545},
     {"name": "Log Cabin Restaurant", "category": "American", "phone": "860-669-6253", "lat": 41.271638, "lng": -72.505166},
-    {"name": "Malone's Bar & Grill", "category": "American", "phone": ""},
     {"name": "Masa Sushi", "category": "Japanese", "phone": "860-744-8895", "lat": 41.2779531, "lng": -72.5364799},
     {"name": "McDonald's", "category": "Fast Food", "phone": "860-669-0074", "lat": 41.2774006, "lng": -72.5382331},
     {"name": "Nataz", "category": "Fine Dining", "phone": "860-669-2272", "lat": 41.2787704, "lng": -72.5272827},
