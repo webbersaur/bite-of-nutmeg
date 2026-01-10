@@ -14,7 +14,6 @@
   "restaurants": [
     {"name": "Anthony's of Guilford", "category": "Italian", "phone": "203-453-4121", "lat": 41.3077569, "lng": -72.721568},
     {"name": "Ashley's Ice Cream", "category": "Dessert", "phone": "203-458-3040", "lat": 41.2880508, "lng": -72.6806107},
-    {"name": "Bean Bean", "category": "Cafe", "phone": "203-815-8730", "lat": 41.2888835, "lng": -72.6603654},
     {"name": "Belle Vie Cafe", "category": "Cafe", "phone": "203-453-4350", "lat": 41.2848395, "lng": -72.682952},
     {"name": "Bufalina", "category": "Italian", "phone": "203-453-5900", "lat": 41.2876396, "lng": -72.6852187},
     {"name": "Carpanzano's Pizzeria", "category": "Pizza", "phone": "203-453-7040", "lat": 41.2873308, "lng": -72.6895917},
