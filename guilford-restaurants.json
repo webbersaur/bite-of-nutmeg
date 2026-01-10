@@ -33,7 +33,6 @@
     {"name": "Jersey Mike's Subs", "category": "Deli", "phone": "203-533-6474", "lat": 41.287649, "lng": -72.677978},
     {"name": "Kamana", "category": "Indian", "phone": "203-689-5728", "lat": 41.2879955, "lng": -72.6828754},
     {"name": "KC's Restaurant and Pub", "category": "American", "phone": "203-453-3200", "lat": 41.289489, "lng": -72.6726943},
-    {"name": "La Cucina", "category": "Italian", "phone": "203-453-6801", "lat": 41.288032, "lng": -72.6803682},
     {"name": "Lorenzo's II", "category": "Italian", "phone": "203-457-9111", "lat": 41.3524633, "lng": -72.6954215},
     {"name": "McDonald's", "category": "Fast Food", "phone": "203-453-4640", "lat": 41.289185, "lng": -72.6689619},
     {"name": "Mexitale", "category": "Mexican", "phone": "475-223-6083", "lat": 41.3080171, "lng": -72.7192757},
