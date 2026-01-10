@@ -26,7 +26,6 @@
     {"name": "Deli Unlimited", "category": "Deli", "phone": "203-453-2473", "lat": 41.2878762, "lng": -72.6863021},
     {"name": "Dunkin'", "category": "Cafe", "phone": "203-458-8811", "lat": 41.2884262, "lng": -72.6663523},
     {"name": "First Garden", "category": "Chinese", "phone": "203-458-2145", "lat": 41.28888, "lng": -72.660182},
-    {"name": "Fresh Monkee", "category": "Cafe", "phone": "203-689-5400", "lat": 41.2877922, "lng": -72.6771785},
     {"name": "Grand Apizza", "category": "Pizza", "phone": "203-533-7255", "lat": 41.2889111, "lng": -72.6603861},
     {"name": "Guilford Bistro & Bar", "category": "American", "phone": "203-458-8444", "lat": 41.2879127, "lng": -72.6832522},
     {"name": "Hen & Heifer", "category": "Bakery", "phone": "203-689-5651", "lat": 41.2809735, "lng": -72.6828401},
