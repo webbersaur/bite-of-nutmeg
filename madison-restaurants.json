@@ -16,6 +16,7 @@
     {"name": "CT's Roadside BBQ", "category": "BBQ", "phone": "203-245-2676", "seasonal": true, "lat": 41.2737742, "lng": -72.5660808},
     {"name": "Donahue's Madison Beach Grille", "category": "Seafood", "phone": "203-245-8440", "lat": 41.2741275, "lng": -72.5537103},
     {"name": "Dunkin'", "category": "Cafe & Bakery", "phone": "203-245-1414", "lat": 41.2745997, "lng": -72.5537729},
+    {"name": "Friends & Company", "category": "American", "phone": "203-245-0462", "lat": 41.2859264, "lng": -72.6462228},
     {"name": "Grand Apizza", "category": "Pizza", "phone": "203-245-8438", "lat": 41.2794455, "lng": -72.5956516},
     {"name": "Great Wall", "category": "Chinese", "phone": "203-421-4240", "lat": 41.3595516, "lng": -72.6361443},
     {"name": "Hometown Bakery", "category": "Cafe & Bakery", "phone": "203-245-9003"},
