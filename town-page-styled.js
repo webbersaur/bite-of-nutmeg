@@ -277,7 +277,7 @@ function createMarkerIcon(isFeatured) {
     const size = isFeatured ? 40 : 30;
     const color = isFeatured ? '#f0b323' : townColor;
     const borderColor = isFeatured ? townColor : '#f0b323';
-    const fontSize = isFeatured ? '18px' : '14px';
+    const dotSize = isFeatured ? 12 : 10;
 
     return L.divIcon({
         className: 'custom-marker',
@@ -294,9 +294,11 @@ function createMarkerIcon(isFeatured) {
             ${isFeatured ? 'box-shadow: 0 3px 10px rgba(0,0,0,0.3);' : ''}
         "><span style="
             transform: rotate(45deg);
-            color: ${isFeatured ? townColor : 'white'};
-            font-size: ${fontSize};
-        ">🍴</span></div>`,
+            width: ${dotSize}px;
+            height: ${dotSize}px;
+            background-color: ${isFeatured ? townColor : 'white'};
+            border-radius: 50%;
+        "></span></div>`,
         iconSize: [size, size],
         iconAnchor: [size/2, size],
         popupAnchor: [0, -size]
