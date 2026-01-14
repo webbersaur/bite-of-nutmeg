@@ -1,9 +1,12 @@
 // East Haven Page JavaScript
-// Handles featured restaurants, category tabs, and search
+// Handles featured restaurants, category tabs, search, and map
 
 let data = null;
 let currentCategory = 'All';
 let searchTerm = '';
+let map = null;
+let markers = [];
+const townName = 'East Haven';
 
 // Initialize
 document.addEventListener('DOMContentLoaded', async () => {
@@ -12,6 +15,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     renderFeaturedRestaurants();
     renderRestaurantList();
     initSearch();
+    initMap();
+    initMapToggle();
 });
 
 // Load restaurant data
@@ -192,3 +197,97 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
+// ==========================================
+// Map Functionality
+// ==========================================
+
+// Map toggle for mobile
+function initMapToggle() {
+    const toggleBtn = document.getElementById('mapToggle');
+    const mapContainer = document.getElementById('mapContainer');
+
+    if (!toggleBtn || !mapContainer) return;
+
+    toggleBtn.addEventListener('click', () => {
+        const isShowing = mapContainer.classList.toggle('show');
+        toggleBtn.textContent = isShowing ? 'Hide Map' : 'Show Map';
+
+        if (isShowing && map) {
+            setTimeout(() => {
+                map.invalidateSize();
+                if (markers.length > 0) {
+                    const group = L.featureGroup(markers);
+                    map.fitBounds(group.getBounds().pad(0.1));
+                }
+            }, 100);
+        }
+    });
+}
+
+// Initialize the Leaflet map
+function initMap() {
+    const mapContainer = document.getElementById('mapContainer');
+    if (!mapContainer || typeof L === 'undefined') return;
+
+    const restaurantsWithCoords = data.restaurants.filter(r => r.lat && r.lng);
+    if (restaurantsWithCoords.length === 0) return;
+
+    const avgLat = restaurantsWithCoords.reduce((sum, r) => sum + r.lat, 0) / restaurantsWithCoords.length;
+    const avgLng = restaurantsWithCoords.reduce((sum, r) => sum + r.lng, 0) / restaurantsWithCoords.length;
+
+    map = L.map('mapContainer').setView([avgLat, avgLng], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    addMarkersToMap(restaurantsWithCoords);
+}
+
+// Add markers to the map
+function addMarkersToMap(restaurantList) {
+    markers.forEach(marker => map.removeLayer(marker));
+    markers = [];
+
+    const customIcon = L.divIcon({
+        className: 'custom-marker',
+        html: `<div style="
+            background-color: #1e3a6e;
+            width: 30px;
+            height: 30px;
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+            border: 3px solid #f0b323;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        "><span style="
+            transform: rotate(45deg);
+            color: white;
+            font-size: 14px;
+        ">🍴</span></div>`,
+        iconSize: [30, 30],
+        iconAnchor: [15, 30],
+        popupAnchor: [0, -30]
+    });
+
+    restaurantList.forEach(restaurant => {
+        const marker = L.marker([restaurant.lat, restaurant.lng], { icon: customIcon })
+            .addTo(map)
+            .bindPopup(`
+                <div class="map-popup">
+                    <h4>${restaurant.name}</h4>
+                    <p class="popup-cuisine">${restaurant.category}</p>
+                    <p>${townName}</p>
+                    ${restaurant.phone ? `<p>${restaurant.phone}</p>` : ''}
+                </div>
+            `);
+        markers.push(marker);
+    });
+
+    if (markers.length > 0) {
+        const group = L.featureGroup(markers);
+        map.fitBounds(group.getBounds().pad(0.1));
+    }
+}

@@ -1,18 +1,6 @@
 {
   "featured": [
     {
-      "name": "Capotorto's",
-      "category": "Italian",
-      "town": "East Haven",
-      "address": "85 Cosey Beach Ave, East Haven",
-      "phone": "203-469-5550",
-      "website": "https://www.capotortos.com/",
-      "image": "easthven-logos/capotortos530.png",
-      "pageLink": "east-haven.html",
-      "lat": 41.3211572380681,
-      "lng": -72.85231130143995
-    },
-    {
       "name": "Dockside Seafood & Grill",
       "category": "Seafood",
       "town": "Branford",

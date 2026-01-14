@@ -543,6 +543,50 @@
     margin-bottom: 1.5rem;
 }
 
+/* Map Section for Town Pages */
+.branford-page .map-section {
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.branford-page .map-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.branford-page .map-section h2 {
+    color: #1e3a6e;
+    margin-bottom: 0;
+    font-size: 1.75rem;
+}
+
+.branford-page .map-toggle {
+    display: none;
+    padding: 0.5rem 1rem;
+    background: #1e3a6e;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.branford-page .map-toggle:hover {
+    background: #2a4a8a;
+}
+
+.branford-page #mapContainer {
+    height: 500px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .branford-header .header-container {
@@ -575,5 +619,18 @@
 
     .restaurant-list {
         grid-template-columns: 1fr;
+    }
+
+    .branford-page .map-toggle {
+        display: block;
+    }
+
+    .branford-page #mapContainer {
+        display: none;
+        height: 400px;
+    }
+
+    .branford-page #mapContainer.show {
+        display: block;
     }
 }
