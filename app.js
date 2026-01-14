@@ -381,29 +381,31 @@ function findNearbyRestaurants(userLat, userLng) {
     loading.style.display = 'none';
     results.style.display = 'block';
 
-    // Render closest featured restaurant
+    // Render 2 closest featured restaurants
     if (featuredWithDistance.length > 0) {
-        const closest = featuredWithDistance[0];
+        const closestTwo = featuredWithDistance.slice(0, 2);
         featuredContainer.innerHTML = `
             <div class="near-me-section-header">
-                <h3>Closest Featured Restaurant</h3>
+                <h3>Nearest Featured Restaurants</h3>
                 <button class="near-me-section-close" id="closeFeatured">&times;</button>
             </div>
+            ${closestTwo.map(r => `
             <div class="near-me-card featured">
-                ${closest.image ? `<img src="${closest.image}" alt="${closest.name}" class="near-me-img${closest.darkBg ? ' dark-bg' : ''}">` : ''}
+                ${r.image ? `<img src="${r.image}" alt="${r.name}" class="near-me-img${r.darkBg ? ' dark-bg' : ''}">` : ''}
                 <div class="near-me-info">
-                    <h4>${closest.name}</h4>
-                    <span class="near-me-distance">${closest.distance.toFixed(1)} miles away</span>
-                    <p class="near-me-cuisine">${closest.category || closest.cuisine || ''}</p>
-                    <p class="near-me-town">${closest.town}</p>
-                    ${closest.address ? `<p class="near-me-address">${closest.address}</p>` : ''}
-                    ${closest.phone ? `<p class="near-me-phone">${closest.phone}</p>` : ''}
+                    <h4>${r.name}</h4>
+                    <span class="near-me-distance">${r.distance.toFixed(1)} miles away</span>
+                    <p class="near-me-cuisine">${r.category || r.cuisine || ''}</p>
+                    <p class="near-me-town">${r.town}</p>
+                    ${r.address ? `<p class="near-me-address">${r.address}</p>` : ''}
+                    ${r.phone ? `<p class="near-me-phone">${r.phone}</p>` : ''}
                     <div class="near-me-actions">
-                        ${closest.website ? `<a href="${closest.website}" target="_blank" class="near-me-link">Website</a>` : ''}
-                        <a href="https://www.google.com/maps/dir/?api=1&destination=${closest.lat},${closest.lng}" target="_blank" class="near-me-link directions">Directions</a>
+                        ${r.website ? `<a href="${r.website}" target="_blank" class="near-me-link">Website</a>` : ''}
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=${r.lat},${r.lng}" target="_blank" class="near-me-link directions">Directions</a>
                     </div>
                 </div>
             </div>
+            `).join('')}
         `;
         // Add close button handler
         document.getElementById('closeFeatured').addEventListener('click', () => {
