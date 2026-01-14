@@ -261,41 +261,68 @@ function initMap() {
     addMarkersToMap(restaurantsWithCoords);
 }
 
+// Town colors map
+const townColors = {
+    'Madison': '#EA580C',
+    'Clinton': '#DC2626',
+    'Westbrook': '#0891B2',
+    'Old Saybrook': '#9F1239'
+};
+
+// Get town color (fallback to navy)
+const townColor = townColors[townName] || '#1e3a6e';
+
+// Create marker icon
+function createMarkerIcon(isFeatured) {
+    const size = isFeatured ? 40 : 30;
+    const color = isFeatured ? '#f0b323' : townColor;
+    const borderColor = isFeatured ? townColor : '#f0b323';
+    const fontSize = isFeatured ? '18px' : '14px';
+
+    return L.divIcon({
+        className: 'custom-marker',
+        html: `<div style="
+            background-color: ${color};
+            width: ${size}px;
+            height: ${size}px;
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+            border: 3px solid ${borderColor};
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            ${isFeatured ? 'box-shadow: 0 3px 10px rgba(0,0,0,0.3);' : ''}
+        "><span style="
+            transform: rotate(45deg);
+            color: ${isFeatured ? townColor : 'white'};
+            font-size: ${fontSize};
+        ">🍴</span></div>`,
+        iconSize: [size, size],
+        iconAnchor: [size/2, size],
+        popupAnchor: [0, -size]
+    });
+}
+
+// Check if restaurant is featured
+function isFeaturedRestaurant(name) {
+    return data.featured && data.featured.some(f => f.name === name);
+}
+
 // Add markers to the map
 function addMarkersToMap(restaurantList) {
     // Clear existing markers
     markers.forEach(marker => map.removeLayer(marker));
     markers = [];
 
-    // Custom marker icon using the navy/gold colors
-    const customIcon = L.divIcon({
-        className: 'custom-marker',
-        html: `<div style="
-            background-color: #1e3a6e;
-            width: 30px;
-            height: 30px;
-            border-radius: 50% 50% 50% 0;
-            transform: rotate(-45deg);
-            border: 3px solid #f0b323;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        "><span style="
-            transform: rotate(45deg);
-            color: white;
-            font-size: 14px;
-        ">🍴</span></div>`,
-        iconSize: [30, 30],
-        iconAnchor: [15, 30],
-        popupAnchor: [0, -30]
-    });
-
     restaurantList.forEach(restaurant => {
-        const marker = L.marker([restaurant.lat, restaurant.lng], { icon: customIcon })
+        const featured = isFeaturedRestaurant(restaurant.name);
+        const icon = createMarkerIcon(featured);
+        const marker = L.marker([restaurant.lat, restaurant.lng], { icon: icon, zIndexOffset: featured ? 1000 : 0 })
             .addTo(map)
             .bindPopup(`
                 <div class="map-popup">
                     <h4>${restaurant.name}</h4>
+                    ${featured ? '<p class="popup-featured">⭐ FEATURED</p>' : ''}
                     <p class="popup-cuisine">${restaurant.category}</p>
                     <p>${townName}</p>
                     ${restaurant.phone ? `<p>${restaurant.phone}</p>` : ''}
