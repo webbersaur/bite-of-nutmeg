@@ -261,3 +261,173 @@ function initHeroSearch() {
 
 // Initialize search after DOM loads
 document.addEventListener('DOMContentLoaded', initHeroSearch);
+
+// ==========================================
+// Near Me Feature
+// ==========================================
+
+// Haversine formula to calculate distance between two points in miles
+function calculateDistance(lat1, lon1, lat2, lon2) {
+    const R = 3959; // Earth's radius in miles
+    const dLat = (lat2 - lat1) * Math.PI / 180;
+    const dLon = (lon2 - lon1) * Math.PI / 180;
+    const a =
+        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+        Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    return R * c;
+}
+
+// Initialize Near Me functionality
+function initNearMe() {
+    const nearMeBtn = document.getElementById('nearMeBtn');
+    const modal = document.getElementById('nearMeModal');
+    const closeBtn = document.getElementById('nearMeClose');
+
+    if (!nearMeBtn || !modal) return;
+
+    nearMeBtn.addEventListener('click', () => {
+        modal.classList.add('show');
+        getUserLocation();
+    });
+
+    closeBtn.addEventListener('click', () => {
+        modal.classList.remove('show');
+    });
+
+    // Close modal when clicking outside
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.remove('show');
+        }
+    });
+}
+
+// Get user's location
+function getUserLocation() {
+    const loading = document.getElementById('nearMeLoading');
+    const error = document.getElementById('nearMeError');
+    const results = document.getElementById('nearMeResults');
+
+    // Show loading, hide others
+    loading.style.display = 'flex';
+    error.style.display = 'none';
+    results.style.display = 'none';
+
+    if (!navigator.geolocation) {
+        showNearMeError('Geolocation is not supported by your browser.');
+        return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+        (position) => {
+            const userLat = position.coords.latitude;
+            const userLng = position.coords.longitude;
+            findNearbyRestaurants(userLat, userLng);
+        },
+        (err) => {
+            let message = 'Unable to get your location.';
+            if (err.code === 1) {
+                message = 'Location access denied. Please enable location services and try again.';
+            } else if (err.code === 2) {
+                message = 'Location unavailable. Please try again.';
+            } else if (err.code === 3) {
+                message = 'Location request timed out. Please try again.';
+            }
+            showNearMeError(message);
+        },
+        { enableHighAccuracy: true, timeout: 10000, maximumAge: 300000 }
+    );
+}
+
+// Show error message
+function showNearMeError(message) {
+    const loading = document.getElementById('nearMeLoading');
+    const error = document.getElementById('nearMeError');
+
+    loading.style.display = 'none';
+    error.style.display = 'block';
+    error.querySelector('p').textContent = message;
+}
+
+// Find nearby restaurants
+function findNearbyRestaurants(userLat, userLng) {
+    const loading = document.getElementById('nearMeLoading');
+    const results = document.getElementById('nearMeResults');
+    const featuredContainer = document.getElementById('nearMeFeatured');
+    const othersContainer = document.getElementById('nearMeOthers');
+
+    // Calculate distances for featured restaurants
+    const featuredWithDistance = featuredRestaurants
+        .filter(r => r.lat && r.lng)
+        .map(r => ({
+            ...r,
+            distance: calculateDistance(userLat, userLng, r.lat, r.lng)
+        }))
+        .sort((a, b) => a.distance - b.distance);
+
+    // Calculate distances for all restaurants (within 5 miles)
+    const othersWithDistance = allRestaurants
+        .filter(r => r.lat && r.lng)
+        .map(r => ({
+            ...r,
+            distance: calculateDistance(userLat, userLng, r.lat, r.lng)
+        }))
+        .filter(r => r.distance <= 5)
+        .sort((a, b) => a.distance - b.distance);
+
+    // Hide loading, show results
+    loading.style.display = 'none';
+    results.style.display = 'block';
+
+    // Render closest featured restaurant
+    if (featuredWithDistance.length > 0) {
+        const closest = featuredWithDistance[0];
+        featuredContainer.innerHTML = `
+            <h3>Closest Featured Restaurant</h3>
+            <div class="near-me-card featured">
+                ${closest.image ? `<img src="${closest.image}" alt="${closest.name}" class="near-me-img${closest.darkBg ? ' dark-bg' : ''}">` : ''}
+                <div class="near-me-info">
+                    <h4>${closest.name}</h4>
+                    <span class="near-me-distance">${closest.distance.toFixed(1)} miles away</span>
+                    <p class="near-me-cuisine">${closest.category || closest.cuisine || ''}</p>
+                    <p class="near-me-town">${closest.town}</p>
+                    ${closest.address ? `<p class="near-me-address">${closest.address}</p>` : ''}
+                    ${closest.phone ? `<p class="near-me-phone">${closest.phone}</p>` : ''}
+                    <div class="near-me-actions">
+                        ${closest.website ? `<a href="${closest.website}" target="_blank" class="near-me-link">Website</a>` : ''}
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=${closest.lat},${closest.lng}" target="_blank" class="near-me-link directions">Directions</a>
+                    </div>
+                </div>
+            </div>
+        `;
+    } else {
+        featuredContainer.innerHTML = '<p>No featured restaurants found with location data.</p>';
+    }
+
+    // Render other nearby restaurants
+    if (othersWithDistance.length > 0) {
+        othersContainer.innerHTML = `
+            <h3>Other Restaurants Within 5 Miles (${othersWithDistance.length})</h3>
+            <div class="near-me-list">
+                ${othersWithDistance.map(r => `
+                    <div class="near-me-card small">
+                        <div class="near-me-info">
+                            <h4>${r.name}</h4>
+                            <span class="near-me-distance">${r.distance.toFixed(1)} mi</span>
+                            <p class="near-me-meta">${r.category || ''} · ${r.town}</p>
+                            ${r.phone ? `<p class="near-me-phone">${r.phone}</p>` : ''}
+                            <a href="https://www.google.com/maps/dir/?api=1&destination=${r.lat},${r.lng}" target="_blank" class="near-me-link directions">Directions</a>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+    } else {
+        othersContainer.innerHTML = '<p>No other restaurants found within 5 miles.</p>';
+    }
+}
+
+// Initialize Near Me after DOM loads
+document.addEventListener('DOMContentLoaded', initNearMe);

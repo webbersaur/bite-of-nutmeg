@@ -760,3 +760,295 @@ body {
         padding: 1.5rem 1rem;
     }
 }
+
+/* ==========================================
+   Near Me Feature Styles
+   ========================================== */
+
+/* Near Me Button */
+.near-me-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+    color: var(--navy-dark);
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(240, 179, 35, 0.4);
+}
+
+.near-me-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(240, 179, 35, 0.5);
+}
+
+.near-me-icon {
+    font-size: 1.2rem;
+}
+
+/* Near Me Modal */
+.near-me-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 2000;
+    overflow-y: auto;
+    padding: 2rem 1rem;
+}
+
+.near-me-modal.show {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.near-me-modal-content {
+    background: var(--white);
+    border-radius: 16px;
+    max-width: 600px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 2rem;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.near-me-modal-content h2 {
+    color: var(--navy);
+    margin-bottom: 1.5rem;
+    font-size: 1.75rem;
+}
+
+.near-me-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--gray);
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s;
+}
+
+.near-me-close:hover {
+    color: var(--navy);
+}
+
+/* Loading State */
+.near-me-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem;
+    color: var(--gray);
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid var(--gray-light);
+    border-top-color: var(--navy);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Error State */
+.near-me-error {
+    text-align: center;
+    padding: 2rem;
+    color: #dc3545;
+}
+
+/* Results */
+.near-me-results h3 {
+    color: var(--navy);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--gold);
+}
+
+.near-me-featured {
+    margin-bottom: 2rem;
+}
+
+/* Near Me Cards */
+.near-me-card {
+    background: var(--off-white);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.near-me-card.featured {
+    display: flex;
+    gap: 1rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border: 2px solid var(--gold);
+}
+
+.near-me-img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    border-radius: 8px;
+    background: var(--white);
+    padding: 0.5rem;
+}
+
+.near-me-img.dark-bg {
+    background: var(--navy);
+}
+
+.near-me-info h4 {
+    color: var(--navy);
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+}
+
+.near-me-distance {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--navy-dark);
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.near-me-cuisine {
+    color: var(--gold-dark);
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.near-me-town,
+.near-me-address,
+.near-me-phone {
+    color: var(--gray);
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+}
+
+.near-me-meta {
+    color: var(--gray);
+    font-size: 0.85rem;
+    margin-bottom: 0.25rem;
+}
+
+.near-me-actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+}
+
+.near-me-link {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    background: var(--navy);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    transition: background 0.2s;
+}
+
+.near-me-link:hover {
+    background: var(--navy-light);
+}
+
+.near-me-link.directions {
+    background: var(--gold);
+    color: var(--navy-dark);
+}
+
+.near-me-link.directions:hover {
+    background: var(--gold-dark);
+}
+
+/* Near Me List */
+.near-me-list {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.near-me-card.small {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+}
+
+.near-me-card.small .near-me-info {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.near-me-card.small h4 {
+    font-size: 1rem;
+    margin: 0;
+    flex-basis: 100%;
+}
+
+.near-me-card.small .near-me-distance {
+    font-size: 0.75rem;
+    padding: 0.15rem 0.5rem;
+    margin: 0;
+}
+
+.near-me-card.small .near-me-phone {
+    display: none;
+}
+
+.near-me-card.small .near-me-link {
+    padding: 0.3rem 0.75rem;
+    font-size: 0.8rem;
+}
+
+/* Mobile Adjustments for Near Me */
+@media (max-width: 600px) {
+    .near-me-modal {
+        padding: 1rem 0.5rem;
+    }
+
+    .near-me-modal-content {
+        padding: 1.5rem 1rem;
+        border-radius: 12px;
+    }
+
+    .near-me-card.featured {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .near-me-img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .near-me-actions {
+        justify-content: center;
+    }
+}

@@ -20,6 +20,9 @@
                     <input type="text" id="heroSearch" placeholder="Search restaurants...">
                     <button type="button" id="heroSearchBtn">Search</button>
                 </div>
+                <button type="button" id="nearMeBtn" class="near-me-btn">
+                    <span class="near-me-icon">📍</span> Near Me
+                </button>
             </div>
         </div>
         <div class="wave-divider">
@@ -87,6 +90,25 @@
             <p>&copy; 2025 A Bite of Nutmeg. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Near Me Modal -->
+    <div id="nearMeModal" class="near-me-modal">
+        <div class="near-me-modal-content">
+            <button class="near-me-close" id="nearMeClose">&times;</button>
+            <h2>Restaurants Near You</h2>
+            <div id="nearMeLoading" class="near-me-loading">
+                <div class="spinner"></div>
+                <p>Finding your location...</p>
+            </div>
+            <div id="nearMeError" class="near-me-error" style="display: none;">
+                <p>Unable to get your location. Please enable location services and try again.</p>
+            </div>
+            <div id="nearMeResults" class="near-me-results" style="display: none;">
+                <div id="nearMeFeatured" class="near-me-featured"></div>
+                <div id="nearMeOthers" class="near-me-others"></div>
+            </div>
+        </div>
+    </div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="app.js"></script>
