@@ -140,8 +140,7 @@
     {"name": "The Thimbleberry", "category": "American", "phone": "203-315-7222", "lat": 41.2651593, "lng": -72.7516543},
     {"name": "Tommy Sullivan's Cafe", "category": "American", "phone": "203-488-2229", "lat": 41.2909049, "lng": -72.8062212},
     {"name": "Townhouse Restaurant", "category": "Greek", "phone": "203-481-0550", "lat": 41.2785584, "lng": -72.8264914},
-    {"name": "Wendy's", "category": "Fast Food", "phone": "203-488-9136", "lat": 41.2748836, "lng": -72.8324032},
-    {"name": "Willoughby's Coffee and Tea", "category": "Café & Bakery", "phone": "203-481-1700", "lat": 41.2993747, "lng": -72.7667601}
+    {"name": "Wendy's", "category": "Fast Food", "phone": "203-488-9136", "lat": 41.2748836, "lng": -72.8324032}
   ],
   "categories": ["All", "American", "Italian", "Mexican", "Indian", "Chinese", "Thai", "Japanese", "Vietnamese", "Seafood", "Greek", "Café & Bakery", "Pizza", "Wine Bar", "Fast Food"]
 }
