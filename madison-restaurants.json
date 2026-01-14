@@ -41,8 +41,7 @@
     {"name": "Starbucks", "category": "Cafe & Bakery", "phone": "203-245-4210", "lat": 41.27985, "lng": -72.59841},
     {"name": "Steamed", "category": "Seafood", "phone": "203-245-1817", "lat": 41.2792341, "lng": -72.5967406},
     {"name": "Taco Pacifico", "category": "Mexican", "phone": "203-245-4911", "seasonal": true, "lat": 41.274112, "lng": -72.5531627},
-    {"name": "What's Cookin", "category": "American", "phone": "203-245-5422", "lat": 41.285222, "lng": -72.640307},
-    {"name": "Willoughby's Coffee & Tea", "category": "Cafe & Bakery", "phone": "203-245-1600", "lat": 41.2794973, "lng": -72.5954196}
+    {"name": "What's Cookin", "category": "American", "phone": "203-245-5422", "lat": 41.285222, "lng": -72.640307}
   ],
   "categories": ["All", "American", "Italian", "Seafood", "Mexican", "French", "Japanese", "Chinese", "Vietnamese", "Asian", "BBQ", "Dessert", "Cafe & Bakery", "Pizza", "Fast Food"]
 }
