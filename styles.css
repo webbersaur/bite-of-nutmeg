@@ -890,6 +890,34 @@ body {
     margin-bottom: 2rem;
 }
 
+.near-me-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.near-me-section-header h3 {
+    margin: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.near-me-section-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #666;
+    cursor: pointer;
+    padding: 0 0.5rem;
+    line-height: 1;
+    transition: color 0.2s;
+}
+
+.near-me-section-close:hover {
+    color: #1e3a6e;
+}
+
 /* Near Me Cards */
 .near-me-card {
     background: var(--off-white);

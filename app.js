@@ -385,7 +385,10 @@ function findNearbyRestaurants(userLat, userLng) {
     if (featuredWithDistance.length > 0) {
         const closest = featuredWithDistance[0];
         featuredContainer.innerHTML = `
-            <h3>Closest Featured Restaurant</h3>
+            <div class="near-me-section-header">
+                <h3>Closest Featured Restaurant</h3>
+                <button class="near-me-section-close" id="closeFeatured">&times;</button>
+            </div>
             <div class="near-me-card featured">
                 ${closest.image ? `<img src="${closest.image}" alt="${closest.name}" class="near-me-img${closest.darkBg ? ' dark-bg' : ''}">` : ''}
                 <div class="near-me-info">
@@ -402,6 +405,10 @@ function findNearbyRestaurants(userLat, userLng) {
                 </div>
             </div>
         `;
+        // Add close button handler
+        document.getElementById('closeFeatured').addEventListener('click', () => {
+            featuredContainer.style.display = 'none';
+        });
     } else {
         featuredContainer.innerHTML = '<p>No featured restaurants found with location data.</p>';
     }
