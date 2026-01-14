@@ -605,9 +605,8 @@ body {
 }
 
 .footer-logo {
-    height: 60px;
+    max-height: 80px;
     width: auto;
-    object-fit: contain;
     margin-bottom: 1rem;
 }
 
