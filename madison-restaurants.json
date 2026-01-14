@@ -40,7 +40,6 @@
     {"name": "Red Tomato Pizzeria", "category": "Pizza", "phone": "203-245-6948", "lat": 41.2859778, "lng": -72.6439864},
     {"name": "RJ Cafe & Bistro", "category": "Cafe & Bakery", "phone": "203-245-3959", "lat": 41.279451, "lng": -72.59503},
     {"name": "S&B Cafe", "category": "Cafe & Bakery", "phone": "203-421-2460", "lat": 41.2791623, "lng": -72.5958509},
-    {"name": "Savvy Tea Gourmet", "category": "Cafe & Bakery", "phone": "203-318-8666", "lat": 41.279323, "lng": -72.5961017},
     {"name": "Starbucks", "category": "Cafe & Bakery", "phone": "203-245-4210", "lat": 41.27985, "lng": -72.59841},
     {"name": "Steamed", "category": "Seafood", "phone": "203-245-1817", "lat": 41.2792341, "lng": -72.5967406},
     {"name": "Taco Pacifico", "category": "Mexican", "phone": "203-245-4911", "seasonal": true, "lat": 41.274112, "lng": -72.5531627},
