@@ -536,6 +536,17 @@ body {
     margin-bottom: 0.75rem;
 }
 
+.card-body .phone a {
+    color: var(--navy);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.card-body .phone a:hover {
+    color: var(--gold-dark);
+    text-decoration: underline;
+}
+
 .card-body .price {
     color: var(--gold-dark);
     font-weight: 700;

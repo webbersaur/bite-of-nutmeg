@@ -43,7 +43,7 @@
     {"name": "Luigi's Restaurant", "category": "Italian", "phone": "860-388-9190", "lat": 41.2874942, "lng": -72.4032134},
     {"name": "McDonald's", "category": "Fast Food", "phone": "860-388-0023", "lat": 41.2879649, "lng": -72.3937745},
     {"name": "Mirsina's Restaurant", "category": "Greek", "phone": "860-388-9706", "lat": 41.2932472, "lng": -72.3761313},
-    {"name": "Monkey Farm Cafe", "category": "Cafe & Bakery", "phone": "860-388-4090", "lat": 41.297947, "lng": -72.376942},
+    {"name": "Monkey Farm Cafe", "category": "American", "phone": "860-388-4090", "lat": 41.297947, "lng": -72.376942},
     {"name": "Myrcene Ale Company", "category": "Brewery", "phone": "860-339-3762", "lat": 41.3025335, "lng": -72.3713005},
     {"name": "Mystic Market Kitchen & Eatery", "category": "American", "phone": "860-661-5910", "lat": 41.3027992, "lng": -72.3774261},
     {"name": "Nori", "category": "Japanese", "phone": "860-388-6674", "lat": 41.2907308, "lng": -72.3756703},

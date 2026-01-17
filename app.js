@@ -229,7 +229,7 @@ function renderRestaurants(restaurantList, isSearchResult = false) {
             <div class="card-body">
                 ${restaurant.town ? `<span class="town">${restaurant.town}</span>` : ''}
                 ${restaurant.address ? `<p class="address">${restaurant.address}</p>` : ''}
-                ${restaurant.phone ? `<p class="phone">${restaurant.phone}</p>` : ''}
+                ${restaurant.phone ? `<p class="phone"><a href="tel:${restaurant.phone.replace(/[^0-9]/g, '')}">${restaurant.phone}</a></p>` : ''}
             </div>
             ${restaurant.website ? `
             <div class="card-footer">
