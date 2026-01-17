@@ -1018,6 +1018,11 @@ body {
 .near-me-list {
     max-height: 400px;
     overflow-y: auto;
+    transition: max-height 0.3s ease;
+}
+
+.near-me-list.expanded {
+    max-height: 70vh;
 }
 
 .near-me-card.small {
@@ -1053,6 +1058,292 @@ body {
 .near-me-card.small .near-me-link {
     padding: 0.3rem 0.75rem;
     font-size: 0.8rem;
+}
+
+/* Near Me Enhanced & Featured Highlighting */
+.near-me-card.small.near-me-featured-highlight {
+    background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+    border: 3px solid var(--gold);
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(240, 179, 35, 0.35);
+    padding: 1rem;
+}
+
+.near-me-card.small.near-me-enhanced-highlight {
+    background: linear-gradient(135deg, #f0f4ff 0%, #e0e7ff 100%);
+    border: 3px solid var(--navy);
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(30, 58, 110, 0.25);
+    padding: 1rem;
+}
+
+.near-me-badge {
+    display: inline-block;
+    padding: 0.15rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    vertical-align: middle;
+    margin-left: 0.5rem;
+}
+
+.near-me-badge.featured-badge {
+    background: var(--gold);
+    color: var(--navy-dark);
+}
+
+.near-me-badge.enhanced-badge {
+    background: var(--navy);
+    color: var(--white);
+}
+
+.near-me-card.small.near-me-featured-highlight h4,
+.near-me-card.small.near-me-enhanced-highlight h4 {
+    color: var(--navy);
+}
+
+.near-me-card.small.near-me-featured-highlight .near-me-link,
+.near-me-card.small.near-me-enhanced-highlight .near-me-link {
+    display: inline-block;
+    margin-right: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+/* Phone number for enhanced/featured in Near Me */
+.near-me-phone-visible {
+    color: var(--navy);
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin: 0.25rem 0;
+}
+
+.near-me-phone-visible::before {
+    content: '\260E';
+    margin-right: 0.4rem;
+}
+
+/* ==========================================
+   Report a Problem Modal Styles
+   ========================================== */
+
+.report-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 2000;
+    overflow-y: auto;
+    padding: 2rem 1rem;
+}
+
+.report-modal.show {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.report-modal-content {
+    background: var(--white);
+    border-radius: 16px;
+    max-width: 500px;
+    width: 100%;
+    padding: 2rem;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    margin: auto;
+}
+
+.report-modal-content h2 {
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.report-modal-content > p {
+    color: var(--gray);
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.report-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--gray);
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s;
+}
+
+.report-close:hover {
+    color: var(--navy);
+}
+
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-group label {
+    display: block;
+    color: var(--navy);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--gray-light);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.report-submit {
+    width: 100%;
+    padding: 1rem;
+    background: var(--navy);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.report-submit:hover {
+    background: var(--navy-light);
+}
+
+/* Report Problem Footer Link */
+.footer-links {
+    margin-top: 1rem;
+}
+
+.footer-links a {
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: var(--gold-light);
+    text-decoration: underline;
+}
+
+/* Report Fallback Styles */
+.report-fallback {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.report-email-to {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.report-email-to a {
+    color: var(--navy);
+    font-weight: 600;
+}
+
+.report-subject {
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+}
+
+.report-body {
+    margin-top: 0.75rem;
+}
+
+.report-body pre {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 0.75rem;
+    font-size: 0.85rem;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    max-height: 200px;
+    overflow-y: auto;
+    margin: 0.5rem 0;
+}
+
+.copy-btn {
+    background: var(--navy);
+    color: white;
+    border: none;
+    padding: 0.4rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.copy-btn:hover {
+    background: #2a4a7a;
+}
+
+.report-done {
+    width: 100%;
+    background: var(--gold);
+    color: var(--navy);
+    border: none;
+    padding: 0.9rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background 0.2s;
+}
+
+.report-done:hover {
+    background: var(--gold-light);
+}
+
+/* Mobile Adjustments for Report Modal */
+@media (max-width: 600px) {
+    .report-modal {
+        padding: 1rem 0.5rem;
+    }
+
+    .report-modal-content {
+        padding: 1.5rem 1rem;
+    }
 }
 
 /* Mobile Adjustments for Near Me */

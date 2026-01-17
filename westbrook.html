@@ -116,10 +116,62 @@
                 <img src="logo-optimized.png" alt="A Bite of Nutmeg" class="footer-logo">
             </a>
             <p>&copy; 2025 A Bite of Nutmeg. All rights reserved.</p>
+            <a href="#" id="reportLink" class="report-link">Report a Problem</a>
         </div>
     </footer>
 
+    <!-- Report a Problem Modal -->
+    <div id="reportModal" class="report-modal">
+        <div class="report-modal-content">
+            <button class="report-close" id="reportClose">&times;</button>
+            <h2>Report a Problem</h2>
+            <p>Help us keep our directory accurate. Let us know if something's wrong.</p>
+            <form id="reportForm">
+                <div class="form-group">
+                    <label for="reportRestaurant">Restaurant Name</label>
+                    <input type="text" id="reportRestaurant" placeholder="e.g., Joe's Pizza" required>
+                </div>
+                <div class="form-group">
+                    <label for="reportTown">Town</label>
+                    <select id="reportTown" required>
+                        <option value="">Select a town...</option>
+                        <option value="East Haven">East Haven</option>
+                        <option value="Branford">Branford</option>
+                        <option value="Guilford">Guilford</option>
+                        <option value="Madison">Madison</option>
+                        <option value="Clinton">Clinton</option>
+                        <option value="Westbrook" selected>Westbrook</option>
+                        <option value="Old Saybrook">Old Saybrook</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="reportType">Problem Type</label>
+                    <select id="reportType" required>
+                        <option value="">Select issue type...</option>
+                        <option value="Permanently Closed">Restaurant permanently closed</option>
+                        <option value="Wrong Phone">Wrong phone number</option>
+                        <option value="Wrong Address">Wrong address</option>
+                        <option value="Wrong Category">Wrong cuisine/category</option>
+                        <option value="Duplicate Listing">Duplicate listing</option>
+                        <option value="Missing Restaurant">Restaurant not listed</option>
+                        <option value="Other">Other issue</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="reportDetails">Details</label>
+                    <textarea id="reportDetails" rows="3" placeholder="Please provide any additional details..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="reportEmail">Your Email (optional)</label>
+                    <input type="email" id="reportEmail" placeholder="your@email.com">
+                </div>
+                <button type="submit" class="report-submit">Submit Report</button>
+            </form>
+        </div>
+    </div>
+
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="town-page-styled.js" data-town="Westbrook" data-json="westbrook-restaurants.json"></script>
+    <script src="report-modal.js"></script>
 </body>
 </html>

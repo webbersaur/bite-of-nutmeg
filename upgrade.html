@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upgrade Your Listing - A Bite of Nutmeg</title>
+    <meta name="description" content="Boost your restaurant's visibility on CT's premier shoreline dining guide">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Upgrade Page Specific Styles */
+        .upgrade-hero {
+            background: linear-gradient(135deg, var(--navy-light) 0%, var(--navy) 100%);
+            color: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .upgrade-hero h1 {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .upgrade-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pricing-section h2 {
+            text-align: center;
+            color: var(--navy);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-subtitle {
+            text-align: center;
+            color: var(--gray);
+            margin-bottom: 3rem;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .pricing-card.featured {
+            border: 3px solid var(--gold);
+        }
+
+        .pricing-card.featured::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: 1rem;
+            right: -2rem;
+            background: var(--gold);
+            color: var(--navy-dark);
+            padding: 0.25rem 2.5rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            transform: rotate(45deg);
+        }
+
+        .pricing-header {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            color: var(--white);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .pricing-card.featured .pricing-header {
+            background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 100%);
+            color: var(--navy-dark);
+        }
+
+        .pricing-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-header .tagline {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .pricing-body {
+            padding: 2rem;
+        }
+
+        .price-tag {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .price-tag .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        .price-tag .price-period {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--gray);
+        }
+
+        .price-tag .price-annual {
+            color: var(--gray);
+            font-size: 0.95rem;
+            margin-top: 0.25rem;
+        }
+
+        .limited-spots {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            color: var(--navy-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .features-list li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--gray-dark);
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .features-list li:last-child {
+            border-bottom: none;
+        }
+
+        .features-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--gold);
+            border-radius: 50%;
+        }
+
+        .features-list li::after {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 50%;
+            transform: translateY(-50%) rotate(45deg);
+            width: 5px;
+            height: 10px;
+            border: solid var(--navy-dark);
+            border-width: 0 2px 2px 0;
+        }
+
+        .features-list li.highlight {
+            font-weight: 600;
+            color: var(--navy);
+        }
+
+        .pricing-cta {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: var(--navy);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .pricing-cta:hover {
+            background: var(--navy-light);
+        }
+
+        .pricing-card.featured .pricing-cta {
+            background: var(--gold);
+            color: var(--navy-dark);
+        }
+
+        .pricing-card.featured .pricing-cta:hover {
+            background: var(--gold-dark);
+        }
+
+        /* Comparison Section */
+        .comparison-section {
+            background: var(--off-white);
+            padding: 4rem 2rem;
+        }
+
+        .comparison-section h2 {
+            text-align: center;
+            color: var(--navy);
+            font-size: 1.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .comparison-table {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .comparison-table th {
+            background: var(--navy);
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .comparison-table th:not(:first-child) {
+            text-align: center;
+        }
+
+        .comparison-table td:not(:first-child) {
+            text-align: center;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table tr:hover {
+            background: var(--off-white);
+        }
+
+        .check {
+            color: var(--gold-dark);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .dash {
+            color: var(--gray);
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            padding: 4rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .benefits-section h2 {
+            text-align: center;
+            color: var(--navy);
+            font-size: 1.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .benefit-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+        }
+
+        .benefit-card h3 {
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .benefit-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--navy);
+            color: var(--white);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .contact-section p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .contact-method {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            min-width: 250px;
+        }
+
+        .contact-method h3 {
+            color: var(--gold);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-method a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .contact-method a:hover {
+            color: var(--gold);
+        }
+
+        /* Back Link */
+        .back-home {
+            display: inline-block;
+            margin: 1.5rem 0;
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .back-home:hover {
+            opacity: 1;
+            color: var(--gold);
+        }
+
+        /* Preview Section */
+        .preview-section {
+            padding: 4rem 2rem;
+            background: var(--off-white);
+            text-align: center;
+        }
+
+        .preview-section h2 {
+            color: var(--navy);
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .preview-subtitle {
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+
+        .preview-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .preview-image {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            border: 2px solid var(--gray-light);
+        }
+
+        .preview-callouts {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .callout {
+            background: var(--white);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            text-align: left;
+            max-width: 280px;
+        }
+
+        .callout-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .featured-callout {
+            border-left: 4px solid var(--gold);
+        }
+
+        .featured-callout .callout-badge {
+            background: var(--gold);
+            color: var(--navy-dark);
+        }
+
+        .enhanced-callout {
+            border-left: 4px solid var(--navy);
+        }
+
+        .enhanced-callout .callout-badge {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        .callout p {
+            color: var(--gray-dark);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .upgrade-hero h1 {
+                font-size: 2rem;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.featured::before {
+                right: -2.5rem;
+                font-size: 0.65rem;
+            }
+
+            .comparison-table {
+                overflow-x: auto;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 0.75rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="upgrade-hero">
+        <a href="/" class="back-home">← Back to Home</a>
+        <h1>Upgrade Your Listing</h1>
+        <p>Stand out from the crowd and get more customers through your doors with our premium listing options</p>
+    </section>
+
+    <section class="pricing-section">
+        <h2>Choose Your Plan</h2>
+        <p class="pricing-subtitle">Flexible options to match your restaurant's goals</p>
+
+        <div class="pricing-grid">
+            <!-- Enhanced Listing -->
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3>Enhanced Listing</h3>
+                    <div class="tagline">Boost visibility in your town</div>
+                </div>
+                <div class="pricing-body">
+                    <div class="price-tag">
+                        <div class="price">$29<span class="price-period">/mo</span></div>
+                        <div class="price-annual">or $290/year (save $58)</div>
+                    </div>
+                    <ul class="features-list">
+                        <li class="highlight">Priority placement at top of town page</li>
+                        <li>Website link on your listing</li>
+                        <li>Phone number prominently displayed</li>
+                        <li>Highlighted card styling</li>
+                        <li>Highlighted in "Near Me" results</li>
+                        <li>Basic listing in town directory</li>
+                    </ul>
+                    <a href="#contact" class="pricing-cta">Get Started</a>
+                </div>
+            </div>
+
+            <!-- Featured Listing -->
+            <div class="pricing-card featured">
+                <div class="pricing-header">
+                    <h3>Featured Listing</h3>
+                    <div class="tagline">Maximum exposure site-wide</div>
+                </div>
+                <div class="pricing-body">
+                    <div class="price-tag">
+                        <div class="price">$79<span class="price-period">/mo</span></div>
+                        <div class="price-annual">or $790/year (save $158)</div>
+                    </div>
+                    <div class="limited-spots">Only 3 Featured spots per town!</div>
+                    <ul class="features-list">
+                        <li class="highlight">Featured on homepage with logo</li>
+                        <li class="highlight">Pin on interactive shoreline map</li>
+                        <li class="highlight">Priority in "Near Me" search results</li>
+                        <li>Priority placement on town page</li>
+                        <li>Website and social media links</li>
+                        <li>Custom description/tagline</li>
+                        <li>Logo displayed on listing card</li>
+                        <li>Highlighted premium styling</li>
+                    </ul>
+                    <a href="#contact" class="pricing-cta">Get Featured</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="comparison-section">
+        <h2>Compare Plans</h2>
+        <div class="comparison-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Free</th>
+                        <th>Enhanced</th>
+                        <th>Featured</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Basic listing in town directory</td>
+                        <td><span class="check">&#10003;</span></td>
+                        <td><span class="check">&#10003;</span></td>
+                        <td><span class="check">&#10003;</span></td>
+                    </tr>
+                    <tr>
+                        <td>Restaurant name & category</td>
+                        <td><span class="check">&#10003;</span></td>
+                        <td><span class="check">&#10003;</span></td>
+                        <td><span class="check">&#10003;</span></td>
+                    </tr>
+                    <tr>
+                        <td>Phone number displayed</td>
+                        <td><span class="check">&#10003;</span></td>
+                        <td><span class="check">&#10003;</span></td>
+                        <td><span class="check">&#10003;</span></td>
+                    </tr>
+                    <tr>
+                        <td>Website link</td>
+                        <td><span class="dash">—</span></td>
+                        <td><span class="check">&#10003;</span></td>
+                        <td><span class="check">&#10003;</span></td>
+                    </tr>
+                    <tr>
+                        <td>Priority placement on town page</td>
+                        <td><span class="dash">—</span></td>
+                        <td><span class="check">&#10003;</span></td>
+                        <td><span class="check">&#10003;</span></td>
+                    </tr>
+                    <tr>
+                        <td>Highlighted card styling</td>
+                        <td><span class="dash">—</span></td>
+                        <td><span class="check">&#10003;</span></td>
+                        <td><span class="check">&#10003;</span></td>
+                    </tr>
+                    <tr>
+                        <td>Logo on listing card</td>
+                        <td><span class="dash">—</span></td>
+                        <td><span class="dash">—</span></td>
+                        <td><span class="check">&#10003;</span></td>
+                    </tr>
+                    <tr>
+                        <td>Custom description/tagline</td>
+                        <td><span class="dash">—</span></td>
+                        <td><span class="dash">—</span></td>
+                        <td><span class="check">&#10003;</span></td>
+                    </tr>
+                    <tr>
+                        <td>Homepage featured section</td>
+                        <td><span class="dash">—</span></td>
+                        <td><span class="dash">—</span></td>
+                        <td><span class="check">&#10003;</span></td>
+                    </tr>
+                    <tr>
+                        <td>Pin on interactive map</td>
+                        <td><span class="dash">—</span></td>
+                        <td><span class="dash">—</span></td>
+                        <td><span class="check">&#10003;</span></td>
+                    </tr>
+                    <tr>
+                        <td>Highlighted in "Near Me" results</td>
+                        <td><span class="dash">—</span></td>
+                        <td><span class="check">&#10003;</span></td>
+                        <td><span class="check">&#10003;</span></td>
+                    </tr>
+                    <tr>
+                        <td>Priority placement in "Near Me"</td>
+                        <td><span class="dash">—</span></td>
+                        <td><span class="dash">—</span></td>
+                        <td><span class="check">&#10003;</span></td>
+                    </tr>
+                    <tr>
+                        <td>Social media links</td>
+                        <td><span class="dash">—</span></td>
+                        <td><span class="dash">—</span></td>
+                        <td><span class="check">&#10003;</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="preview-section">
+        <h2>See It In Action</h2>
+        <p class="preview-subtitle">Here's how your listing appears in our "Near Me" search feature</p>
+        <div class="preview-container">
+            <img src="near-me-screenshot-2.png" alt="Near Me search showing Featured and Premium listings with special styling" class="preview-image">
+            <div class="preview-callouts">
+                <div class="callout featured-callout">
+                    <span class="callout-badge">Featured</span>
+                    <p>Gold border, logo, and priority placement at the top</p>
+                </div>
+                <div class="callout enhanced-callout">
+                    <span class="callout-badge">Premium</span>
+                    <p>Navy border, phone number, and website link displayed</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="benefits-section">
+        <h2>Why Upgrade?</h2>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon">&#128200;</div>
+                <h3>Increased Visibility</h3>
+                <p>Get seen first by hungry diners. Premium listings appear at the top of town pages, and Featured restaurants get priority placement in "Near Me" searches.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">&#127758;</div>
+                <h3>Map Presence</h3>
+                <p>Featured restaurants get a pin on our interactive shoreline map, making it easy for visitors to find you while exploring the area.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">&#128279;</div>
+                <h3>Direct Traffic</h3>
+                <p>Link directly to your website, menu, or reservation system. Make it effortless for customers to take the next step.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <h2>Ready to Get Started?</h2>
+        <p>Contact us to discuss which plan is right for your restaurant. We'll help you maximize your visibility on CT's shoreline dining guide.</p>
+        <div class="contact-methods">
+            <div class="contact-method">
+                <h3>Email Us</h3>
+                <a href="mailto:chrishauman@gmail.com">chrishauman@gmail.com</a>
+            </div>
+            <div class="contact-method">
+                <h3>Call or Text</h3>
+                <a href="tel:+12035307396">(203) 530-7396</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <a href="/"><img src="logo-mobile.png" alt="A Bite of Nutmeg" class="footer-logo"></a>
+            <p>&copy; <span id="copyrightYear"></span> A Bite of Nutmeg. All rights reserved.</p>
+            <script>document.getElementById('copyrightYear').textContent = new Date().getFullYear();</script>
+        </div>
+    </footer>
+</body>
+</html>

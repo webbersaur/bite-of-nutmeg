@@ -385,6 +385,11 @@ function showNearMeError(message) {
     error.querySelector('p').textContent = message;
 }
 
+// Check if restaurant is enhanced (paid tier 2)
+function isEnhancedRestaurant(name) {
+    return allRestaurants.some(r => r.name === name && r.enhanced === true);
+}
+
 // Find nearby restaurants
 function findNearbyRestaurants(userLat, userLng) {
     const loading = document.getElementById('nearMeLoading');
@@ -397,18 +402,26 @@ function findNearbyRestaurants(userLat, userLng) {
         .filter(r => r.lat && r.lng)
         .map(r => ({
             ...r,
-            distance: calculateDistance(userLat, userLng, r.lat, r.lng)
+            distance: calculateDistance(userLat, userLng, r.lat, r.lng),
+            isFeatured: true
         }))
         .sort((a, b) => a.distance - b.distance);
 
-    // Calculate distances for all restaurants (within 5 miles)
+    // Calculate distances for all restaurants
     const othersWithDistance = allRestaurants
         .filter(r => r.lat && r.lng)
-        .map(r => ({
-            ...r,
-            distance: calculateDistance(userLat, userLng, r.lat, r.lng)
-        }))
-        .filter(r => r.distance <= 5)
+        .map(r => {
+            const isFeatured = isFeaturedRestaurant(r.name);
+            // If featured, get website from featured data
+            const featuredData = isFeatured ? featuredRestaurants.find(f => f.name === r.name) : null;
+            return {
+                ...r,
+                website: featuredData?.website || r.website,
+                distance: calculateDistance(userLat, userLng, r.lat, r.lng),
+                isFeatured: isFeatured,
+                isEnhanced: r.enhanced === true
+            };
+        })
         .sort((a, b) => a.distance - b.distance);
 
     // Hide loading, show results
@@ -441,36 +454,249 @@ function findNearbyRestaurants(userLat, userLng) {
             </div>
             `).join('')}
         `;
-        // Add close button handler
+        // Add close button handler - expand others list when featured is closed
         document.getElementById('closeFeatured').addEventListener('click', () => {
             featuredContainer.style.display = 'none';
+            // Expand the others list to use full space
+            const othersList = document.querySelector('.near-me-list');
+            if (othersList) {
+                othersList.classList.add('expanded');
+            }
         });
     } else {
         featuredContainer.innerHTML = '<p>No featured restaurants found with location data.</p>';
     }
 
-    // Render other nearby restaurants
+    // Render other nearby restaurants with enhanced highlighting
     if (othersWithDistance.length > 0) {
         othersContainer.innerHTML = `
-            <h3>Other Restaurants Within 5 Miles (${othersWithDistance.length})</h3>
+            <h3>All Restaurants by Distance (${othersWithDistance.length})</h3>
             <div class="near-me-list">
-                ${othersWithDistance.map(r => `
-                    <div class="near-me-card small">
+                ${othersWithDistance.map(r => {
+                    // Determine card styling class
+                    let cardClass = 'near-me-card small';
+                    let badge = '';
+                    if (r.isFeatured) {
+                        cardClass += ' near-me-featured-highlight';
+                        badge = '<span class="near-me-badge featured-badge">Featured</span>';
+                    } else if (r.isEnhanced) {
+                        cardClass += ' near-me-enhanced-highlight';
+                        badge = '<span class="near-me-badge enhanced-badge">Premium</span>';
+                    }
+
+                    // Show phone for enhanced/featured, hide for regular
+                    const showPhone = r.isFeatured || r.isEnhanced;
+
+                    return `
+                    <div class="${cardClass}">
                         <div class="near-me-info">
-                            <h4>${r.name}</h4>
+                            <h4>${r.name} ${badge}</h4>
                             <span class="near-me-distance">${r.distance.toFixed(1)} mi</span>
                             <p class="near-me-meta">${r.category || ''} · ${r.town}</p>
-                            ${r.phone ? `<p class="near-me-phone">${r.phone}</p>` : ''}
+                            ${showPhone && r.phone ? `<p class="near-me-phone-visible">${r.phone}</p>` : ''}
+                            ${r.website ? `<a href="${r.website}" target="_blank" class="near-me-link">Website</a>` : ''}
                             <a href="https://www.google.com/maps/dir/?api=1&destination=${r.lat},${r.lng}" target="_blank" class="near-me-link directions">Directions</a>
                         </div>
                     </div>
-                `).join('')}
+                `}).join('')}
             </div>
         `;
     } else {
-        othersContainer.innerHTML = '<p>No other restaurants found within 5 miles.</p>';
+        othersContainer.innerHTML = '<p>No restaurants found with location data.</p>';
     }
 }
 
 // Initialize Near Me after DOM loads
 document.addEventListener('DOMContentLoaded', initNearMe);
+
+// ==========================================
+// Report a Problem Feature
+// ==========================================
+
+function initReportModal() {
+    const reportLink = document.getElementById('reportLink');
+    const reportModal = document.getElementById('reportModal');
+    const reportClose = document.getElementById('reportClose');
+    const reportForm = document.getElementById('reportForm');
+
+    if (!reportModal) return;
+
+    // Open modal from footer link
+    if (reportLink) {
+        reportLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            reportModal.classList.add('show');
+        });
+    }
+
+    // Close modal
+    if (reportClose) {
+        reportClose.addEventListener('click', () => {
+            reportModal.classList.remove('show');
+        });
+    }
+
+    // Close on outside click
+    reportModal.addEventListener('click', (e) => {
+        if (e.target === reportModal) {
+            reportModal.classList.remove('show');
+        }
+    });
+
+    // Handle form submission
+    if (reportForm) {
+        reportForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const restaurant = document.getElementById('reportRestaurant').value;
+            const town = document.getElementById('reportTown').value;
+            const type = document.getElementById('reportType').value;
+            const details = document.getElementById('reportDetails').value;
+            const email = document.getElementById('reportEmail').value;
+
+            // Build email subject
+            const subject = `Problem Report: ${restaurant} (${town})`;
+
+            // Build email body
+            let body = `Problem Report for A Bite of Nutmeg\n`;
+            body += `${'='.repeat(40)}\n\n`;
+            body += `Restaurant: ${restaurant}\n`;
+            body += `Town: ${town}\n`;
+            body += `Problem Type: ${type}\n\n`;
+            body += `Details:\n${details || 'No additional details provided.'}\n\n`;
+            if (email) {
+                body += `Reporter Email: ${email}\n`;
+            }
+            body += `\n${'='.repeat(40)}\n`;
+            body += `Submitted via A Bite of Nutmeg website`;
+
+            // Create mailto link
+            const mailto = `mailto:chrishauman@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+            // Try to open email client
+            window.location.href = mailto;
+
+            // Show fallback after a short delay (in case mailto doesn't work)
+            setTimeout(() => {
+                showReportFallback(subject, body);
+            }, 500);
+
+            // Reset form but keep modal open until fallback shows
+            reportForm.reset();
+        });
+    }
+}
+
+// Show fallback if email client doesn't open
+function showReportFallback(subject, body) {
+    const modalContent = document.querySelector('.report-modal-content');
+    if (!modalContent) return;
+
+    modalContent.innerHTML = `
+        <button class="report-close" id="reportCloseFallback">&times;</button>
+        <h2>Thanks for Your Report!</h2>
+        <p>If your email app didn't open, please send this report manually:</p>
+        <div class="report-fallback">
+            <div class="report-email-to">
+                <strong>Email to:</strong>
+                <a href="mailto:chrishauman@gmail.com">chrishauman@gmail.com</a>
+                <button class="copy-btn" id="copyEmail" title="Copy email">Copy</button>
+            </div>
+            <div class="report-subject">
+                <strong>Subject:</strong> ${subject}
+            </div>
+            <div class="report-body">
+                <strong>Message:</strong>
+                <pre>${body}</pre>
+                <button class="copy-btn" id="copyBody">Copy Message</button>
+            </div>
+        </div>
+        <button class="report-done" id="reportDone">Done</button>
+    `;
+
+    // Add event listeners for the new buttons
+    document.getElementById('reportCloseFallback').addEventListener('click', resetReportModal);
+    document.getElementById('reportDone').addEventListener('click', resetReportModal);
+
+    document.getElementById('copyEmail').addEventListener('click', () => {
+        navigator.clipboard.writeText('chrishauman@gmail.com');
+        document.getElementById('copyEmail').textContent = 'Copied!';
+        setTimeout(() => {
+            document.getElementById('copyEmail').textContent = 'Copy';
+        }, 2000);
+    });
+
+    document.getElementById('copyBody').addEventListener('click', () => {
+        navigator.clipboard.writeText(body);
+        document.getElementById('copyBody').textContent = 'Copied!';
+        setTimeout(() => {
+            document.getElementById('copyBody').textContent = 'Copy Message';
+        }, 2000);
+    });
+}
+
+// Reset the report modal to its original state
+function resetReportModal() {
+    const reportModal = document.getElementById('reportModal');
+    const modalContent = document.querySelector('.report-modal-content');
+
+    if (reportModal) {
+        reportModal.classList.remove('show');
+    }
+
+    // Restore original form HTML
+    if (modalContent) {
+        modalContent.innerHTML = `
+            <button class="report-close" id="reportClose">&times;</button>
+            <h2>Report a Problem</h2>
+            <p>Help us keep our directory accurate. Let us know if something's wrong.</p>
+            <form id="reportForm">
+                <div class="form-group">
+                    <label for="reportRestaurant">Restaurant Name</label>
+                    <input type="text" id="reportRestaurant" placeholder="e.g., Joe's Pizza" required>
+                </div>
+                <div class="form-group">
+                    <label for="reportTown">Town</label>
+                    <select id="reportTown" required>
+                        <option value="">Select a town...</option>
+                        <option value="East Haven">East Haven</option>
+                        <option value="Branford">Branford</option>
+                        <option value="Guilford">Guilford</option>
+                        <option value="Madison">Madison</option>
+                        <option value="Clinton">Clinton</option>
+                        <option value="Westbrook">Westbrook</option>
+                        <option value="Old Saybrook">Old Saybrook</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="reportType">Problem Type</label>
+                    <select id="reportType" required>
+                        <option value="">Select issue type...</option>
+                        <option value="Permanently Closed">Restaurant permanently closed</option>
+                        <option value="Wrong Phone">Wrong phone number</option>
+                        <option value="Wrong Address">Wrong address</option>
+                        <option value="Wrong Category">Wrong cuisine/category</option>
+                        <option value="Duplicate Listing">Duplicate listing</option>
+                        <option value="Missing Restaurant">Restaurant not listed</option>
+                        <option value="Other">Other issue</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="reportDetails">Details</label>
+                    <textarea id="reportDetails" rows="3" placeholder="Please provide any additional details..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="reportEmail">Your Email (optional)</label>
+                    <input type="email" id="reportEmail" placeholder="your@email.com">
+                </div>
+                <button type="submit" class="report-submit">Submit Report</button>
+            </form>
+        `;
+
+        // Re-attach event listeners
+        initReportModal();
+    }
+}
+
+// Initialize Report Modal after DOM loads
+document.addEventListener('DOMContentLoaded', initReportModal);
