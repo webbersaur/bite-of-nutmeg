@@ -275,6 +275,185 @@
             background: var(--gold-dark);
         }
 
+        /* Coming Soon Section */
+        .coming-soon-section {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            text-align: center;
+        }
+
+        .coming-soon-section h2 {
+            color: var(--navy);
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .coming-soon-subtitle {
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+
+        .coming-soon-grid {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .coming-soon-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            min-width: 280px;
+            max-width: 320px;
+            border: 2px dashed var(--gray-light);
+        }
+
+        .coming-soon-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .coming-soon-card h3 {
+            color: var(--navy);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .coming-soon-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .coming-soon-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            color: var(--navy-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Add-on Section */
+        .addon-section {
+            padding: 4rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .addon-section h2 {
+            text-align: center;
+            color: var(--navy);
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .addon-subtitle {
+            text-align: center;
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+
+        .addon-card {
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .addon-info {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .addon-icon {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .addon-details h3 {
+            color: var(--navy);
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .addon-details p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .addon-pricing {
+            text-align: center;
+            min-width: 200px;
+        }
+
+        .addon-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        .addon-price span {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--gray);
+        }
+
+        .addon-note {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin: 0.5rem 0 1rem;
+        }
+
+        .addon-cta {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: var(--navy);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .addon-cta:hover {
+            background: var(--navy-light);
+        }
+
+        @media (max-width: 600px) {
+            .addon-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .addon-info {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
         /* Comparison Section */
         .comparison-section {
             background: var(--off-white);
@@ -795,6 +974,7 @@
                         <li>Phone number prominently displayed</li>
                         <li>Highlighted card styling</li>
                         <li>Highlighted in "Near Me" results</li>
+                        <li>Your choice of category</li>
                         <li>Basic listing in town directory</li>
                     </ul>
                     <a href="https://square.link/u/bXcmAI7Y?src=embed"
@@ -937,6 +1117,44 @@
                     </tr>
                 </tbody>
             </table>
+        </div>
+    </section>
+
+    <section class="coming-soon-section">
+        <h2>Coming Soon</h2>
+        <p class="coming-soon-subtitle">New categories to help diners discover more about your establishment</p>
+        <div class="coming-soon-grid">
+            <div class="coming-soon-card">
+                <div class="coming-soon-icon">&#127867;</div>
+                <h3>Happy Hour</h3>
+                <p>Showcase your happy hour specials and deals</p>
+                <span class="coming-soon-badge">Details to be announced</span>
+            </div>
+            <div class="coming-soon-card">
+                <div class="coming-soon-icon">&#127926;</div>
+                <h3>Live Music</h3>
+                <p>Highlight your live entertainment schedule</p>
+                <span class="coming-soon-badge">Details to be announced</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="addon-section">
+        <h2>Add More Categories</h2>
+        <p class="addon-subtitle">Expand your reach by appearing in multiple categories</p>
+        <div class="addon-card">
+            <div class="addon-info">
+                <div class="addon-icon">&#128204;</div>
+                <div class="addon-details">
+                    <h3>Additional Category</h3>
+                    <p>List your restaurant under multiple categories to reach more diners. Perfect for restaurants with diverse menus.</p>
+                </div>
+            </div>
+            <div class="addon-pricing">
+                <div class="addon-price">$10<span>/mo each</span></div>
+                <p class="addon-note">Add up to 3 additional categories</p>
+                <a href="#contact" class="addon-cta">Contact Us to Add</a>
+            </div>
         </div>
     </section>
 
