@@ -626,6 +626,85 @@ body {
     font-size: 0.9rem;
 }
 
+.footer-link {
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.footer-link:hover {
+    color: var(--gold-light);
+    text-decoration: underline;
+}
+
+.footer-divider {
+    color: var(--gray);
+    margin: 0 0.5rem;
+    opacity: 0.5;
+}
+
+.report-link {
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.report-link:hover {
+    color: var(--gold-light);
+    text-decoration: underline;
+}
+
+/* Upgrade CTA Section */
+.upgrade-cta {
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+    padding: 1.5rem 2rem;
+    text-align: center;
+}
+
+.upgrade-cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.upgrade-cta-text {
+    color: var(--navy-dark);
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.upgrade-cta-btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: var(--navy);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.upgrade-cta-btn:hover {
+    background: var(--navy-light);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+    .upgrade-cta-content {
+        flex-direction: column;
+    }
+
+    .upgrade-cta-text {
+        font-size: 1rem;
+    }
+}
+
 /* Leaflet Map Customization */
 .leaflet-popup-content-wrapper {
     border-radius: 8px;
