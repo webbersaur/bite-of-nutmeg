@@ -215,8 +215,9 @@ function renderRestaurants(restaurantList, isSearchResult = false) {
 
     grid.innerHTML = restaurantList.map(restaurant => {
         const cuisine = restaurant.category || restaurant.cuisine || '';
+        const hasWebsite = restaurant.website;
         return `
-        <article class="restaurant-card">
+        <article class="restaurant-card${hasWebsite ? ' clickable' : ''}"${hasWebsite ? ` onclick="window.open('${restaurant.website}', '_blank')"` : ''}>
             ${restaurant.image ? `
             <div class="card-logo${restaurant.darkBg ? ' dark-bg' : ''}">
                 <img src="${restaurant.image}" alt="${restaurant.name} logo">
@@ -229,11 +230,11 @@ function renderRestaurants(restaurantList, isSearchResult = false) {
             <div class="card-body">
                 ${restaurant.town ? `<span class="town">${restaurant.town}</span>` : ''}
                 ${restaurant.address ? `<p class="address">${restaurant.address}</p>` : ''}
-                ${restaurant.phone ? `<p class="phone"><a href="tel:${restaurant.phone.replace(/[^0-9]/g, '')}">${restaurant.phone}</a></p>` : ''}
+                ${restaurant.phone ? `<p class="phone"><a href="tel:${restaurant.phone.replace(/[^0-9]/g, '')}" onclick="event.stopPropagation()">${restaurant.phone}</a></p>` : ''}
             </div>
-            ${restaurant.website ? `
+            ${hasWebsite ? `
             <div class="card-footer">
-                <a href="${restaurant.website}" target="_blank" rel="noopener noreferrer">Visit Website</a>
+                <span class="website-hint">Click to visit website →</span>
             </div>
             ` : ''}
         </article>

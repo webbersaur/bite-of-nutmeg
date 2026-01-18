@@ -581,6 +581,25 @@ body {
     background-color: var(--navy-light);
 }
 
+.restaurant-card.clickable {
+    cursor: pointer;
+}
+
+.restaurant-card.clickable:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+}
+
+.website-hint {
+    color: var(--navy);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.restaurant-card.clickable:hover .website-hint {
+    color: var(--gold-dark);
+}
+
 /* About Section */
 .about {
     background-color: var(--navy);
