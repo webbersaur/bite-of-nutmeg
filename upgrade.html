@@ -158,7 +158,31 @@
             font-size: 0.85rem;
             font-weight: 700;
             text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .promo-badge {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-align: center;
             margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .promo-logo {
+            height: 24px;
+            width: auto;
+        }
+
+        .promo-badge.featured-promo {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
         }
 
         .features-list {
@@ -503,6 +527,176 @@
             margin: 0;
         }
 
+        /* Modal Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--gray);
+            line-height: 1;
+        }
+
+        .modal-close:hover {
+            color: var(--navy);
+        }
+
+        .modal-logo {
+            height: 80px;
+            width: auto;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-content h2 {
+            color: var(--navy);
+            font-size: 1.75rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .modal-subtitle {
+            color: var(--gray);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-blurb {
+            color: var(--gray-dark);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-cta-text {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .modal-phone {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: var(--navy);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .modal-phone:hover {
+            background: var(--navy-light);
+        }
+
+        .modal-website {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: var(--gold);
+            color: var(--navy-dark);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        .modal-website:hover {
+            background: var(--gold-dark);
+        }
+
+        .promo-badge {
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .promo-badge:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Floating CTA Button */
+        .floating-cta {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            color: white;
+            padding: 0.75rem 1.25rem;
+            border-radius: 50px;
+            cursor: pointer;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .floating-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(139, 92, 246, 0.5);
+        }
+
+        .floating-cta span {
+            font-weight: 600;
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+
+        .floating-logo {
+            height: 36px;
+            width: auto;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .upgrade-hero h1 {
@@ -548,6 +742,7 @@
                         <div class="price">$29<span class="price-period">/mo</span></div>
                         <div class="price-annual">or $290/year (save $58)</div>
                     </div>
+                    <div class="promo-badge" onclick="openModal()"><img src="webbersaurus-logo.png" alt="Webbersaurus" class="promo-logo">Free for Webbersaurus clients!</div>
                     <ul class="features-list">
                         <li class="highlight">Priority placement at top of town page</li>
                         <li>Website link on your listing</li>
@@ -572,6 +767,7 @@
                         <div class="price-annual">or $790/year (save $158)</div>
                     </div>
                     <div class="limited-spots">Only 3 Featured spots per town!</div>
+                    <div class="promo-badge featured-promo" onclick="openModal()"><img src="webbersaurus-logo.png" alt="Webbersaurus" class="promo-logo">50% off for Webbersaurus clients!</div>
                     <ul class="features-list">
                         <li class="highlight">Featured on homepage with logo</li>
                         <li class="highlight">Pin on interactive shoreline map</li>
@@ -738,6 +934,28 @@
         </div>
     </section>
 
+    <!-- Floating CTA Button -->
+    <div class="floating-cta" onclick="openModal()">
+        <img src="webbersaurus-logo.png" alt="Webbersaurus" class="floating-logo">
+        <span>Want a website as cool as this one?</span>
+    </div>
+
+    <!-- Webbersaurus Modal -->
+    <div class="modal-overlay" id="webbersaurusModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <img src="webbersaurus-logo.png" alt="Webbersaurus" class="modal-logo">
+            <h2>Need a Website?</h2>
+            <p class="modal-subtitle">Or unhappy with your current one?</p>
+            <p class="modal-blurb">Webbersaurus builds beautiful, fast websites for restaurants and local businesses. Fully optimized for SEO, AI, and voice search to help customers find you. Get a professional online presence that brings customers through your doors.</p>
+            <p class="modal-cta-text">Become a Webbersaurus client and get your Enhanced Listing FREE!</p>
+            <div class="modal-contact">
+                <a href="tel:+12035307396" class="modal-phone">(203) 530-7396</a>
+                <a href="https://webbersaurus.com" target="_blank" class="modal-website">webbersaurus.com</a>
+            </div>
+        </div>
+    </div>
+
     <footer class="footer">
         <div class="footer-content">
             <a href="/"><img src="logo-mobile.png" alt="A Bite of Nutmeg" class="footer-logo"></a>
@@ -745,5 +963,32 @@
             <script>document.getElementById('copyrightYear').textContent = new Date().getFullYear();</script>
         </div>
     </footer>
+
+    <script>
+        // Modal functions
+        function openModal() {
+            document.getElementById('webbersaurusModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('webbersaurusModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close modal on overlay click
+        document.getElementById('webbersaurusModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
 </body>
 </html>
