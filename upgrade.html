@@ -697,6 +697,37 @@
             width: auto;
         }
 
+        /* Square Subscribe Button */
+        .square-subscribe-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: var(--gold);
+            color: var(--navy-dark);
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: background 0.3s;
+            margin-top: 0.75rem;
+        }
+
+        .square-subscribe-btn:hover {
+            background: var(--gold-dark);
+        }
+
+        .square-subscribe-btn.blue {
+            background: #006aff;
+            color: white;
+        }
+
+        .square-subscribe-btn.blue:hover {
+            background: #0056cc;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .upgrade-hero h1 {
@@ -751,7 +782,14 @@
                         <li>Highlighted in "Near Me" results</li>
                         <li>Basic listing in town directory</li>
                     </ul>
-                    <a href="#contact" class="pricing-cta">Get Started</a>
+                    <a href="https://square.link/u/bXcmAI7Y?src=embed"
+                       data-url="https://square.link/u/bXcmAI7Y?src=embd"
+                       id="enhanced-annual-btn"
+                       class="square-subscribe-btn blue">Subscribe Annually</a>
+                    <a href="https://square.link/u/s6eSITaq?src=embed"
+                       data-url="https://square.link/u/s6eSITaq?src=embd"
+                       id="enhanced-monthly-btn"
+                       class="square-subscribe-btn">Subscribe Monthly</a>
                 </div>
             </div>
 
@@ -778,7 +816,14 @@
                         <li>Logo displayed on listing card</li>
                         <li>Highlighted premium styling</li>
                     </ul>
-                    <a href="#contact" class="pricing-cta">Get Featured</a>
+                    <a href="https://square.link/u/usaXcWPy?src=embed"
+                       data-url="https://square.link/u/usaXcWPy?src=embd"
+                       id="featured-annual-btn"
+                       class="square-subscribe-btn blue">Subscribe Annually</a>
+                    <a href="https://square.link/u/XHqqKT04?src=embed"
+                       data-url="https://square.link/u/XHqqKT04?src=embd"
+                       id="featured-monthly-btn"
+                       class="square-subscribe-btn">Subscribe Monthly</a>
                 </div>
             </div>
         </div>
@@ -989,6 +1034,35 @@
                 closeModal();
             }
         });
+
+        // Square checkout popup
+        function showCheckoutWindow(e) {
+            e.preventDefault();
+            const url = e.currentTarget.getAttribute('data-url');
+            const title = 'Square Payment Links';
+
+            const topWindow = window.top ? window.top : window;
+            const dualScreenLeft = topWindow.screenLeft !== undefined ? topWindow.screenLeft : topWindow.screenX;
+            const dualScreenTop = topWindow.screenTop !== undefined ? topWindow.screenTop : topWindow.screenY;
+
+            const width = topWindow.innerWidth ? topWindow.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width;
+            const height = topWindow.innerHeight ? topWindow.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
+
+            const h = height * .75;
+            const w = 500;
+
+            const systemZoom = width / topWindow.screen.availWidth;
+            const left = (width - w) / 2 / systemZoom + dualScreenLeft;
+            const top = (height - h) / 2 / systemZoom + dualScreenTop;
+            const newWindow = window.open(url, title, `scrollbars=yes, width=${w / systemZoom}, height=${h / systemZoom}, top=${top}, left=${left}`);
+
+            if (window.focus) newWindow.focus();
+        }
+
+        document.getElementById('enhanced-annual-btn').addEventListener('click', showCheckoutWindow);
+        document.getElementById('enhanced-monthly-btn').addEventListener('click', showCheckoutWindow);
+        document.getElementById('featured-annual-btn').addEventListener('click', showCheckoutWindow);
+        document.getElementById('featured-monthly-btn').addEventListener('click', showCheckoutWindow);
     </script>
 </body>
 </html>
