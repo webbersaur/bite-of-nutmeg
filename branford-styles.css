@@ -477,6 +477,27 @@
     border-left: 4px solid #f0b323;
 }
 
+/* Item actions for premium/featured */
+.restaurant-item .item-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.restaurant-item .website-link {
+    color: #1e3a6e;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.restaurant-item .website-link:hover {
+    color: #f0b323;
+}
+
 /* About Dining Section */
 .about-dining {
     background-color: #F5EDE0;
