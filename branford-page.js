@@ -34,6 +34,15 @@ async function loadData() {
 function renderCategoryTabs() {
     const tabsContainer = document.getElementById('categoryTabs');
 
+    // Add mobile scroll hint before tabs
+    let scrollHint = document.querySelector('.category-scroll-hint');
+    if (!scrollHint) {
+        scrollHint = document.createElement('p');
+        scrollHint.className = 'category-scroll-hint';
+        scrollHint.textContent = 'Swipe to see more cuisines →';
+        tabsContainer.parentNode.insertBefore(scrollHint, tabsContainer);
+    }
+
     tabsContainer.innerHTML = data.categories.map(category => `
         <button class="category-tab ${category === currentCategory ? 'active' : ''}"
                 data-category="${category}">
@@ -103,6 +112,15 @@ function renderRestaurantList() {
     const countElement = document.getElementById('resultsCount');
 
     const filtered = getFilteredRestaurants();
+
+    // Sort: enhanced first, then alphabetically
+    filtered.sort((a, b) => {
+        const aEnhanced = a.enhanced === true ? 1 : 0;
+        const bEnhanced = b.enhanced === true ? 1 : 0;
+        if (bEnhanced !== aEnhanced) return bEnhanced - aEnhanced;
+        return a.name.localeCompare(b.name);
+    });
+
     countElement.textContent = filtered.length;
 
     if (filtered.length === 0) {
@@ -115,16 +133,34 @@ function renderRestaurantList() {
         return;
     }
 
-    list.innerHTML = filtered.map(restaurant => `
-        <div class="restaurant-item">
-            <h3>${restaurant.name}</h3>
+    list.innerHTML = filtered.map(restaurant => {
+        const isFeatured = data.featured && data.featured.some(f => f.name === restaurant.name);
+        const isEnhanced = restaurant.enhanced === true;
+
+        let badgeHtml = '';
+        let itemClass = 'restaurant-item';
+
+        if (isFeatured) {
+            badgeHtml = '<span class="list-badge featured">Featured</span>';
+            itemClass += ' featured-highlight';
+        } else if (isEnhanced) {
+            badgeHtml = '<span class="list-badge enhanced">Premium</span>';
+            itemClass += ' enhanced-highlight';
+        }
+
+        return `
+        <div class="${itemClass}">
+            <div class="item-header">
+                <h3>${restaurant.name}</h3>
+                ${badgeHtml}
+            </div>
             <span class="category">${restaurant.category}</span>
             <a href="tel:${restaurant.phone.replace(/[^0-9]/g, '')}" class="phone">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="#2EA3F2"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
                 ${restaurant.phone}
             </a>
         </div>
-    `).join('');
+    `}).join('');
 }
 
 // Initialize search

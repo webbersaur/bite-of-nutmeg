@@ -11,16 +11,6 @@
       "lng": -72.8538095
     },
     {
-      "name": "Dockside Seafood & Grill",
-      "category": "Seafood",
-      "address": "145 Block Island Rd, Branford",
-      "phone": "203-488-3007",
-      "website": "https://docksidebranford.com/",
-      "image": "branford-logos/docksidelogoweb-300x150.png",
-      "lat": 41.2629862,
-      "lng": -72.8075226
-    },
-    {
       "name": "La Luna Ristorante",
       "category": "Italian",
       "address": "113 Main St, Branford",
@@ -29,16 +19,6 @@
       "image": "branford-logos/lalunahomere.png",
       "lat": 41.2887868,
       "lng": -72.8127835
-    },
-    {
-      "name": "Hornet's Nest Deli",
-      "category": "American",
-      "address": "208 Main St, Branford",
-      "phone": "203-488-0717",
-      "website": "https://www.hornetsnestdeli.com/",
-      "image": "branford-logos/HS-without-Branford.png",
-      "lat": 41.2921351,
-      "lng": -72.7925349
     },
     {
       "name": "Parthenon Diner Restaurant",

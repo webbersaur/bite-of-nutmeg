@@ -153,7 +153,7 @@ function renderRestaurantList() {
             badgeHtml = '<span class="list-badge featured">Featured</span>';
             itemClass += ' featured-highlight';
         } else if (isEnhanced) {
-            badgeHtml = '<span class="list-badge enhanced">Enhanced</span>';
+            badgeHtml = '<span class="list-badge enhanced">Premium</span>';
             itemClass += ' enhanced-highlight';
         }
 
