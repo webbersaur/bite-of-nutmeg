@@ -55,7 +55,7 @@
   "restaurants": [
     {"name": "1928 Cocktail Club", "category": "Wine Bar", "phone": "203-530-1600", "lat": 41.2818481, "lng": -72.8113738},
     {"name": "9 East Hibachi & Asian Kitchen", "category": "Japanese", "phone": "203-488-8833", "lat": 41.2928039, "lng": -72.7890737},
-    {"name": "Archie Moore's", "category": "American", "phone": "203-481-6100", "lat": 41.2815657, "lng": -72.812127, "enhanced": true, "website": "https://archiemoores.com"},
+    {"name": "Archie Moore's", "category": "American", "phone": "203-481-6100", "lat": 41.2815657, "lng": -72.812127},
     {"name": "Arturo's Restaurant", "category": "Italian & Mexican", "phone": "203-208-4106", "lat": 41.3026382, "lng": -72.7689363},
     {"name": "Benny J's Pizza", "category": "Pizza", "phone": "203-208-2409", "lat": 41.2839964, "lng": -72.809672},
     {"name": "Branford Cue & Brew", "category": "American", "phone": "203-483-1388", "lat": 41.2825977, "lng": -72.8344332},
