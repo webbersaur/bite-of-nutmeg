@@ -333,6 +333,11 @@
     margin: 0 auto;
 }
 
+/* Mobile scroll hint - hidden by default */
+.category-scroll-hint {
+    display: none;
+}
+
 .category-tabs {
     display: flex;
     flex-wrap: wrap;
@@ -646,6 +651,15 @@
 
     .featured-grid {
         grid-template-columns: 1fr;
+    }
+
+    .category-scroll-hint {
+        display: block;
+        text-align: center;
+        color: #666;
+        font-size: 0.85rem;
+        margin-bottom: 0.5rem;
+        font-style: italic;
     }
 
     .category-tabs {

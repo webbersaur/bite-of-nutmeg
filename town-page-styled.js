@@ -38,6 +38,15 @@ async function loadData() {
 function renderCategoryTabs() {
     const tabsContainer = document.getElementById('categoryTabs');
 
+    // Add mobile scroll hint before tabs
+    let scrollHint = document.querySelector('.category-scroll-hint');
+    if (!scrollHint) {
+        scrollHint = document.createElement('p');
+        scrollHint.className = 'category-scroll-hint';
+        scrollHint.textContent = 'Swipe to see more cuisines →';
+        tabsContainer.parentNode.insertBefore(scrollHint, tabsContainer);
+    }
+
     tabsContainer.innerHTML = data.categories.map(category => `
         <button class="category-tab ${category === currentCategory ? 'active' : ''}"
                 data-category="${category}">
@@ -112,6 +121,15 @@ function renderRestaurantList() {
     const countElement = document.getElementById('resultsCount');
 
     const filtered = getFilteredRestaurants();
+
+    // Sort: enhanced first, then alphabetically
+    filtered.sort((a, b) => {
+        const aEnhanced = a.enhanced === true ? 1 : 0;
+        const bEnhanced = b.enhanced === true ? 1 : 0;
+        if (bEnhanced !== aEnhanced) return bEnhanced - aEnhanced;
+        return a.name.localeCompare(b.name);
+    });
+
     countElement.textContent = filtered.length;
 
     if (filtered.length === 0) {
