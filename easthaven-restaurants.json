@@ -24,7 +24,7 @@
     {"name": "Apizza Abate'", "category": "Pizza", "phone": "203-891-7086", "lat": 41.245144, "lng": -72.8861249},
     {"name": "Bistro Mediterranean & Tapas Bar", "category": "Mediterranean", "phone": "203-469-2722", "lat": 41.2808299, "lng": -72.8761025},
     {"name": "Briellies Gelato & Cafe", "category": "Café & Bakery", "phone": "203-903-5028", "lat": 41.2834242, "lng": -72.8811255},
-    {"name": "Capotorto's", "category": "Italian", "phone": "203-469-5550", "lat": 41.32098, "lng": -72.8523864},
+    {"name": "Capotorto's", "category": "Italian", "phone": "203-469-5550", "lat": 41.32098, "lng": -72.8523864, "enhanced": true, "website": "https://www.capotortos.com/"},
     {"name": "Chili's Grill & Bar", "category": "American", "phone": "203-467-1533", "lat": 41.2855288, "lng": -72.8788927},
     {"name": "China One", "category": "Chinese", "phone": "203-467-8808", "lat": 41.2807407, "lng": -72.8758126},
     {"name": "China Star", "category": "Chinese", "phone": "203-469-8868", "lat": 41.2770932, "lng": -72.8703473},
