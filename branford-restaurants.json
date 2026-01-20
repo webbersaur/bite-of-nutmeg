@@ -59,7 +59,7 @@
     {"name": "Arturo's Restaurant", "category": "Italian & Mexican", "phone": "203-208-4106", "lat": 41.3026382, "lng": -72.7689363},
     {"name": "Benny J's Pizza", "category": "Pizza", "phone": "203-208-2409", "lat": 41.2839964, "lng": -72.809672},
     {"name": "Branford Cue & Brew", "category": "American", "phone": "203-483-1388", "lat": 41.2825977, "lng": -72.8344332},
-    {"name": "Bui Vietnamese Cuisine", "category": "Vietnamese", "phone": "860-643-5006", "lat": 41.2927047, "lng": -72.8199338, "enhanced": true, "website": "https://buivietnamese.com"},
+    {"name": "Bui Vietnamese Cuisine", "category": "Vietnamese", "phone": "860-643-5006", "lat": 41.2927047, "lng": -72.8199338},
     {"name": "Burger King", "category": "Fast Food", "phone": "203-208-2816", "lat": 41.276468, "lng": -72.8358096},
     {"name": "Branford Beach Donut", "category": "Café & Bakery", "phone": "203-208-0625", "lat": 41.2919114, "lng": -72.7933615},
     {"name": "Branford Pizza", "category": "Pizza", "phone": "203-481-7609", "lat": 41.2825787, "lng": -72.8226825},
