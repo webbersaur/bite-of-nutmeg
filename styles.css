@@ -663,6 +663,56 @@ body {
     opacity: 0.5;
 }
 
+/* Newsletter Signup */
+.newsletter-signup {
+    margin: 1.5rem auto;
+    max-width: 400px;
+}
+
+.newsletter-signup h4 {
+    color: var(--gold);
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    font-family: 'Playfair Display', serif;
+}
+
+.newsletter-signup p {
+    font-size: 0.85rem;
+    opacity: 0.8;
+    margin-bottom: 0.75rem;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.newsletter-form input[type="email"] {
+    padding: 0.6rem 1rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    width: 220px;
+    max-width: 60%;
+}
+
+.newsletter-form button {
+    padding: 0.6rem 1.25rem;
+    background: var(--gold);
+    color: var(--navy-dark);
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.newsletter-form button:hover {
+    background: var(--gold-dark);
+}
+
 .report-link {
     color: var(--gold);
     text-decoration: none;
