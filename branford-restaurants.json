@@ -106,7 +106,7 @@
     {"name": "Rossitto's Ristorante", "category": "Italian", "phone": "203-483-9463", "lat": 41.2932305, "lng": -72.7919861},
     {"name": "Saltbrick Prime", "category": "American", "phone": "860-200-3763", "lat": 41.28435, "lng": -72.8113636},
     {"name": "Shoreline Cafe and Catering", "category": "American", "phone": "203-481-4400", "lat": 41.2845508, "lng": -72.8094687},
-    {"name": "Shoreline Prime Meats & Deli", "category": "American", "phone": "203-208-1579", "lat": 41.2850762, "lng": -72.818045},
+    {"name": "Shoreline Prime Meats & Deli", "category": "American", "phone": "203-208-1579", "lat": 41.2850762, "lng": -72.818045, "enhanced": true, "website": "https://shorelineprime.com", "image": "branford-logos/SPheadertrans.png"},
     {"name": "SIAM Orchids Restaurant", "category": "Thai", "phone": "203-483-6993", "lat": 41.275657, "lng": -72.835385},
     {"name": "Sky Diner", "category": "American", "phone": "203-315-7077", "lat": 41.2975381, "lng": -72.7644363},
     {"name": "Stop & Go Deli", "category": "American", "phone": "203-208-4752", "lat": 41.2717734, "lng": -72.8196044},

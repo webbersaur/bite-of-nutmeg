@@ -85,6 +85,18 @@
       "pageLink": "old-saybrook.html",
       "lat": 41.29256948653025,
       "lng": -72.38376819510408
+    },
+    {
+      "name": "Shoreline Prime Meats & Deli",
+      "category": "American",
+      "town": "Branford",
+      "address": "176 Main St, Branford",
+      "phone": "203-208-1579",
+      "website": "https://shorelineprime.com",
+      "image": "branford-logos/SPheadertrans.png",
+      "pageLink": "branford.html",
+      "lat": 41.2850762,
+      "lng": -72.818045
     }
   ]
 }
