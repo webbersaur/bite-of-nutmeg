@@ -113,11 +113,23 @@ function renderRestaurantList() {
 
     const filtered = getFilteredRestaurants();
 
-    // Sort: enhanced first, then alphabetically
+    // Sort: For specific categories, Featured first, then Premium, then alphabetical
+    // For "All", just Premium first, then alphabetical
     filtered.sort((a, b) => {
+        const aFeatured = data.featured && data.featured.some(f => f.name === a.name) ? 2 : 0;
+        const bFeatured = data.featured && data.featured.some(f => f.name === b.name) ? 2 : 0;
         const aEnhanced = a.enhanced === true ? 1 : 0;
         const bEnhanced = b.enhanced === true ? 1 : 0;
-        if (bEnhanced !== aEnhanced) return bEnhanced - aEnhanced;
+
+        if (currentCategory !== 'All') {
+            // Featured (2) > Premium (1) > Regular (0)
+            const aScore = aFeatured || aEnhanced;
+            const bScore = bFeatured || bEnhanced;
+            if (bScore !== aScore) return bScore - aScore;
+        } else {
+            // Just Premium first for "All"
+            if (bEnhanced !== aEnhanced) return bEnhanced - aEnhanced;
+        }
         return a.name.localeCompare(b.name);
     });
 
