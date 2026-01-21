@@ -11,6 +11,7 @@ const townName = 'Guilford';
 // Initialize
 document.addEventListener('DOMContentLoaded', async () => {
     await loadData();
+    addMobileScrollHints();
     renderCategoryTabs();
     renderFeaturedRestaurants();
     renderRestaurantList();
@@ -18,6 +19,18 @@ document.addEventListener('DOMContentLoaded', async () => {
     initMap();
     initMapToggle();
 });
+
+// Add mobile scroll hints
+function addMobileScrollHints() {
+    // Add "scroll down" hint below map section
+    const mapSection = document.querySelector('.map-section');
+    if (mapSection && !document.querySelector('.scroll-down-hint')) {
+        const scrollDownHint = document.createElement('p');
+        scrollDownHint.className = 'scroll-down-hint';
+        scrollDownHint.textContent = 'Scroll down to view cuisine types ↓';
+        mapSection.after(scrollDownHint);
+    }
+}
 
 // Load restaurant data
 async function loadData() {
