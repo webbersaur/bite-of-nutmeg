@@ -200,6 +200,19 @@
     color: #fff;
 }
 
+.town-nav-badge.near-me-badge {
+    background-color: #f0b323;
+    border-color: #f0b323;
+    color: #1e3a6e;
+    font-weight: 600;
+}
+
+.town-nav-badge.near-me-badge:hover {
+    background-color: #1e3a6e;
+    border-color: #1e3a6e;
+    color: #f0b323;
+}
+
 /* Featured Section */
 .featured-section {
     padding: 3rem 2rem;
