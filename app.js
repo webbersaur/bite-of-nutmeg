@@ -311,14 +311,18 @@ function initHeroSearch() {
         );
 
         // Sort: Featured first, then Premium, then alphabetical
+        // Match badge display: enhanced shows PREMIUM, else featured shows FEATURED
         filtered.sort((a, b) => {
-            const aFeatured = isFeaturedRestaurant(a.name) ? 2 : 0;
-            const bFeatured = isFeaturedRestaurant(b.name) ? 2 : 0;
-            const aEnhanced = a.enhanced ? 1 : 0;
-            const bEnhanced = b.enhanced ? 1 : 0;
-            const aScore = aFeatured + aEnhanced;
-            const bScore = bFeatured + bEnhanced;
-            if (bScore !== aScore) return bScore - aScore;
+            const aIsFeatured = isFeaturedRestaurant(a.name);
+            const bIsFeatured = isFeaturedRestaurant(b.name);
+            const aIsEnhanced = a.enhanced === true;
+            const bIsEnhanced = b.enhanced === true;
+
+            // Determine display tier (what badge shows): Featured-only=2, Premium=1, Regular=0
+            const aDisplayTier = aIsEnhanced ? 1 : (aIsFeatured ? 2 : 0);
+            const bDisplayTier = bIsEnhanced ? 1 : (bIsFeatured ? 2 : 0);
+
+            if (aDisplayTier !== bDisplayTier) return bDisplayTier - aDisplayTier;
             return a.name.localeCompare(b.name);
         });
 
