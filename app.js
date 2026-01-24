@@ -496,8 +496,8 @@ function findNearbyRestaurants(userLat, userLng) {
                     ${r.address ? `<p class="near-me-address">${r.address}</p>` : ''}
                     ${r.phone ? `<p class="near-me-phone">${r.phone}</p>` : ''}
                     <div class="near-me-actions">
-                        ${r.website ? `<a href="${r.website}" target="_blank" class="near-me-link">Website</a>` : ''}
-                        <a href="https://www.google.com/maps/dir/?api=1&destination=${r.lat},${r.lng}" target="_blank" class="near-me-link directions">Directions</a>
+                        ${r.website ? `<a href="${r.website}" target="_blank" rel="noopener noreferrer" class="near-me-link">Website</a>` : ''}
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=${r.lat},${r.lng}" target="_blank" rel="noopener noreferrer" class="near-me-link directions">Directions</a>
                     </div>
                 </div>
             </div>
@@ -543,8 +543,8 @@ function findNearbyRestaurants(userLat, userLng) {
                             <span class="near-me-distance">${r.distance.toFixed(1)} mi</span>
                             <p class="near-me-meta">${formatCategory(r.category)} · ${r.town}</p>
                             ${showPhone && r.phone ? `<p class="near-me-phone-visible">${r.phone}</p>` : ''}
-                            ${r.website ? `<a href="${r.website}" target="_blank" class="near-me-link">Website</a>` : ''}
-                            <a href="https://www.google.com/maps/dir/?api=1&destination=${r.lat},${r.lng}" target="_blank" class="near-me-link directions">Directions</a>
+                            ${r.website ? `<a href="${r.website}" target="_blank" rel="noopener noreferrer" class="near-me-link">Website</a>` : ''}
+                            <a href="https://www.google.com/maps/dir/?api=1&destination=${r.lat},${r.lng}" target="_blank" rel="noopener noreferrer" class="near-me-link directions">Directions</a>
                         </div>
                     </div>
                 `}).join('')}
