@@ -121,11 +121,19 @@
             <div class="newsletter-signup">
                 <h4>Stay in the Loop</h4>
                 <p>Get updates on new restaurants, deals, and shoreline dining news</p>
-                <form class="newsletter-form" action="MAILCHIMP_FORM_ACTION_URL" method="post" target="_blank">
-                    <input type="email" name="EMAIL" placeholder="Your email" required>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" id="newsletterEmail" placeholder="Your email" required>
                     <button type="submit">Subscribe</button>
                 </form>
             </div>
+            <script>
+                document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    var email = document.getElementById('newsletterEmail').value;
+                    var mailchimpUrl = 'https://abiteofnutmeg.us12.list-manage.com/subscribe?u=558e8b978cffde8d91bce55b9&id=b58d055e37&MERGE0=' + encodeURIComponent(email);
+                    window.open(mailchimpUrl, '_blank');
+                });
+            </script>
             <p>&copy; <span id="copyrightYear"></span> A Bite of Nutmeg. All rights reserved.</p>
             <script>document.getElementById('copyrightYear').textContent = new Date().getFullYear();</script>
             <a href="/upgrade" class="footer-link">For Restaurants</a>
