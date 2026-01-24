@@ -158,6 +158,27 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
+
+        .author-photo {
+            float: right;
+            width: 245px;
+            height: 245px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 0 20px 25px;
+            border: 4px solid #f0b323;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 600px) {
+            .author-photo {
+                float: none;
+                display: block;
+                margin: 0 auto 20px;
+                width: 200px;
+                height: 200px;
+            }
+        }
     </style>
 </head>
 <body class="branford-page">
@@ -187,7 +208,8 @@
     <div class="why-content">
         <section class="why-section">
             <h2>A Local's Passion</h2>
-            <p>I grew up in Guilford, CT. The shoreline isn't just where I'm from—it's home. I know these towns, these roads, and yes, these restaurants.</p>
+            <img src="branford-logos/chrishauman.jpg" alt="Chris Hauman" class="author-photo">
+            <p>My name is Chris Hauman, and I grew up in Guilford, CT. The shoreline isn't just where I'm from—it's home. I know these towns, these roads, and yes, these restaurants.</p>
             <p>But when I tried to find a comprehensive list of dining options along the shoreline, I hit a wall. I scrubbed Google, TripAdvisor, Yelp—and none of them had the same results. Some restaurants appeared on one platform but not another. Reviews were inconsistent. Listings were outdated. It was a mess.</p>
             <p>Take Branford, where I live. I checked Google, Yelp, TripAdvisor—each had different results, none matched the official count of 88, and none were complete. Same story in every town along the shoreline.</p>
             <p>There was simply no single place where you could find all the dining options for the CT shoreline—until now.</p>
