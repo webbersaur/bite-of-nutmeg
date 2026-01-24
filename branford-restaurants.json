@@ -22,7 +22,7 @@
     },
     {
       "name": "Parthenon Diner Restaurant",
-      "category": "Greek",
+      "category": ["Greek", "American"],
       "address": "374 E Main St, Branford",
       "phone": "203-481-0333",
       "website": "https://parthenondiner.com/",
@@ -97,7 +97,7 @@
     {"name": "Nonna Gina's", "category": "Italian", "phone": "203-896-5700", "lat": 41.3068226, "lng": -72.7533309},
     {"name": "Owenego Inn", "category": "American", "phone": "203-488-3805", "lat": 41.2585387, "lng": -72.8012375},
     {"name": "P&M Fine Foods", "category": "Italian", "phone": "203-488-7485", "lat": 41.2771462, "lng": -72.820251},
-    {"name": "Parthenon Diner Restaurant", "category": "Greek", "phone": "203-481-0333", "lat": 41.2961874, "lng": -72.781473},
+    {"name": "Parthenon Diner Restaurant", "category": ["Greek", "American"], "phone": "203-481-0333", "lat": 41.2961874, "lng": -72.781473},
     {"name": "Pasta Cosi", "category": "Italian", "phone": "203-483-9397", "lat": 41.281982, "lng": -72.8113218},
     {"name": "Pearl Wine Bar", "category": "Wine Bar", "phone": "203-208-1329", "lat": 41.283506, "lng": -72.810276},
     {"name": "Perkatory Coffee Roasters", "category": "Café & Bakery", "phone": "203-208-0600", "lat": 41.2926894, "lng": -72.8202762},

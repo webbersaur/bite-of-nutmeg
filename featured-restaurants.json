@@ -62,7 +62,7 @@
     },
     {
       "name": "Parthenon Diner Restaurant",
-      "category": "Greek",
+      "category": ["Greek", "American"],
       "town": "Branford",
       "address": "374 E Main St, Branford",
       "phone": "203-481-0333",
@@ -75,7 +75,7 @@
     },
     {
       "name": "Parthenon Diner Restaurant",
-      "category": "Greek",
+      "category": ["Greek", "American"],
       "town": "Old Saybrook",
       "address": "869 Boston Post Rd, Old Saybrook",
       "phone": "860-388-3533",

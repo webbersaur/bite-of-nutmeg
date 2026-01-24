@@ -6,6 +6,22 @@ let allRestaurants = [];
 let map = null;
 let markers = [];
 
+// Helper function to format category for display (handles arrays)
+function formatCategory(category) {
+    if (Array.isArray(category)) {
+        return category.join(' & ');
+    }
+    return category || '';
+}
+
+// Helper function to check if category matches search query
+function categoryMatchesQuery(category, query) {
+    if (Array.isArray(category)) {
+        return category.some(c => c.toLowerCase().includes(query));
+    }
+    return category && category.toLowerCase().includes(query);
+}
+
 // Initialize the application
 document.addEventListener('DOMContentLoaded', async () => {
     await loadRestaurants();
@@ -161,7 +177,7 @@ function addMarkersToMap(restaurantList) {
         if (restaurant.lat && restaurant.lng) {
             const featured = isFeaturedRestaurant(restaurant.name);
             const icon = createMarkerIcon(restaurant.town, featured);
-            const cuisine = restaurant.category || restaurant.cuisine;
+            const cuisine = formatCategory(restaurant.category || restaurant.cuisine);
             const marker = L.marker([restaurant.lat, restaurant.lng], {
                 icon: icon,
                 zIndexOffset: featured ? 1000 : 0
@@ -214,7 +230,7 @@ function renderRestaurants(restaurantList, isSearchResult = false) {
     }
 
     grid.innerHTML = restaurantList.map(restaurant => {
-        const cuisine = restaurant.category || restaurant.cuisine || '';
+        const cuisine = formatCategory(restaurant.category || restaurant.cuisine);
         const hasWebsite = restaurant.website;
         return `
         <article class="restaurant-card${hasWebsite ? ' clickable' : ''}"${hasWebsite ? ` onclick="window.open('${restaurant.website}', '_blank')"` : ''}>
@@ -273,8 +289,8 @@ function initHeroSearch() {
         // Search ALL restaurants
         const filtered = allRestaurants.filter(r =>
             r.name.toLowerCase().includes(query) ||
-            (r.cuisine && r.cuisine.toLowerCase().includes(query)) ||
-            (r.category && r.category.toLowerCase().includes(query)) ||
+            categoryMatchesQuery(r.cuisine, query) ||
+            categoryMatchesQuery(r.category, query) ||
             r.town.toLowerCase().includes(query)
         );
 
@@ -443,7 +459,7 @@ function findNearbyRestaurants(userLat, userLng) {
                 <div class="near-me-info">
                     <h4>${r.name}</h4>
                     <span class="near-me-distance">${r.distance.toFixed(1)} miles away</span>
-                    <p class="near-me-cuisine">${r.category || r.cuisine || ''}</p>
+                    <p class="near-me-cuisine">${formatCategory(r.category || r.cuisine)}</p>
                     <p class="near-me-town">${r.town}</p>
                     ${r.address ? `<p class="near-me-address">${r.address}</p>` : ''}
                     ${r.phone ? `<p class="near-me-phone">${r.phone}</p>` : ''}
@@ -493,7 +509,7 @@ function findNearbyRestaurants(userLat, userLng) {
                         <div class="near-me-info">
                             <h4>${r.name} ${badge}</h4>
                             <span class="near-me-distance">${r.distance.toFixed(1)} mi</span>
-                            <p class="near-me-meta">${r.category || ''} · ${r.town}</p>
+                            <p class="near-me-meta">${formatCategory(r.category)} · ${r.town}</p>
                             ${showPhone && r.phone ? `<p class="near-me-phone-visible">${r.phone}</p>` : ''}
                             ${r.website ? `<a href="${r.website}" target="_blank" class="near-me-link">Website</a>` : ''}
                             <a href="https://www.google.com/maps/dir/?api=1&destination=${r.lat},${r.lng}" target="_blank" class="near-me-link directions">Directions</a>
