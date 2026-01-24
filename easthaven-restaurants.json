@@ -64,5 +64,5 @@
     {"name": "Village Inn", "category": "American", "phone": "203-469-5759", "lat": 41.2853852, "lng": -72.8867368},
     {"name": "Wendy's", "category": "Fast Food", "phone": "203-469-8611", "lat": 41.2866155, "lng": -72.878689}
   ],
-  "categories": ["All", "American", "Italian", "Seafood", "Pizza", "Chinese", "Japanese", "Thai", "Caribbean", "Mediterranean", "European", "Latin American", "Mexican", "Café & Bakery", "Fast Food"]
+  "categories": ["All", "American", "Café & Bakery", "Caribbean", "Chinese", "European", "Fast Food", "Italian", "Japanese", "Latin American", "Mediterranean", "Mexican", "Pizza", "Seafood", "Thai"]
 }

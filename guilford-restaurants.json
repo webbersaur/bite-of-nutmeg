@@ -61,5 +61,5 @@
     {"name": "Three Girls Vegan", "category": "Vegan", "phone": "203-453-0053", "lat": 41.2893532, "lng": -72.6697118},
     {"name": "Wendy's", "category": "Fast Food", "phone": "203-453-9271", "lat": 41.2882895, "lng": -72.6671617}
   ],
-  "categories": ["All", "American", "Italian", "Mexican", "Seafood", "Steakhouse", "Indian", "Chinese", "Thai", "Asian", "Vegan", "Dessert", "Cafe", "Bakery", "Deli", "Pizza", "Bar", "Fast Food"]
+  "categories": ["All", "American", "Asian", "Bakery", "Bar", "Cafe", "Chinese", "Deli", "Dessert", "Fast Food", "Indian", "Italian", "Mexican", "Pizza", "Seafood", "Steakhouse", "Thai", "Vegan"]
 }

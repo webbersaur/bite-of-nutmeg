@@ -43,5 +43,5 @@
     {"name": "Taco Pacifico", "category": "Mexican", "phone": "203-245-4911", "seasonal": true, "lat": 41.274112, "lng": -72.5531627},
     {"name": "What's Cookin", "category": "American", "phone": "203-245-5422", "lat": 41.285222, "lng": -72.640307}
   ],
-  "categories": ["All", "American", "Italian", "Seafood", "Mexican", "French", "Japanese", "Chinese", "Vietnamese", "Asian", "BBQ", "Dessert", "Cafe & Bakery", "Pizza", "Fast Food"]
+  "categories": ["All", "American", "Asian", "BBQ", "Cafe & Bakery", "Chinese", "Dessert", "Fast Food", "French", "Italian", "Japanese", "Mexican", "Pizza", "Seafood", "Vietnamese"]
 }

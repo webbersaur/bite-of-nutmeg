@@ -34,5 +34,5 @@
     {"name": "Taste of China", "category": "Chinese", "phone": "860-664-4454", "lat": 41.2718778, "lng": -72.5041278},
     {"name": "Westbrook Lobster", "category": "Seafood", "phone": "860-664-9464", "lat": 41.2731539, "lng": -72.4879906}
   ],
-  "categories": ["All", "American", "Seafood", "Chinese", "Japanese", "Thai", "Mexican", "Italian", "Fine Dining", "Cafe & Bakery", "Pizza", "Dessert", "Fast Food"]
+  "categories": ["All", "American", "Cafe & Bakery", "Chinese", "Dessert", "Fast Food", "Fine Dining", "Italian", "Japanese", "Mexican", "Pizza", "Seafood", "Thai"]
 }

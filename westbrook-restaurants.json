@@ -27,5 +27,5 @@
     {"name": "Water's Edge Sunset Grill", "category": "American", "phone": "860-399-5901", "lat": 41.2794191, "lng": -72.437276},
     {"name": "Westbrook Pizza", "category": "Pizza", "phone": "860-399-5141", "lat": 41.2809976, "lng": -72.4375112}
   ],
-  "categories": ["All", "American", "Seafood", "Mediterranean", "Italian", "Latin", "Mexican", "Vegan", "Brewery", "Cafe & Bakery", "Bakery", "Pizza", "BBQ", "Bar & Grill", "Deli", "Fast Food"]
+  "categories": ["All", "American", "Bakery", "Bar & Grill", "BBQ", "Brewery", "Cafe & Bakery", "Deli", "Fast Food", "Italian", "Latin", "Mediterranean", "Mexican", "Pizza", "Seafood", "Vegan"]
 }

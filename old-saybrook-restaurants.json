@@ -73,5 +73,5 @@
     {"name": "Wayback Burgers", "category": "Fast Food", "phone": "860-391-8475", "lat": 41.2865184, "lng": -72.4169128},
     {"name": "Zhang's Restaurant", "category": "Asian", "phone": "860-388-3999", "lat": 41.3005904, "lng": -72.3763761}
   ],
-  "categories": ["All", "American", "Italian", "Greek", "Mexican", "Seafood", "French", "Vietnamese", "Japanese", "Indian", "Asian", "Vegetarian", "Wine Bar", "Brewery", "Cafe & Bakery", "Pizza", "Dessert", "Fast Food"]
+  "categories": ["All", "American", "Asian", "Brewery", "Cafe & Bakery", "Dessert", "Fast Food", "French", "Greek", "Indian", "Italian", "Japanese", "Mexican", "Pizza", "Seafood", "Vegetarian", "Vietnamese", "Wine Bar"]
 }
