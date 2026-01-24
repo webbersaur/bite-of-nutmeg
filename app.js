@@ -477,12 +477,12 @@ function findNearbyRestaurants(userLat, userLng) {
                     // Determine card styling class
                     let cardClass = 'near-me-card small';
                     let badge = '';
-                    if (r.isFeatured) {
-                        cardClass += ' near-me-featured-highlight';
-                        badge = '<span class="near-me-badge featured-badge">Featured</span>';
-                    } else if (r.isEnhanced) {
+                    if (r.isEnhanced) {
                         cardClass += ' near-me-enhanced-highlight';
                         badge = '<span class="near-me-badge enhanced-badge">Premium</span>';
+                    } else if (r.isFeatured) {
+                        cardClass += ' near-me-featured-highlight';
+                        badge = '<span class="near-me-badge featured-badge">Featured</span>';
                     }
 
                     // Show phone for enhanced/featured, hide for regular
