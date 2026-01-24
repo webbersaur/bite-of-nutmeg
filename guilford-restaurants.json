@@ -35,7 +35,7 @@
     {"name": "KC's Restaurant and Pub", "category": "American", "phone": "203-453-3200", "lat": 41.289489, "lng": -72.6726943},
     {"name": "Lorenzo's II", "category": "Italian", "phone": "203-457-9111", "lat": 41.3524633, "lng": -72.6954215},
     {"name": "McDonald's", "category": "Fast Food", "phone": "203-453-4640", "lat": 41.289185, "lng": -72.6689619},
-    {"name": "Mexitale", "category": "Mexican", "phone": "475-223-6083", "lat": 41.3080171, "lng": -72.7192757},
+    {"name": "Mexitale", "category": "Mexican", "phone": "475-223-6083", "lat": 41.3080171, "lng": -72.7192757, "website": "https://mexitalekitchen.com/"},
     {"name": "Moon Shots Juice Co.", "category": "Cafe", "phone": "203-689-5665", "lat": 41.2882084, "lng": -72.6852267},
     {"name": "Mooyah Burgers", "category": "American", "phone": "203-689-5115", "lat": 41.3009469, "lng": -72.7080014},
     {"name": "Mr. J Asian Bistro", "category": "Asian", "phone": "203-453-3355", "lat": 41.2885089, "lng": -72.6747531},
