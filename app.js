@@ -232,8 +232,24 @@ function renderRestaurants(restaurantList, isSearchResult = false) {
     grid.innerHTML = restaurantList.map(restaurant => {
         const cuisine = formatCategory(restaurant.category || restaurant.cuisine);
         const hasWebsite = restaurant.website;
+        const isFeatured = isFeaturedRestaurant(restaurant.name);
+        const isEnhanced = restaurant.enhanced === true;
+
+        // Determine card class and badge
+        let cardClass = 'restaurant-card';
+        let badge = '';
+        if (hasWebsite) cardClass += ' clickable';
+        if (isEnhanced) {
+            cardClass += ' premium-card';
+            badge = '<span class="card-badge premium-badge">Premium</span>';
+        } else if (isFeatured) {
+            cardClass += ' featured-card';
+            badge = '<span class="card-badge featured-badge">Featured</span>';
+        }
+
         return `
-        <article class="restaurant-card${hasWebsite ? ' clickable' : ''}"${hasWebsite ? ` onclick="window.open('${restaurant.website}', '_blank')"` : ''}>
+        <article class="${cardClass}"${hasWebsite ? ` onclick="window.open('${restaurant.website}', '_blank')"` : ''}>
+            ${badge}
             ${restaurant.image ? `
             <div class="card-logo${restaurant.darkBg ? ' dark-bg' : ''}">
                 <img src="${restaurant.image}" alt="${restaurant.name} logo">
@@ -293,6 +309,18 @@ function initHeroSearch() {
             categoryMatchesQuery(r.category, query) ||
             r.town.toLowerCase().includes(query)
         );
+
+        // Sort: Featured first, then Premium, then alphabetical
+        filtered.sort((a, b) => {
+            const aFeatured = isFeaturedRestaurant(a.name) ? 2 : 0;
+            const bFeatured = isFeaturedRestaurant(b.name) ? 2 : 0;
+            const aEnhanced = a.enhanced ? 1 : 0;
+            const bEnhanced = b.enhanced ? 1 : 0;
+            const aScore = aFeatured + aEnhanced;
+            const bScore = bFeatured + bEnhanced;
+            if (bScore !== aScore) return bScore - aScore;
+            return a.name.localeCompare(b.name);
+        });
 
         renderRestaurants(filtered, true);
         addMarkersToMap(filtered);

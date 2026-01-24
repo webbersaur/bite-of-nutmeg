@@ -600,6 +600,52 @@ body {
     color: var(--gold-dark);
 }
 
+/* Featured and Premium Card Styling */
+.restaurant-card {
+    position: relative;
+}
+
+.card-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 10;
+}
+
+.premium-badge {
+    background-color: var(--gold);
+    color: var(--navy);
+}
+
+.featured-badge {
+    background-color: var(--navy);
+    color: var(--white);
+}
+
+.restaurant-card.premium-card {
+    border: 2px solid var(--gold);
+    box-shadow: 0 4px 15px rgba(240, 179, 35, 0.2);
+}
+
+.restaurant-card.premium-card:hover {
+    box-shadow: 0 8px 25px rgba(240, 179, 35, 0.3);
+}
+
+.restaurant-card.featured-card {
+    border: 2px solid var(--navy);
+    box-shadow: 0 4px 15px rgba(30, 58, 110, 0.15);
+}
+
+.restaurant-card.featured-card:hover {
+    box-shadow: 0 8px 25px rgba(30, 58, 110, 0.25);
+}
+
 /* About Section */
 .about {
     background-color: var(--navy);
