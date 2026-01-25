@@ -89,7 +89,7 @@ function renderFeaturedRestaurants() {
             <div class="card-image ${restaurant.darkBg ? 'dark-bg' : ''}">
                 <span class="featured-badge">FEATURED</span>
                 ${restaurant.image
-                    ? `<img src="${restaurant.image}" alt="${restaurant.name}">`
+                    ? `<img src="${restaurant.image}" alt="${restaurant.name}" loading="lazy">`
                     : `<span class="placeholder-logo">${restaurant.name.charAt(0)}</span>`
                 }
             </div>

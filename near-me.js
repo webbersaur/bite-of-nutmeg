@@ -210,7 +210,7 @@
                 </div>
                 ${closestTwo.map(r => `
                 <div class="near-me-card featured">
-                    ${r.image ? `<img src="${r.image}" alt="${r.name}" class="near-me-img${r.darkBg ? ' dark-bg' : ''}">` : ''}
+                    ${r.image ? `<img src="${r.image}" alt="${r.name}" class="near-me-img${r.darkBg ? ' dark-bg' : ''}" loading="lazy">` : ''}
                     <div class="near-me-info">
                         <h4>${r.name}</h4>
                         <span class="near-me-distance">${r.distance.toFixed(1)} miles away</span>

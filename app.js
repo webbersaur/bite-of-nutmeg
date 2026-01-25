@@ -25,12 +25,14 @@ function categoryMatchesQuery(category, query) {
 // Initialize the application
 document.addEventListener('DOMContentLoaded', async () => {
     await loadRestaurants();
-    initMap();
     renderRestaurants(featuredRestaurants);
     initMapToggle();
+    initHeroSearch();
 });
 
-// Map toggle for mobile
+// Map toggle - lazy load map on first click
+let mapInitialized = false;
+
 function initMapToggle() {
     const toggleBtn = document.getElementById('mapToggle');
     const mapContainer = document.getElementById('mapContainer');
@@ -41,11 +43,14 @@ function initMapToggle() {
         const isShowing = mapContainer.classList.toggle('show');
         toggleBtn.textContent = isShowing ? 'Hide Map' : 'Show Map';
 
-        // Fix map rendering and zoom when shown
-        if (isShowing && map) {
+        // Initialize map on first show (lazy load)
+        if (isShowing && !mapInitialized) {
+            initMap();
+            mapInitialized = true;
+        } else if (isShowing && map) {
+            // Fix map rendering and zoom when shown
             setTimeout(() => {
                 map.invalidateSize();
-                // Re-fit bounds to show all markers
                 if (markers.length > 0) {
                     const group = L.featureGroup(markers);
                     map.fitBounds(group.getBounds().pad(0.1));
@@ -69,30 +74,37 @@ const townFiles = [
 // Load restaurant data from JSON files
 async function loadRestaurants() {
     try {
-        // Load featured restaurants
-        const featuredResponse = await fetch('featured-restaurants.json');
+        // Load featured restaurants and all town files in parallel
+        const [featuredResponse, ...townResponses] = await Promise.all([
+            fetch('featured-restaurants.json'),
+            ...townFiles.map(townData =>
+                fetch(townData.file).catch(() => null)
+            )
+        ]);
+
         const featuredData = await featuredResponse.json();
         featuredRestaurants = featuredData.featured || [];
 
-        // Load all restaurants from each town file
+        // Process all town data in parallel
         allRestaurants = [];
-        for (const townData of townFiles) {
+        const townDataPromises = townResponses.map(async (response, index) => {
+            if (!response) return [];
             try {
-                const response = await fetch(townData.file);
                 const data = await response.json();
                 if (data.restaurants) {
-                    // Add town name to each restaurant
-                    const restaurantsWithTown = data.restaurants.map(r => ({
+                    return data.restaurants.map(r => ({
                         ...r,
-                        town: townData.town
+                        town: townFiles[index].town
                     }));
-                    allRestaurants = allRestaurants.concat(restaurantsWithTown);
                 }
             } catch (e) {
-                // Town file doesn't exist yet, skip it
-                console.log(`No data file for ${townData.town} yet`);
+                console.log(`No data file for ${townFiles[index].town} yet`);
             }
-        }
+            return [];
+        });
+
+        const allTownRestaurants = await Promise.all(townDataPromises);
+        allRestaurants = allTownRestaurants.flat();
     } catch (error) {
         console.error('Error loading restaurants:', error);
         featuredRestaurants = [];
@@ -150,8 +162,16 @@ function createMarkerIcon(town, isFeatured) {
     });
 }
 
-// Initialize the Leaflet map
+// Initialize the Leaflet map (lazy loaded)
 function initMap() {
+    // Load Leaflet CSS dynamically
+    if (!document.querySelector('link[href*="leaflet.css"]')) {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+        document.head.appendChild(link);
+    }
+
     // Center on the CT shoreline (roughly Guilford area)
     const centerLat = 41.28;
     const centerLng = -72.62;
@@ -252,7 +272,7 @@ function renderRestaurants(restaurantList, isSearchResult = false) {
             ${badge}
             ${restaurant.image ? `
             <div class="card-logo${restaurant.darkBg ? ' dark-bg' : ''}">
-                <img src="${restaurant.image}" alt="${restaurant.name} logo">
+                <img src="${restaurant.image}" alt="${restaurant.name} logo" loading="lazy">
             </div>
             ` : ''}
             <div class="card-header">
@@ -341,9 +361,6 @@ function initHeroSearch() {
         if (e.key === 'Enter') performSearch();
     });
 }
-
-// Initialize search after DOM loads
-document.addEventListener('DOMContentLoaded', initHeroSearch);
 
 // ==========================================
 // Near Me Feature
@@ -487,7 +504,7 @@ function findNearbyRestaurants(userLat, userLng) {
             </div>
             ${closestTwo.map(r => `
             <div class="near-me-card featured">
-                ${r.image ? `<img src="${r.image}" alt="${r.name}" class="near-me-img${r.darkBg ? ' dark-bg' : ''}">` : ''}
+                ${r.image ? `<img src="${r.image}" alt="${r.name}" class="near-me-img${r.darkBg ? ' dark-bg' : ''}" loading="lazy">` : ''}
                 <div class="near-me-info">
                     <h4>${r.name}</h4>
                     <span class="near-me-distance">${r.distance.toFixed(1)} miles away</span>
