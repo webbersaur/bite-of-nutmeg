@@ -283,7 +283,7 @@ function renderRestaurants(restaurantList, isSearchResult = false) {
             ${badge}
             ${restaurant.image ? `
             <div class="card-logo${restaurant.darkBg ? ' dark-bg' : ''}">
-                <img src="${restaurant.image}" alt="${restaurant.name} logo" loading="lazy">
+                <img src="${restaurant.image}" alt="${restaurant.name} logo" width="140" height="100" loading="lazy">
             </div>
             ` : ''}
             <div class="card-header">
@@ -515,7 +515,7 @@ function findNearbyRestaurants(userLat, userLng) {
             </div>
             ${closestTwo.map(r => `
             <div class="near-me-card featured">
-                ${r.image ? `<img src="${r.image}" alt="${r.name}" class="near-me-img${r.darkBg ? ' dark-bg' : ''}" loading="lazy">` : ''}
+                ${r.image ? `<img src="${r.image}" alt="${r.name}" class="near-me-img${r.darkBg ? ' dark-bg' : ''}" width="100" height="100" loading="lazy">` : ''}
                 <div class="near-me-info">
                     <h4>${r.name}</h4>
                     <span class="near-me-distance">${r.distance.toFixed(1)} miles away</span>
