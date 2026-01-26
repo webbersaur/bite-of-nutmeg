@@ -25,7 +25,8 @@ function categoryMatchesQuery(category, query) {
 // Initialize the application
 document.addEventListener('DOMContentLoaded', async () => {
     await loadRestaurants();
-    renderRestaurants(featuredRestaurants);
+    // Skip initial render - cards are inlined in HTML for faster LCP
+    // renderRestaurants only called for search results
     initMapToggle();
     initHeroSearch();
 });
