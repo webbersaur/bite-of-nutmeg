@@ -591,13 +591,34 @@ body {
 }
 
 .website-hint {
-    color: var(--navy);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    color: var(--white);
+    padding: 0.6rem 1.2rem;
+    border-radius: 25px;
     font-size: 0.9rem;
     font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(30, 58, 110, 0.3);
 }
 
-.restaurant-card.clickable:hover .website-hint {
-    color: var(--gold-dark);
+.website-hint::after {
+    content: '→';
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.restaurant-card:hover .website-hint {
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+    color: var(--navy-dark);
+    box-shadow: 0 4px 15px rgba(240, 179, 35, 0.4);
+    transform: scale(1.05);
+}
+
+.restaurant-card:hover .website-hint::after {
+    transform: translateX(4px);
 }
 
 /* Featured and Premium Card Styling */

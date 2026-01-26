@@ -313,7 +313,7 @@ function renderRestaurants(restaurantList, isSearchResult = false) {
             </div>
             ${hasWebsite ? `
             <div class="card-footer">
-                <span class="website-hint">Click to visit website →</span>
+                <span class="website-hint">Visit Website</span>
             </div>
             ` : ''}
         </article>
