@@ -7,7 +7,7 @@
       "address": "145 Block Island Rd, Branford",
       "phone": "203-488-3007",
       "website": "https://docksidebranford.com/",
-      "image": "branford-logos/docksidelogoweb-300x150.png",
+      "image": "branford-logos/docksidelogoweb-300x150.webp",
       "pageLink": "branford.html",
       "lat": 41.26318319677834,
       "lng": -72.80744049768902
@@ -19,7 +19,7 @@
       "address": "208 Main St, Branford",
       "phone": "203-488-0717",
       "website": "https://www.hornetsnestdeli.com/",
-      "image": "branford-logos/HS-without-Branford.png",
+      "image": "branford-logos/HS-without-Branford.webp",
       "pageLink": "branford.html",
       "lat": 41.293489149907074,
       "lng": -72.79274959259837
@@ -31,7 +31,7 @@
       "address": "113 Main St, Branford",
       "phone": "203-483-9995",
       "website": "https://lalunact.com/",
-      "image": "branford-logos/lalunahomere.png",
+      "image": "branford-logos/lalunahomere.webp",
       "pageLink": "branford.html",
       "lat": 41.28935156467897,
       "lng": -72.81280428222095
@@ -43,7 +43,7 @@
       "address": "249 W Main St, Branford",
       "phone": "203-488-5553",
       "website": "https://longleysct.com/",
-      "image": "branford-logos/longleysblack.png",
+      "image": "branford-logos/longleysblack.webp",
       "pageLink": "branford.html",
       "lat": 41.27733376959013,
       "lng": -72.85373976256747
@@ -55,7 +55,7 @@
       "address": "1080 Boston Post Rd, Guilford",
       "phone": "475-223-6083",
       "website": "https://mexitalekitchen.com/",
-      "image": "guilford-logos/Mexitale-web-1.png",
+      "image": "guilford-logos/Mexitale-web-1.webp",
       "pageLink": "guilford.html",
       "lat": 41.30850266494618,
       "lng": -72.7192274202633
@@ -93,7 +93,7 @@
       "address": "176 Main St, Branford",
       "phone": "203-208-1579",
       "website": "https://shorelineprime.com",
-      "image": "branford-logos/SPheadertrans.png",
+      "image": "branford-logos/SPheadertrans.webp",
       "darkBg": true,
       "pageLink": "branford.html",
       "lat": 41.2850762,
