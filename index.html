@@ -29,6 +29,159 @@
     <meta name="twitter:title" content="A Bite of Nutmeg - CT Shoreline Dining Guide">
     <meta name="twitter:description" content="Discover the best restaurants along Connecticut's shoreline from East Haven to Old Saybrook">
     <meta name="twitter:image" content="https://www.abiteofnutmeg.com/branford-logos/Guide%20to%20CT%20Dining%20(1200%20x%20630%20px).png">
+    <link rel="canonical" href="https://www.abiteofnutmeg.com/">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://www.abiteofnutmeg.com/#website",
+          "name": "A Bite of Nutmeg",
+          "description": "Discover the best restaurants along Connecticut's shoreline from East Haven to Old Saybrook",
+          "url": "https://www.abiteofnutmeg.com",
+          "publisher": { "@id": "https://www.abiteofnutmeg.com/#organization" },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://www.abiteofnutmeg.com/?q={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://www.abiteofnutmeg.com/#organization",
+          "name": "A Bite of Nutmeg",
+          "url": "https://www.abiteofnutmeg.com",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.abiteofnutmeg.com/logo-mobile.webp"
+          },
+          "description": "Your guide to discovering the best dining experiences along Connecticut's beautiful shoreline"
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://www.abiteofnutmeg.com/",
+          "name": "A Bite of Nutmeg - CT Shoreline Dining Guide",
+          "url": "https://www.abiteofnutmeg.com/",
+          "isPartOf": { "@id": "https://www.abiteofnutmeg.com/#website" },
+          "speakable": {
+            "@type": "SpeakableSpecification",
+            "cssSelector": [".hero-text h1", ".hero-text p", ".about-content h2", ".about-content p"]
+          }
+        },
+        {
+          "@type": "ItemList",
+          "name": "Featured CT Shoreline Restaurants",
+          "description": "Featured restaurants along Connecticut's shoreline",
+          "numberOfItems": 8,
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "item": {
+                "@type": "Restaurant",
+                "name": "Dockside Seafood & Grill",
+                "servesCuisine": "Seafood",
+                "address": { "@type": "PostalAddress", "streetAddress": "145 Block Island Rd", "addressLocality": "Branford", "addressRegion": "CT" },
+                "telephone": "203-488-3007",
+                "url": "https://docksidebranford.com/"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "item": {
+                "@type": "Restaurant",
+                "name": "Hornet's Nest Deli",
+                "servesCuisine": "American",
+                "address": { "@type": "PostalAddress", "streetAddress": "208 Main St", "addressLocality": "Branford", "addressRegion": "CT" },
+                "telephone": "203-488-0717",
+                "url": "https://www.hornetsnestdeli.com/"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "item": {
+                "@type": "Restaurant",
+                "name": "La Luna Ristorante",
+                "servesCuisine": "Italian",
+                "address": { "@type": "PostalAddress", "streetAddress": "113 Main St", "addressLocality": "Branford", "addressRegion": "CT" },
+                "telephone": "203-483-9995",
+                "url": "https://lalunact.com/"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "item": {
+                "@type": "Restaurant",
+                "name": "Longley's",
+                "servesCuisine": "American",
+                "address": { "@type": "PostalAddress", "streetAddress": "249 W Main St", "addressLocality": "Branford", "addressRegion": "CT" },
+                "telephone": "203-488-5553",
+                "url": "https://longleysct.com/"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 5,
+              "item": {
+                "@type": "Restaurant",
+                "name": "Mexitale",
+                "servesCuisine": "Mexican",
+                "address": { "@type": "PostalAddress", "streetAddress": "1080 Boston Post Rd", "addressLocality": "Guilford", "addressRegion": "CT" },
+                "telephone": "475-223-6083",
+                "url": "https://mexitalekitchen.com/"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 6,
+              "item": {
+                "@type": "Restaurant",
+                "name": "Parthenon Diner Restaurant",
+                "servesCuisine": ["Greek", "American"],
+                "address": { "@type": "PostalAddress", "streetAddress": "374 E Main St", "addressLocality": "Branford", "addressRegion": "CT" },
+                "telephone": "203-481-0333",
+                "url": "https://parthenondiner.com/"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 7,
+              "item": {
+                "@type": "Restaurant",
+                "name": "Parthenon Diner Restaurant",
+                "servesCuisine": ["Greek", "American"],
+                "address": { "@type": "PostalAddress", "streetAddress": "869 Boston Post Rd", "addressLocality": "Old Saybrook", "addressRegion": "CT" },
+                "telephone": "860-388-3533",
+                "url": "https://parthenondiner.com/"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 8,
+              "item": {
+                "@type": "Restaurant",
+                "name": "Shoreline Prime Meats & Deli",
+                "servesCuisine": "American",
+                "address": { "@type": "PostalAddress", "streetAddress": "176 Main St", "addressLocality": "Branford", "addressRegion": "CT" },
+                "telephone": "203-208-1579",
+                "url": "https://shorelineprime.com"
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
     <link rel="preload" as="image" href="logo-mobile.webp">
     <link rel="preload" as="fetch" href="featured-restaurants.json" crossorigin>
     <link rel="preload" as="image" href="branford-logos/docksidelogoweb-300x150.webp">
