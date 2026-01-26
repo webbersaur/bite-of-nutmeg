@@ -1,3 +1,12 @@
 {
-  "cleanUrls": true
+  "cleanUrls": true,
+  "redirects": [
+    { "source": "/branford", "destination": "/restaurants-in-branford", "permanent": true },
+    { "source": "/guilford", "destination": "/restaurants-in-guilford", "permanent": true },
+    { "source": "/madison", "destination": "/restaurants-in-madison", "permanent": true },
+    { "source": "/clinton", "destination": "/restaurants-in-clinton", "permanent": true },
+    { "source": "/westbrook", "destination": "/restaurants-in-westbrook", "permanent": true },
+    { "source": "/old-saybrook", "destination": "/restaurants-in-old-saybrook", "permanent": true },
+    { "source": "/east-haven", "destination": "/restaurants-in-east-haven", "permanent": true }
+  ]
 }
