@@ -692,7 +692,7 @@
         display: block;
         text-align: center;
         color: #666;
-        font-size: 0.85rem;
+        font-size: 1.7rem;
         margin-bottom: 0.5rem;
         font-style: italic;
     }
@@ -701,7 +701,7 @@
         display: block;
         text-align: center;
         color: #666;
-        font-size: 0.9rem;
+        font-size: 1.8rem;
         padding: 1rem;
         font-style: italic;
         background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.02));
