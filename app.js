@@ -40,15 +40,17 @@ function initMapToggle() {
 
     if (!toggleBtn || !mapContainer) return;
 
+    // Show map by default
+    mapContainer.classList.add('show');
+    toggleBtn.textContent = 'Hide Map';
+    initMap();
+    mapInitialized = true;
+
     toggleBtn.addEventListener('click', () => {
         const isShowing = mapContainer.classList.toggle('show');
         toggleBtn.textContent = isShowing ? 'Hide Map' : 'Show Map';
 
-        // Initialize map on first show (lazy load)
-        if (isShowing && !mapInitialized) {
-            initMap();
-            mapInitialized = true;
-        } else if (isShowing && map) {
+        if (isShowing && map) {
             // Fix map rendering and zoom when shown
             setTimeout(() => {
                 map.invalidateSize();
