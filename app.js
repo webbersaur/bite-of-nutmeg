@@ -173,9 +173,14 @@ function createMarkerIcon(town, isFeatured) {
     });
 }
 
-// Initialize the Leaflet map (lazy loaded)
-function initMap() {
-    // Load Leaflet CSS dynamically
+// Load Leaflet library dynamically
+function loadLeaflet(callback) {
+    if (typeof L !== 'undefined') {
+        callback();
+        return;
+    }
+
+    // Load CSS
     if (!document.querySelector('link[href*="leaflet.css"]')) {
         const link = document.createElement('link');
         link.rel = 'stylesheet';
@@ -183,19 +188,30 @@ function initMap() {
         document.head.appendChild(link);
     }
 
-    // Center on the CT shoreline (roughly Guilford area)
-    const centerLat = 41.28;
-    const centerLng = -72.62;
+    // Load JS
+    const script = document.createElement('script');
+    script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+    script.onload = callback;
+    document.head.appendChild(script);
+}
 
-    map = L.map('mapContainer').setView([centerLat, centerLng], 11);
+// Initialize the Leaflet map (lazy loaded)
+function initMap() {
+    loadLeaflet(() => {
+        // Center on the CT shoreline (roughly Guilford area)
+        const centerLat = 41.28;
+        const centerLng = -72.62;
 
-    // Add OpenStreetMap tiles
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
+        map = L.map('mapContainer').setView([centerLat, centerLng], 11);
 
-    // Add markers for ALL restaurants (with town colors)
-    addMarkersToMap(allRestaurants);
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Add markers for ALL restaurants (with town colors)
+        addMarkersToMap(allRestaurants);
+    });
 }
 
 // Add markers to the map
