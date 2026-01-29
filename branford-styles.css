@@ -251,7 +251,7 @@
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 }
 
-.featured-badge {
+.card-image .featured-badge {
     position: absolute;
     bottom: 0.75rem;
     left: 0.75rem;
