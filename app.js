@@ -664,7 +664,7 @@ function initReportModal() {
             body += `Submitted via A Bite of Nutmeg website`;
 
             // Create mailto link
-            const mailto = `mailto:chrishauman@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            const mailto = `mailto:abiteofnutmeg@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
             // Try to open email client
             window.location.href = mailto;
@@ -692,7 +692,7 @@ function showReportFallback(subject, body) {
         <div class="report-fallback">
             <div class="report-email-to">
                 <strong>Email to:</strong>
-                <a href="mailto:chrishauman@gmail.com">chrishauman@gmail.com</a>
+                <a href="mailto:abiteofnutmeg@gmail.com">abiteofnutmeg@gmail.com</a>
                 <button class="copy-btn" id="copyEmail" title="Copy email">Copy</button>
             </div>
             <div class="report-subject">
@@ -712,7 +712,7 @@ function showReportFallback(subject, body) {
     document.getElementById('reportDone').addEventListener('click', resetReportModal);
 
     document.getElementById('copyEmail').addEventListener('click', () => {
-        navigator.clipboard.writeText('chrishauman@gmail.com');
+        navigator.clipboard.writeText('abiteofnutmeg@gmail.com');
         document.getElementById('copyEmail').textContent = 'Copied!';
         setTimeout(() => {
             document.getElementById('copyEmail').textContent = 'Copy';
