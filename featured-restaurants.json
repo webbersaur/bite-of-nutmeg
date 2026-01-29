@@ -1,30 +1,6 @@
 {
   "featured": [
     {
-      "name": "Dockside Seafood & Grill",
-      "category": "Seafood",
-      "town": "Branford",
-      "address": "145 Block Island Rd, Branford",
-      "phone": "203-488-3007",
-      "website": "https://docksidebranford.com/",
-      "image": "branford-logos/docksidelogoweb-300x150.webp",
-      "pageLink": "branford.html",
-      "lat": 41.26318319677834,
-      "lng": -72.80744049768902
-    },
-    {
-      "name": "Hornet's Nest Deli",
-      "category": "American",
-      "town": "Branford",
-      "address": "208 Main St, Branford",
-      "phone": "203-488-0717",
-      "website": "https://www.hornetsnestdeli.com/",
-      "image": "branford-logos/HS-without-Branford.webp",
-      "pageLink": "branford.html",
-      "lat": 41.293489149907074,
-      "lng": -72.79274959259837
-    },
-    {
       "name": "La Luna Ristorante",
       "category": "Italian",
       "town": "Branford",
@@ -85,19 +61,6 @@
       "pageLink": "old-saybrook.html",
       "lat": 41.29256948653025,
       "lng": -72.38376819510408
-    },
-    {
-      "name": "Shoreline Prime Meats & Deli",
-      "category": "American",
-      "town": "Branford",
-      "address": "176 Main St, Branford",
-      "phone": "203-208-1579",
-      "website": "https://shorelineprime.com",
-      "image": "branford-logos/SPheadertrans.webp",
-      "darkBg": true,
-      "pageLink": "branford.html",
-      "lat": 41.2850762,
-      "lng": -72.818045
     }
   ]
 }
