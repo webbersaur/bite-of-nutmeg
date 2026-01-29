@@ -51,7 +51,8 @@
             // Load featured restaurants
             const featuredResponse = await fetch('/featured-restaurants.json');
             if (featuredResponse.ok) {
-                featuredRestaurants = await featuredResponse.json();
+                const featuredData = await featuredResponse.json();
+                featuredRestaurants = featuredData.featured || [];
             }
 
             // Load all town data
