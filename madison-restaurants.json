@@ -7,7 +7,6 @@
     {"name": "Bar Bouchee", "category": "French", "phone": "203-318-8555", "lat": 41.2792116, "lng": -72.5893744},
     {"name": "Bradley & Wall", "category": "American", "phone": "203-318-0300", "lat": 41.2827343, "lng": -72.5932404},
     {"name": "Cafe Allegre", "category": "Italian", "phone": "203-245-7773", "lat": 41.2798556, "lng": -72.5958861},
-    {"name": "Chef Paul Baron", "category": "American", "phone": "203-779-5713", "lat": 41.2795646, "lng": -72.592494},
     {"name": "Circle Pizza", "category": "Pizza", "phone": "203-421-3434", "lat": 41.3588889, "lng": -72.6377778},
     {"name": "Clam Castle", "category": "Seafood", "phone": "203-245-4911", "lat": 41.274112, "lng": -72.5531627},
     {"name": "Cohen's Bagel Company", "category": "Cafe & Bakery", "phone": "203-318-5090", "lat": 41.2748488, "lng": -72.5503578},
