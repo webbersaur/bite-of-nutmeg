@@ -730,6 +730,31 @@ body {
     opacity: 0.5;
 }
 
+/* Facebook Follow Button */
+.fb-follow-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.2rem;
+    padding: 0.6rem 1.4rem;
+    background: #1877F2;
+    color: #fff;
+    border-radius: 6px;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.fb-follow-btn:hover {
+    background: #0d65d9;
+}
+
+.fb-follow-btn svg {
+    flex-shrink: 0;
+}
+
 /* Newsletter Signup */
 .newsletter-signup {
     margin: 1.5rem auto;
