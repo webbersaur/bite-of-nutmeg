@@ -968,13 +968,7 @@ body {
         display: block;
     }
 
-    #mapContainer {
-        display: none;
-    }
-
-    #mapContainer.show {
-        display: block;
-    }
+    /* Map toggle handled by JS for .map-section-full */
 }
 
 @media (max-width: 480px) {

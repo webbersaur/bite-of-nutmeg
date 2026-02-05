@@ -41,23 +41,20 @@ function initMapToggle() {
     if (!toggleBtn || !mapContainer) return;
 
     // Show map by default
-    mapContainer.classList.add('show');
     mapContainer.style.display = 'block';
     toggleBtn.textContent = 'Hide Map';
     initMap();
     mapInitialized = true;
+    let mapVisible = true;
 
-    toggleBtn.addEventListener('click', () => {
-        const isShowing = mapContainer.style.display !== 'none';
+    toggleBtn.addEventListener('click', function() {
+        mapVisible = !mapVisible;
         
-        if (isShowing) {
-            mapContainer.style.display = 'none';
-            toggleBtn.textContent = 'Show Map';
-        } else {
+        if (mapVisible) {
             mapContainer.style.display = 'block';
             toggleBtn.textContent = 'Hide Map';
             // Fix map rendering when shown
-            setTimeout(() => {
+            setTimeout(function() {
                 if (map) {
                     map.invalidateSize();
                     if (markers.length > 0) {
@@ -66,6 +63,9 @@ function initMapToggle() {
                     }
                 }
             }, 100);
+        } else {
+            mapContainer.style.display = 'none';
+            toggleBtn.textContent = 'Show Map';
         }
     });
 }
