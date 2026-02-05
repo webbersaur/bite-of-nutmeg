@@ -169,24 +169,29 @@
 
 .town-nav-badges {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: center;
-    gap: 0.75rem;
-    max-width: 1000px;
+    gap: 0.5rem;
+    max-width: 100%;
     margin: 0 auto;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    -webkit-overflow-scrolling: touch;
 }
 
 .town-nav-badge {
     display: inline-block;
-    padding: 0.6rem 1.25rem;
+    padding: 0.5rem 1rem;
     background-color: #fff;
     color: #333;
     text-decoration: none;
     border-radius: 25px;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 500;
     border: 2px solid #e0e0e0;
     transition: all 0.3s;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .town-nav-badge:hover {
