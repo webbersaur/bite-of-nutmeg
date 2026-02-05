@@ -238,6 +238,105 @@
                 height: 200px;
             }
         }
+
+        /* Coming Soon Section */
+        .coming-soon-section {
+            padding: 3rem 1.5rem;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            text-align: center;
+            border-radius: 16px;
+            margin: 2rem 0;
+        }
+
+        .coming-soon-section h2 {
+            color: #1e3a6e;
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+            border-bottom: none;
+            display: block;
+        }
+
+        .coming-soon-subtitle {
+            color: #666;
+            margin-bottom: 2rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .coming-soon-grid {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .coming-soon-card {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            min-width: 200px;
+            max-width: 240px;
+            border: 2px dashed #e2e8f0;
+        }
+
+        .coming-soon-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .coming-soon-card h3 {
+            color: #1e3a6e;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .coming-soon-card p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+            line-height: 1.5;
+        }
+
+        .coming-soon-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #f0b323 0%, #d4a01d 100%);
+            color: #1e3a6e;
+            padding: 0.4rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .vote-cta {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .vote-cta p {
+            color: #444;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .vote-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #1e3a6e 0%, #152a4f 100%);
+            color: #fff;
+            padding: 0.75rem 2rem;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .vote-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(30, 58, 110, 0.3);
+        }
     </style>
 </head>
 <body class="branford-page">
@@ -297,6 +396,47 @@
 
             <p>That's why I call it the definitive guide. It's not based on who pays for ads or who has the most reviews. It's based on reality.</p>
             <p><a href="/#towns">Browse all 7 shoreline towns</a> and see for yourself.</p>
+        </section>
+
+        <section class="coming-soon-section">
+            <h2>Coming Soon</h2>
+            <p class="coming-soon-subtitle">New features to help diners discover more</p>
+            <div class="coming-soon-grid">
+                <div class="coming-soon-card">
+                    <div class="coming-soon-icon">🍸</div>
+                    <h3>Happy Hour</h3>
+                    <p>Find the best happy hour specials along the shoreline</p>
+                    <span class="coming-soon-badge">Coming Soon</span>
+                </div>
+                <div class="coming-soon-card">
+                    <div class="coming-soon-icon">🎶</div>
+                    <h3>Live Music</h3>
+                    <p>Discover restaurants with live entertainment</p>
+                    <span class="coming-soon-badge">Coming Soon</span>
+                </div>
+                <div class="coming-soon-card">
+                    <div class="coming-soon-icon">🏷️</div>
+                    <h3>Exclusive Deals</h3>
+                    <p>Special discounts for our community of diners</p>
+                    <span class="coming-soon-badge">Coming Soon</span>
+                </div>
+                <div class="coming-soon-card">
+                    <div class="coming-soon-icon">🍽️</div>
+                    <h3>Catering</h3>
+                    <p>Find restaurants that cater events and parties</p>
+                    <span class="coming-soon-badge">Coming Soon</span>
+                </div>
+                <div class="coming-soon-card">
+                    <div class="coming-soon-icon">☕</div>
+                    <h3>Breakfast</h3>
+                    <p>The best spots to start your morning</p>
+                    <span class="coming-soon-badge">Coming Soon</span>
+                </div>
+            </div>
+            <div class="vote-cta">
+                <p>Want to see one of these features launch first? Let us know!</p>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScw6ZA2stMpL8n1sVfk92GsoZPpmVWWlvzmoQzLRtw-J_dspA/viewform?usp=header" target="_blank" rel="noopener noreferrer" class="vote-btn">Vote for a Feature</a>
+            </div>
         </section>
 
         <section class="why-section">
