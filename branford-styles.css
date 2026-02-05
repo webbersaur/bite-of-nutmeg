@@ -257,6 +257,12 @@
     color: #1e3a6e;
 }
 
+.town-nav-badge.why-badge.active {
+    background-color: #1e3a6e;
+    border-color: #1e3a6e;
+    color: #f0b323;
+}
+
 .town-nav-badge.why-badge svg {
     width: 14px;
     height: 14px;
