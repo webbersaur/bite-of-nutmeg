@@ -861,6 +861,28 @@
     height: 16px;
 }
 
+.why-btn-town {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: #f0b323;
+    border: none;
+    border-radius: 50%;
+    color: #1e3a6e;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s;
+    flex-shrink: 0;
+}
+
+.why-btn-town:hover {
+    background: #fff;
+    transform: scale(1.1);
+}
+
 /* Town Hero Search Results Dropdown */
 .town-search-results {
     position: absolute;
@@ -950,18 +972,25 @@
     }
 
     .town-hero-search-row {
-        flex-direction: column;
+        flex-wrap: wrap;
         gap: 0.6rem;
     }
 
     .town-hero-search-box {
+        flex: 1 1 100%;
         width: 100%;
         max-width: 100%;
     }
 
     .town-near-me-btn {
-        width: 100%;
+        flex: 1;
         justify-content: center;
+    }
+
+    .why-btn-town {
+        width: 40px;
+        height: 40px;
+        flex-shrink: 0;
     }
 
     .branford-header .header-container {
