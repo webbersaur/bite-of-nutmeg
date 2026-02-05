@@ -220,7 +220,8 @@
     color: #fff;
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
+    justify-content: center;
+    padding: 0.6rem 0.9rem;
 }
 
 .town-nav-badge.home-badge:hover {
@@ -230,8 +231,8 @@
 }
 
 .town-nav-badge.home-badge svg {
-    width: 14px;
-    height: 14px;
+    width: 18px;
+    height: 18px;
     fill: currentColor;
 }
 
