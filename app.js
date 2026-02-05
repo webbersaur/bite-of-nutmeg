@@ -40,31 +40,30 @@ function initMapToggle() {
 
     if (!toggleBtn || !mapContainer) return;
 
-    // Show map by default on desktop, hide on mobile
-    const isMobile = window.innerWidth <= 768;
-
-    if (!isMobile) {
-        mapContainer.classList.add('show');
-        toggleBtn.textContent = 'Hide Map';
-        initMap();
-        mapInitialized = true;
-    }
+    // Show map by default
+    mapContainer.classList.add('show');
+    mapContainer.style.display = 'block';
+    toggleBtn.textContent = 'Hide Map';
+    initMap();
+    mapInitialized = true;
 
     toggleBtn.addEventListener('click', () => {
-        const isShowing = mapContainer.classList.toggle('show');
-        toggleBtn.textContent = isShowing ? 'Hide Map' : 'Show Map';
-
-        // Initialize map on first show (lazy load for mobile)
-        if (isShowing && !mapInitialized) {
-            initMap();
-            mapInitialized = true;
-        } else if (isShowing && map) {
-            // Fix map rendering and zoom when shown
+        const isShowing = mapContainer.style.display !== 'none';
+        
+        if (isShowing) {
+            mapContainer.style.display = 'none';
+            toggleBtn.textContent = 'Show Map';
+        } else {
+            mapContainer.style.display = 'block';
+            toggleBtn.textContent = 'Hide Map';
+            // Fix map rendering when shown
             setTimeout(() => {
-                map.invalidateSize();
-                if (markers.length > 0) {
-                    const group = L.featureGroup(markers);
-                    map.fitBounds(group.getBounds().pad(0.1));
+                if (map) {
+                    map.invalidateSize();
+                    if (markers.length > 0) {
+                        const group = L.featureGroup(markers);
+                        map.fitBounds(group.getBounds().pad(0.1));
+                    }
                 }
             }, 100);
         }

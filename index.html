@@ -225,13 +225,16 @@
             <div class="hero-text">
                 <h1>CT Shoreline Dining Guide</h1>
                 <p>The <span style="color: #f0b323; font-weight: 700;">ONE</span> spot to find <span style="color: #f0b323; font-weight: 700;">EVERY</span> restaurant, bar, and cafe from East Haven to Old Saybrook</p>
-                <div class="hero-search">
-                    <input type="text" id="heroSearch" placeholder="Search restaurants...">
-                    <button type="button" id="heroSearchBtn">Search</button>
+                <div class="hero-search-row">
+                    <div class="hero-search-box">
+                        <input type="text" id="heroSearch" placeholder="Search for a restaurant or cuisine...">
+                        <button type="button" id="heroSearchBtn" class="search-find-btn">Find ›</button>
+                    </div>
+                    <button type="button" id="nearMeBtn" class="near-me-btn-new">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        Near Me
+                    </button>
                 </div>
-                <button type="button" id="nearMeBtn" class="near-me-btn">
-                    <span class="near-me-icon">📍</span> Near Me
-                </button>
             </div>
         </div>
         <div class="wave-divider">
@@ -245,35 +248,42 @@
 
     <section class="towns-section" id="towns">
         <h2>Explore by Town</h2>
-        <div class="town-badges">
-            <a href="restaurants-in-east-haven.html" class="town-badge">
-                <span class="badge-name">East Haven</span>
+        <div class="town-houses">
+            <a href="restaurants-in-east-haven" class="town-house">
+                <svg class="town-icon" viewBox="0 0 100 75" fill="none"><path d="M10 40 L50 10 L90 40 L90 70 L10 70 Z" fill="#4a90a4"/><path d="M10 40 L50 10 L90 40" stroke="#2c5f6e" stroke-width="3" fill="none"/><rect x="20" y="45" width="15" height="20" fill="#f5f5f5" stroke="#2c5f6e"/><rect x="65" y="45" width="15" height="20" fill="#f5f5f5" stroke="#2c5f6e"/><rect x="40" y="50" width="20" height="20" fill="#8b6914"/><circle cx="55" cy="60" r="2" fill="#f0b323"/><path d="M5 40 L50 5 L95 40" stroke="#6bb3c9" stroke-width="4" fill="none"/></svg>
+                <span class="town-house-name">East Haven</span>
             </a>
-            <a href="restaurants-in-branford.html" class="town-badge">
-                <span class="badge-name">Branford</span>
+            <a href="restaurants-in-branford" class="town-house">
+                <svg class="town-icon" viewBox="0 0 100 75" fill="none"><path d="M10 40 L50 10 L90 40 L90 70 L10 70 Z" fill="#4a90a4"/><path d="M10 40 L50 10 L90 40" stroke="#2c5f6e" stroke-width="3" fill="none"/><rect x="20" y="45" width="15" height="20" fill="#f5f5f5" stroke="#2c5f6e"/><rect x="65" y="45" width="15" height="20" fill="#f5f5f5" stroke="#2c5f6e"/><rect x="40" y="50" width="20" height="20" fill="#8b6914"/><circle cx="55" cy="60" r="2" fill="#f0b323"/><path d="M5 40 L50 5 L95 40" stroke="#6bb3c9" stroke-width="4" fill="none"/></svg>
+                <span class="town-house-name">Branford</span>
             </a>
-            <a href="restaurants-in-guilford.html" class="town-badge">
-                <span class="badge-name">Guilford</span>
+            <a href="restaurants-in-guilford" class="town-house">
+                <svg class="town-icon" viewBox="0 0 100 75" fill="none"><path d="M10 40 L50 10 L90 40 L90 70 L10 70 Z" fill="#4a90a4"/><path d="M10 40 L50 10 L90 40" stroke="#2c5f6e" stroke-width="3" fill="none"/><rect x="20" y="45" width="15" height="20" fill="#f5f5f5" stroke="#2c5f6e"/><rect x="65" y="45" width="15" height="20" fill="#f5f5f5" stroke="#2c5f6e"/><rect x="40" y="50" width="20" height="20" fill="#8b6914"/><circle cx="55" cy="60" r="2" fill="#f0b323"/><path d="M5 40 L50 5 L95 40" stroke="#6bb3c9" stroke-width="4" fill="none"/></svg>
+                <span class="town-house-name">Guilford</span>
             </a>
-            <a href="restaurants-in-madison.html" class="town-badge">
-                <span class="badge-name">Madison</span>
+            <a href="restaurants-in-madison" class="town-house">
+                <svg class="town-icon" viewBox="0 0 100 75" fill="none"><path d="M10 40 L50 10 L90 40 L90 70 L10 70 Z" fill="#4a90a4"/><path d="M10 40 L50 10 L90 40" stroke="#2c5f6e" stroke-width="3" fill="none"/><rect x="20" y="45" width="15" height="20" fill="#f5f5f5" stroke="#2c5f6e"/><rect x="65" y="45" width="15" height="20" fill="#f5f5f5" stroke="#2c5f6e"/><rect x="40" y="50" width="20" height="20" fill="#8b6914"/><circle cx="55" cy="60" r="2" fill="#f0b323"/><path d="M5 40 L50 5 L95 40" stroke="#6bb3c9" stroke-width="4" fill="none"/></svg>
+                <span class="town-house-name">Madison</span>
             </a>
-            <a href="restaurants-in-clinton.html" class="town-badge">
-                <span class="badge-name">Clinton</span>
+            <a href="restaurants-in-clinton" class="town-house">
+                <svg class="town-icon" viewBox="0 0 100 75" fill="none"><path d="M10 40 L50 10 L90 40 L90 70 L10 70 Z" fill="#4a90a4"/><path d="M10 40 L50 10 L90 40" stroke="#2c5f6e" stroke-width="3" fill="none"/><rect x="20" y="45" width="15" height="20" fill="#f5f5f5" stroke="#2c5f6e"/><rect x="65" y="45" width="15" height="20" fill="#f5f5f5" stroke="#2c5f6e"/><rect x="40" y="50" width="20" height="20" fill="#8b6914"/><circle cx="55" cy="60" r="2" fill="#f0b323"/><path d="M5 40 L50 5 L95 40" stroke="#6bb3c9" stroke-width="4" fill="none"/></svg>
+                <span class="town-house-name">Clinton</span>
             </a>
-            <a href="restaurants-in-westbrook.html" class="town-badge">
-                <span class="badge-name">Westbrook</span>
+            <a href="restaurants-in-westbrook" class="town-house">
+                <svg class="town-icon" viewBox="0 0 100 75" fill="none"><path d="M10 40 L50 10 L90 40 L90 70 L10 70 Z" fill="#4a90a4"/><path d="M10 40 L50 10 L90 40" stroke="#2c5f6e" stroke-width="3" fill="none"/><rect x="20" y="45" width="15" height="20" fill="#f5f5f5" stroke="#2c5f6e"/><rect x="65" y="45" width="15" height="20" fill="#f5f5f5" stroke="#2c5f6e"/><rect x="40" y="50" width="20" height="20" fill="#8b6914"/><circle cx="55" cy="60" r="2" fill="#f0b323"/><path d="M5 40 L50 5 L95 40" stroke="#6bb3c9" stroke-width="4" fill="none"/></svg>
+                <span class="town-house-name">Westbrook</span>
             </a>
-            <a href="restaurants-in-old-saybrook.html" class="town-badge">
-                <span class="badge-name">Old Saybrook</span>
+            <a href="restaurants-in-old-saybrook" class="town-house">
+                <svg class="town-icon" viewBox="0 0 100 75" fill="none"><path d="M10 40 L50 10 L90 40 L90 70 L10 70 Z" fill="#4a90a4"/><path d="M10 40 L50 10 L90 40" stroke="#2c5f6e" stroke-width="3" fill="none"/><rect x="20" y="45" width="15" height="20" fill="#f5f5f5" stroke="#2c5f6e"/><rect x="65" y="45" width="15" height="20" fill="#f5f5f5" stroke="#2c5f6e"/><rect x="40" y="50" width="20" height="20" fill="#8b6914"/><circle cx="55" cy="60" r="2" fill="#f0b323"/><path d="M5 40 L50 5 L95 40" stroke="#6bb3c9" stroke-width="4" fill="none"/></svg>
+                <span class="town-house-name">Old Saybrook</span>
             </a>
         </div>
     </section>
 
-    <section class="map-section" id="map">
-        <div class="map-header">
+    <section class="map-section-full" id="map">
+        <div class="map-header-full">
             <h2>Explore the Shoreline</h2>
-            <button class="map-toggle" id="mapToggle">Show Map</button>
+            <button class="map-toggle-btn" id="mapToggle">Hide Map</button>
         </div>
         <div id="mapContainer"></div>
     </section>
