@@ -148,42 +148,38 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body class="branford-page">
-    <!-- Header -->
-    <header class="branford-header">
-        <div class="header-container">
-            <a href="/" class="logo">
-                <img src="logo-optimized.png" alt="A Bite of Nutmeg">
-            </a>
-            <nav class="main-nav">
-                <a href="/">HOME</a>
-                <a href="#restaurants" class="active">DINE</a>
-                <a href="#about">ABOUT</a>
-                <a href="/why">WHY</a>
-            </nav>
+    <!-- Hero Section (Homepage Style) -->
+    <section class="town-hero-new">
+        <div class="town-hero-content">
+            <a href="/"><img src="logo-mobile.webp" alt="A Bite of Nutmeg" class="town-hero-logo" width="300" height="209"></a>
+            <div class="town-hero-text">
+                <h1>Restaurants in Guilford</h1>
+                <p class="tagline">— powered by official health department data</p>
+                <div class="town-hero-search-row">
+                    <div class="town-hero-search-box">
+                        <input type="text" id="searchInput" placeholder="Search Guilford restaurants...">
+                        <button type="button" id="townSearchBtn" class="town-search-find-btn">Find ›</button>
+                    </div>
+                    <button type="button" id="townNearMeBtn" class="town-near-me-btn">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        Near Me
+                    </button>
+                </div>
+            </div>
         </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="branford-hero">
-        <h1>Discover Guilford Dining</h1>
-        <p>Explore Guilford's charming culinary scene, from iconic seafood spots to farm-to-table favorites</p>
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Search restaurants...">
-        </div>
-        <div class="search-results" id="searchResults"></div>
+        <div class="town-search-results" id="searchResults"></div>
     </section>
 
     <!-- Town Navigation -->
     <section class="town-nav-section">
         <div class="town-nav-badges">
-            <a href="/#near-me" class="town-nav-badge near-me-badge">📍 Near Me</a>
-            <a href="east-haven" class="town-nav-badge">East Haven</a>
-            <a href="branford" class="town-nav-badge">Branford</a>
-            <a href="guilford" class="town-nav-badge active">Guilford</a>
-            <a href="madison" class="town-nav-badge">Madison</a>
-            <a href="clinton" class="town-nav-badge">Clinton</a>
-            <a href="westbrook" class="town-nav-badge">Westbrook</a>
-            <a href="old-saybrook" class="town-nav-badge">Old Saybrook</a>
+            <a href="/restaurants-in-east-haven" class="town-nav-badge">East Haven</a>
+            <a href="/restaurants-in-branford" class="town-nav-badge">Branford</a>
+            <a href="/restaurants-in-guilford" class="town-nav-badge active">Guilford</a>
+            <a href="/restaurants-in-madison" class="town-nav-badge">Madison</a>
+            <a href="/restaurants-in-clinton" class="town-nav-badge">Clinton</a>
+            <a href="/restaurants-in-westbrook" class="town-nav-badge">Westbrook</a>
+            <a href="/restaurants-in-old-saybrook" class="town-nav-badge">Old Saybrook</a>
         </div>
     </section>
 

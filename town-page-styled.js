@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     renderFeaturedRestaurants();
     renderRestaurantList();
     initSearch();
+    initNearMe();
     initMap();
     initMapToggle();
 });
@@ -212,6 +213,8 @@ function initSearch() {
     const searchInput = document.getElementById('searchInput');
     const searchResults = document.getElementById('searchResults');
 
+    if (!searchInput || !searchResults) return;
+
     searchInput.addEventListener('input', (e) => {
         searchTerm = e.target.value;
         renderSearchResults();
@@ -230,6 +233,38 @@ function initSearch() {
             renderSearchResults();
         }
     });
+
+    // Handle Find button click (new homepage-style search)
+    const findBtn = document.getElementById('townSearchBtn');
+    if (findBtn) {
+        findBtn.addEventListener('click', () => {
+            if (searchTerm.length > 0) {
+                renderSearchResults();
+                searchResults.classList.add('active');
+            }
+        });
+    }
+
+    // Handle Enter key in search input
+    searchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            if (searchTerm.length > 0) {
+                renderSearchResults();
+                searchResults.classList.add('active');
+            }
+        }
+    });
+}
+
+// Initialize Near Me button
+function initNearMe() {
+    const nearMeBtn = document.getElementById('townNearMeBtn');
+    if (nearMeBtn && typeof window.openNearMe === 'function') {
+        nearMeBtn.addEventListener('click', () => {
+            window.openNearMe();
+        });
+    }
 }
 
 // Render search results dropdown

@@ -1720,6 +1720,8 @@ body {
     width: 80px;
     height: 60px;
     margin-bottom: 0.5rem;
+    object-fit: contain;
+    border-radius: 8px;
 }
 
 .town-house-name {
@@ -1779,6 +1781,11 @@ body {
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     border: 3px solid var(--white);
+    display: none;
+}
+
+.map-section-full #mapContainer.show {
+    display: block;
 }
 
 /* Responsive for new elements */
