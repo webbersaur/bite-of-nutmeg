@@ -213,6 +213,50 @@
     color: #f0b323;
 }
 
+/* Utility nav badges (Home, Why) */
+.town-nav-badge.home-badge {
+    background-color: #1e3a6e;
+    border-color: #1e3a6e;
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.town-nav-badge.home-badge:hover {
+    background-color: #2a4a8a;
+    border-color: #2a4a8a;
+    color: #fff;
+}
+
+.town-nav-badge.home-badge svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+}
+
+.town-nav-badge.why-badge {
+    background-color: #f0b323;
+    border-color: #f0b323;
+    color: #1e3a6e;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 600;
+}
+
+.town-nav-badge.why-badge:hover {
+    background-color: #d9a01f;
+    border-color: #d9a01f;
+    color: #1e3a6e;
+}
+
+.town-nav-badge.why-badge svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+}
+
 /* Featured Section */
 .featured-section {
     padding: 3rem 2rem;
