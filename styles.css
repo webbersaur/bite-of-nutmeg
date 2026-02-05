@@ -1123,6 +1123,32 @@ body {
     color: #dc3545;
 }
 
+/* Town Selector Fallback */
+.near-me-town-selector {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.near-me-town-btn {
+    padding: 0.5rem 1rem;
+    background: var(--navy);
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.near-me-town-btn:hover {
+    background: var(--gold);
+    color: var(--navy);
+}
+
 /* Results */
 .near-me-results h3 {
     color: var(--navy);

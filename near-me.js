@@ -155,14 +155,133 @@
         );
     }
 
-    // Show error message
+    // Show error message with town selector fallback
     function showNearMeError(message) {
         const loading = document.getElementById('nearMeLoading');
         const error = document.getElementById('nearMeError');
 
         loading.style.display = 'none';
         error.style.display = 'block';
-        error.querySelector('p').textContent = message;
+        error.innerHTML = `
+            <p>${message}</p>
+            <p style="margin-top: 1rem; font-weight: 600; color: #333;">Or browse by town:</p>
+            <div class="near-me-town-selector">
+                ${townFiles.map(t => `
+                    <button class="near-me-town-btn" data-town="${t.town}">${t.town}</button>
+                `).join('')}
+            </div>
+        `;
+
+        // Attach click handlers to town buttons
+        error.querySelectorAll('.near-me-town-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                showTownRestaurants(btn.dataset.town);
+            });
+        });
+    }
+
+    // Show restaurants from a selected town (fallback when location unavailable)
+    function showTownRestaurants(townName) {
+        const error = document.getElementById('nearMeError');
+        const results = document.getElementById('nearMeResults');
+        const featuredContainer = document.getElementById('nearMeFeatured');
+        const othersContainer = document.getElementById('nearMeOthers');
+
+        error.style.display = 'none';
+        results.style.display = 'block';
+
+        // Filter restaurants by town
+        const townRestaurants = allRestaurants
+            .filter(r => r.town === townName)
+            .map(r => {
+                const featured = isFeaturedRestaurant(r.name);
+                const featuredData = featured ? featuredRestaurants.find(f => f.name === r.name) : null;
+                return {
+                    ...r,
+                    website: featuredData?.website || r.website,
+                    isFeatured: featured,
+                    isEnhanced: r.enhanced === true
+                };
+            })
+            .sort((a, b) => {
+                // Featured first, then enhanced, then alphabetical
+                if (a.isFeatured && !b.isFeatured) return -1;
+                if (!a.isFeatured && b.isFeatured) return 1;
+                if (a.isEnhanced && !b.isEnhanced) return -1;
+                if (!a.isEnhanced && b.isEnhanced) return 1;
+                return a.name.localeCompare(b.name);
+            });
+
+        // Get featured restaurants for this town
+        const townFeatured = featuredRestaurants.filter(r => r.town === townName);
+
+        // Render featured restaurants for this town
+        if (townFeatured.length > 0) {
+            featuredContainer.innerHTML = `
+                <div class="near-me-section-header">
+                    <h3>Featured in ${townName}</h3>
+                    <button class="near-me-section-close" id="closeFeatured">&times;</button>
+                </div>
+                ${townFeatured.map(r => `
+                <div class="near-me-card featured">
+                    ${r.image ? `<img src="${r.image}" alt="${r.name}" class="near-me-img${r.darkBg ? ' dark-bg' : ''}" loading="lazy">` : ''}
+                    <div class="near-me-info">
+                        <h4>${r.name}</h4>
+                        <p class="near-me-cuisine">${formatCategory(r.category || r.cuisine)}</p>
+                        <p class="near-me-town">${r.town}</p>
+                        ${r.address ? `<p class="near-me-address">${r.address}</p>` : ''}
+                        ${r.phone ? `<p class="near-me-phone">${r.phone}</p>` : ''}
+                        <div class="near-me-actions">
+                            ${r.website ? `<a href="${r.website}" target="_blank" rel="noopener noreferrer" class="near-me-link">Website</a>` : ''}
+                            ${r.lat && r.lng ? `<a href="https://www.google.com/maps/dir/?api=1&destination=${r.lat},${r.lng}" target="_blank" rel="noopener noreferrer" class="near-me-link directions">Directions</a>` : ''}
+                        </div>
+                    </div>
+                </div>
+                `).join('')}
+            `;
+
+            document.getElementById('closeFeatured').addEventListener('click', () => {
+                featuredContainer.style.display = 'none';
+                const othersList = document.querySelector('.near-me-list');
+                if (othersList) othersList.classList.add('expanded');
+            });
+        } else {
+            featuredContainer.innerHTML = '';
+        }
+
+        // Render all restaurants for this town
+        if (townRestaurants.length > 0) {
+            othersContainer.innerHTML = `
+                <h3>All ${townName} Restaurants (${townRestaurants.length})</h3>
+                <div class="near-me-list">
+                    ${townRestaurants.map(r => {
+                        let cardClass = 'near-me-card small';
+                        let badge = '';
+                        if (r.isEnhanced) {
+                            cardClass += ' near-me-enhanced-highlight';
+                            badge = '<span class="near-me-badge enhanced-badge">Premium</span>';
+                        } else if (r.isFeatured) {
+                            cardClass += ' near-me-featured-highlight';
+                            badge = '<span class="near-me-badge featured-badge">Featured</span>';
+                        }
+                        const showPhone = r.isFeatured || r.isEnhanced;
+
+                        return `
+                        <div class="${cardClass}">
+                            <div class="near-me-info">
+                                <h4>${r.name} ${badge}</h4>
+                                <p class="near-me-meta">${formatCategory(r.category)}</p>
+                                ${showPhone && r.phone ? `<p class="near-me-phone-visible">${r.phone}</p>` : ''}
+                                ${r.website ? `<a href="${r.website}" target="_blank" rel="noopener noreferrer" class="near-me-link">Website</a>` : ''}
+                                ${r.lat && r.lng ? `<a href="https://www.google.com/maps/dir/?api=1&destination=${r.lat},${r.lng}" target="_blank" rel="noopener noreferrer" class="near-me-link directions">Directions</a>` : ''}
+                            </div>
+                        </div>
+                    `}).join('')}
+                </div>
+            `;
+        } else {
+            othersContainer.innerHTML = '<p>No restaurants found for this town.</p>';
+        }
     }
 
     // Find nearby restaurants
