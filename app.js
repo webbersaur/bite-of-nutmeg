@@ -40,12 +40,18 @@ function initMapToggle() {
 
     if (!toggleBtn || !mapContainer) return;
 
-    // Show map by default
-    mapContainer.style.display = 'block';
-    toggleBtn.textContent = 'Hide Map';
-    initMap();
-    mapInitialized = true;
-    let mapVisible = true;
+    // Hide map by default on mobile, show on desktop
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) {
+        mapContainer.style.display = 'none';
+        toggleBtn.textContent = 'Show Map';
+    } else {
+        mapContainer.style.display = 'block';
+        toggleBtn.textContent = 'Hide Map';
+        initMap();
+        mapInitialized = true;
+    }
+    let mapVisible = !isMobile;
 
     toggleBtn.addEventListener('click', function() {
         mapVisible = !mapVisible;
@@ -53,6 +59,10 @@ function initMapToggle() {
         if (mapVisible) {
             mapContainer.style.display = 'block';
             toggleBtn.textContent = 'Hide Map';
+            if (!mapInitialized) {
+                initMap();
+                mapInitialized = true;
+            }
             // Fix map rendering when shown
             setTimeout(function() {
                 if (map) {
