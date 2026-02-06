@@ -936,11 +936,11 @@ body {
     }
 
     .hero h1 {
-        font-size: 2rem;
+        display: none;
     }
 
     .hero p {
-        font-size: 1rem;
+        font-size: 1.25rem;
     }
 
     .filters-content {
@@ -969,6 +969,24 @@ body {
     }
 
     /* Map toggle handled by JS for .map-section-full */
+
+    .wave-divider {
+        display: none;
+    }
+
+    .hero {
+        padding-bottom: 2rem;
+    }
+
+    .hero::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: #1e3a6e;
+    }
 }
 
 @media (max-width: 480px) {
