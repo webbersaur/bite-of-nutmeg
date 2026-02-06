@@ -742,7 +742,7 @@
     color: #fff;
     padding: 2.5rem 2rem 3rem;
     position: relative;
-    overflow: visible;
+    overflow: hidden;
 }
 
 .town-hero-new::before {
@@ -889,12 +889,9 @@
 
 /* Town Hero Search Results Dropdown */
 .town-search-results {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
+    position: relative;
     max-width: 500px;
-    margin: 0.5rem auto 0;
+    margin: -0.5rem auto 0;
     background: #fff;
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
@@ -903,7 +900,6 @@
     display: none;
     z-index: 100;
 }
-
 .town-search-results.active {
     display: block;
 }
