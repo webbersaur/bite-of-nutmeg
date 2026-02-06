@@ -742,7 +742,7 @@
     color: #fff;
     padding: 2.5rem 2rem 3rem;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .town-hero-new::before {
