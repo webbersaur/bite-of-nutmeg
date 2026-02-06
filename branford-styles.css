@@ -269,6 +269,10 @@
     fill: currentColor;
 }
 
+.badge-abbr {
+    display: none;
+}
+
 /* Featured Section */
 .featured-section {
     padding: 3rem 2rem;
@@ -948,6 +952,25 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+    .badge-full {
+        display: none;
+    }
+    .badge-abbr {
+        display: inline;
+    }
+    .town-nav-badge {
+        padding: 0.4rem 0.55rem;
+        font-size: 0.8rem;
+        border-width: 1.5px;
+    }
+    .town-nav-badge.home-badge {
+        padding: 0.4rem 0.55rem;
+    }
+    .town-nav-badges {
+        gap: 0.2rem;
+        padding: 0.5rem 0.5rem;
+    }
+
     /* Town Hero New - Mobile */
     .town-hero-content {
         flex-direction: column;

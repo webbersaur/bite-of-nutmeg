@@ -243,7 +243,7 @@ function initSearch() {
 
     // Hide search results when clicking outside
     document.addEventListener('click', (e) => {
-        if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+        if (!searchInput.contains(e.target) && !searchResults.contains(e.target) && !(findBtn && findBtn.contains(e.target))) {
             searchResults.classList.remove('active');
         }
     });
@@ -265,10 +265,12 @@ function renderSearchResults() {
         return;
     }
 
-    const filtered = data.restaurants.filter(restaurant =>
-        restaurant.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        restaurant.category.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    const term = searchTerm.toLowerCase();
+    const filtered = data.restaurants.filter(restaurant => {
+        const cat = Array.isArray(restaurant.category) ? restaurant.category.join(', ') : restaurant.category;
+        return restaurant.name.toLowerCase().includes(term) ||
+            cat.toLowerCase().includes(term);
+    });
 
     searchResults.classList.add('active');
 
@@ -281,7 +283,7 @@ function renderSearchResults() {
         <a href="tel:${restaurant.phone.replace(/[^0-9]/g, '')}" class="result-item">
             <div class="result-info">
                 <h4>${restaurant.name}</h4>
-                <span class="result-category">${restaurant.category}</span>
+                <span class="result-category">${Array.isArray(restaurant.category) ? restaurant.category.join(', ') : restaurant.category}</span>
             </div>
             <span class="result-phone">${restaurant.phone}</span>
         </a>
