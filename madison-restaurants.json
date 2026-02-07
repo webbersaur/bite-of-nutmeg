@@ -27,7 +27,7 @@
     {"name": "Life Bowls", "category": "Cafe & Bakery", "phone": "203-421-4647", "lat": 41.279823, "lng": -72.5953375},
     {"name": "Madison Beach Hotel", "category": "American", "phone": "203-245-1404", "lat": 41.2709877, "lng": -72.6082786},
     {"name": "McDonald's", "category": "Fast Food", "phone": "203-245-8887", "lat": 41.29192, "lng": -72.58013},
-    {"name": "Meriano's Bakery & Cannoli Truck", "category": "Cafe & Bakery", "phone": "203-779-5812", "lat": 41.281047, "lng": -72.631286},
+    {"name": "Meriano's Bakery & Cannoli Truck", "category": "Cafe & Bakery", "phone": "203-779-5812", "website": "https://www.cannolitruck.com/", "enhanced": true, "lat": 41.281047, "lng": -72.631286},
     {"name": "Nick's Place", "category": "American", "phone": "203-245-7227", "lat": 41.2813589, "lng": -72.6315194},
     {"name": "Old Schoolhouse Deli", "category": "American", "phone": "203-245-1610", "lat": 41.277986, "lng": -72.626602},
     {"name": "Petrillo's Pizza Pub & Grill", "category": "Pizza", "phone": "203-245-7111", "lat": 41.28649, "lng": -72.642617},
