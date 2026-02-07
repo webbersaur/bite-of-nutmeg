@@ -1,8 +1,7 @@
 {
   "featured": [],
   "restaurants": [
-    {"name": "AJ Seaside Grill", "category": "American", "phone": "203-245-6867", "seasonal": true, "lat": 41.272526, "lng": -72.6158741},
-    {"name": "Amato's Pizza & Pasta", "category": "Pizza", "phone": "203-421-6331", "lat": 41.3045517, "lng": -72.6049815},
+{"name": "Amato's Pizza & Pasta", "category": "Pizza", "phone": "203-421-6331", "lat": 41.3045517, "lng": -72.6049815},
     {"name": "Ashley's Ice Cream", "category": "Dessert", "phone": "203-245-1113", "lat": 41.2792633, "lng": -72.5958458},
     {"name": "Bar Bouchee", "category": "French", "phone": "203-318-8555", "lat": 41.2792116, "lng": -72.5893744},
     {"name": "Bradley & Wall", "category": "American", "phone": "203-318-0300", "lat": 41.2827343, "lng": -72.5932404},
