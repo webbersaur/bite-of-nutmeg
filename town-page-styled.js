@@ -218,6 +218,15 @@ function renderRestaurantList() {
     `}).join('');
 }
 
+// Scroll to results section, dismissing keyboard first on mobile
+function scrollToResults() {
+    document.activeElement?.blur();
+    setTimeout(() => {
+        const section = document.querySelector('.category-section');
+        if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+}
+
 // Initialize search (filters restaurant list in place)
 function initSearch() {
     const searchInput = document.getElementById('searchInput');
@@ -234,6 +243,7 @@ function initSearch() {
         findBtn.addEventListener('click', () => {
             searchTerm = searchInput.value;
             renderRestaurantList();
+            scrollToResults();
         });
     }
 
@@ -242,6 +252,7 @@ function initSearch() {
             e.preventDefault();
             searchTerm = searchInput.value;
             renderRestaurantList();
+            scrollToResults();
         }
     });
 }
