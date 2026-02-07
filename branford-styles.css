@@ -1001,6 +1001,10 @@
         max-width: 100%;
     }
 
+    .town-hero-search-box input {
+        font-size: 16px; /* Prevent iOS auto-zoom on focus */
+    }
+
     .town-near-me-btn {
         flex: 1;
         justify-content: center;

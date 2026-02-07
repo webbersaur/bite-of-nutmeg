@@ -336,10 +336,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
+            const y = target.getBoundingClientRect().top + window.pageYOffset;
+            window.scrollTo({ top: y, behavior: 'smooth' });
         }
     });
 });
@@ -389,10 +387,11 @@ function initHeroSearch() {
         // Blur input to dismiss mobile keyboard, then scroll after viewport adjusts
         searchInput.blur();
         setTimeout(() => {
-            document.getElementById('restaurants').scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
+            const el = document.getElementById('restaurants');
+            if (el) {
+                const y = el.getBoundingClientRect().top + window.pageYOffset;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+            }
         }, 300);
     }
 
