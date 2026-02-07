@@ -407,6 +407,12 @@
         if (nearMeBtn) {
             nearMeBtn.addEventListener('click', openNearMe);
         }
+
+        // Handle Near Me button clicks (town pages)
+        const townNearMeBtn = document.getElementById('townNearMeBtn');
+        if (townNearMeBtn) {
+            townNearMeBtn.addEventListener('click', openNearMe);
+        }
     }
 
     // Run on DOM ready

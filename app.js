@@ -225,6 +225,7 @@ function initMap() {
 
 // Add markers to the map
 function addMarkersToMap(restaurantList) {
+    if (!map) return;
     // Clear existing markers
     markers.forEach(marker => map.removeLayer(marker));
     markers = [];
@@ -385,16 +386,22 @@ function initHeroSearch() {
         renderRestaurants(filtered, true);
         addMarkersToMap(filtered);
 
-        // Scroll to results
-        document.getElementById('restaurants').scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
+        // Blur input to dismiss mobile keyboard, then scroll after viewport adjusts
+        searchInput.blur();
+        setTimeout(() => {
+            document.getElementById('restaurants').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }, 300);
     }
 
     searchBtn.addEventListener('click', performSearch);
-    searchInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') performSearch();
+    searchInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            performSearch();
+        }
     });
 }
 
