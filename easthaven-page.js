@@ -111,14 +111,24 @@ function renderFeaturedRestaurants() {
     `).join('');
 }
 
-// Filter restaurants based on category only
+// Filter restaurants based on category and search term
 function getFilteredRestaurants() {
     return data.restaurants.filter(restaurant => {
-        if (currentCategory === 'All') return true;
-        if (Array.isArray(restaurant.category)) {
-            return restaurant.category.includes(currentCategory);
-        }
-        return restaurant.category === currentCategory;
+        // Category filter
+        const matchesCategory = currentCategory === 'All' ||
+            (Array.isArray(restaurant.category)
+                ? restaurant.category.includes(currentCategory)
+                : restaurant.category === currentCategory);
+
+        // Search filter
+        const matchesSearch = searchTerm.length === 0 || (() => {
+            const term = searchTerm.toLowerCase();
+            const cat = Array.isArray(restaurant.category) ? restaurant.category.join(', ') : restaurant.category;
+            return restaurant.name.toLowerCase().includes(term) ||
+                cat.toLowerCase().includes(term);
+        })();
+
+        return matchesCategory && matchesSearch;
     });
 }
 
@@ -209,85 +219,32 @@ function initNearMe() {
     }
 }
 
-// Initialize search
+// Initialize search (filters restaurant list in place)
 function initSearch() {
     const searchInput = document.getElementById('searchInput');
-    const searchResults = document.getElementById('searchResults');
+    if (!searchInput) return;
+
+    const findBtn = document.getElementById('townSearchBtn');
 
     searchInput.addEventListener('input', (e) => {
         searchTerm = e.target.value;
-        renderSearchResults();
+        renderRestaurantList();
     });
 
-    // Handle Find button click (new homepage-style search)
-    const findBtn = document.getElementById('townSearchBtn');
     if (findBtn) {
         findBtn.addEventListener('click', () => {
-            if (searchTerm.length > 0) {
-                renderSearchResults();
-                searchResults.classList.add('active');
-            }
+            searchTerm = searchInput.value;
+            renderRestaurantList();
         });
     }
 
-    // Handle Enter key in search input
     searchInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
             e.preventDefault();
-            if (searchTerm.length > 0) {
-                renderSearchResults();
-                searchResults.classList.add('active');
-            }
+            searchTerm = searchInput.value;
+            renderRestaurantList();
         }
     });
-
-    // Hide search results when clicking outside
-    document.addEventListener('click', (e) => {
-        if (!searchInput.contains(e.target) && !searchResults.contains(e.target) && !(findBtn && findBtn.contains(e.target))) {
-            searchResults.classList.remove('active');
-        }
-    });
-
-    // Show search results when focusing on input (if there's a search term)
-    searchInput.addEventListener('focus', () => {
-        if (searchTerm.length > 0) {
-            renderSearchResults();
-        }
-    });
-}
-
-// Render search results dropdown
-function renderSearchResults() {
-    const searchResults = document.getElementById('searchResults');
-
-    if (searchTerm.length === 0) {
-        searchResults.classList.remove('active');
-        return;
-    }
-
-    const term = searchTerm.toLowerCase();
-    const filtered = data.restaurants.filter(restaurant => {
-        const cat = Array.isArray(restaurant.category) ? restaurant.category.join(', ') : restaurant.category;
-        return restaurant.name.toLowerCase().includes(term) ||
-            cat.toLowerCase().includes(term);
-    });
-
-    searchResults.classList.add('active');
-
-    if (filtered.length === 0) {
-        searchResults.innerHTML = `<div class="no-results-msg">No restaurants found for "${searchTerm}"</div>`;
-        return;
-    }
-
-    searchResults.innerHTML = filtered.slice(0, 8).map(restaurant => `
-        <a href="tel:${restaurant.phone.replace(/[^0-9]/g, '')}" class="result-item">
-            <div class="result-info">
-                <h4>${restaurant.name}</h4>
-                <span class="result-category">${Array.isArray(restaurant.category) ? restaurant.category.join(', ') : restaurant.category}</span>
-            </div>
-            <span class="result-phone">${restaurant.phone}</span>
-        </a>
-    `).join('');
 }
 
 // Smooth scroll for nav links
