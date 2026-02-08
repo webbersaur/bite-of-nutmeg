@@ -16,6 +16,14 @@
     let allRestaurants = [];
     let featuredRestaurants = [];
     let dataLoaded = false;
+    let currentFilter = '';
+
+    // Check if a restaurant's category matches a search query
+    function categoryMatchesQuery(category, query) {
+        if (!category || !query) return true;
+        if (Array.isArray(category)) return category.some(c => c.toLowerCase().includes(query));
+        return category.toLowerCase().includes(query);
+    }
 
     // Inject modal HTML if not present
     function injectModalHTML() {
@@ -26,6 +34,9 @@
                 <div class="near-me-modal-content">
                     <button class="near-me-close" id="nearMeClose">&times;</button>
                     <h2>Restaurants Near You</h2>
+                    <div id="nearMeFilterPill" class="near-me-active-filter" style="display:none;">
+                        Filtered by: "<span></span>" <button id="clearNearMeFilter">&times;</button>
+                    </div>
                     <div id="nearMeLoading" class="near-me-loading">
                         <div class="spinner"></div>
                         <p>Finding your location...</p>
@@ -41,7 +52,23 @@
             </div>
         `;
         document.body.insertAdjacentHTML('beforeend', modalHTML);
+
+        // Clear filter button re-renders without the filter
+        document.getElementById('clearNearMeFilter').addEventListener('click', () => {
+            currentFilter = '';
+            document.getElementById('nearMeFilterPill').style.display = 'none';
+            // Re-render with the last known position or town
+            if (lastUserLat !== null) {
+                findNearbyRestaurants(lastUserLat, lastUserLng);
+            } else if (lastTownName) {
+                showTownRestaurants(lastTownName);
+            }
+        });
     }
+
+    let lastUserLat = null;
+    let lastUserLng = null;
+    let lastTownName = null;
 
     // Load all restaurant data
     async function loadAllData() {
@@ -104,9 +131,24 @@
 
     // Open Near Me modal
     function openNearMe() {
+        // Capture active search filter from whichever page we're on
+        const searchInput = document.getElementById('heroSearch') || document.getElementById('searchInput');
+        currentFilter = searchInput ? searchInput.value.trim().toLowerCase() : '';
+
         injectModalHTML();
         const modal = document.getElementById('nearMeModal');
         modal.classList.add('show');
+
+        // Show or hide the filter pill
+        const filterPill = document.getElementById('nearMeFilterPill');
+        if (filterPill) {
+            if (currentFilter) {
+                filterPill.style.display = 'flex';
+                filterPill.querySelector('span').textContent = currentFilter;
+            } else {
+                filterPill.style.display = 'none';
+            }
+        }
 
         // Setup close handlers
         const closeBtn = document.getElementById('nearMeClose');
@@ -182,6 +224,10 @@
 
     // Show restaurants from a selected town (fallback when location unavailable)
     function showTownRestaurants(townName) {
+        lastTownName = townName;
+        lastUserLat = null;
+        lastUserLng = null;
+
         const error = document.getElementById('nearMeError');
         const results = document.getElementById('nearMeResults');
         const featuredContainer = document.getElementById('nearMeFeatured');
@@ -212,7 +258,14 @@
                 return a.name.localeCompare(b.name);
             });
 
-        // Get featured restaurants for this town
+        // Apply search filter to the full list (featured section stays unfiltered)
+        const filtered = currentFilter
+            ? townRestaurants.filter(r =>
+                r.name.toLowerCase().includes(currentFilter) ||
+                categoryMatchesQuery(r.category, currentFilter))
+            : townRestaurants;
+
+        // Get featured restaurants for this town (unfiltered)
         const townFeatured = featuredRestaurants.filter(r => r.town === townName);
 
         // Render featured restaurants for this town
@@ -249,12 +302,15 @@
             featuredContainer.innerHTML = '';
         }
 
-        // Render all restaurants for this town
-        if (townRestaurants.length > 0) {
+        // Render filtered restaurants for this town
+        if (filtered.length > 0) {
+            const heading = currentFilter
+                ? `"${currentFilter}" in ${townName} (${filtered.length})`
+                : `All ${townName} Restaurants (${filtered.length})`;
             othersContainer.innerHTML = `
-                <h3>All ${townName} Restaurants (${townRestaurants.length})</h3>
+                <h3>${heading}</h3>
                 <div class="near-me-list">
-                    ${townRestaurants.map(r => {
+                    ${filtered.map(r => {
                         let cardClass = 'near-me-card small';
                         let badge = '';
                         if (r.isEnhanced) {
@@ -280,18 +336,24 @@
                 </div>
             `;
         } else {
-            othersContainer.innerHTML = '<p>No restaurants found for this town.</p>';
+            othersContainer.innerHTML = currentFilter
+                ? `<p>No "${currentFilter}" restaurants found in ${townName}.</p>`
+                : '<p>No restaurants found for this town.</p>';
         }
     }
 
     // Find nearby restaurants
     function findNearbyRestaurants(userLat, userLng) {
+        lastUserLat = userLat;
+        lastUserLng = userLng;
+        lastTownName = null;
+
         const loading = document.getElementById('nearMeLoading');
         const results = document.getElementById('nearMeResults');
         const featuredContainer = document.getElementById('nearMeFeatured');
         const othersContainer = document.getElementById('nearMeOthers');
 
-        // Calculate distances for featured restaurants
+        // Calculate distances for featured restaurants (never filtered)
         const featuredWithDistance = featuredRestaurants
             .filter(r => r.lat && r.lng)
             .map(r => ({
@@ -317,10 +379,17 @@
             })
             .sort((a, b) => a.distance - b.distance);
 
+        // Apply search filter to the full list (featured section stays unfiltered)
+        const filtered = currentFilter
+            ? othersWithDistance.filter(r =>
+                r.name.toLowerCase().includes(currentFilter) ||
+                categoryMatchesQuery(r.category, currentFilter))
+            : othersWithDistance;
+
         loading.style.display = 'none';
         results.style.display = 'block';
 
-        // Render featured restaurants
+        // Render featured restaurants (unfiltered)
         if (featuredWithDistance.length > 0) {
             const closestTwo = featuredWithDistance.slice(0, 2);
             featuredContainer.innerHTML = `
@@ -356,12 +425,15 @@
             featuredContainer.innerHTML = '';
         }
 
-        // Render all restaurants by distance
-        if (othersWithDistance.length > 0) {
+        // Render filtered restaurants by distance
+        if (filtered.length > 0) {
+            const heading = currentFilter
+                ? `"${currentFilter}" Restaurants by Distance (${filtered.length})`
+                : `All Restaurants by Distance (${filtered.length})`;
             othersContainer.innerHTML = `
-                <h3>All Restaurants by Distance (${othersWithDistance.length})</h3>
+                <h3>${heading}</h3>
                 <div class="near-me-list">
-                    ${othersWithDistance.map(r => {
+                    ${filtered.map(r => {
                         let cardClass = 'near-me-card small';
                         let badge = '';
                         if (r.isEnhanced) {
@@ -388,7 +460,9 @@
                 </div>
             `;
         } else {
-            othersContainer.innerHTML = '<p>No restaurants found with location data.</p>';
+            othersContainer.innerHTML = currentFilter
+                ? `<p>No "${currentFilter}" restaurants found nearby.</p>`
+                : '<p>No restaurants found with location data.</p>';
         }
     }
 

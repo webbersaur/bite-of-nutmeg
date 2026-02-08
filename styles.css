@@ -1094,6 +1094,35 @@ body {
     font-size: 1.75rem;
 }
 
+.near-me-active-filter {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #eef3fb;
+    color: var(--navy);
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    width: fit-content;
+}
+
+.near-me-active-filter button {
+    background: none;
+    border: none;
+    color: var(--navy);
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 0 0.25rem;
+    line-height: 1;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+
+.near-me-active-filter button:hover {
+    opacity: 1;
+}
+
 .near-me-close {
     position: absolute;
     top: 1rem;
