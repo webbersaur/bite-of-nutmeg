@@ -408,6 +408,17 @@ function initHeroSearch() {
 // Near Me Feature
 // ==========================================
 
+let nearMeFilter = '';
+let lastNearMeLat = null;
+let lastNearMeLng = null;
+let lastNearMeTown = null;
+
+function nearMeCategoryMatches(category, query) {
+    if (!category || !query) return true;
+    if (Array.isArray(category)) return category.some(c => c.toLowerCase().includes(query));
+    return category.toLowerCase().includes(query);
+}
+
 // Haversine formula to calculate distance between two points in miles
 function calculateDistance(lat1, lon1, lat2, lon2) {
     const R = 3959; // Earth's radius in miles
@@ -430,6 +441,21 @@ function initNearMe() {
     if (!nearMeBtn || !modal) return;
 
     nearMeBtn.addEventListener('click', () => {
+        // Capture active search filter
+        const searchInput = document.getElementById('heroSearch');
+        nearMeFilter = searchInput ? searchInput.value.trim().toLowerCase() : '';
+
+        // Show or hide the filter pill
+        const filterPill = document.getElementById('nearMeFilterPill');
+        if (filterPill) {
+            if (nearMeFilter) {
+                filterPill.style.display = 'flex';
+                filterPill.querySelector('span').textContent = nearMeFilter;
+            } else {
+                filterPill.style.display = 'none';
+            }
+        }
+
         modal.classList.add('show');
         getUserLocation();
     });
@@ -444,6 +470,20 @@ function initNearMe() {
             modal.classList.remove('show');
         }
     });
+
+    // Clear filter button
+    const clearFilterBtn = document.getElementById('clearNearMeFilter');
+    if (clearFilterBtn) {
+        clearFilterBtn.addEventListener('click', () => {
+            nearMeFilter = '';
+            document.getElementById('nearMeFilterPill').style.display = 'none';
+            if (lastNearMeLat !== null) {
+                findNearbyRestaurants(lastNearMeLat, lastNearMeLng);
+            } else if (lastNearMeTown) {
+                showTownRestaurants(lastNearMeTown);
+            }
+        });
+    }
 }
 
 // Get user's location
@@ -510,6 +550,10 @@ function showNearMeError(message) {
 
 // Show restaurants from a selected town (fallback when location unavailable)
 function showTownRestaurants(townName) {
+    lastNearMeTown = townName;
+    lastNearMeLat = null;
+    lastNearMeLng = null;
+
     const error = document.getElementById('nearMeError');
     const results = document.getElementById('nearMeResults');
     const featuredContainer = document.getElementById('nearMeFeatured');
@@ -540,7 +584,14 @@ function showTownRestaurants(townName) {
             return a.name.localeCompare(b.name);
         });
 
-    // Get featured restaurants for this town
+    // Apply search filter (featured section stays unfiltered)
+    const filtered = nearMeFilter
+        ? townRestaurants.filter(r =>
+            r.name.toLowerCase().includes(nearMeFilter) ||
+            nearMeCategoryMatches(r.category, nearMeFilter))
+        : townRestaurants;
+
+    // Get featured restaurants for this town (unfiltered)
     const townFeatured = featuredRestaurants.filter(r => r.town === townName);
 
     // Render featured restaurants for this town
@@ -577,12 +628,15 @@ function showTownRestaurants(townName) {
         featuredContainer.innerHTML = '';
     }
 
-    // Render all restaurants for this town
-    if (townRestaurants.length > 0) {
+    // Render filtered restaurants for this town
+    if (filtered.length > 0) {
+        const heading = nearMeFilter
+            ? `"${nearMeFilter}" in ${townName} (${filtered.length})`
+            : `All ${townName} Restaurants (${filtered.length})`;
         othersContainer.innerHTML = `
-            <h3>All ${townName} Restaurants (${townRestaurants.length})</h3>
+            <h3>${heading}</h3>
             <div class="near-me-list">
-                ${townRestaurants.map(r => {
+                ${filtered.map(r => {
                     let cardClass = 'near-me-card small';
                     let badge = '';
                     if (r.isEnhanced) {
@@ -608,7 +662,9 @@ function showTownRestaurants(townName) {
             </div>
         `;
     } else {
-        othersContainer.innerHTML = '<p>No restaurants found for this town.</p>';
+        othersContainer.innerHTML = nearMeFilter
+            ? `<p>No "${nearMeFilter}" restaurants found in ${townName}.</p>`
+            : '<p>No restaurants found for this town.</p>';
     }
 }
 
@@ -619,12 +675,16 @@ function isEnhancedRestaurant(name) {
 
 // Find nearby restaurants
 function findNearbyRestaurants(userLat, userLng) {
+    lastNearMeLat = userLat;
+    lastNearMeLng = userLng;
+    lastNearMeTown = null;
+
     const loading = document.getElementById('nearMeLoading');
     const results = document.getElementById('nearMeResults');
     const featuredContainer = document.getElementById('nearMeFeatured');
     const othersContainer = document.getElementById('nearMeOthers');
 
-    // Calculate distances for featured restaurants
+    // Calculate distances for featured restaurants (never filtered)
     const featuredWithDistance = featuredRestaurants
         .filter(r => r.lat && r.lng)
         .map(r => ({
@@ -639,7 +699,6 @@ function findNearbyRestaurants(userLat, userLng) {
         .filter(r => r.lat && r.lng)
         .map(r => {
             const isFeatured = isFeaturedRestaurant(r.name);
-            // If featured, get website from featured data
             const featuredData = isFeatured ? featuredRestaurants.find(f => f.name === r.name) : null;
             return {
                 ...r,
@@ -651,11 +710,18 @@ function findNearbyRestaurants(userLat, userLng) {
         })
         .sort((a, b) => a.distance - b.distance);
 
+    // Apply search filter to the full list (featured section stays unfiltered)
+    const filtered = nearMeFilter
+        ? othersWithDistance.filter(r =>
+            r.name.toLowerCase().includes(nearMeFilter) ||
+            nearMeCategoryMatches(r.category, nearMeFilter))
+        : othersWithDistance;
+
     // Hide loading, show results
     loading.style.display = 'none';
     results.style.display = 'block';
 
-    // Render 2 closest featured restaurants
+    // Render 2 closest featured restaurants (unfiltered)
     if (featuredWithDistance.length > 0) {
         const closestTwo = featuredWithDistance.slice(0, 2);
         featuredContainer.innerHTML = `
@@ -681,10 +747,8 @@ function findNearbyRestaurants(userLat, userLng) {
             </div>
             `).join('')}
         `;
-        // Add close button handler - expand others list when featured is closed
         document.getElementById('closeFeatured').addEventListener('click', () => {
             featuredContainer.style.display = 'none';
-            // Expand the others list to use full space
             const othersList = document.querySelector('.near-me-list');
             if (othersList) {
                 othersList.classList.add('expanded');
@@ -694,13 +758,15 @@ function findNearbyRestaurants(userLat, userLng) {
         featuredContainer.innerHTML = '<p>No featured restaurants found with location data.</p>';
     }
 
-    // Render other nearby restaurants with enhanced highlighting
-    if (othersWithDistance.length > 0) {
+    // Render filtered restaurants by distance
+    if (filtered.length > 0) {
+        const heading = nearMeFilter
+            ? `"${nearMeFilter}" Restaurants by Distance (${filtered.length})`
+            : `All Restaurants by Distance (${filtered.length})`;
         othersContainer.innerHTML = `
-            <h3>All Restaurants by Distance (${othersWithDistance.length})</h3>
+            <h3>${heading}</h3>
             <div class="near-me-list">
-                ${othersWithDistance.map(r => {
-                    // Determine card styling class
+                ${filtered.map(r => {
                     let cardClass = 'near-me-card small';
                     let badge = '';
                     if (r.isEnhanced) {
@@ -711,7 +777,6 @@ function findNearbyRestaurants(userLat, userLng) {
                         badge = '<span class="near-me-badge featured-badge">Featured</span>';
                     }
 
-                    // Show phone for enhanced/featured, hide for regular
                     const showPhone = r.isFeatured || r.isEnhanced;
 
                     return `
@@ -729,7 +794,9 @@ function findNearbyRestaurants(userLat, userLng) {
             </div>
         `;
     } else {
-        othersContainer.innerHTML = '<p>No restaurants found with location data.</p>';
+        othersContainer.innerHTML = nearMeFilter
+            ? `<p>No "${nearMeFilter}" restaurants found nearby.</p>`
+            : '<p>No restaurants found with location data.</p>';
     }
 }
 
