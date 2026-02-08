@@ -23,10 +23,7 @@ function categoryMatchesQuery(category, query) {
 }
 
 // Initialize the application
-document.addEventListener('DOMContentLoaded', async () => {
-    await loadRestaurants();
-    // Skip initial render - cards are inlined in HTML for faster LCP
-    // renderRestaurants only called for search results
+document.addEventListener('DOMContentLoaded', () => {
     initMapToggle();
     initHeroSearch();
 });
@@ -91,8 +88,11 @@ const townFiles = [
     { file: 'old-saybrook-restaurants.json', town: 'Old Saybrook' }
 ];
 
-// Load restaurant data from JSON files
+// Load restaurant data from JSON files (lazy — called on first interaction)
+let dataLoaded = false;
 async function loadRestaurants() {
+    if (dataLoaded) return;
+    dataLoaded = true;
     try {
         // Load featured restaurants and all town files in parallel
         const [featuredResponse, ...townResponses] = await Promise.all([
@@ -205,7 +205,8 @@ function loadLeaflet(callback) {
 }
 
 // Initialize the Leaflet map (lazy loaded)
-function initMap() {
+async function initMap() {
+    await loadRestaurants();
     loadLeaflet(() => {
         // Center on the CT shoreline (roughly Guilford area)
         const centerLat = 41.28;
@@ -349,7 +350,8 @@ function initHeroSearch() {
 
     if (!searchInput || !searchBtn) return;
 
-    function performSearch() {
+    async function performSearch() {
+        await loadRestaurants();
         const query = searchInput.value.toLowerCase().trim();
         if (!query) {
             renderRestaurants(featuredRestaurants, false);
@@ -440,7 +442,7 @@ function initNearMe() {
 
     if (!nearMeBtn || !modal) return;
 
-    nearMeBtn.addEventListener('click', () => {
+    nearMeBtn.addEventListener('click', async () => {
         // Capture active search filter
         const searchInput = document.getElementById('heroSearch');
         nearMeFilter = searchInput ? searchInput.value.trim().toLowerCase() : '';
@@ -457,6 +459,7 @@ function initNearMe() {
         }
 
         modal.classList.add('show');
+        await loadRestaurants();
         getUserLocation();
     });
 
