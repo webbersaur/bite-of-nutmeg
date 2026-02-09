@@ -309,7 +309,7 @@ function renderRestaurants(restaurantList, isSearchResult = false) {
         <article class="${cardClass}"${hasWebsite ? ` onclick="window.open('${restaurant.website}', '_blank')"` : ''}>
             ${badge}
             ${restaurant.image ? `
-            <div class="card-logo${restaurant.darkBg ? ' dark-bg' : ''}">
+            <div class="card-logo${restaurant.darkBg ? ' dark-bg' : ''}"${restaurant.bgColor ? ` style="background-color:${restaurant.bgColor}"` : ''}>
                 <img src="${restaurant.image}" alt="${restaurant.name} logo" width="140" height="100" loading="lazy">
             </div>
             ` : ''}
@@ -606,7 +606,7 @@ function showTownRestaurants(townName) {
             </div>
             ${townFeatured.map(r => `
             <div class="near-me-card featured">
-                ${r.image ? `<img src="${r.image}" alt="${r.name}" class="near-me-img${r.darkBg ? ' dark-bg' : ''}" loading="lazy">` : ''}
+                ${r.image ? `<img src="${r.image}" alt="${r.name}" class="near-me-img${r.darkBg ? ' dark-bg' : ''}"${r.bgColor ? ` style="background-color:${r.bgColor}"` : ''} loading="lazy">` : ''}
                 <div class="near-me-info">
                     <h4>${r.name}</h4>
                     <p class="near-me-cuisine">${formatCategory(r.category || r.cuisine)}</p>
@@ -734,7 +734,7 @@ function findNearbyRestaurants(userLat, userLng) {
             </div>
             ${closestTwo.map(r => `
             <div class="near-me-card featured">
-                ${r.image ? `<img src="${r.image}" alt="${r.name}" class="near-me-img${r.darkBg ? ' dark-bg' : ''}" width="100" height="100" loading="lazy">` : ''}
+                ${r.image ? `<img src="${r.image}" alt="${r.name}" class="near-me-img${r.darkBg ? ' dark-bg' : ''}"${r.bgColor ? ` style="background-color:${r.bgColor}"` : ''} width="100" height="100" loading="lazy">` : ''}
                 <div class="near-me-info">
                     <h4>${r.name}</h4>
                     <span class="near-me-distance">${r.distance.toFixed(1)} miles away</span>

@@ -45,6 +45,7 @@
       "website": "https://www.parthenondiner.com/branford",
       "image": "branford-logos/DINER-2-2.webp",
       "darkBg": true,
+      "bgColor": "#5a0a0a",
       "pageLink": "branford.html",
       "lat": 41.296517886253156,
       "lng": -72.78165539020812
