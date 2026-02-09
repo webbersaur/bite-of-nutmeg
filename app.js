@@ -597,8 +597,8 @@ function showTownRestaurants(townName) {
     // Get featured restaurants for this town (unfiltered)
     const townFeatured = featuredRestaurants.filter(r => r.town === townName);
 
-    // Render featured restaurants for this town
-    if (townFeatured.length > 0) {
+    // Render featured restaurants for this town (skip if filtering by cuisine)
+    if (townFeatured.length > 0 && !nearMeFilter) {
         featuredContainer.innerHTML = `
             <div class="near-me-section-header">
                 <h3>Featured in ${townName}</h3>
@@ -724,8 +724,8 @@ function findNearbyRestaurants(userLat, userLng) {
     loading.style.display = 'none';
     results.style.display = 'block';
 
-    // Render 2 closest featured restaurants (unfiltered)
-    if (featuredWithDistance.length > 0) {
+    // Render 2 closest featured restaurants (skip if filtering by cuisine)
+    if (featuredWithDistance.length > 0 && !nearMeFilter) {
         const closestTwo = featuredWithDistance.slice(0, 2);
         featuredContainer.innerHTML = `
             <div class="near-me-section-header">
