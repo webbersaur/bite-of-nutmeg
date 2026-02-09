@@ -35,6 +35,7 @@
   "restaurants": [
     {"name": "1928 Cocktail Club", "category": "Wine Bar", "phone": "203-530-1600", "lat": 41.2818481, "lng": -72.8113738},
     {"name": "9 East Hibachi & Asian Kitchen", "category": "Japanese", "phone": "203-488-8833", "lat": 41.2928039, "lng": -72.7890737},
+    {"name": "Abe's Pizzeria", "category": "Pizza", "phone": "475-310-0161", "lat": 41.2908436, "lng": -72.7977869},
     {"name": "Archie Moore's", "category": "American", "phone": "203-481-6100", "lat": 41.2815657, "lng": -72.812127},
     {"name": "Arturo's Restaurant", "category": "Italian & Mexican", "phone": "203-208-4106", "lat": 41.3026382, "lng": -72.7689363},
     {"name": "Benny J's Pizza", "category": "Pizza", "phone": "203-208-2409", "lat": 41.2839964, "lng": -72.809672},
@@ -63,7 +64,6 @@
     {"name": "Four Seasons Market", "category": "American", "phone": "203-483-4466", "lat": 41.275764, "lng": -72.836483},
     {"name": "Fresh Greens & Proteins", "category": "American", "phone": "203-208-4398", "lat": 41.2757187, "lng": -72.8302241},
     {"name": "G Cafe Bakery", "category": "Café & Bakery", "phone": "203-488-9996", "lat": 41.2816635, "lng": -72.8115446},
-    {"name": "G&P Pizza Deli Convenience", "category": "Pizza", "phone": "475-310-0161", "lat": 41.2908436, "lng": -72.7977869},
     {"name": "Genaro's Restaurant & Pizza", "category": "Italian", "phone": "203-483-9397", "lat": 41.2584291, "lng": -72.8478616},
     {"name": "Geovanny's Deli", "category": "American", "phone": "203-208-2267", "lat": 41.281, "lng": -72.811},
     {"name": "Grey Goat Farmtique", "category": "American", "phone": "203-315-7227", "lat": 41.2972327, "lng": -72.7801574},
