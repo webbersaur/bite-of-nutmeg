@@ -29,6 +29,7 @@
     {"name": "China One", "category": "Chinese", "phone": "203-467-8808", "lat": 41.2807407, "lng": -72.8758126},
     {"name": "China Star", "category": "Chinese", "phone": "203-469-8868", "lat": 41.2770932, "lng": -72.8703473},
     {"name": "Country Kitchen", "category": "American", "phone": "203-469-7433", "lat": 41.2771372, "lng": -72.8704598},
+    {"name": "The Cove Bar and Grill", "category": "Bar & Grill", "phone": "203-946-8013"},
     {"name": "DePalma's Apizza", "category": "Pizza", "phone": "203-469-1988", "lat": 41.2821872, "lng": -72.877632},
     {"name": "Domino's Pizza", "category": "Pizza", "phone": "203-469-2900", "lat": 41.3210256, "lng": -72.8624815},
     {"name": "Donde El Paisa", "category": "Latin American", "phone": "475-202-7509", "lat": 41.321962, "lng": -72.860585},
@@ -64,5 +65,5 @@
     {"name": "Village Inn", "category": "American", "phone": "203-469-5759", "lat": 41.2853852, "lng": -72.8867368},
     {"name": "Wendy's", "category": "Fast Food", "phone": "203-469-8611", "lat": 41.2866155, "lng": -72.878689}
   ],
-  "categories": ["All", "American", "Café & Bakery", "Caribbean", "Chinese", "European", "Fast Food", "Italian", "Japanese", "Latin American", "Mediterranean", "Mexican", "Pizza", "Seafood", "Thai"]
+  "categories": ["All", "American", "Bar & Grill", "Café & Bakery", "Caribbean", "Chinese", "European", "Fast Food", "Italian", "Japanese", "Latin American", "Mediterranean", "Mexican", "Pizza", "Seafood", "Thai"]
 }
