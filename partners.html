@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9V7CYSGN9J"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-9V7CYSGN9J');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="msvalidate.01" content="564C441015D4607807CA90C4275EF907">
+    <title>Our Partners - A Bite of Nutmeg</title>
+    <meta name="description" content="Meet the local businesses that support A Bite of Nutmeg - Connecticut shoreline community partners, from home services to marine and professional services.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.abiteofnutmeg.com/partners">
+    <meta property="og:title" content="Our Partners - A Bite of Nutmeg">
+    <meta property="og:description" content="Meet the local businesses that support A Bite of Nutmeg - Connecticut shoreline community partners.">
+    <meta property="og:image" content="https://www.abiteofnutmeg.com/branford-logos/Guide%20to%20CT%20Dining%20(1200%20x%20630%20px).png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://www.abiteofnutmeg.com/partners">
+    <meta name="twitter:title" content="Our Partners - A Bite of Nutmeg">
+    <meta name="twitter:description" content="Meet the local businesses that support A Bite of Nutmeg - Connecticut shoreline community partners.">
+    <meta name="twitter:image" content="https://www.abiteofnutmeg.com/branford-logos/Guide%20to%20CT%20Dining%20(1200%20x%20630%20px).png">
+    <link rel="canonical" href="https://www.abiteofnutmeg.com/partners">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://www.abiteofnutmeg.com/partners",
+          "name": "Our Partners - A Bite of Nutmeg",
+          "description": "Local businesses that support A Bite of Nutmeg along the Connecticut shoreline",
+          "url": "https://www.abiteofnutmeg.com/partners",
+          "isPartOf": { "@id": "https://www.abiteofnutmeg.com/#website" },
+          "breadcrumb": { "@id": "https://www.abiteofnutmeg.com/partners#breadcrumb" }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://www.abiteofnutmeg.com/partners#breadcrumb",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.abiteofnutmeg.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Partners" }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="branford-styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .partners-intro {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 50px 20px 30px;
+            text-align: center;
+        }
+
+        .partners-intro p {
+            font-family: 'Montserrat', sans-serif;
+            color: #444;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .partner-category-section {
+            max-width: 1200px;
+            margin: 0 auto 50px;
+            padding: 0 20px;
+        }
+
+        .partner-category-section h2 {
+            font-family: 'Playfair Display', serif;
+            color: #1e3a6e;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #f0b323;
+            display: inline-block;
+        }
+
+        .partner-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .partner-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .partner-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        .partner-card-logo {
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+        }
+
+        .partner-logo-img {
+            max-height: 80px;
+            max-width: 200px;
+            object-fit: contain;
+        }
+
+        .partner-logo-placeholder {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: #1e3a6e;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+
+        .partner-card-body {
+            padding: 20px;
+        }
+
+        .partner-card-body h3 {
+            font-family: 'Playfair Display', serif;
+            color: #1e3a6e;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .partner-card-body p {
+            font-family: 'Montserrat', sans-serif;
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        .partner-card-link {
+            font-family: 'Montserrat', sans-serif;
+            color: #1e3a6e;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 2px solid #f0b323;
+            padding-bottom: 2px;
+            transition: color 0.2s;
+        }
+
+        .partner-card-link:hover {
+            color: #f0b323;
+        }
+
+        @media (max-width: 768px) {
+            .partner-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .partners-intro {
+                padding: 30px 20px 20px;
+            }
+        }
+    </style>
+</head>
+<body class="branford-page">
+    <!-- Hero Section -->
+    <section class="town-hero-new">
+        <div class="town-hero-content">
+            <a href="/"><img src="logo-mobile.webp" alt="A Bite of Nutmeg" class="town-hero-logo" width="300" height="209"></a>
+            <div class="town-hero-text">
+                <h1>Our Partners</h1>
+                <p class="tagline">Local businesses supporting Connecticut's shoreline community</p>
+                <div class="town-hero-search-row">
+                    <div class="town-hero-search-box">
+                        <input type="text" id="searchInput" placeholder="Search all restaurants...">
+                        <button type="button" id="townSearchBtn" class="town-search-find-btn">Find ›</button>
+                    </div>
+                    <button type="button" id="townNearMeBtn" class="town-near-me-btn">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        Near Me
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Town Navigation -->
+    <section class="town-nav-section">
+        <div class="town-nav-badges">
+            <a href="/" class="town-nav-badge home-badge"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></a>
+            <a href="/restaurants-in-east-haven" class="town-nav-badge"><span class="badge-full">East Haven</span><span class="badge-abbr">EH</span></a>
+            <a href="/restaurants-in-branford" class="town-nav-badge"><span class="badge-full">Branford</span><span class="badge-abbr">B</span></a>
+            <a href="/restaurants-in-guilford" class="town-nav-badge"><span class="badge-full">Guilford</span><span class="badge-abbr">G</span></a>
+            <a href="/restaurants-in-madison" class="town-nav-badge"><span class="badge-full">Madison</span><span class="badge-abbr">M</span></a>
+            <a href="/restaurants-in-clinton" class="town-nav-badge"><span class="badge-full">Clinton</span><span class="badge-abbr">C</span></a>
+            <a href="/restaurants-in-westbrook" class="town-nav-badge"><span class="badge-full">Westbrook</span><span class="badge-abbr">W</span></a>
+            <a href="/restaurants-in-old-saybrook" class="town-nav-badge"><span class="badge-full">Old Saybrook</span><span class="badge-abbr">OS</span></a>
+        </div>
+    </section>
+
+    <!-- Intro -->
+    <div class="partners-intro">
+        <p>A Bite of Nutmeg is proud to partner with these outstanding local businesses along the Connecticut shoreline. From home improvement to professional services, these are the companies that help make our community thrive.</p>
+    </div>
+
+    <!-- Community & Events -->
+    <section class="partner-category-section">
+        <h2>Community & Events</h2>
+        <div class="partner-grid">
+            <div class="partner-card">
+                <div class="partner-card-logo">
+                    <div class="partner-logo-placeholder">BJ</div>
+                </div>
+                <div class="partner-card-body">
+                    <h3>Branford Jazz</h3>
+                    <p>Live jazz events and music on the Connecticut shoreline</p>
+                    <a href="https://branfordjazz.com" target="_blank" rel="noopener noreferrer" class="partner-card-link">&rarr; Visit Website</a>
+                </div>
+            </div>
+            <div class="partner-card">
+                <div class="partner-card-logo">
+                    <div class="partner-logo-placeholder">BF</div>
+                </div>
+                <div class="partner-card-body">
+                    <h3>Branford Festival</h3>
+                    <p>Annual community festival celebrating Branford, CT</p>
+                    <a href="https://branfordfestival.com" target="_blank" rel="noopener noreferrer" class="partner-card-link">&rarr; Visit Website</a>
+                </div>
+            </div>
+            <div class="partner-card">
+                <div class="partner-card-logo">
+                    <div class="partner-logo-placeholder">SD</div>
+                </div>
+                <div class="partner-card-body">
+                    <h3>Shop Dine Explore Branford</h3>
+                    <p>Promoting local shopping, dining, and experiences in Branford</p>
+                    <a href="https://shopdineexplorebranford.com" target="_blank" rel="noopener noreferrer" class="partner-card-link">&rarr; Visit Website</a>
+                </div>
+            </div>
+            <div class="partner-card">
+                <div class="partner-card-logo">
+                    <div class="partner-logo-placeholder">SE</div>
+                </div>
+                <div class="partner-card-body">
+                    <h3>Shoreline East Arts</h3>
+                    <p>Supporting arts and culture along the CT shoreline</p>
+                    <a href="https://sea-ct.org" target="_blank" rel="noopener noreferrer" class="partner-card-link">&rarr; Visit Website</a>
+                </div>
+            </div>
+            <div class="partner-card">
+                <div class="partner-card-logo">
+                    <div class="partner-logo-placeholder">OC</div>
+                </div>
+                <div class="partner-card-body">
+                    <h3>Our Community Heroes</h3>
+                    <p>Recognizing and celebrating local community heroes</p>
+                    <a href="https://ourcommunityheros.org" target="_blank" rel="noopener noreferrer" class="partner-card-link">&rarr; Visit Website</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marine & Boating -->
+    <section class="partner-category-section">
+        <h2>Marine & Boating</h2>
+        <div class="partner-grid">
+            <div class="partner-card">
+                <div class="partner-card-logo">
+                    <div class="partner-logo-placeholder">RB</div>
+                </div>
+                <div class="partner-card-body">
+                    <h3>Riverside Basin Marina</h3>
+                    <p>Full-service marina on the Connecticut shoreline</p>
+                    <a href="https://riversidebasin.com" target="_blank" rel="noopener noreferrer" class="partner-card-link">&rarr; Visit Website</a>
+                </div>
+            </div>
+            <div class="partner-card">
+                <div class="partner-card-logo">
+                    <div class="partner-logo-placeholder">DW</div>
+                </div>
+                <div class="partner-card-body">
+                    <h3>Dutch Wharf</h3>
+                    <p>Marina and boatyard services in Branford, CT</p>
+                    <a href="https://dutchwharf.com" target="_blank" rel="noopener noreferrer" class="partner-card-link">&rarr; Visit Website</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Home Services -->
+    <section class="partner-category-section">
+        <h2>Home Services</h2>
+        <div class="partner-grid">
+            <div class="partner-card">
+                <div class="partner-card-logo">
+                    <div class="partner-logo-placeholder">PE</div>
+                </div>
+                <div class="partner-card-body">
+                    <h3>Precision Exteriors CT</h3>
+                    <p>Exterior home improvement and renovation services</p>
+                    <a href="https://precisionexteriorsct.com" target="_blank" rel="noopener noreferrer" class="partner-card-link">&rarr; Visit Website</a>
+                </div>
+            </div>
+            <div class="partner-card">
+                <div class="partner-card-logo">
+                    <div class="partner-logo-placeholder">YG</div>
+                </div>
+                <div class="partner-card-body">
+                    <h3>Yankee Gutter CT</h3>
+                    <p>Professional gutter installation and repair</p>
+                    <a href="https://yankeegutterct.com" target="_blank" rel="noopener noreferrer" class="partner-card-link">&rarr; Visit Website</a>
+                </div>
+            </div>
+            <div class="partner-card">
+                <div class="partner-card-logo">
+                    <div class="partner-logo-placeholder">FT</div>
+                </div>
+                <div class="partner-card-body">
+                    <h3>Fred's Tree Removal CT</h3>
+                    <p>Professional tree removal and trimming services</p>
+                    <a href="https://fredstreeremovalct.com" target="_blank" rel="noopener noreferrer" class="partner-card-link">&rarr; Visit Website</a>
+                </div>
+            </div>
+            <div class="partner-card">
+                <div class="partner-card-logo">
+                    <div class="partner-logo-placeholder">SH</div>
+                </div>
+                <div class="partner-card-body">
+                    <h3>Salerno Heating & Air Conditioning</h3>
+                    <p>HVAC installation, repair, and maintenance</p>
+                    <a href="https://salernoheatingandairconditioning.com" target="_blank" rel="noopener noreferrer" class="partner-card-link">&rarr; Visit Website</a>
+                </div>
+            </div>
+            <div class="partner-card">
+                <div class="partner-card-logo">
+                    <div class="partner-logo-placeholder">EL</div>
+                </div>
+                <div class="partner-card-body">
+                    <h3>EDI Landscape</h3>
+                    <p>Landscaping design and maintenance services</p>
+                    <a href="https://edilandscape.com" target="_blank" rel="noopener noreferrer" class="partner-card-link">&rarr; Visit Website</a>
+                </div>
+            </div>
+            <div class="partner-card">
+                <div class="partner-card-logo">
+                    <div class="partner-logo-placeholder">RP</div>
+                </div>
+                <div class="partner-card-body">
+                    <h3>Rousseau Plumbing</h3>
+                    <p>Residential and commercial plumbing services</p>
+                    <a href="https://rousseauplumbing.com" target="_blank" rel="noopener noreferrer" class="partner-card-link">&rarr; Visit Website</a>
+                </div>
+            </div>
+            <div class="partner-card">
+                <div class="partner-card-logo">
+                    <div class="partner-logo-placeholder">HE</div>
+                </div>
+                <div class="partner-card-body">
+                    <h3>Hurricane Energy CT</h3>
+                    <p>Energy solutions and home efficiency services</p>
+                    <a href="https://hurricaneenergyct.com" target="_blank" rel="noopener noreferrer" class="partner-card-link">&rarr; Visit Website</a>
+                </div>
+            </div>
+            <div class="partner-card">
+                <div class="partner-card-logo">
+                    <div class="partner-logo-placeholder">EL</div>
+                </div>
+                <div class="partner-card-body">
+                    <h3>Evergreen Landscaping Supply</h3>
+                    <p>Landscaping materials and supplies</p>
+                    <a href="https://evergreenlandscapingsupply.com" target="_blank" rel="noopener noreferrer" class="partner-card-link">&rarr; Visit Website</a>
+                </div>
+            </div>
+            <div class="partner-card">
+                <div class="partner-card-logo">
+                    <div class="partner-logo-placeholder">AS</div>
+                </div>
+                <div class="partner-card-body">
+                    <h3>Arrow Sealcoating</h3>
+                    <p>Driveway sealcoating and pavement maintenance</p>
+                    <a href="https://arrowsealcoating.com" target="_blank" rel="noopener noreferrer" class="partner-card-link">&rarr; Visit Website</a>
+                </div>
+            </div>
+            <div class="partner-card">
+                <div class="partner-card-logo">
+                    <div class="partner-logo-placeholder">AS</div>
+                </div>
+                <div class="partner-card-body">
+                    <h3>Anderson Stair</h3>
+                    <p>Custom staircase design and construction</p>
+                    <a href="https://andersonstair.com" target="_blank" rel="noopener noreferrer" class="partner-card-link">&rarr; Visit Website</a>
+                </div>
+            </div>
+            <div class="partner-card">
+                <div class="partner-card-logo">
+                    <div class="partner-logo-placeholder">KE</div>
+                </div>
+                <div class="partner-card-body">
+                    <h3>K Enterprise LLC</h3>
+                    <p>Home services and contracting solutions</p>
+                    <a href="https://kenterprisellc.net" target="_blank" rel="noopener noreferrer" class="partner-card-link">&rarr; Visit Website</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Services -->
+    <section class="partner-category-section">
+        <h2>Professional Services</h2>
+        <div class="partner-grid">
+            <div class="partner-card">
+                <div class="partner-card-logo">
+                    <div class="partner-logo-placeholder">CL</div>
+                </div>
+                <div class="partner-card-body">
+                    <h3>CoFrancesco Law</h3>
+                    <p>Legal services for the Connecticut shoreline community</p>
+                    <a href="https://cofrancescolaw.com" target="_blank" rel="noopener noreferrer" class="partner-card-link">&rarr; Visit Website</a>
+                </div>
+            </div>
+            <div class="partner-card">
+                <div class="partner-card-logo">
+                    <div class="partner-logo-placeholder">SI</div>
+                </div>
+                <div class="partner-card-body">
+                    <h3>Shoreline Insurance CT</h3>
+                    <p>Insurance solutions for shoreline residents and businesses</p>
+                    <a href="https://shorelineinsurancect.com" target="_blank" rel="noopener noreferrer" class="partner-card-link">&rarr; Visit Website</a>
+                </div>
+            </div>
+            <div class="partner-card">
+                <div class="partner-card-logo">
+                    <div class="partner-logo-placeholder">HT</div>
+                </div>
+                <div class="partner-card-body">
+                    <h3>High Tide Management</h3>
+                    <p>Property management along the CT shoreline</p>
+                    <a href="https://hightidemgt.com" target="_blank" rel="noopener noreferrer" class="partner-card-link">&rarr; Visit Website</a>
+                </div>
+            </div>
+            <div class="partner-card">
+                <div class="partner-card-logo">
+                    <div class="partner-logo-placeholder">LH</div>
+                </div>
+                <div class="partner-card-body">
+                    <h3>LHB Development</h3>
+                    <p>Real estate development and construction</p>
+                    <a href="https://lhbdevelopment.com" target="_blank" rel="noopener noreferrer" class="partner-card-link">&rarr; Visit Website</a>
+                </div>
+            </div>
+            <div class="partner-card">
+                <div class="partner-card-logo">
+                    <div class="partner-logo-placeholder">ND</div>
+                </div>
+                <div class="partner-card-body">
+                    <h3>Norman Dahl</h3>
+                    <p>Professional services on the Connecticut shoreline</p>
+                    <a href="https://normandahl.com" target="_blank" rel="noopener noreferrer" class="partner-card-link">&rarr; Visit Website</a>
+                </div>
+            </div>
+            <div class="partner-card">
+                <div class="partner-card-logo">
+                    <div class="partner-logo-placeholder">JH</div>
+                </div>
+                <div class="partner-card-body">
+                    <h3>JHP Real Estate Photo</h3>
+                    <p>Professional real estate photography services</p>
+                    <a href="https://jhprealestatephoto.com" target="_blank" rel="noopener noreferrer" class="partner-card-link">&rarr; Visit Website</a>
+                </div>
+            </div>
+            <div class="partner-card">
+                <div class="partner-card-logo">
+                    <div class="partner-logo-placeholder">PM</div>
+                </div>
+                <div class="partner-card-body">
+                    <h3>PRMI Shoreline</h3>
+                    <p>Mortgage lending services for shoreline homebuyers</p>
+                    <a href="https://prmishoreline.com" target="_blank" rel="noopener noreferrer" class="partner-card-link">&rarr; Visit Website</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Retail & Services -->
+    <section class="partner-category-section">
+        <h2>Retail & Services</h2>
+        <div class="partner-grid">
+            <div class="partner-card">
+                <div class="partner-card-logo">
+                    <div class="partner-logo-placeholder">CJ</div>
+                </div>
+                <div class="partner-card-body">
+                    <h3>Casann's Jewelry</h3>
+                    <p>Fine jewelry and custom designs</p>
+                    <a href="https://casannsjewelry.com" target="_blank" rel="noopener noreferrer" class="partner-card-link">&rarr; Visit Website</a>
+                </div>
+            </div>
+            <div class="partner-card">
+                <div class="partner-card-logo">
+                    <div class="partner-logo-placeholder">AH</div>
+                </div>
+                <div class="partner-card-body">
+                    <h3>Allusions Hair Salon</h3>
+                    <p>Full-service hair salon on the CT shoreline</p>
+                    <a href="https://allusionshairsalon.com" target="_blank" rel="noopener noreferrer" class="partner-card-link">&rarr; Visit Website</a>
+                </div>
+            </div>
+            <div class="partner-card">
+                <div class="partner-card-logo">
+                    <div class="partner-logo-placeholder">SE</div>
+                </div>
+                <div class="partner-card-body">
+                    <h3>Shoreline Electronics Repair</h3>
+                    <p>Electronics and device repair services</p>
+                    <a href="https://shorelineelectronicsrepair.com" target="_blank" rel="noopener noreferrer" class="partner-card-link">&rarr; Visit Website</a>
+                </div>
+            </div>
+            <div class="partner-card">
+                <div class="partner-card-logo">
+                    <div class="partner-logo-placeholder">BP</div>
+                </div>
+                <div class="partner-card-body">
+                    <h3>Big Prints CT</h3>
+                    <p>Large format printing and signage</p>
+                    <a href="https://bigprintsct.com" target="_blank" rel="noopener noreferrer" class="partner-card-link">&rarr; Visit Website</a>
+                </div>
+            </div>
+            <div class="partner-card">
+                <div class="partner-card-logo">
+                    <div class="partner-logo-placeholder">WF</div>
+                </div>
+                <div class="partner-card-body">
+                    <h3>Wedding Flowers CT</h3>
+                    <p>Wedding floral design and arrangements</p>
+                    <a href="https://weddingflowersct.com" target="_blank" rel="noopener noreferrer" class="partner-card-link">&rarr; Visit Website</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Media & Marketing -->
+    <section class="partner-category-section">
+        <h2>Media & Marketing</h2>
+        <div class="partner-grid">
+            <div class="partner-card">
+                <div class="partner-card-logo">
+                    <div class="partner-logo-placeholder">SL</div>
+                </div>
+                <div class="partner-card-body">
+                    <h3>Savvy Leprechaun</h3>
+                    <p>Digital marketing and creative services</p>
+                    <a href="https://savvyleprechaun.com" target="_blank" rel="noopener noreferrer" class="partner-card-link">&rarr; Visit Website</a>
+                </div>
+            </div>
+            <div class="partner-card">
+                <div class="partner-card-logo">
+                    <div class="partner-logo-placeholder">MV</div>
+                </div>
+                <div class="partner-card-body">
+                    <h3>MV Film Productions</h3>
+                    <p>Video production and filmmaking services</p>
+                    <a href="https://mvfilmproductions.com" target="_blank" rel="noopener noreferrer" class="partner-card-link">&rarr; Visit Website</a>
+                </div>
+            </div>
+            <div class="partner-card">
+                <div class="partner-card-logo">
+                    <div class="partner-logo-placeholder">RA</div>
+                </div>
+                <div class="partner-card-body">
+                    <h3>A Regular American</h3>
+                    <p>Media and content creation</p>
+                    <a href="https://aregularamerican.com" target="_blank" rel="noopener noreferrer" class="partner-card-link">&rarr; Visit Website</a>
+                </div>
+            </div>
+            <div class="partner-card">
+                <div class="partner-card-logo">
+                    <div class="partner-logo-placeholder">SW</div>
+                </div>
+                <div class="partner-card-body">
+                    <h3>Stereoworks</h3>
+                    <p>Audio production and sound engineering</p>
+                    <a href="https://stereoworks.net" target="_blank" rel="noopener noreferrer" class="partner-card-link">&rarr; Visit Website</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upgrade CTA -->
+    <section class="upgrade-cta">
+        <div class="upgrade-cta-content">
+            <span class="upgrade-cta-text">Own a restaurant? Get featured on A Bite of Nutmeg</span>
+            <a href="/upgrade" class="upgrade-cta-btn">Upgrade Your Listing</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="branford-footer">
+        <div class="footer-content">
+            <a href="/">
+                <img src="logo-optimized.png" alt="A Bite of Nutmeg" class="footer-logo">
+            </a>
+            <p>&copy; 2026 A Bite of Nutmeg. All rights reserved.</p>
+            <a href="/upgrade" class="footer-link">For Restaurants</a>
+            <span class="footer-divider">|</span>
+            <a href="/why" class="footer-link">Why This Site</a>
+            <span class="footer-divider">|</span>
+            <a href="https://www.facebook.com/abiteofnutmeg/" target="_blank" rel="noopener" class="footer-link">Follow Us on Facebook</a>
+        </div>
+    </footer>
+
+    <script src="near-me.js"></script>
+    <script>
+        // Initialize Near Me button
+        document.getElementById('townNearMeBtn').addEventListener('click', () => {
+            if (typeof window.openNearMe === 'function') {
+                window.openNearMe();
+            }
+        });
+
+        // Search redirects to homepage with query
+        document.getElementById('townSearchBtn').addEventListener('click', () => {
+            const query = document.getElementById('searchInput').value.trim();
+            if (query) {
+                window.location.href = '/?search=' + encodeURIComponent(query);
+            }
+        });
+
+        document.getElementById('searchInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                const query = e.target.value.trim();
+                if (query) {
+                    window.location.href = '/?search=' + encodeURIComponent(query);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
