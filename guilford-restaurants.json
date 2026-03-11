@@ -35,6 +35,7 @@
     {"name": "Kamana", "category": "Indian", "phone": "203-689-5728", "lat": 41.2879955, "lng": -72.6828754},
     {"name": "KC's Restaurant and Pub", "category": "American", "phone": "203-453-3200", "lat": 41.289489, "lng": -72.6726943},
     {"name": "Lorenzo's II", "category": "Italian", "phone": "203-457-9111", "lat": 41.3524633, "lng": -72.6954215},
+    {"name": "Lucky Thai Kitchen", "category": "Thai", "phone": "203-823-2351", "lat": 41.28759027131268, "lng": -72.6848018132021},
     {"name": "McDonald's", "category": "Fast Food", "phone": "203-453-4640", "lat": 41.289185, "lng": -72.6689619},
     {"name": "Mexitale", "category": "Mexican", "phone": "475-223-6083", "lat": 41.3080171, "lng": -72.7192757, "website": "https://mexitalekitchen.com/"},
     {"name": "Moon Shots Juice Co.", "category": "Cafe", "phone": "203-689-5665", "lat": 41.2882084, "lng": -72.6852267},
