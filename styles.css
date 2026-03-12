@@ -1783,6 +1783,26 @@ body {
     transform: scale(1.1);
 }
 
+.fb-btn-hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: #1877F2;
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.fb-btn-hero:hover {
+    background: #fff;
+    color: #1877F2;
+    transform: scale(1.1);
+}
+
 /* ===== NEW STYLES: Town Houses ===== */
 .town-houses {
     display: flex;
@@ -1895,7 +1915,8 @@ body {
         justify-content: center;
     }
 
-    .why-btn-hero {
+    .why-btn-hero,
+    .fb-btn-hero {
         width: 44px;
         height: 44px;
         flex-shrink: 0;
