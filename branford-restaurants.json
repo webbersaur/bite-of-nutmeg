@@ -65,7 +65,7 @@
     {"name": "Fresh Greens & Proteins", "category": "American", "phone": "203-208-4398", "lat": 41.2757187, "lng": -72.8302241},
     {"name": "G Cafe Bakery", "category": "Café & Bakery", "phone": "203-488-9996", "lat": 41.2816635, "lng": -72.8115446},
     {"name": "Genaro's Restaurant & Pizza", "category": "Italian", "phone": "203-483-9397", "lat": 41.2584291, "lng": -72.8478616},
-    {"name": "Geovanny's Deli", "category": "American", "phone": "203-208-2267", "lat": 41.281, "lng": -72.811},
+    {"name": "Geovanny's Deli", "category": "American", "phone": "203-208-2267", "lat": 41.278465514386035, "lng": -72.84227790238671},
     {"name": "Grey Goat Farmtique", "category": "American", "phone": "203-315-7227", "lat": 41.2972327, "lng": -72.7801574},
     {"name": "Guacamole's Mexican Cuisine", "category": "Mexican", "phone": "203-481-4060", "lat": 41.2611709, "lng": -72.8006066},
     {"name": "Gourmet Wok", "category": "Chinese", "phone": "203-481-7988", "lat": 41.2944322, "lng": -72.7822008},
