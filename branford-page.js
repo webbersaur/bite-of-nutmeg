@@ -368,6 +368,8 @@ function addMarkersToMap(restaurantList) {
 
     restaurantList.forEach(restaurant => {
         const featured = isFeaturedRestaurant(restaurant.name);
+        const featuredData = featured ? data.featured.find(f => f.name === restaurant.name) : null;
+        const website = featuredData?.website || restaurant.website;
         const icon = createMarkerIcon(featured);
         const marker = L.marker([restaurant.lat, restaurant.lng], { icon: icon, zIndexOffset: featured ? 1000 : 0 })
             .addTo(map)
@@ -378,6 +380,7 @@ function addMarkersToMap(restaurantList) {
                     <p class="popup-cuisine">${restaurant.category}</p>
                     <p>${townName}</p>
                     ${restaurant.phone ? `<p>${restaurant.phone}</p>` : ''}
+                    ${website ? `<p><a href="${website}" target="_blank" rel="noopener noreferrer" style="color: #2EA3F2; text-decoration: none; font-weight: 600;">Visit Website →</a></p>` : ''}
                 </div>
             `);
         markers.push(marker);
