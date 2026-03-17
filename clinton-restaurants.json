@@ -6,217 +6,248 @@
       "category": "Cafe & Bakery",
       "phone": "860-664-5058",
       "lat": 41.272943,
-      "lng": -72.488774
+      "lng": -72.488774,
+      "description": "A local favorite for fresh donuts and coffee, Beach Donut Shop is an early-morning go-to for Clinton residents looking for a quick, satisfying breakfast."
     },
     {
       "name": "Bella Maria Pizzeria",
       "category": "Pizza",
       "phone": "860-669-4447",
       "lat": 41.306418,
-      "lng": -72.526316
+      "lng": -72.526316,
+      "description": "A neighborhood pizzeria in Clinton serving classic pies and Italian-American favorites. A solid option for a casual pizza night along Route 1."
     },
     {
       "name": "Cafe Nola",
       "category": "Cafe & Bakery",
       "phone": "860-669-0776",
       "lat": 41.278487,
-      "lng": -72.5278803
+      "lng": -72.5278803,
+      "description": "A cozy breakfast and lunch cafe on Main Street with a loyal local following. Known for its relaxed atmosphere and reliable morning fare."
     },
     {
       "name": "Chamard Vineyards Bistro",
       "category": "American",
       "phone": "860-664-0299",
       "lat": 41.3012774,
-      "lng": -72.5446935
+      "lng": -72.5446935,
+      "description": "One of Connecticut's premier farm-to-table dining destinations, set on a working vineyard along Route 1 where seasonal cuisine is paired with estate-grown wines. A destination-worthy experience for food and wine lovers."
     },
     {
       "name": "Chips Pub",
       "category": "American",
       "phone": "860-669-2231",
       "lat": 41.2784386,
-      "lng": -72.5289306
+      "lng": -72.5289306,
+      "description": "A longtime Clinton hangout serving burgers, pub fare, and cold drinks in a laid-back atmosphere. This is where locals gather for a casual meal and good company."
     },
     {
       "name": "Ciao Food & Beverage",
       "category": "American",
       "phone": "860-552-4135",
       "lat": 41.2955188,
-      "lng": -72.5326935
+      "lng": -72.5326935,
+      "description": "A contemporary casual dining spot offering American-style fare with a modern touch. A newer addition to Clinton's Route 1 restaurant corridor."
     },
     {
       "name": "Cold Stone Creamery",
       "category": "Dessert",
       "phone": "860-669-7025",
       "lat": 41.2891634,
-      "lng": -72.5281093
+      "lng": -72.5281093,
+      "description": "Located near Clinton Crossing Premium Outlets, this ice cream shop serves customizable mix-in creations on a frozen granite stone. A popular stop for shoppers looking for a sweet treat."
     },
     {
       "name": "Domino's",
       "category": "Pizza",
       "phone": "860-552-4829",
       "lat": 41.2702473,
-      "lng": -72.5004858
+      "lng": -72.5004858,
+      "description": "A national pizza chain offering delivery and carryout with a wide menu of pizzas, sides, and desserts. A convenient option for a quick meal in Clinton."
     },
     {
       "name": "Dunkin'",
       "category": "Cafe & Bakery",
       "phone": "860-669-8050",
       "lat": 41.273124,
-      "lng": -72.5066448
+      "lng": -72.5066448,
+      "description": "A familiar stop for coffee, donuts, and breakfast sandwiches along Route 1 in Clinton. Open early for commuters and morning regulars."
     },
     {
       "name": "Golden China",
       "category": "Chinese",
       "phone": "860-664-4589",
       "lat": 41.2701677,
-      "lng": -72.5011921
+      "lng": -72.5011921,
+      "description": "A Chinese restaurant in Clinton offering a traditional menu of takeout and dine-in favorites. A reliable choice for classic Chinese-American dishes."
     },
     {
       "name": "Grand Apizza Shoreline",
       "category": "Pizza",
       "phone": "860-669-1204",
       "lat": 41.2787915,
-      "lng": -72.5266707
+      "lng": -72.5266707,
+      "description": "Serving New Haven-style apizza along Route 1, Grand Apizza Shoreline brings the thin-crust, charred-edge pizza tradition to Clinton's shoreline dining scene."
     },
     {
       "name": "Great Wall Chinese Restaurant",
       "category": "Chinese",
       "phone": "860-664-4110",
       "lat": 41.2768627,
-      "lng": -72.5371908
+      "lng": -72.5371908,
+      "description": "A Chinese restaurant offering a broad menu of traditional dishes for dine-in and takeout. A go-to spot for Chinese cuisine on Clinton's west side."
     },
     {
       "name": "Hanami Japanese Restaurant",
       "category": "Japanese",
       "phone": "860-669-8288",
       "lat": 41.2758958,
-      "lng": -72.5177411
+      "lng": -72.5177411,
+      "description": "A Japanese restaurant offering sushi, sashimi, and cooked Japanese dishes. A popular choice for fresh sushi along the Clinton shoreline."
     },
     {
       "name": "J+M Dockside",
       "category": "Seafood",
       "phone": "860-669-5388",
       "lat": 41.2692208,
-      "lng": -72.5298168
+      "lng": -72.5298168,
+      "description": "A casual waterfront seafood spot at the Clinton Town Dock, serving fresh catches in a relaxed marina setting. A great pick for outdoor dining by the water."
     },
     {
       "name": "Jersey Mike's",
       "category": "Fast Food",
       "phone": "860-552-2050",
       "lat": 41.2894069,
-      "lng": -72.5283124
+      "lng": -72.5283124,
+      "description": "A sub sandwich chain known for fresh-sliced deli meats and made-to-order subs. Located near Clinton Crossing for a quick lunch option."
     },
     {
       "name": "Land of Thai",
       "category": "Thai",
       "phone": "860-552-4444",
       "lat": 41.2734314,
-      "lng": -72.4872481
+      "lng": -72.4872481,
+      "description": "Bringing authentic Thai flavors to the Clinton shoreline, Land of Thai offers curries, noodle dishes, and traditional Thai specialties near the Westbrook town line."
     },
     {
       "name": "Lobster Landing",
       "category": "Seafood",
       "phone": "860-669-2005",
       "lat": 41.2690161,
-      "lng": -72.5281545
+      "lng": -72.5281545,
+      "description": "Clinton's most famous restaurant -- a cash-only, no-frills shack on the harbor where the hot butter lobster rolls are widely considered among the best in Connecticut. Arrive early in summer, as lines form quickly."
     },
     {
       "name": "Log Cabin Restaurant",
       "category": "American",
       "phone": "860-669-6253",
       "lat": 41.271638,
-      "lng": -72.505166
+      "lng": -72.505166,
+      "description": "A classic American restaurant along Route 1 serving hearty, home-style dishes in a rustic setting. A familiar roadside stop for comfort food in Clinton."
     },
     {
       "name": "Masa Sushi",
       "category": "Japanese",
       "phone": "860-744-8895",
       "lat": 41.2779531,
-      "lng": -72.5364799
+      "lng": -72.5364799,
+      "description": "A popular Japanese spot for sushi and rolls, well-regarded for takeout orders. A convenient option for fresh sushi on Clinton's west side."
     },
     {
       "name": "McDonald's",
       "category": "Fast Food",
       "phone": "860-669-0074",
       "lat": 41.2774006,
-      "lng": -72.5382331
+      "lng": -72.5382331,
+      "description": "A familiar fast food stop along Route 1 in Clinton, offering the standard menu of burgers, chicken, and breakfast items."
     },
     {
       "name": "Nataz",
       "category": "Fine Dining",
       "phone": "860-669-2272",
       "lat": 41.2787704,
-      "lng": -72.5272827
+      "lng": -72.5272827,
+      "description": "Clinton's hidden gem for fine dining, offering a creative, chef-driven menu in an intimate setting that regularly earns praise from Connecticut food critics. Worth a special trip for a memorable meal."
     },
     {
       "name": "Palmieri's Pizzeria",
       "category": "Pizza",
       "phone": "860-669-2275",
       "lat": 41.27948,
-      "lng": -72.5322113
+      "lng": -72.5322113,
+      "description": "A local pizzeria serving New Haven-style pies and Italian staples along Route 1. A neighborhood favorite for pizza in Clinton."
     },
     {
       "name": "Pica Chica Tacos",
       "category": "Mexican",
       "phone": "860-552-6916",
       "lat": 41.278615,
-      "lng": -72.534278
+      "lng": -72.534278,
+      "description": "A quick-service Mexican spot in Clinton serving tacos and other traditional favorites. A welcome option for affordable, flavorful Mexican fare on the shoreline."
     },
     {
       "name": "Rockys Aqua",
       "category": "Seafood",
       "phone": "860-664-3777",
       "lat": 41.2688604,
-      "lng": -72.5311585
+      "lng": -72.5311585,
+      "description": "A seafood restaurant near Clinton harbor rounding out the town's strong waterfront dining scene. A casual option for fresh seafood in a laid-back setting."
     },
     {
       "name": "Saldamarco's Deli",
       "category": "Italian",
       "phone": "860-669-3469",
       "lat": 41.2770196,
-      "lng": -72.5200739
+      "lng": -72.5200739,
+      "description": "An Italian deli serving sandwiches, prepared foods, and imported Italian specialties. A go-to lunch spot for hearty subs and homemade salads in Clinton."
     },
     {
       "name": "Scottish Dave's Pub",
       "category": "American",
       "phone": "860-552-4727",
       "lat": 41.2783105,
-      "lng": -72.5254972
+      "lng": -72.5254972,
+      "description": "A pub with unique character on the Clinton dining scene, offering drinks and American pub fare in a friendly, casual atmosphere. A local favorite for an evening out."
     },
     {
       "name": "Shanks",
       "category": "Seafood",
       "phone": "860-664-4100",
       "lat": 41.2691075,
-      "lng": -72.5284301
+      "lng": -72.5284301,
+      "description": "A waterfront seafood restaurant with harbor views, Shanks is a popular spot for fresh seafood and drinks overlooking the Clinton marina. A step up from the casual shack scene nearby."
     },
     {
       "name": "Starbucks",
       "category": "Cafe & Bakery",
       "phone": "860-744-0010",
       "lat": 41.28982,
-      "lng": -72.5291
+      "lng": -72.5291,
+      "description": "A coffeehouse chain near Clinton Crossing offering espresso drinks, teas, and light bites. A reliable spot for a caffeine fix while shopping the outlets."
     },
     {
       "name": "Subway",
       "category": "Fast Food",
       "phone": "860-669-2535",
       "lat": 41.2769364,
-      "lng": -72.5371671
+      "lng": -72.5371671,
+      "description": "A sandwich chain along Route 1 offering made-to-order subs and wraps. A quick, affordable lunch option in Clinton."
     },
     {
       "name": "Taste of China",
       "category": "Chinese",
       "phone": "860-664-4454",
       "lat": 41.2718778,
-      "lng": -72.5041278
+      "lng": -72.5041278,
+      "description": "A Chinese restaurant on Route 1 near the east end of Clinton, offering a full menu of Chinese-American dishes for dine-in and takeout."
     },
     {
       "name": "Westbrook Lobster",
       "category": "Seafood",
       "phone": "860-664-9464",
       "lat": 41.2731539,
-      "lng": -72.4879906
+      "lng": -72.4879906,
+      "description": "Located near the Clinton-Westbrook town line, this seafood restaurant offers lobster, fried seafood, and a full raw bar. A popular destination for seafood lovers on the shoreline."
     }
   ],
   "categories": [

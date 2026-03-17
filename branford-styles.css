@@ -12,6 +12,42 @@
     font-family: 'Playfair Display', serif;
 }
 
+/* Breadcrumb Navigation */
+.breadcrumb {
+    background: #f8f4eb;
+    padding: 0.5rem 2rem;
+    font-size: 0.85rem;
+}
+
+.breadcrumb ol {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.breadcrumb li + li::before {
+    content: "›";
+    margin-right: 0.25rem;
+    color: #6c757d;
+}
+
+.breadcrumb a {
+    color: #1e3a6e;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb [aria-current="page"] {
+    color: #6c757d;
+}
+
 /* Header */
 .branford-header {
     background-color: #FDF6EC;
@@ -552,6 +588,13 @@
 }
 
 /* Item actions for premium/featured */
+.restaurant-item .restaurant-description {
+    color: #555;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0.25rem 0 0.5rem;
+}
+
 .restaurant-item .item-actions {
     display: flex;
     flex-wrap: wrap;
