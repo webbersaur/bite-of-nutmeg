@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     renderRestaurantList();
     initSearch();
     initNearMe();
-    initMap();
     initMapToggle();
 });
 
@@ -278,6 +277,21 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Map Functionality
 // ==========================================
 
+// Load Leaflet CSS + JS dynamically
+function loadLeaflet() {
+    return new Promise((resolve) => {
+        if (typeof L !== 'undefined') { resolve(); return; }
+        const css = document.createElement('link');
+        css.rel = 'stylesheet';
+        css.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+        document.head.appendChild(css);
+        const script = document.createElement('script');
+        script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+        script.onload = resolve;
+        document.head.appendChild(script);
+    });
+}
+
 // Map toggle for mobile
 function initMapToggle() {
     const toggleBtn = document.getElementById('mapToggle');
@@ -285,11 +299,16 @@ function initMapToggle() {
 
     if (!toggleBtn || !mapContainer) return;
 
-    toggleBtn.addEventListener('click', () => {
+    toggleBtn.addEventListener('click', async () => {
         const isShowing = mapContainer.classList.toggle('show');
         toggleBtn.textContent = isShowing ? 'Hide Map' : 'Show Map';
 
-        if (isShowing && map) {
+        if (isShowing && !map) {
+            toggleBtn.textContent = 'Loading Map...';
+            await loadLeaflet();
+            initMap();
+            toggleBtn.textContent = 'Hide Map';
+        } else if (isShowing && map) {
             setTimeout(() => {
                 map.invalidateSize();
                 if (markers.length > 0) {
@@ -304,7 +323,7 @@ function initMapToggle() {
 // Initialize the Leaflet map
 function initMap() {
     const mapContainer = document.getElementById('mapContainer');
-    if (!mapContainer || typeof L === 'undefined') return;
+    if (!mapContainer) return;
 
     const restaurantsWithCoords = data.restaurants.filter(r => r.lat && r.lng);
     if (restaurantsWithCoords.length === 0) return;
