@@ -135,6 +135,11 @@
                     line-height: 1;
                 }
 
+                /* Hide on desktop */
+                @media (min-width: 768px) {
+                    #installBanner { display: none !important; }
+                }
+
                 /* Ensure padding env for notched devices */
                 @supports (padding-bottom: env(safe-area-inset-bottom)) {
                     #installBanner {
