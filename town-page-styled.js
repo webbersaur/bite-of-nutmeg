@@ -306,7 +306,14 @@ function initMapToggle() {
     const toggleBtn = document.getElementById('mapToggle');
     const mapContainer = document.getElementById('mapContainer');
 
-    if (!toggleBtn || !mapContainer) return;
+    if (!mapContainer) return;
+
+    // Auto-initialize map on desktop when container is already visible
+    if (mapContainer.offsetHeight > 0 && !mapContainer.classList.contains('show')) {
+        loadLeaflet().then(() => initMap());
+    }
+
+    if (!toggleBtn) return;
 
     toggleBtn.addEventListener('click', async () => {
         const isShowing = mapContainer.classList.toggle('show');
