@@ -3,13 +3,13 @@
     {
       "name": "Capotorto's",
       "category": "Italian",
-      "address": "85 Cosey Beach Ave, East Haven",
-      "phone": "203-469-5550",
+      "address": "688 Foxon Rd, East Haven, CT 06513",
+      "phone": "203-469-8404",
       "website": "https://www.capotortos.com/",
       "image": "easthven-logos/capotortos530.png",
-      "lat": 41.32098,
-      "lng": -72.8523864,
-      "description": "Classic Italian-American restaurant on Cosey Beach Avenue, serving traditional dishes in a neighborhood favorite setting."
+      "lat": 41.3211492,
+      "lng": -72.8517480,
+      "description": "Classic Italian-American restaurant on Foxon Road, serving traditional dishes in a neighborhood favorite setting."
     },
     {
       "name": "Longley's",
@@ -26,7 +26,7 @@
     {"name": "Apizza Abate'", "category": "Pizza", "phone": "203-891-7086", "lat": 41.245144, "lng": -72.8861249, "description": "East Haven pizzeria putting its own spin on the proud New Haven thin-crust apizza tradition."},
     {"name": "Bistro Mediterranean & Tapas Bar", "category": "Mediterranean", "phone": "203-469-2722", "lat": 41.2808299, "lng": -72.8761025, "description": "Mediterranean-inspired small plates and entrees bringing international sophistication to East Haven's dining scene."},
     {"name": "Briellies Gelato & Cafe", "category": "Café & Bakery", "phone": "203-903-5028", "lat": 41.2834242, "lng": -72.8811255, "description": "Cafe serving authentic Italian gelato alongside light cafe fare and coffee drinks."},
-    {"name": "Capotorto's", "category": "Italian", "phone": "203-469-5550", "lat": 41.32098, "lng": -72.8523864, "enhanced": true, "website": "https://www.capotortos.com/", "description": "Classic Italian-American restaurant on Cosey Beach Avenue, serving traditional dishes in a neighborhood favorite setting."},
+    {"name": "Capotorto's", "category": "Italian", "phone": "203-469-8404", "lat": 41.3211492, "lng": -72.8517480, "enhanced": true, "website": "https://www.capotortos.com/", "address": "688 Foxon Rd, East Haven, CT 06513", "description": "Classic Italian-American restaurant on Foxon Road, serving traditional dishes in a neighborhood favorite setting."},
     {"name": "Chili's Grill & Bar", "category": "American", "phone": "203-467-1533", "lat": 41.2855288, "lng": -72.8788927, "description": "National chain restaurant offering casual American dining with Tex-Mex-inspired dishes, burgers, and bar fare."},
     {"name": "China One", "category": "Chinese", "phone": "203-467-8808", "lat": 41.2807407, "lng": -72.8758126, "description": "Chinese restaurant serving traditional Cantonese and Szechuan dishes in East Haven."},
     {"name": "China Star", "category": "Chinese", "phone": "203-469-8868", "lat": 41.2770932, "lng": -72.8703473, "description": "Chinese takeout and dine-in restaurant serving the Main Street area of East Haven."},
