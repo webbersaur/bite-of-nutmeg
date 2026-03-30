@@ -21,6 +21,7 @@
     }
   ],
   "restaurants": [
+    {"name": "Ade", "category": "Nigerian", "phone": "203-535-0634", "lat": 41.277128, "lng": -72.869822, "description": "Nigerian restaurant bringing authentic West African flavors and dishes to East Haven."},
     {"name": "Aniello's Pizza & Restaurant", "category": "Italian", "phone": "203-467-5694", "lat": 41.2773983, "lng": -72.8690046, "description": "Family-owned Italian restaurant offering both New Haven-style pizza and full Italian dinners in East Haven."},
     {"name": "Apizza Abate'", "category": "Pizza", "phone": "203-891-7086", "lat": 41.245144, "lng": -72.8861249, "description": "East Haven pizzeria putting its own spin on the proud New Haven thin-crust apizza tradition."},
     {"name": "Bistro Mediterranean & Tapas Bar", "category": "Mediterranean", "phone": "203-469-2722", "lat": 41.2808299, "lng": -72.8761025, "description": "Mediterranean-inspired small plates and entrees bringing international sophistication to East Haven's dining scene."},
@@ -66,5 +67,5 @@
     {"name": "Village Inn", "category": "American", "phone": "203-469-5759", "lat": 41.2853852, "lng": -72.8867368, "description": "Cozy tavern-style restaurant offering American fare and drinks in a relaxed neighborhood atmosphere."},
     {"name": "Wendy's", "category": "Fast Food", "phone": "203-469-8611", "lat": 41.2866155, "lng": -72.878689, "description": "National fast food chain known for fresh beef burgers, Frosty desserts, and chicken sandwiches."}
   ],
-  "categories": ["All", "American", "Bar & Grill", "Café & Bakery", "Caribbean", "Chinese", "European", "Fast Food", "Italian", "Japanese", "Latin American", "Mediterranean", "Mexican", "Pizza", "Seafood", "Thai"]
+  "categories": ["All", "American", "Bar & Grill", "Café & Bakery", "Caribbean", "Chinese", "European", "Fast Food", "Italian", "Japanese", "Latin American", "Mediterranean", "Mexican", "Nigerian", "Pizza", "Seafood", "Thai"]
 }
