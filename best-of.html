@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) - deferred for performance -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-9V7CYSGN9J');
+      window.addEventListener('load', function() {
+        var s = document.createElement('script');
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-9V7CYSGN9J';
+        document.head.appendChild(s);
+      });
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="msvalidate.01" content="564C441015D4607807CA90C4275EF907">
+    <title>Best Of the CT Shoreline — Dining Guides by A Bite of Nutmeg</title>
+    <meta name="description" content="Curated dining guides for the Connecticut shoreline — best lobster rolls, waterfront restaurants, pizza, brunch, and more from East Haven to Old Saybrook.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.abiteofnutmeg.com/best-of">
+    <meta property="og:title" content="Best Of the CT Shoreline — Dining Guides by A Bite of Nutmeg">
+    <meta property="og:description" content="Curated dining guides for the Connecticut shoreline — best lobster rolls, waterfront restaurants, pizza, brunch, and more from East Haven to Old Saybrook.">
+    <meta property="og:image" content="https://www.abiteofnutmeg.com/social-share.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://www.abiteofnutmeg.com/best-of">
+    <meta name="twitter:title" content="Best Of the CT Shoreline — Dining Guides by A Bite of Nutmeg">
+    <meta name="twitter:description" content="Curated dining guides for the Connecticut shoreline — best lobster rolls, waterfront restaurants, pizza, brunch, and more from East Haven to Old Saybrook.">
+    <meta name="twitter:image" content="https://www.abiteofnutmeg.com/social-share.png">
+    <link rel="canonical" href="https://www.abiteofnutmeg.com/best-of">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "CollectionPage",
+          "@id": "https://www.abiteofnutmeg.com/best-of",
+          "name": "Best Of the CT Shoreline — Dining Guides",
+          "description": "Curated dining guides for the Connecticut shoreline from East Haven to Old Saybrook.",
+          "url": "https://www.abiteofnutmeg.com/best-of",
+          "isPartOf": { "@id": "https://www.abiteofnutmeg.com/#website" },
+          "breadcrumb": { "@id": "https://www.abiteofnutmeg.com/best-of#breadcrumb" }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://www.abiteofnutmeg.com/best-of#breadcrumb",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.abiteofnutmeg.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Best Of" }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="branford-styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        .bestof-hero {
+            background: linear-gradient(135deg, #1e3a6e 0%, #2a4a8a 100%);
+            padding: 3rem 2rem 2.5rem;
+            text-align: center;
+            color: white;
+        }
+
+        .bestof-hero .hero-logo {
+            width: 120px;
+            height: auto;
+            margin-bottom: 1rem;
+        }
+
+        .bestof-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            margin: 0 0 0.75rem;
+            line-height: 1.2;
+        }
+
+        .bestof-hero .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        .bestof-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2.5rem 2rem 3rem;
+        }
+
+        .bestof-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .bestof-card {
+            border-radius: 12px;
+            overflow: hidden;
+            text-decoration: none;
+            color: white;
+            display: block;
+            position: relative;
+            height: 280px;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .bestof-card {
+            background-color: #1e3a6e; /* fallback when no image */
+        }
+
+        .bestof-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.05) 100%);
+            border-radius: 12px;
+            z-index: 1;
+        }
+
+        .bestof-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 28px rgba(0,0,0,0.2);
+        }
+
+        .bestof-card-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem;
+            z-index: 2;
+        }
+
+        .bestof-card-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            margin: 0 0 0.5rem;
+            line-height: 1.3;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .bestof-card-content p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin: 0 0 0.75rem;
+            opacity: 0.9;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+
+        .bestof-card-content .card-meta {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0.8;
+        }
+
+        .bestof-card-content .card-cta {
+            display: inline-block;
+            background: #f0b323;
+            color: #1e3a6e;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            transition: background 0.2s;
+        }
+
+        .bestof-card:hover .card-cta {
+            background: #ffc842;
+        }
+
+        .coming-soon-section {
+            margin-top: 3rem;
+        }
+
+        .coming-soon-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: #1e3a6e;
+            margin: 0 0 1rem;
+        }
+
+        .coming-soon-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .coming-soon-list li {
+            background: #f8f4eb;
+            padding: 1rem 1.25rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            color: #666;
+            border-left: 3px solid #e8e0d0;
+        }
+
+        .coming-soon-list li strong {
+            color: #1e3a6e;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        @media (max-width: 768px) {
+            .bestof-hero h1 {
+                font-size: 1.8rem;
+            }
+            .bestof-container {
+                padding: 2rem 1.25rem;
+            }
+            .bestof-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="branford-page">
+    <!-- Hero Section -->
+    <section class="bestof-hero">
+        <a href="/"><img src="logo-mobile.webp" alt="A Bite of Nutmeg" class="hero-logo" width="120" height="110"></a>
+        <h1>Best Of the CT Shoreline</h1>
+        <p class="subtitle">Curated dining guides from East Haven to Old Saybrook — because finding the right restaurant shouldn't be left to chance</p>
+    </section>
+
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol>
+            <li><a href="/">Home</a></li>
+            <li aria-current="page">Best Of</li>
+        </ol>
+    </nav>
+
+    <!-- Town Navigation -->
+    <section class="town-nav-section">
+        <div class="town-nav-badges">
+            <a href="/" class="town-nav-badge home-badge" aria-label="Home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></a>
+            <a href="/restaurants-in-east-haven" class="town-nav-badge"><span class="badge-full">East Haven</span><span class="badge-abbr">EH</span></a>
+            <a href="/restaurants-in-branford" class="town-nav-badge"><span class="badge-full">Branford</span><span class="badge-abbr">B</span></a>
+            <a href="/restaurants-in-guilford" class="town-nav-badge"><span class="badge-full">Guilford</span><span class="badge-abbr">G</span></a>
+            <a href="/restaurants-in-madison" class="town-nav-badge"><span class="badge-full">Madison</span><span class="badge-abbr">M</span></a>
+            <a href="/restaurants-in-clinton" class="town-nav-badge"><span class="badge-full">Clinton</span><span class="badge-abbr">C</span></a>
+            <a href="/restaurants-in-westbrook" class="town-nav-badge"><span class="badge-full">Westbrook</span><span class="badge-abbr">W</span></a>
+            <a href="/restaurants-in-old-saybrook" class="town-nav-badge"><span class="badge-full">Old Saybrook</span><span class="badge-abbr">OS</span></a>
+        </div>
+    </section>
+
+    <!-- Best Of Grid -->
+    <div class="bestof-container">
+        <div class="bestof-grid">
+            <a href="/best-lobster-rolls-ct-shoreline" class="bestof-card" style="background-image: url('best-of-images/lobster-rolls.webp');">
+                <div class="bestof-card-content">
+                    <h2>Best Lobster Rolls on the CT Shoreline</h2>
+                    <p>From Lobster Landing's legendary hot butter rolls to waterfront institutions and seasonal shacks across all 7 towns.</p>
+                    <span class="card-meta">9 restaurants &middot; 7 towns</span>
+                    <span class="card-cta">Read Guide &rsaquo;</span>
+                </div>
+            </a>
+        </div>
+
+        <!-- Coming Soon -->
+        <div class="coming-soon-section">
+            <h2>More Guides Coming Soon</h2>
+            <ul class="coming-soon-list">
+                <li>
+                    <strong>Best Waterfront Restaurants</strong>
+                    Harbor views, river decks, and beachside dining along the shoreline
+                </li>
+                <li>
+                    <strong>Best Pizza on the CT Shoreline</strong>
+                    New Haven-style apizza and beyond — the definitive shoreline pizza guide
+                </li>
+                <li>
+                    <strong>Best Brunch Spots</strong>
+                    Weekend brunch from East Haven to Old Saybrook
+                </li>
+                <li>
+                    <strong>Best Date Night Restaurants</strong>
+                    Upscale dining, wine bars, and bistros for a night out
+                </li>
+                <li>
+                    <strong>Best Outdoor Dining</strong>
+                    Patios, decks, and al fresco dining for the warmer months
+                </li>
+            </ul>
+        </div>
+
+        <p style="margin-top: 2.5rem; font-size: 1rem; line-height: 1.7; color: #555;">Our guides are powered by <a href="/why" style="color: #1e3a6e;">official health department data</a> and local knowledge from the CT shoreline. Own a restaurant? <a href="/upgrade" style="color: #1e3a6e;">Get featured</a> in our guides.</p>
+    </div>
+
+    <!-- Upgrade CTA -->
+    <section class="upgrade-cta">
+        <div class="upgrade-cta-content">
+            <span class="upgrade-cta-text">Own a restaurant on the CT shoreline? Get featured in our guides</span>
+            <a href="/upgrade" class="upgrade-cta-btn">Upgrade Your Listing</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="branford-footer">
+        <div class="footer-content">
+            <a href="/">
+                <img src="logo-footer.webp" alt="A Bite of Nutmeg - Powered by Webbersaurus" class="footer-logo">
+            </a>
+            <p>&copy; 2026 A Bite of Nutmeg. All rights reserved.</p>
+            <p style="font-size: 0.75rem; margin-top: 4px; opacity: 0.7;">Created by <a href="https://webbersaur.us" target="_blank" rel="noopener" class="footer-link">Webbersaurus</a></p>
+            <a href="/upgrade" class="footer-link">For Restaurants</a>
+            <span class="footer-divider">|</span>
+            <a href="/best-of" class="footer-link">Best Of</a>
+            <span class="footer-divider">|</span>
+            <a href="/why" class="footer-link">Why This Site</a>
+            <span class="footer-divider">|</span>
+            <a href="/partners" class="footer-link">Partners</a>
+            <span class="footer-divider">|</span>
+            <a href="/case-study" class="footer-link">Case Study</a>
+            <span class="footer-divider">|</span>
+            <a href="#" id="reportLink" class="report-link">Report a Problem</a>
+            <span class="footer-divider">|</span>
+            <a href="https://www.facebook.com/abiteofnutmeg/" target="_blank" rel="noopener" class="footer-link">Follow Us on Facebook</a>
+        </div>
+    </footer>
+
+    <script src="install-prompt.js" defer></script>
+</body>
+</html>
