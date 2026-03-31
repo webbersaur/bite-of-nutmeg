@@ -930,6 +930,30 @@
     transform: scale(1.1);
 }
 
+.fb-btn-town {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: #1877F2;
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.fb-btn-town:hover {
+    background: #fff;
+    color: #1877F2;
+    transform: scale(1.1);
+}
+
 /* Town Hero Search Results Dropdown */
 .town-search-results {
     position: relative;
