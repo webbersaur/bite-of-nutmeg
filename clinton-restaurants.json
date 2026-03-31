@@ -15,7 +15,7 @@
       "phone": "860-669-4447",
       "lat": 41.306418,
       "lng": -72.526316,
-      "description": "A neighborhood pizzeria in Clinton serving classic pies and Italian-American favorites. A solid option for a casual pizza night along Route 1."
+      "description": "A neighborhood pizzeria in Clinton serving classic pies and Italian-American favorites. A solid option for a casual pizza night."
     },
     {
       "name": "Cafe Nola",
@@ -23,7 +23,7 @@
       "phone": "860-669-0776",
       "lat": 41.278487,
       "lng": -72.5278803,
-      "description": "A cozy breakfast and lunch cafe on Main Street with a loyal local following. Known for its relaxed atmosphere and reliable morning fare."
+      "description": "A cozy breakfast and lunch cafe in the heart of town with a loyal local following. Known for its relaxed atmosphere and reliable morning fare."
     },
     {
       "name": "Chamard Vineyards Bistro",
@@ -31,7 +31,7 @@
       "phone": "860-664-0299",
       "lat": 41.3012774,
       "lng": -72.5446935,
-      "description": "One of Connecticut's premier farm-to-table dining destinations, set on a working vineyard along Route 1 where seasonal cuisine is paired with estate-grown wines. A destination-worthy experience for food and wine lovers."
+      "description": "One of Connecticut's premier farm-to-table dining destinations, set on a working vineyard where seasonal cuisine is paired with estate-grown wines. A destination-worthy experience for food and wine lovers."
     },
     {
       "name": "Chips Pub",
@@ -47,7 +47,7 @@
       "phone": "860-669-6200",
       "lat": 41.2955188,
       "lng": -72.5326935,
-      "description": "A contemporary casual dining spot offering American-style fare with a modern touch. A newer addition to Clinton's Route 1 restaurant corridor."
+      "description": "A contemporary casual dining spot offering American-style fare with a modern touch. A newer addition to Clinton's dining scene."
     },
     {
       "name": "Cold Stone Creamery",
@@ -71,7 +71,7 @@
       "phone": "860-669-8050",
       "lat": 41.273124,
       "lng": -72.5066448,
-      "description": "A familiar stop for coffee, donuts, and breakfast sandwiches along Route 1 in Clinton. Open early for commuters and morning regulars."
+      "description": "A familiar stop for coffee, donuts, and breakfast sandwiches in Clinton. Open early for commuters and morning regulars."
     },
     {
       "name": "Golden China",
@@ -87,7 +87,7 @@
       "phone": "860-669-1204",
       "lat": 41.2787915,
       "lng": -72.5266707,
-      "description": "Serving New Haven-style apizza along Route 1, Grand Apizza Shoreline brings the thin-crust, charred-edge pizza tradition to Clinton's shoreline dining scene."
+      "description": "Serving New Haven-style apizza in Clinton, Grand Apizza Shoreline brings the thin-crust, charred-edge pizza tradition to Clinton's shoreline dining scene."
     },
     {
       "name": "Great Wall Chinese Restaurant",
@@ -143,7 +143,7 @@
       "phone": "860-669-6253",
       "lat": 41.271638,
       "lng": -72.505166,
-      "description": "A classic American restaurant along Route 1 serving hearty, home-style dishes in a rustic setting. A familiar roadside stop for comfort food in Clinton."
+      "description": "A classic American restaurant serving hearty, home-style dishes in a rustic setting. A familiar stop for comfort food in Clinton."
     },
     {
       "name": "Masa Sushi",
@@ -159,7 +159,7 @@
       "phone": "860-669-1005",
       "lat": 41.2774006,
       "lng": -72.5382331,
-      "description": "A familiar fast food stop along Route 1 in Clinton, offering the standard menu of burgers, chicken, and breakfast items."
+      "description": "A familiar fast food stop in Clinton, offering the standard menu of burgers, chicken, and breakfast items."
     },
     {
       "name": "Nataz",
@@ -175,7 +175,7 @@
       "phone": "860-669-2275",
       "lat": 41.27948,
       "lng": -72.5322113,
-      "description": "A local pizzeria serving New Haven-style pies and Italian staples along Route 1. A neighborhood favorite for pizza in Clinton."
+      "description": "A local pizzeria serving New Haven-style pies and Italian staples. A neighborhood favorite for pizza in Clinton."
     },
     {
       "name": "Pica Chica Tacos",
@@ -231,7 +231,7 @@
       "phone": "860-669-2335",
       "lat": 41.2769364,
       "lng": -72.5371671,
-      "description": "A sandwich chain along Route 1 offering made-to-order subs and wraps. A quick, affordable lunch option in Clinton."
+      "description": "A sandwich chain offering made-to-order subs and wraps. A quick, affordable lunch option in Clinton."
     },
     {
       "name": "Taste of China",
@@ -239,7 +239,7 @@
       "phone": "860-664-4454",
       "lat": 41.2718778,
       "lng": -72.5041278,
-      "description": "A Chinese restaurant on Route 1 near the east end of Clinton, offering a full menu of Chinese-American dishes for dine-in and takeout."
+      "description": "A Chinese restaurant near the east end of Clinton, offering a full menu of Chinese-American dishes for dine-in and takeout."
     },
     {
       "name": "Westbrook Lobster",
