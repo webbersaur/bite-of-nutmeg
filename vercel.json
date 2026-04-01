@@ -1,6 +1,12 @@
 {
   "cleanUrls": true,
   "redirects": [
+    {
+      "source": "/:path(.*)",
+      "has": [{ "type": "host", "value": "bite-ivory.vercel.app" }],
+      "destination": "https://www.abiteofnutmeg.com/:path",
+      "permanent": true
+    },
     { "source": "/branford", "destination": "/restaurants-in-branford", "permanent": true },
     { "source": "/guilford", "destination": "/restaurants-in-guilford", "permanent": true },
     { "source": "/madison", "destination": "/restaurants-in-madison", "permanent": true },
