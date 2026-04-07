@@ -254,6 +254,12 @@
     text-decoration: underline;
 }
 
+.spin-result-actions {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+}
+
 .spin-again-btn {
     background: transparent;
     color: var(--gold);

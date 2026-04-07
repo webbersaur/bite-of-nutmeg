@@ -18,9 +18,11 @@
     const SEGMENT_COUNT = WHEEL_CATEGORIES.length;
     const ARC = (2 * Math.PI) / SEGMENT_COUNT;
 
-    let canvas, ctx, spinBtn, spinAgainBtn, resultsDiv, townFilter, modal;
+    let canvas, ctx, spinBtn, spinAgainBtn, showMoreBtn, resultsDiv, townFilter, modal;
     let currentRotation = 0;
     let spinning = false;
+    let currentMatches = [];
+    let showCount = 6;
 
     function init() {
         canvas = document.getElementById('spinCanvas');
@@ -28,6 +30,7 @@
         ctx = canvas.getContext('2d');
         spinBtn = document.getElementById('spinBtn');
         spinAgainBtn = document.getElementById('spinAgainBtn');
+        showMoreBtn = document.getElementById('spinShowMore');
         resultsDiv = document.getElementById('spinResults');
         townFilter = document.getElementById('spinTownFilter');
         modal = document.getElementById('spinModal');
@@ -38,7 +41,14 @@
         spinBtn.addEventListener('click', startSpin);
         spinAgainBtn.addEventListener('click', function () {
             resultsDiv.style.display = 'none';
+            currentMatches = [];
+            showCount = 6;
             startSpin();
+        });
+
+        showMoreBtn.addEventListener('click', function () {
+            showCount += 6;
+            renderCards();
         });
 
         // Modal open
@@ -212,52 +222,65 @@
         const town = townFilter.value;
 
         var restaurants = (typeof allRestaurants !== 'undefined' ? allRestaurants : []);
-        var matches = restaurants.filter(function (r) {
+        currentMatches = restaurants.filter(function (r) {
             if (!matchesCategory(r, wheelCat)) return false;
             if (town && r.town !== town) return false;
             return true;
         });
 
-        // Shuffle and take up to 6
-        for (var i = matches.length - 1; i > 0; i--) {
+        // Shuffle
+        for (var i = currentMatches.length - 1; i > 0; i--) {
             var j = Math.floor(Math.random() * (i + 1));
-            var temp = matches[i];
-            matches[i] = matches[j];
-            matches[j] = temp;
+            var temp = currentMatches[i];
+            currentMatches[i] = currentMatches[j];
+            currentMatches[j] = temp;
         }
-        var display = matches.slice(0, 6);
+
+        showCount = 6;
 
         var categoryEl = document.getElementById('spinResultCategory');
-        var countEl = document.getElementById('spinResultCount');
-        var cardsEl = document.getElementById('spinResultCards');
-
         categoryEl.textContent = wheelCat.label + '!';
 
-        if (display.length === 0) {
+        if (currentMatches.length === 0) {
+            var countEl = document.getElementById('spinResultCount');
+            var cardsEl = document.getElementById('spinResultCards');
             countEl.textContent = '';
             var msg = 'No ' + wheelCat.label + ' restaurants found';
             if (town) msg += ' in ' + town + '. Try "All Towns" or spin again!';
             else msg += '. Spin again!';
             cardsEl.innerHTML = '<div class="spin-no-results">' + msg + '</div>';
+            showMoreBtn.style.display = 'none';
         } else {
-            var total = matches.length > 6 ? matches.length : display.length;
-            countEl.textContent = 'Showing ' + display.length + ' of ' + total + ' options' + (town ? ' in ' + town : '');
-            cardsEl.innerHTML = display.map(function (r) {
-                var category = Array.isArray(r.category) ? r.category.join(' & ') : (r.category || '');
-                var phone = r.phone || '';
-                var address = r.address || '';
-                var town = r.town || '';
-                return '<div class="spin-card">' +
-                    '<h4>' + escapeHtml(r.name) + '</h4>' +
-                    '<div class="spin-card-cuisine">' + escapeHtml(category) + '</div>' +
-                    '<span class="spin-card-town">' + escapeHtml(town) + '</span>' +
-                    (address ? '<div class="spin-card-address">' + escapeHtml(address) + '</div>' : '') +
-                    (phone ? '<div class="spin-card-phone"><a href="tel:' + phone.replace(/[^0-9]/g, '') + '">' + escapeHtml(phone) + '</a></div>' : '') +
-                    '</div>';
-            }).join('');
+            renderCards();
         }
 
         resultsDiv.style.display = 'block';
+    }
+
+    function renderCards() {
+        var display = currentMatches.slice(0, showCount);
+        var town = townFilter.value;
+
+        var countEl = document.getElementById('spinResultCount');
+        var cardsEl = document.getElementById('spinResultCards');
+
+        countEl.textContent = 'Showing ' + display.length + ' of ' + currentMatches.length + ' options' + (town ? ' in ' + town : '');
+
+        cardsEl.innerHTML = display.map(function (r) {
+            var category = Array.isArray(r.category) ? r.category.join(' & ') : (r.category || '');
+            var phone = r.phone || '';
+            var address = r.address || '';
+            var rTown = r.town || '';
+            return '<div class="spin-card">' +
+                '<h4>' + escapeHtml(r.name) + '</h4>' +
+                '<div class="spin-card-cuisine">' + escapeHtml(category) + '</div>' +
+                '<span class="spin-card-town">' + escapeHtml(rTown) + '</span>' +
+                (address ? '<div class="spin-card-address">' + escapeHtml(address) + '</div>' : '') +
+                (phone ? '<div class="spin-card-phone"><a href="tel:' + phone.replace(/[^0-9]/g, '') + '">' + escapeHtml(phone) + '</a></div>' : '') +
+                '</div>';
+        }).join('');
+
+        showMoreBtn.style.display = showCount < currentMatches.length ? 'inline-block' : 'none';
     }
 
     function escapeHtml(str) {
