@@ -90,6 +90,7 @@
                 '<h2>Can\'t Decide?</h2>' +
                 '<p class="spin-subtitle">It shouldn\'t be such a feat to figure out what to eat.<br>Give the wheel a spin and let fate pick your cuisine!</p>' +
                 '<div class="spin-container">' +
+                    '<label class="spin-town-label">Filter by town:</label>' +
                     '<div class="spin-town-badges" id="spinTownBadges">' + badgesHTML + '</div>' +
                     '<div class="spin-controls">' +
                         '<button id="spinBtn" class="spin-btn">Spin the Wheel!</button>' +
