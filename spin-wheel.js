@@ -55,10 +55,14 @@
         try {
             var resp = await fetch(config.file);
             var json = await resp.json();
-            townDataCache[townName] = (json.restaurants || []).map(function (r) {
-                return Object.assign({}, r, { town: townName });
+            var featuredNames = {};
+            (json.featured || []).forEach(function (r) { featuredNames[r.name] = true; });
+            var all = (json.restaurants || []).map(function (r) {
+                var tier = featuredNames[r.name] ? 'featured' : r.enhanced ? 'premium' : 'regular';
+                return Object.assign({}, r, { town: townName, _tier: tier });
             });
-            return townDataCache[townName];
+            townDataCache[townName] = all;
+            return all;
         } catch (e) {
             return [];
         }
@@ -419,16 +423,27 @@
             return true;
         });
 
-        // Shuffle category matches
-        for (var i = categoryMatches.length - 1; i > 0; i--) {
-            var j = Math.floor(Math.random() * (i + 1));
-            var temp = categoryMatches[i];
-            categoryMatches[i] = categoryMatches[j];
-            categoryMatches[j] = temp;
-        }
+        // Split into featured, premium, and regular
+        var featured = categoryMatches.filter(function (r) { return r._tier === 'featured'; });
+        var premium = categoryMatches.filter(function (r) { return r._tier === 'premium'; });
+        var regular = categoryMatches.filter(function (r) { return r._tier === 'regular'; });
 
-        // Pinned first, then shuffled category matches
-        currentMatches = pinnedMatches.concat(categoryMatches);
+        // Shuffle each group
+        function shuffle(arr) {
+            for (var i = arr.length - 1; i > 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1));
+                var temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+            return arr;
+        }
+        shuffle(featured);
+        shuffle(premium);
+        shuffle(regular);
+
+        // Pinned first, then featured, premium, then random regular
+        currentMatches = pinnedMatches.concat(featured, premium, regular);
 
         showCount = 6;
 
