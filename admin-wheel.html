@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Spin Wheel Admin - A Bite of Nutmeg</title>
+    <style>
+        :root {
+            --navy: #1e3a6e;
+            --navy-dark: #152a52;
+            --gold: #f0b323;
+            --gold-light: #f5c94d;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .admin-header {
+            background: var(--navy);
+            color: #fff;
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .admin-header h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .admin-header a {
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .admin-container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .admin-actions {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .btn-save {
+            background: var(--gold);
+            color: var(--navy-dark);
+            box-shadow: 0 3px 10px rgba(240, 179, 35, 0.3);
+        }
+
+        .btn-reset {
+            background: #e74c3c;
+            color: #fff;
+            box-shadow: 0 3px 10px rgba(231, 76, 60, 0.2);
+        }
+
+        .status-msg {
+            padding: 0.7rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            display: none;
+            align-self: center;
+        }
+
+        .status-msg.success {
+            display: block;
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-msg.error {
+            display: block;
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .wheel-category {
+            background: #fff;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.25rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .wheel-category-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .color-swatch {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            border: 2px solid rgba(0, 0, 0, 0.15);
+            flex-shrink: 0;
+        }
+
+        .wheel-category-header h3 {
+            font-size: 1.15rem;
+            color: var(--navy);
+        }
+
+        .wheel-category-header .match-count {
+            font-size: 0.85rem;
+            color: #888;
+            margin-left: auto;
+        }
+
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+            gap: 0.5rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 0.6rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+
+        .checkbox-item:hover {
+            background: #f0f4ff;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--navy);
+            cursor: pointer;
+        }
+
+        .checkbox-item label {
+            cursor: pointer;
+            font-size: 0.95rem;
+            user-select: none;
+        }
+
+        .unassigned-note {
+            margin-top: 2rem;
+            padding: 1rem 1.5rem;
+            background: #fff3cd;
+            border-radius: 8px;
+            color: #856404;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .pinned-section {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+
+        .pinned-section h4 {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 0.5rem;
+        }
+
+        .pin-search-wrapper {
+            position: relative;
+            margin-bottom: 0.5rem;
+        }
+
+        .pin-search {
+            width: 100%;
+            max-width: 400px;
+            padding: 0.5rem 0.75rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.15s;
+        }
+
+        .pin-search:focus {
+            border-color: var(--navy);
+        }
+
+        .pin-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            max-width: 400px;
+            max-height: 200px;
+            overflow-y: auto;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            z-index: 10;
+            display: none;
+        }
+
+        .pin-dropdown-item {
+            padding: 0.5rem 0.75rem;
+            cursor: pointer;
+            font-size: 0.9rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .pin-dropdown-item:hover {
+            background: #f0f4ff;
+        }
+
+        .pin-dropdown-item .pin-town {
+            color: #888;
+            font-size: 0.8rem;
+            margin-left: 0.25rem;
+        }
+
+        .pinned-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .pinned-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: var(--navy);
+            color: #fff;
+            padding: 0.35rem 0.7rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        .pinned-tag .pin-town-tag {
+            opacity: 0.7;
+            font-size: 0.75rem;
+        }
+
+        .pinned-tag .remove-pin {
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            font-size: 1.1rem;
+            line-height: 1;
+            opacity: 0.7;
+            padding: 0 0.1rem;
+        }
+
+        .pinned-tag .remove-pin:hover {
+            opacity: 1;
+        }
+
+        @media (max-width: 600px) {
+            .checkbox-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+            .admin-header h1 { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-header">
+        <h1>Spin Wheel Category Manager</h1>
+        <nav style="display:flex;gap:1.5rem;">
+            <a href="/admin-categories.html">View by Category</a>
+            <a href="/">&larr; Back to site</a>
+        </nav>
+    </div>
+
+    <div class="admin-container">
+        <div class="admin-actions">
+            <button class="btn btn-save" id="saveBtn">Save Configuration</button>
+            <button class="btn btn-reset" id="resetBtn">Reset to Defaults</button>
+            <div class="status-msg" id="statusMsg"></div>
+        </div>
+
+        <div id="categoryList"></div>
+
+        <div class="unassigned-note" id="unassignedNote">
+            <strong>Unassigned categories:</strong> <span id="unassignedList"></span>
+        </div>
+    </div>
+
+    <script>
+        const CONFIG_URL = 'spin-wheel-config.json';
+        const TOWN_FILES = [
+            { file: 'easthaven-restaurants.json', town: 'East Haven' },
+            { file: 'branford-restaurants.json', town: 'Branford' },
+            { file: 'guilford-restaurants.json', town: 'Guilford' },
+            { file: 'madison-restaurants.json', town: 'Madison' },
+            { file: 'clinton-restaurants.json', town: 'Clinton' },
+            { file: 'westbrook-restaurants.json', town: 'Westbrook' },
+            { file: 'old-saybrook-restaurants.json', town: 'Old Saybrook' }
+        ];
+        let config = null;
+        let originalConfig = null;
+        let allRestaurants = [];
+
+        async function loadConfig() {
+            try {
+                var configResp = fetch(CONFIG_URL + '?t=' + Date.now());
+                var townPromises = TOWN_FILES.map(function (t) {
+                    return fetch(t.file).then(function (r) { return r.json(); }).then(function (data) {
+                        return (data.restaurants || []).map(function (r) {
+                            r.town = t.town;
+                            return r;
+                        });
+                    }).catch(function () { return []; });
+                });
+
+                var results = await Promise.all([configResp].concat(townPromises));
+                config = await results[0].json();
+                originalConfig = JSON.parse(JSON.stringify(config));
+
+                allRestaurants = [];
+                for (var i = 1; i < results.length; i++) {
+                    allRestaurants = allRestaurants.concat(results[i]);
+                }
+                // Sort alphabetically
+                allRestaurants.sort(function (a, b) {
+                    return a.name.localeCompare(b.name);
+                });
+
+                renderCategories();
+            } catch (e) {
+                showStatus('Failed to load config: ' + e.message, 'error');
+            }
+        }
+
+        function renderCategories() {
+            const container = document.getElementById('categoryList');
+            container.innerHTML = '';
+
+            config.categories.forEach(function (cat, catIndex) {
+                const div = document.createElement('div');
+                div.className = 'wheel-category';
+
+                const matchCount = cat.matches.length;
+
+                if (!cat.pinnedRestaurants) cat.pinnedRestaurants = [];
+
+                div.innerHTML =
+                    '<div class="wheel-category-header">' +
+                        '<div class="color-swatch" style="background:' + cat.color + '"></div>' +
+                        '<h3>' + cat.label + '</h3>' +
+                        '<span class="match-count" id="count-' + catIndex + '">' + matchCount + ' selected</span>' +
+                    '</div>' +
+                    '<div class="checkbox-grid" id="grid-' + catIndex + '"></div>' +
+                    '<div class="pinned-section">' +
+                        '<h4>Pinned Restaurants (always show for this category)</h4>' +
+                        '<div class="pin-search-wrapper">' +
+                            '<input type="text" class="pin-search" id="pinSearch-' + catIndex + '" placeholder="Search restaurants to pin...">' +
+                            '<div class="pin-dropdown" id="pinDrop-' + catIndex + '"></div>' +
+                        '</div>' +
+                        '<div class="pinned-list" id="pinList-' + catIndex + '"></div>' +
+                    '</div>';
+
+                container.appendChild(div);
+
+                const grid = document.getElementById('grid-' + catIndex);
+
+                config.allRestaurantCategories.forEach(function (restCat) {
+                    const checked = cat.matches.indexOf(restCat) !== -1;
+                    const id = 'cb-' + catIndex + '-' + restCat.replace(/[^a-zA-Z0-9]/g, '_');
+
+                    const item = document.createElement('div');
+                    item.className = 'checkbox-item';
+                    item.innerHTML =
+                        '<input type="checkbox" id="' + id + '" ' + (checked ? 'checked' : '') + '>' +
+                        '<label for="' + id + '">' + restCat + '</label>';
+
+                    var cb = item.querySelector('input');
+                    cb.addEventListener('change', function () {
+                        onToggle(catIndex, restCat, this.checked);
+                    });
+
+                    grid.appendChild(item);
+                });
+
+                // Set up pinned restaurant search
+                setupPinSearch(catIndex);
+                renderPinnedList(catIndex);
+            });
+
+            updateUnassigned();
+        }
+
+        function onToggle(catIndex, restCat, checked) {
+            var matches = config.categories[catIndex].matches;
+            if (checked) {
+                if (matches.indexOf(restCat) === -1) {
+                    matches.push(restCat);
+                }
+            } else {
+                var idx = matches.indexOf(restCat);
+                if (idx !== -1) {
+                    matches.splice(idx, 1);
+                }
+            }
+
+            // Update count
+            var countEl = document.getElementById('count-' + catIndex);
+            countEl.textContent = matches.length + ' selected';
+
+            updateUnassigned();
+        }
+
+        function setupPinSearch(catIndex) {
+            var input = document.getElementById('pinSearch-' + catIndex);
+            var dropdown = document.getElementById('pinDrop-' + catIndex);
+
+            input.addEventListener('input', function () {
+                var query = this.value.toLowerCase().trim();
+                if (query.length < 2) {
+                    dropdown.style.display = 'none';
+                    return;
+                }
+
+                var pinned = config.categories[catIndex].pinnedRestaurants || [];
+                var pinnedNames = pinned.map(function (p) { return p.name + '|' + p.town; });
+
+                var matches = allRestaurants.filter(function (r) {
+                    var key = r.name + '|' + r.town;
+                    if (pinnedNames.indexOf(key) !== -1) return false;
+                    return r.name.toLowerCase().indexOf(query) !== -1 ||
+                           (r.town && r.town.toLowerCase().indexOf(query) !== -1);
+                }).slice(0, 8);
+
+                if (matches.length === 0) {
+                    dropdown.style.display = 'none';
+                    return;
+                }
+
+                dropdown.innerHTML = matches.map(function (r, i) {
+                    return '<div class="pin-dropdown-item" data-idx="' + i + '">' +
+                        escapeHtml(r.name) +
+                        '<span class="pin-town">' + escapeHtml(r.town || '') + '</span>' +
+                    '</div>';
+                }).join('');
+                dropdown.style.display = 'block';
+
+                // Attach click handlers
+                dropdown.querySelectorAll('.pin-dropdown-item').forEach(function (item, i) {
+                    item.addEventListener('click', function () {
+                        var r = matches[i];
+                        if (!config.categories[catIndex].pinnedRestaurants) {
+                            config.categories[catIndex].pinnedRestaurants = [];
+                        }
+                        config.categories[catIndex].pinnedRestaurants.push({
+                            name: r.name,
+                            town: r.town
+                        });
+                        input.value = '';
+                        dropdown.style.display = 'none';
+                        renderPinnedList(catIndex);
+                    });
+                });
+            });
+
+            // Close dropdown on blur (with delay for click)
+            input.addEventListener('blur', function () {
+                setTimeout(function () { dropdown.style.display = 'none'; }, 200);
+            });
+        }
+
+        function renderPinnedList(catIndex) {
+            var list = document.getElementById('pinList-' + catIndex);
+            var pinned = config.categories[catIndex].pinnedRestaurants || [];
+
+            if (pinned.length === 0) {
+                list.innerHTML = '<span style="color:#aaa;font-size:0.85rem;">No pinned restaurants</span>';
+                return;
+            }
+
+            list.innerHTML = pinned.map(function (p, i) {
+                return '<span class="pinned-tag">' +
+                    escapeHtml(p.name) +
+                    '<span class="pin-town-tag">(' + escapeHtml(p.town) + ')</span>' +
+                    '<button class="remove-pin" data-cat="' + catIndex + '" data-pin="' + i + '">&times;</button>' +
+                '</span>';
+            }).join('');
+
+            list.querySelectorAll('.remove-pin').forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    var ci = parseInt(this.dataset.cat);
+                    var pi = parseInt(this.dataset.pin);
+                    config.categories[ci].pinnedRestaurants.splice(pi, 1);
+                    renderPinnedList(ci);
+                });
+            });
+        }
+
+        function escapeHtml(str) {
+            var div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        function updateUnassigned() {
+            var assigned = [];
+            config.categories.forEach(function (cat) {
+                cat.matches.forEach(function (m) {
+                    if (assigned.indexOf(m) === -1) assigned.push(m);
+                });
+            });
+
+            var unassigned = config.allRestaurantCategories.filter(function (c) {
+                return assigned.indexOf(c) === -1;
+            });
+
+            var noteEl = document.getElementById('unassignedNote');
+            var listEl = document.getElementById('unassignedList');
+
+            if (unassigned.length > 0) {
+                noteEl.style.display = 'block';
+                listEl.textContent = unassigned.join(', ');
+            } else {
+                noteEl.style.display = 'none';
+            }
+        }
+
+        async function saveConfig() {
+            try {
+                var dataStr = JSON.stringify(config, null, 2) + '\n';
+
+                // Try saving via the local dev save endpoint
+                var resp = await fetch('/save-wheel-config', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: dataStr
+                });
+
+                if (resp.ok) {
+                    showStatus('Configuration saved!', 'success');
+                    originalConfig = JSON.parse(JSON.stringify(config));
+                    return;
+                }
+            } catch (e) {
+                // Dev server not available, fall back to download
+            }
+
+            // Fallback: download the file
+            var blob = new Blob([JSON.stringify(config, null, 2) + '\n'], { type: 'application/json' });
+            var url = URL.createObjectURL(blob);
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = 'spin-wheel-config.json';
+            a.click();
+            URL.revokeObjectURL(url);
+            showStatus('Config downloaded — replace spin-wheel-config.json in your project and deploy.', 'success');
+        }
+
+        function resetConfig() {
+            if (!confirm('Reset all categories to their default mappings?')) return;
+            config = JSON.parse(JSON.stringify(originalConfig));
+            renderCategories();
+            showStatus('Reset to last saved state.', 'success');
+        }
+
+        function showStatus(msg, type) {
+            var el = document.getElementById('statusMsg');
+            el.textContent = msg;
+            el.className = 'status-msg ' + type;
+            setTimeout(function () {
+                el.className = 'status-msg';
+            }, 4000);
+        }
+
+        document.getElementById('saveBtn').addEventListener('click', saveConfig);
+        document.getElementById('resetBtn').addEventListener('click', resetConfig);
+
+        loadConfig();
+    </script>
+</body>
+</html>

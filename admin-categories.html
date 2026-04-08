@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Restaurants by Category - A Bite of Nutmeg</title>
+    <style>
+        :root {
+            --navy: #1e3a6e;
+            --navy-dark: #152a52;
+            --gold: #f0b323;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .admin-header {
+            background: var(--navy);
+            color: #fff;
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .admin-header h1 { font-size: 1.5rem; font-weight: 700; }
+
+        .admin-header nav {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .admin-header a {
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .admin-container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .summary {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .summary-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 1rem 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            text-align: center;
+        }
+
+        .summary-card .num {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        .summary-card .label {
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        .filter-bar {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filter-bar select, .filter-bar input {
+            padding: 0.5rem 0.75rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            outline: none;
+        }
+
+        .filter-bar select:focus, .filter-bar input:focus {
+            border-color: var(--navy);
+        }
+
+        .filter-bar input { width: 250px; }
+
+        .cat-section {
+            background: #fff;
+            border-radius: 12px;
+            margin-bottom: 1.25rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        .cat-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.15s;
+        }
+
+        .cat-header:hover { background: #f8f9ff; }
+
+        .cat-header h3 {
+            font-size: 1.1rem;
+            color: var(--navy);
+        }
+
+        .cat-header .count {
+            background: var(--navy);
+            color: #fff;
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .cat-header .toggle {
+            font-size: 1.2rem;
+            color: #aaa;
+            transition: transform 0.2s;
+        }
+
+        .cat-header.open .toggle { transform: rotate(180deg); }
+
+        .cat-body {
+            display: none;
+            padding: 0 1.5rem 1rem;
+        }
+
+        .cat-body.open { display: block; }
+
+        .rest-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        .rest-table th {
+            text-align: left;
+            padding: 0.5rem 0.75rem;
+            border-bottom: 2px solid #eee;
+            color: #888;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .rest-table td {
+            padding: 0.5rem 0.75rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .rest-table tr:last-child td { border-bottom: none; }
+
+        .town-badge {
+            display: inline-block;
+            background: #e8edf5;
+            color: var(--navy);
+            padding: 0.15rem 0.5rem;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .phone-link {
+            color: var(--navy);
+            text-decoration: none;
+        }
+
+        .phone-link:hover { text-decoration: underline; }
+
+        @media (max-width: 600px) {
+            .filter-bar input { width: 100%; }
+            .rest-table { font-size: 0.8rem; }
+            .rest-table th, .rest-table td { padding: 0.4rem; }
+            .admin-header h1 { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-header">
+        <h1>Restaurants by Category</h1>
+        <nav>
+            <a href="/admin-wheel.html">Wheel Config</a>
+            <a href="/">&larr; Back to site</a>
+        </nav>
+    </div>
+
+    <div class="admin-container">
+        <div class="summary" id="summary"></div>
+
+        <div class="filter-bar">
+            <select id="townFilter">
+                <option value="">All Towns</option>
+            </select>
+            <input type="text" id="searchInput" placeholder="Search restaurants...">
+        </div>
+
+        <div id="categoryList"></div>
+    </div>
+
+    <script>
+        var TOWN_FILES = [
+            { file: 'easthaven-restaurants.json', town: 'East Haven' },
+            { file: 'branford-restaurants.json', town: 'Branford' },
+            { file: 'guilford-restaurants.json', town: 'Guilford' },
+            { file: 'madison-restaurants.json', town: 'Madison' },
+            { file: 'clinton-restaurants.json', town: 'Clinton' },
+            { file: 'westbrook-restaurants.json', town: 'Westbrook' },
+            { file: 'old-saybrook-restaurants.json', town: 'Old Saybrook' }
+        ];
+
+        var allRestaurants = [];
+
+        async function loadData() {
+            var results = await Promise.all(
+                TOWN_FILES.map(function (t) {
+                    return fetch(t.file).then(function (r) { return r.json(); }).then(function (data) {
+                        return (data.restaurants || []).map(function (r) {
+                            r.town = t.town;
+                            return r;
+                        });
+                    }).catch(function () { return []; });
+                })
+            );
+
+            allRestaurants = [];
+            results.forEach(function (arr) {
+                allRestaurants = allRestaurants.concat(arr);
+            });
+
+            // Populate town filter
+            var towns = [];
+            TOWN_FILES.forEach(function (t) {
+                if (towns.indexOf(t.town) === -1) towns.push(t.town);
+            });
+            var sel = document.getElementById('townFilter');
+            towns.forEach(function (t) {
+                var opt = document.createElement('option');
+                opt.value = t;
+                opt.textContent = t;
+                sel.appendChild(opt);
+            });
+
+            render();
+        }
+
+        function getFiltered() {
+            var town = document.getElementById('townFilter').value;
+            var query = document.getElementById('searchInput').value.toLowerCase().trim();
+
+            return allRestaurants.filter(function (r) {
+                if (town && r.town !== town) return false;
+                if (query && r.name.toLowerCase().indexOf(query) === -1) return false;
+                return true;
+            });
+        }
+
+        function render() {
+            var filtered = getFiltered();
+
+            // Group by category
+            var groups = {};
+            filtered.forEach(function (r) {
+                var cats = Array.isArray(r.category) ? r.category : [r.category || 'Uncategorized'];
+                cats.forEach(function (c) {
+                    if (!groups[c]) groups[c] = [];
+                    groups[c].push(r);
+                });
+            });
+
+            // Sort category names
+            var catNames = Object.keys(groups).sort();
+
+            // Summary
+            var summaryEl = document.getElementById('summary');
+            summaryEl.innerHTML =
+                '<div class="summary-card"><div class="num">' + filtered.length + '</div><div class="label">Restaurants</div></div>' +
+                '<div class="summary-card"><div class="num">' + catNames.length + '</div><div class="label">Categories</div></div>' +
+                '<div class="summary-card"><div class="num">' + TOWN_FILES.length + '</div><div class="label">Towns</div></div>';
+
+            // Render categories
+            var container = document.getElementById('categoryList');
+            container.innerHTML = '';
+
+            catNames.forEach(function (catName) {
+                var restaurants = groups[catName];
+                restaurants.sort(function (a, b) { return a.name.localeCompare(b.name); });
+
+                var section = document.createElement('div');
+                section.className = 'cat-section';
+
+                var header = document.createElement('div');
+                header.className = 'cat-header';
+                header.innerHTML =
+                    '<h3>' + escapeHtml(catName) + '</h3>' +
+                    '<div style="display:flex;align-items:center;gap:0.75rem;">' +
+                        '<span class="count">' + restaurants.length + '</span>' +
+                        '<span class="toggle">&#9660;</span>' +
+                    '</div>';
+
+                var body = document.createElement('div');
+                body.className = 'cat-body';
+
+                var tableHtml = '<table class="rest-table"><thead><tr>' +
+                    '<th>Name</th><th>Town</th><th>Phone</th><th>Address</th>' +
+                    '</tr></thead><tbody>';
+
+                restaurants.forEach(function (r) {
+                    var phone = r.phone || '';
+                    var phoneLink = phone ? '<a class="phone-link" href="tel:' + phone.replace(/[^0-9]/g, '') + '">' + escapeHtml(phone) + '</a>' : '';
+                    tableHtml +=
+                        '<tr>' +
+                        '<td><strong>' + escapeHtml(r.name) + '</strong></td>' +
+                        '<td><span class="town-badge">' + escapeHtml(r.town || '') + '</span></td>' +
+                        '<td>' + phoneLink + '</td>' +
+                        '<td>' + escapeHtml(r.address || '') + '</td>' +
+                        '</tr>';
+                });
+
+                tableHtml += '</tbody></table>';
+                body.innerHTML = tableHtml;
+
+                header.addEventListener('click', function () {
+                    header.classList.toggle('open');
+                    body.classList.toggle('open');
+                });
+
+                section.appendChild(header);
+                section.appendChild(body);
+                container.appendChild(section);
+            });
+        }
+
+        function escapeHtml(str) {
+            var div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        document.getElementById('townFilter').addEventListener('change', render);
+        document.getElementById('searchInput').addEventListener('input', render);
+
+        loadData();
+    </script>
+</body>
+</html>

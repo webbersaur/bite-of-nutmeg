@@ -1,6 +1,7 @@
 /* Spin Wheel - "Can't Decide?" cuisine picker modal */
 (function () {
-    const WHEEL_CATEGORIES = [
+    // Default categories (used as fallback if config fails to load)
+    const DEFAULT_CATEGORIES = [
         { label: 'American', color: '#1e3a6e', matches: ['American', 'Bar & Grill', 'Bar'] },
         { label: 'Pizza', color: '#f0b323', matches: ['Pizza'] },
         { label: 'Italian', color: '#2a4a8a', matches: ['Italian'] },
@@ -15,16 +16,20 @@
         { label: 'Brewery & BBQ', color: '#f0b323', matches: ['Wine Bar', 'Brewery', 'BBQ', 'Vegan', 'Vegetarian'] }
     ];
 
-    const SEGMENT_COUNT = WHEEL_CATEGORIES.length;
-    const ARC = (2 * Math.PI) / SEGMENT_COUNT;
+    let WHEEL_CATEGORIES = DEFAULT_CATEGORIES;
+    let SEGMENT_COUNT = WHEEL_CATEGORIES.length;
+    let ARC = (2 * Math.PI) / SEGMENT_COUNT;
 
     let canvas, ctx, spinBtn, spinAgainBtn, showMoreBtn, resultsDiv, townFilter, modal;
     let currentRotation = 0;
     let spinning = false;
+    let stopping = false;
+    let spinSpeed = 0;
+    let animFrameId = null;
     let currentMatches = [];
     let showCount = 6;
 
-    function init() {
+    async function init() {
         canvas = document.getElementById('spinCanvas');
         if (!canvas) return;
         ctx = canvas.getContext('2d');
@@ -35,10 +40,29 @@
         townFilter = document.getElementById('spinTownFilter');
         modal = document.getElementById('spinModal');
 
+        // Load config from JSON file
+        try {
+            var resp = await fetch('spin-wheel-config.json');
+            var data = await resp.json();
+            if (data.categories && data.categories.length > 0) {
+                WHEEL_CATEGORIES = data.categories;
+                SEGMENT_COUNT = WHEEL_CATEGORIES.length;
+                ARC = (2 * Math.PI) / SEGMENT_COUNT;
+            }
+        } catch (e) {
+            // Fall back to defaults
+        }
+
         drawWheel(0);
 
-        // Spin button
-        spinBtn.addEventListener('click', startSpin);
+        // Spin button (toggles between Spin and Stop)
+        spinBtn.addEventListener('click', function () {
+            if (spinning && !stopping) {
+                stopSpin();
+            } else if (!spinning) {
+                startSpin();
+            }
+        });
         spinAgainBtn.addEventListener('click', function () {
             resultsDiv.style.display = 'none';
             currentMatches = [];
@@ -144,7 +168,9 @@
     async function startSpin() {
         if (spinning) return;
         spinning = true;
-        spinBtn.disabled = true;
+        stopping = false;
+        spinBtn.textContent = 'Stop!';
+        spinBtn.classList.add('stop-mode');
         resultsDiv.style.display = 'none';
 
         // Ensure data is loaded (reuses app.js lazy loader)
@@ -152,37 +178,48 @@
             await loadRestaurants();
         }
 
-        // Random target: at least 5 full spins + random landing
-        const extraSpins = 5 * 2 * Math.PI;
-        const randomAngle = Math.random() * 2 * Math.PI;
-        const targetRotation = currentRotation + extraSpins + randomAngle;
-
-        const startRotation = currentRotation;
-        const totalDelta = targetRotation - startRotation;
-        const duration = 4500;
-        const startTime = performance.now();
+        // Spin continuously at a steady speed
+        spinSpeed = 0.18; // radians per frame (~10 rad/s at 60fps)
+        var lastTime = performance.now();
 
         function animate(now) {
-            const elapsed = now - startTime;
-            const progress = Math.min(elapsed / duration, 1);
+            var dt = (now - lastTime) / 16.667; // normalize to 60fps
+            lastTime = now;
 
-            // Cubic ease-out
-            const eased = 1 - Math.pow(1 - progress, 3);
-            currentRotation = startRotation + totalDelta * eased;
-
-            drawWheel(currentRotation);
-
-            if (progress < 1) {
-                requestAnimationFrame(animate);
-            } else {
-                currentRotation = targetRotation;
-                spinning = false;
-                spinBtn.disabled = false;
-                showResults();
+            if (stopping) {
+                // Decelerate gradually
+                spinSpeed *= 0.97;
+                if (spinSpeed < 0.001) {
+                    spinSpeed = 0;
+                    spinning = false;
+                    stopping = false;
+                    spinBtn.textContent = 'Spin the Wheel!';
+                    spinBtn.classList.remove('stop-mode');
+                    drawWheel(currentRotation);
+                    showResults();
+                    return;
+                }
             }
+
+            currentRotation += spinSpeed * dt;
+            drawWheel(currentRotation);
+            animFrameId = requestAnimationFrame(animate);
         }
 
-        requestAnimationFrame(animate);
+        animFrameId = requestAnimationFrame(animate);
+    }
+
+    function stopSpin() {
+        stopping = true;
+        spinBtn.disabled = true;
+        spinBtn.textContent = 'Stopping...';
+        // Re-enable after wheel stops (handled in animate loop)
+        var checkDone = setInterval(function () {
+            if (!spinning) {
+                clearInterval(checkDone);
+                spinBtn.disabled = false;
+            }
+        }, 100);
     }
 
     function getWinningIndex() {
@@ -211,7 +248,7 @@
         const cats = Array.isArray(cat) ? cat : [cat];
         return cats.some(function (c) {
             return wheelCat.matches.some(function (m) {
-                return c.toLowerCase().includes(m.toLowerCase());
+                return c.toLowerCase().trim() === m.toLowerCase();
             });
         });
     }
@@ -222,19 +259,39 @@
         const town = townFilter.value;
 
         var restaurants = (typeof allRestaurants !== 'undefined' ? allRestaurants : []);
-        currentMatches = restaurants.filter(function (r) {
+
+        // Get pinned restaurants for this category (show first)
+        var pinned = wheelCat.pinnedRestaurants || [];
+        var pinnedMatches = [];
+        pinned.forEach(function (p) {
+            var found = restaurants.filter(function (r) {
+                return r.name === p.name && r.town === p.town;
+            });
+            if (found.length > 0) {
+                var r = found[0];
+                if (!town || r.town === town) pinnedMatches.push(r);
+            }
+        });
+
+        // Get category-matched restaurants (excluding pinned)
+        var pinnedKeys = pinnedMatches.map(function (r) { return r.name + '|' + r.town; });
+        var categoryMatches = restaurants.filter(function (r) {
             if (!matchesCategory(r, wheelCat)) return false;
             if (town && r.town !== town) return false;
+            if (pinnedKeys.indexOf(r.name + '|' + r.town) !== -1) return false;
             return true;
         });
 
-        // Shuffle
-        for (var i = currentMatches.length - 1; i > 0; i--) {
+        // Shuffle category matches
+        for (var i = categoryMatches.length - 1; i > 0; i--) {
             var j = Math.floor(Math.random() * (i + 1));
-            var temp = currentMatches[i];
-            currentMatches[i] = currentMatches[j];
-            currentMatches[j] = temp;
+            var temp = categoryMatches[i];
+            categoryMatches[i] = categoryMatches[j];
+            categoryMatches[j] = temp;
         }
+
+        // Pinned first, then shuffled category matches
+        currentMatches = pinnedMatches.concat(categoryMatches);
 
         showCount = 6;
 

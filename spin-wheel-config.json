@@ -1,0 +1,146 @@
+{
+  "categories": [
+    {
+      "label": "American",
+      "color": "#1e3a6e",
+      "matches": [
+        "American",
+        "Bar & Grill",
+        "Bar"
+      ]
+    },
+    {
+      "label": "Pizza",
+      "color": "#f0b323",
+      "matches": [
+        "Pizza"
+      ]
+    },
+    {
+      "label": "Italian",
+      "color": "#2a4a8a",
+      "matches": [
+        "Italian",
+        "Italian & Mexican"
+      ]
+    },
+    {
+      "label": "Seafood",
+      "color": "#d9a01f",
+      "matches": [
+        "Seafood"
+      ]
+    },
+    {
+      "label": "Asian",
+      "color": "#152a52",
+      "matches": [
+        "Chinese",
+        "Japanese",
+        "Asian",
+        "Thai",
+        "Vietnamese"
+      ]
+    },
+    {
+      "label": "Mexican & Latin",
+      "color": "#f5c94d",
+      "matches": [
+        "Mexican",
+        "Latin American",
+        "Latin",
+        "Caribbean"
+      ]
+    },
+    {
+      "label": "Cafe & Bakery",
+      "color": "#1e3a6e",
+      "matches": [
+        "Cafe",
+        "Café & Bakery",
+        "Bakery",
+        "Dessert",
+        "Deli"
+      ]
+    },
+    {
+      "label": "Indian & Med.",
+      "color": "#e8a515",
+      "matches": [
+        "Indian",
+        "Mediterranean",
+        "European",
+        "Nigerian"
+      ]
+    },
+    {
+      "label": "Fast Food",
+      "color": "#2a4a8a",
+      "matches": [
+        "Fast Food"
+      ]
+    },
+    {
+      "label": "Greek",
+      "color": "#c8930e",
+      "matches": [
+        "Greek"
+      ]
+    },
+    {
+      "label": "Fine Dining",
+      "color": "#152a52",
+      "matches": [
+        "French",
+        "Fine Dining",
+        "Steakhouse"
+      ]
+    },
+    {
+      "label": "Brewery & BBQ",
+      "color": "#f0b323",
+      "matches": [
+        "Wine Bar",
+        "Brewery",
+        "BBQ"
+      ]
+    }
+  ],
+  "allRestaurantCategories": [
+    "American",
+    "Asian",
+    "Bakery",
+    "Bar",
+    "Bar & Grill",
+    "BBQ",
+    "Brewery",
+    "Cafe",
+    "Café & Bakery",
+    "Caribbean",
+    "Chinese",
+    "Deli",
+    "Dessert",
+    "European",
+    "Fast Food",
+    "Fine Dining",
+    "French",
+    "Greek",
+    "Indian",
+    "Italian",
+    "Italian & Mexican",
+    "Japanese",
+    "Latin",
+    "Latin American",
+    "Mediterranean",
+    "Mexican",
+    "Nigerian",
+    "Pizza",
+    "Seafood",
+    "Steakhouse",
+    "Thai",
+    "Vegan",
+    "Vegetarian",
+    "Vietnamese",
+    "Wine Bar"
+  ]
+}
