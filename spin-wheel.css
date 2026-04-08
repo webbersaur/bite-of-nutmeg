@@ -101,12 +101,26 @@
     align-items: center;
 }
 
-.spin-town-label {
+.spin-town-filter label {
     color: rgba(255, 255, 255, 0.8);
     font-size: 0.9rem;
-    margin-bottom: 0.3rem;
-    display: block;
-    text-align: center;
+    margin-right: 0.5rem;
+}
+
+.spin-town-filter select {
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    border: 2px solid var(--gold);
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 0.95rem;
+    cursor: pointer;
+    outline: none;
+}
+
+.spin-town-filter select option {
+    background: var(--navy);
+    color: #fff;
 }
 
 .spin-town-badges {

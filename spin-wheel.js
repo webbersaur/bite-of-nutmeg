@@ -76,6 +76,12 @@
     }
 
     function buildModalHTML() {
+        var optionsHTML = '<option value="">All Towns</option>' +
+            TOWNS.map(function (t) {
+                var selected = !isHomepage && t.name === pageTown ? ' selected' : '';
+                return '<option value="' + t.name + '"' + selected + '>' + t.name + '</option>';
+            }).join('');
+
         var badgesHTML = TOWNS.map(function (t) {
             var activeClass = isHomepage || t.name === pageTown ? ' active' : '';
             return '<button type="button" class="spin-town-badge' + activeClass + '" data-town="' + t.name + '">' +
@@ -90,11 +96,14 @@
                 '<h2>Can\'t Decide?</h2>' +
                 '<p class="spin-subtitle">It shouldn\'t be such a feat to figure out what to eat.<br>Give the wheel a spin and let fate pick your cuisine!</p>' +
                 '<div class="spin-container">' +
-                    '<label class="spin-town-label">Filter by town:</label>' +
-                    '<div class="spin-town-badges" id="spinTownBadges">' + badgesHTML + '</div>' +
                     '<div class="spin-controls">' +
+                        '<div class="spin-town-filter">' +
+                            '<label for="spinTownFilter">Filter by town:</label>' +
+                            '<select id="spinTownFilter">' + optionsHTML + '</select>' +
+                        '</div>' +
                         '<button id="spinBtn" class="spin-btn">Spin the Wheel!</button>' +
                     '</div>' +
+                    '<div class="spin-town-badges" id="spinTownBadges">' + badgesHTML + '</div>' +
                     '<div class="spin-wheel-wrapper">' +
                         '<div class="spin-pointer"></div>' +
                         '<canvas id="spinCanvas" width="400" height="400"></canvas>' +
@@ -163,8 +172,38 @@
             renderCards();
         });
 
-        // Badge toggle handler
+        // Sync helpers
+        var townFilter = document.getElementById('spinTownFilter');
         var badgeContainer = document.getElementById('spinTownBadges');
+
+        function syncBadgesFromDropdown() {
+            var val = townFilter.value;
+            var badges = badgeContainer.querySelectorAll('.spin-town-badge');
+            badges.forEach(function (b) {
+                if (val === '') {
+                    b.classList.add('active');
+                } else {
+                    b.classList.toggle('active', b.getAttribute('data-town') === val);
+                }
+            });
+        }
+
+        function syncDropdownFromBadges() {
+            var active = badgeContainer.querySelectorAll('.spin-town-badge.active');
+            if (active.length === TOWNS.length) {
+                townFilter.value = '';
+            } else if (active.length === 1) {
+                townFilter.value = active[0].getAttribute('data-town');
+            } else {
+                // Multiple but not all — no exact dropdown match, keep as-is
+                townFilter.value = '';
+            }
+        }
+
+        // Dropdown change → update badges
+        townFilter.addEventListener('change', syncBadgesFromDropdown);
+
+        // Badge click → toggle and sync dropdown
         badgeContainer.addEventListener('click', function (e) {
             var badge = e.target.closest('.spin-town-badge');
             if (!badge) return;
@@ -174,6 +213,7 @@
             if (activeBadges.length === 0) {
                 badge.classList.add('active');
             }
+            syncDropdownFromBadges();
         });
 
         // Modal open
