@@ -13,7 +13,6 @@
     }
   ],
   "restaurants": [
-    {"name": "Anthony's of Guilford", "category": "Italian", "phone": "203-453-4121", "lat": 41.3077569, "lng": -72.721568, "description": "A neighborhood Italian restaurant in Guilford serving classic Italian-American dishes. A reliable choice for pasta, chicken parm, and other traditional favorites."},
     {"name": "Ashley's Ice Cream", "category": "Dessert", "phone": "203-458-3040", "lat": 41.2880508, "lng": -72.6806107, "description": "A beloved ice cream shop offering handcrafted flavors made with quality ingredients. A must-stop in Guilford during warmer months."},
     {"name": "Belle Vie Cafe", "category": "Cafe", "phone": "203-689-5060", "lat": 41.2848395, "lng": -72.682952, "description": "A charming cafe near the Guilford Green offering lighter fare for daytime visits. A popular spot for coffee, pastries, and casual lunch."},
     {"name": "Bufalina", "category": "Italian", "phone": "203-458-1377", "lat": 41.2876396, "lng": -72.6852187, "description": "A wood-fired Neapolitan pizza restaurant near the Guilford Green serving authentic Italian pies in a stylish setting. Known for its crispy, blistered crusts and fresh toppings."},
