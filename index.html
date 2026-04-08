@@ -551,45 +551,7 @@
         </div>
     </footer>
 
-    <!-- Spin Wheel Modal -->
-    <div id="spinModal" class="spin-modal">
-        <div class="spin-modal-content">
-            <button class="spin-modal-close" id="spinModalClose">&times;</button>
-            <h2>Can't Decide?</h2>
-            <p class="spin-subtitle">It shouldn't be such a feat to figure out what to eat. 😊<br>Give the wheel a spin and let fate pick your cuisine!</p>
-            <div class="spin-container">
-                <div class="spin-controls">
-                    <div class="spin-town-filter">
-                        <label for="spinTownFilter">Filter by town:</label>
-                        <select id="spinTownFilter">
-                            <option value="">All Towns</option>
-                            <option value="East Haven">East Haven</option>
-                            <option value="Branford">Branford</option>
-                            <option value="Guilford">Guilford</option>
-                            <option value="Madison">Madison</option>
-                            <option value="Clinton">Clinton</option>
-                            <option value="Westbrook">Westbrook</option>
-                            <option value="Old Saybrook">Old Saybrook</option>
-                        </select>
-                    </div>
-                    <button id="spinBtn" class="spin-btn">Spin the Wheel!</button>
-                </div>
-                <div class="spin-wheel-wrapper">
-                    <div class="spin-pointer"></div>
-                    <canvas id="spinCanvas" width="400" height="400"></canvas>
-                </div>
-                <div id="spinResults" class="spin-results" style="display:none;">
-                    <h3 id="spinResultCategory"></h3>
-                    <p id="spinResultCount" class="spin-result-count"></p>
-                    <div id="spinResultCards" class="spin-result-cards"></div>
-                    <div class="spin-result-actions">
-                        <button id="spinAgainBtn" class="spin-again-btn">Spin Again</button>
-                        <button id="spinShowMore" class="spin-again-btn" style="display:none;">Show More</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- Spin Wheel Modal injected by spin-wheel.js -->
 
     <!-- Near Me Modal -->
     <div id="nearMeModal" class="near-me-modal">
@@ -725,7 +687,7 @@
     });
     </script>
     <script src="app.js?v=3" defer></script>
-    <script src="spin-wheel.js" defer></script>
+    <script src="spin-wheel.js" data-town="all" defer></script>
     <script src="install-prompt.js" defer></script>
 </body>
 </html>

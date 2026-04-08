@@ -101,26 +101,43 @@
     align-items: center;
 }
 
-.spin-town-filter label {
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 0.9rem;
-    margin-right: 0.5rem;
+.spin-town-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    justify-content: center;
+    margin-bottom: 0.25rem;
+    width: 100%;
 }
 
-.spin-town-filter select {
-    padding: 0.5rem 1rem;
-    border-radius: 25px;
-    border: 2px solid var(--gold);
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff;
-    font-size: 0.95rem;
+.spin-town-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.35rem 0.75rem;
+    background: rgba(255, 255, 255, 0.08);
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    border-radius: 20px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85rem;
+    font-weight: 600;
     cursor: pointer;
-    outline: none;
+    transition: all 0.2s;
+    font-family: 'Montserrat', sans-serif;
 }
 
-.spin-town-filter select option {
-    background: var(--navy);
-    color: #fff;
+.spin-town-badge:hover {
+    border-color: rgba(240, 179, 35, 0.5);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.spin-town-badge.active {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--navy-dark);
+}
+
+.spin-town-badge .badge-abbr {
+    display: none;
 }
 
 .spin-btn {
@@ -323,6 +340,19 @@
 
     .spin-controls {
         flex-direction: column;
+    }
+
+    .spin-town-badge .badge-full {
+        display: none;
+    }
+
+    .spin-town-badge .badge-abbr {
+        display: inline;
+    }
+
+    .spin-town-badge {
+        padding: 0.3rem 0.55rem;
+        font-size: 0.8rem;
     }
 
     .spin-trigger-btn {

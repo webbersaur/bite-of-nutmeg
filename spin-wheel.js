@@ -1,5 +1,21 @@
 /* Spin Wheel - "Can't Decide?" cuisine picker modal */
 (function () {
+    // Town configuration
+    const TOWNS = [
+        { name: 'East Haven', abbr: 'EH', file: 'easthaven-restaurants.json' },
+        { name: 'Branford',   abbr: 'B',  file: 'branford-restaurants.json' },
+        { name: 'Guilford',   abbr: 'G',  file: 'guilford-restaurants.json' },
+        { name: 'Madison',    abbr: 'M',  file: 'madison-restaurants.json' },
+        { name: 'Clinton',    abbr: 'C',  file: 'clinton-restaurants.json' },
+        { name: 'Westbrook',  abbr: 'W',  file: 'westbrook-restaurants.json' },
+        { name: 'Old Saybrook', abbr: 'OS', file: 'old-saybrook-restaurants.json' }
+    ];
+
+    // Detect page context from script tag data attribute
+    var scriptEl = document.querySelector('script[src*="spin-wheel.js"]');
+    var pageTown = scriptEl ? scriptEl.getAttribute('data-town') : null;
+    var isHomepage = !pageTown || pageTown === 'all';
+
     // Default categories (used as fallback if config fails to load)
     const DEFAULT_CATEGORIES = [
         { label: 'American', color: '#1e3a6e', matches: ['American', 'Bar & Grill', 'Bar'] },
@@ -20,7 +36,7 @@
     let SEGMENT_COUNT = WHEEL_CATEGORIES.length;
     let ARC = (2 * Math.PI) / SEGMENT_COUNT;
 
-    let canvas, ctx, spinBtn, spinAgainBtn, showMoreBtn, resultsDiv, townFilter, modal;
+    let canvas, ctx, spinBtn, spinAgainBtn, showMoreBtn, resultsDiv, modal;
     let currentRotation = 0;
     let spinning = false;
     let stopping = false;
@@ -29,7 +45,79 @@
     let currentMatches = [];
     let showCount = 6;
 
+    // Restaurant data cache per town
+    var townDataCache = {};
+
+    async function loadTownData(townName) {
+        if (townDataCache[townName]) return townDataCache[townName];
+        var config = TOWNS.find(function (t) { return t.name === townName; });
+        if (!config) return [];
+        try {
+            var resp = await fetch(config.file);
+            var json = await resp.json();
+            townDataCache[townName] = (json.restaurants || []).map(function (r) {
+                return Object.assign({}, r, { town: townName });
+            });
+            return townDataCache[townName];
+        } catch (e) {
+            return [];
+        }
+    }
+
+    function getSelectedTowns() {
+        var badges = document.querySelectorAll('.spin-town-badge.active');
+        return Array.prototype.map.call(badges, function (b) { return b.getAttribute('data-town'); });
+    }
+
+    async function getSelectedRestaurants() {
+        var towns = getSelectedTowns();
+        var arrays = await Promise.all(towns.map(loadTownData));
+        return [].concat.apply([], arrays);
+    }
+
+    function buildModalHTML() {
+        var badgesHTML = TOWNS.map(function (t) {
+            var activeClass = isHomepage || t.name === pageTown ? ' active' : '';
+            return '<button type="button" class="spin-town-badge' + activeClass + '" data-town="' + t.name + '">' +
+                '<span class="badge-full">' + t.name + '</span>' +
+                '<span class="badge-abbr">' + t.abbr + '</span>' +
+                '</button>';
+        }).join('');
+
+        return '<div id="spinModal" class="spin-modal">' +
+            '<div class="spin-modal-content">' +
+                '<button class="spin-modal-close" id="spinModalClose">&times;</button>' +
+                '<h2>Can\'t Decide?</h2>' +
+                '<p class="spin-subtitle">It shouldn\'t be such a feat to figure out what to eat.<br>Give the wheel a spin and let fate pick your cuisine!</p>' +
+                '<div class="spin-container">' +
+                    '<div class="spin-town-badges" id="spinTownBadges">' + badgesHTML + '</div>' +
+                    '<div class="spin-controls">' +
+                        '<button id="spinBtn" class="spin-btn">Spin the Wheel!</button>' +
+                    '</div>' +
+                    '<div class="spin-wheel-wrapper">' +
+                        '<div class="spin-pointer"></div>' +
+                        '<canvas id="spinCanvas" width="400" height="400"></canvas>' +
+                    '</div>' +
+                    '<div id="spinResults" class="spin-results" style="display:none;">' +
+                        '<h3 id="spinResultCategory"></h3>' +
+                        '<p id="spinResultCount" class="spin-result-count"></p>' +
+                        '<div id="spinResultCards" class="spin-result-cards"></div>' +
+                        '<div class="spin-result-actions">' +
+                            '<button id="spinAgainBtn" class="spin-again-btn">Spin Again</button>' +
+                            '<button id="spinShowMore" class="spin-again-btn" style="display:none;">Show More</button>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>' +
+            '</div>' +
+        '</div>';
+    }
+
     async function init() {
+        // Inject modal HTML
+        var wrapper = document.createElement('div');
+        wrapper.innerHTML = buildModalHTML();
+        document.body.appendChild(wrapper.firstChild);
+
         canvas = document.getElementById('spinCanvas');
         if (!canvas) return;
         ctx = canvas.getContext('2d');
@@ -37,7 +125,6 @@
         spinAgainBtn = document.getElementById('spinAgainBtn');
         showMoreBtn = document.getElementById('spinShowMore');
         resultsDiv = document.getElementById('spinResults');
-        townFilter = document.getElementById('spinTownFilter');
         modal = document.getElementById('spinModal');
 
         // Load config from JSON file
@@ -73,6 +160,19 @@
         showMoreBtn.addEventListener('click', function () {
             showCount += 6;
             renderCards();
+        });
+
+        // Badge toggle handler
+        var badgeContainer = document.getElementById('spinTownBadges');
+        badgeContainer.addEventListener('click', function (e) {
+            var badge = e.target.closest('.spin-town-badge');
+            if (!badge) return;
+            badge.classList.toggle('active');
+            // Ensure at least one town remains selected
+            var activeBadges = badgeContainer.querySelectorAll('.spin-town-badge.active');
+            if (activeBadges.length === 0) {
+                badge.classList.add('active');
+            }
         });
 
         // Modal open
@@ -173,10 +273,8 @@
         spinBtn.classList.add('stop-mode');
         resultsDiv.style.display = 'none';
 
-        // Ensure data is loaded (reuses app.js lazy loader)
-        if (typeof loadRestaurants === 'function') {
-            await loadRestaurants();
-        }
+        // Pre-warm cache for selected towns
+        await getSelectedRestaurants();
 
         // Spin continuously at a steady speed
         spinSpeed = 0.18; // radians per frame (~10 rad/s at 60fps)
@@ -253,12 +351,12 @@
         });
     }
 
-    function showResults() {
+    async function showResults() {
         const winIndex = getWinningIndex();
         const wheelCat = WHEEL_CATEGORIES[winIndex];
-        const town = townFilter.value;
+        var selectedTowns = getSelectedTowns();
 
-        var restaurants = (typeof allRestaurants !== 'undefined' ? allRestaurants : []);
+        var restaurants = await getSelectedRestaurants();
 
         // Get pinned restaurants for this category (show first)
         var pinned = wheelCat.pinnedRestaurants || [];
@@ -268,8 +366,7 @@
                 return r.name === p.name && r.town === p.town;
             });
             if (found.length > 0) {
-                var r = found[0];
-                if (!town || r.town === town) pinnedMatches.push(r);
+                pinnedMatches.push(found[0]);
             }
         });
 
@@ -277,7 +374,6 @@
         var pinnedKeys = pinnedMatches.map(function (r) { return r.name + '|' + r.town; });
         var categoryMatches = restaurants.filter(function (r) {
             if (!matchesCategory(r, wheelCat)) return false;
-            if (town && r.town !== town) return false;
             if (pinnedKeys.indexOf(r.name + '|' + r.town) !== -1) return false;
             return true;
         });
@@ -303,8 +399,11 @@
             var cardsEl = document.getElementById('spinResultCards');
             countEl.textContent = '';
             var msg = 'No ' + wheelCat.label + ' restaurants found';
-            if (town) msg += ' in ' + town + '. Try "All Towns" or spin again!';
-            else msg += '. Spin again!';
+            if (selectedTowns.length < TOWNS.length) {
+                msg += '. Try selecting more towns or spin again!';
+            } else {
+                msg += '. Spin again!';
+            }
             cardsEl.innerHTML = '<div class="spin-no-results">' + msg + '</div>';
             showMoreBtn.style.display = 'none';
         } else {
@@ -316,12 +415,13 @@
 
     function renderCards() {
         var display = currentMatches.slice(0, showCount);
-        var town = townFilter.value;
+        var selectedTowns = getSelectedTowns();
 
         var countEl = document.getElementById('spinResultCount');
         var cardsEl = document.getElementById('spinResultCards');
 
-        countEl.textContent = 'Showing ' + display.length + ' of ' + currentMatches.length + ' options' + (town ? ' in ' + town : '');
+        var townLabel = selectedTowns.length === TOWNS.length ? '' : ' in ' + selectedTowns.join(', ');
+        countEl.textContent = 'Showing ' + display.length + ' of ' + currentMatches.length + ' options' + townLabel;
 
         cardsEl.innerHTML = display.map(function (r) {
             var category = Array.isArray(r.category) ? r.category.join(' & ') : (r.category || '');
