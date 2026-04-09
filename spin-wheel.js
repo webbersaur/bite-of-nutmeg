@@ -279,8 +279,20 @@
             ctx.rotate(startAngle + ARC / 2);
             ctx.textAlign = 'right';
             ctx.fillStyle = isLightColor(WHEEL_CATEGORIES[i].color) ? '#152a52' : '#ffffff';
-            ctx.font = 'bold 13px -apple-system, BlinkMacSystemFont, sans-serif';
-            ctx.fillText(WHEEL_CATEGORIES[i].label, radius - 14, 5);
+            ctx.font = 'bold 18px -apple-system, BlinkMacSystemFont, sans-serif';
+            var label = WHEEL_CATEGORIES[i].label;
+            var maxWidth = radius - 44;
+            if (ctx.measureText(label).width > maxWidth) {
+                // Split into two lines
+                var words = label.split(/[\s&]+/);
+                var sep = label.includes('&') ? ' &' : '';
+                var line1 = words[0] + sep;
+                var line2 = words.slice(sep ? 2 : 1).join(' ');
+                ctx.fillText(line1, radius - 14, -5);
+                ctx.fillText(line2, radius - 14, 13);
+            } else {
+                ctx.fillText(label, radius - 14, 5);
+            }
             ctx.restore();
         }
 
