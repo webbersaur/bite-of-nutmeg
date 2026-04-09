@@ -225,6 +225,37 @@
             line-height: 1.6;
         }
 
+        /* Where to Find It callout */
+        .stw-find-it {
+            background: var(--gold);
+            padding: 1.25rem 2rem;
+            text-align: center;
+        }
+
+        .stw-find-it-inner {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .stw-find-it p {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--navy-dark);
+            font-size: 1.05rem;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .stw-find-it a {
+            color: var(--navy);
+            font-weight: 600;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        .stw-find-it a:hover {
+            color: var(--navy-light);
+        }
+
         /* Inline Wheel Section */
         .stw-try-it {
             padding: 3rem 2rem 4rem;
@@ -379,7 +410,8 @@
     <section class="stw-hero">
         <a href="/"><img src="logo-mobile.webp" alt="A Bite of Nutmeg" style="height: 120px; width: auto; margin-bottom: 1.5rem;" width="344" height="315"></a>
         <h1>Can't Decide Where to Eat?</h1>
-        <p>Spin the wheel and let fate pick your next meal on the CT shoreline. From pizza to seafood, the wheel covers 9 cuisine categories across 7 towns.</p>
+        <p>Spin the wheel and let fate pick your next meal on the CT shoreline. From pizza to dessert, the wheel covers 10 cuisine categories across 7 towns.</p>
+        <a href="/" style="display: inline-block; margin-top: 1rem; padding: 0.6rem 1.5rem; border: 2px solid var(--gold); color: var(--gold); border-radius: 50px; text-decoration: none; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.95rem; transition: background 0.2s, color 0.2s;" onmouseover="this.style.background='var(--gold)';this.style.color='var(--navy-dark)'" onmouseout="this.style.background='transparent';this.style.color='var(--gold)'">Visit the Homepage</a>
     </section>
 
     <!-- Town Navigation -->
@@ -396,6 +428,13 @@
         </div>
     </section>
 
+    <!-- Where to Find It -->
+    <section class="stw-find-it">
+        <div class="stw-find-it-inner">
+            <p>Look for the <strong>"Can't Decide? Spin the Wheel"</strong> button on the <a href="/">homepage</a> and every town page. Tap it and the wheel pops up right there, ready to go.</p>
+        </div>
+    </section>
+
     <!-- How It Works -->
     <section class="stw-steps">
         <h2>How It Works</h2>
@@ -408,7 +447,7 @@
             <div class="stw-step">
                 <div class="stw-step-number">2</div>
                 <h3>Spin the Wheel</h3>
-                <p>Hit the spin button and watch the wheel go. It lands on one of 9 cuisine categories: Pizza, Italian, Seafood, American, Asian, Mexican, and more.</p>
+                <p>Hit the spin button and watch the wheel go. It lands on one of 10 cuisine categories — including Pizza, Italian, Seafood, Asian, Mexican, and even Dessert.</p>
             </div>
             <div class="stw-step">
                 <div class="stw-step-number">3</div>
