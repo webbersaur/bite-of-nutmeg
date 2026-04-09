@@ -509,12 +509,13 @@
             var phone = r.phone || '';
             var address = r.address || '';
             var rTown = r.town || '';
+            var website = (r._tier === 'featured' || r._tier === 'premium') ? (r.website || '') : '';
             return '<div class="spin-card">' +
                 '<h4>' + escapeHtml(r.name) + '</h4>' +
                 '<div class="spin-card-cuisine">' + escapeHtml(category) + '</div>' +
                 '<span class="spin-card-town">' + escapeHtml(rTown) + '</span>' +
-                (address ? '<div class="spin-card-address">' + escapeHtml(address) + '</div>' : '') +
                 (phone ? '<div class="spin-card-phone"><a href="tel:' + phone.replace(/[^0-9]/g, '') + '">' + escapeHtml(phone) + '</a></div>' : '') +
+                (website ? '<div class="spin-card-website"><a href="' + escapeHtml(website) + '" target="_blank" rel="noopener">Visit Website</a></div>' : '') +
                 '</div>';
         }).join('');
 
