@@ -15,6 +15,7 @@
     var scriptEl = document.querySelector('script[src*="spin-wheel.js"]');
     var pageTown = scriptEl ? scriptEl.getAttribute('data-town') : null;
     var isHomepage = !pageTown || pageTown === 'all';
+    var inlineContainerId = scriptEl ? scriptEl.getAttribute('data-inline') : null;
 
     // Default categories (used as fallback if config fails to load)
     const DEFAULT_CATEGORIES = [
@@ -24,9 +25,10 @@
         { label: 'Seafood', color: '#d9a01f', matches: ['Seafood'] },
         { label: 'Asian', color: '#152a52', matches: ['Chinese', 'Japanese', 'Asian', 'Thai', 'Vietnamese', 'Asian Fusion'] },
         { label: 'Mexican & Latin', color: '#f5c94d', matches: ['Mexican', 'Latin American', 'Latin', 'Caribbean'] },
-        { label: 'Cafe & Bakery', color: '#1e3a6e', matches: ['Cafe & Bakery', 'Cafe', 'Bakery', 'Dessert', 'Deli'] },
+        { label: 'Cafe & Bakery', color: '#1e3a6e', matches: ['Cafe & Bakery', 'Cafe', 'Bakery', 'Deli'] },
         { label: 'Indian & Eur.', color: '#e8a515', matches: ['Indian', 'Mediterranean', 'European', 'French'] },
-        { label: 'Brewery & BBQ', color: '#f0b323', matches: ['Wine Bar', 'Brewery', 'BBQ', 'Vegan', 'Vegetarian'] }
+        { label: 'Brewery & BBQ', color: '#f0b323', matches: ['Wine Bar', 'Brewery', 'BBQ', 'Vegan', 'Vegetarian'] },
+        { label: 'Dessert', color: '#e84393', matches: ['Dessert'] }
     ];
 
     let WHEEL_CATEGORIES = DEFAULT_CATEGORIES;
@@ -76,7 +78,7 @@
         return [].concat.apply([], arrays);
     }
 
-    function buildModalHTML() {
+    function buildWheelHTML() {
         var optionsHTML = '<option value="">All Towns</option>' +
             TOWNS.map(function (t) {
                 var selected = !isHomepage && t.name === pageTown ? ' selected' : '';
@@ -91,44 +93,58 @@
                 '</button>';
         }).join('');
 
+        var innerHTML =
+            '<div class="spin-container">' +
+                '<div class="spin-controls">' +
+                    '<div class="spin-town-filter">' +
+                        '<label for="spinTownFilter">Filter by town:</label>' +
+                        '<select id="spinTownFilter">' + optionsHTML + '</select>' +
+                    '</div>' +
+                    '<button id="spinBtn" class="spin-btn">Spin the Wheel!</button>' +
+                '</div>' +
+                '<div class="spin-town-badges" id="spinTownBadges">' + badgesHTML + '</div>' +
+                '<div class="spin-wheel-wrapper">' +
+                    '<div class="spin-pointer"></div>' +
+                    '<canvas id="spinCanvas" width="400" height="400"></canvas>' +
+                '</div>' +
+                '<div id="spinResults" class="spin-results" style="display:none;">' +
+                    '<h3 id="spinResultCategory"></h3>' +
+                    '<p id="spinResultCount" class="spin-result-count"></p>' +
+                    '<div id="spinResultCards" class="spin-result-cards"></div>' +
+                    '<div class="spin-result-actions">' +
+                        '<button id="spinAgainBtn" class="spin-again-btn">Spin Again</button>' +
+                        '<button id="spinShowMore" class="spin-again-btn">Show More</button>' +
+                    '</div>' +
+                '</div>' +
+                '<a href="/buy-this-app" class="spin-buy-app-link">&#9749; Buy This App</a>' +
+            '</div>';
+
+        return innerHTML;
+    }
+
+    function buildModalHTML() {
         return '<div id="spinModal" class="spin-modal">' +
             '<div class="spin-modal-content">' +
                 '<button class="spin-modal-close" id="spinModalClose">&times;</button>' +
                 '<h2>Can\'t Decide?</h2>' +
                 '<p class="spin-subtitle">Give the wheel a spin and let fate pick your cuisine!</p>' +
-                '<div class="spin-container">' +
-                    '<div class="spin-controls">' +
-                        '<div class="spin-town-filter">' +
-                            '<label for="spinTownFilter">Filter by town:</label>' +
-                            '<select id="spinTownFilter">' + optionsHTML + '</select>' +
-                        '</div>' +
-                        '<button id="spinBtn" class="spin-btn">Spin the Wheel!</button>' +
-                    '</div>' +
-                    '<div class="spin-town-badges" id="spinTownBadges">' + badgesHTML + '</div>' +
-                    '<div class="spin-wheel-wrapper">' +
-                        '<div class="spin-pointer"></div>' +
-                        '<canvas id="spinCanvas" width="400" height="400"></canvas>' +
-                    '</div>' +
-                    '<div id="spinResults" class="spin-results" style="display:none;">' +
-                        '<h3 id="spinResultCategory"></h3>' +
-                        '<p id="spinResultCount" class="spin-result-count"></p>' +
-                        '<div id="spinResultCards" class="spin-result-cards"></div>' +
-                        '<div class="spin-result-actions">' +
-                            '<button id="spinAgainBtn" class="spin-again-btn">Spin Again</button>' +
-                            '<button id="spinShowMore" class="spin-again-btn" style="display:none;">Show More</button>' +
-                        '</div>' +
-                    '</div>' +
-                    '<a href="/buy-this-app" class="spin-buy-app-link">&#9749; Buy This App</a>' +
-                '</div>' +
+                buildWheelHTML() +
             '</div>' +
         '</div>';
     }
 
     async function init() {
-        // Inject modal HTML
-        var wrapper = document.createElement('div');
-        wrapper.innerHTML = buildModalHTML();
-        document.body.appendChild(wrapper.firstChild);
+        var inlineContainer = inlineContainerId ? document.getElementById(inlineContainerId) : null;
+
+        if (inlineContainer) {
+            // Inline mode: render wheel directly into the container
+            inlineContainer.innerHTML = buildWheelHTML();
+        } else {
+            // Modal mode: inject modal HTML into body
+            var wrapper = document.createElement('div');
+            wrapper.innerHTML = buildModalHTML();
+            document.body.appendChild(wrapper.firstChild);
+        }
 
         canvas = document.getElementById('spinCanvas');
         if (!canvas) return;
@@ -218,26 +234,25 @@
             syncDropdownFromBadges();
         });
 
-        // Modal open
-        var trigger = document.getElementById('spinWheelTrigger');
-        if (trigger) {
-            trigger.addEventListener('click', openModal);
-        }
-
-        // Modal close
-        document.getElementById('spinModalClose').addEventListener('click', closeModal);
-
-        // Close on backdrop click
-        modal.addEventListener('click', function (e) {
-            if (e.target === modal) closeModal();
-        });
-
-        // Close on Escape
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape' && modal.classList.contains('active')) {
-                closeModal();
+        // Modal open/close (only in modal mode)
+        if (!inlineContainer && modal) {
+            var trigger = document.getElementById('spinWheelTrigger');
+            if (trigger) {
+                trigger.addEventListener('click', openModal);
             }
-        });
+
+            document.getElementById('spinModalClose').addEventListener('click', closeModal);
+
+            modal.addEventListener('click', function (e) {
+                if (e.target === modal) closeModal();
+            });
+
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && modal.classList.contains('active')) {
+                    closeModal();
+                }
+            });
+        }
     }
 
     function openModal() {

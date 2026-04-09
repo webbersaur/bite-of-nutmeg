@@ -61,7 +61,6 @@
         "Cafe",
         "Café & Bakery",
         "Bakery",
-        "Dessert",
         "Deli"
       ]
     },
@@ -83,6 +82,13 @@
         "Wine Bar",
         "Brewery",
         "BBQ"
+      ]
+    },
+    {
+      "label": "Dessert",
+      "color": "#e84393",
+      "matches": [
+        "Dessert"
       ]
     }
   ],

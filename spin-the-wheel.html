@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) - deferred for performance -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-9V7CYSGN9J');
+      window.addEventListener('load', function() {
+        var s = document.createElement('script');
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-9V7CYSGN9J';
+        document.head.appendChild(s);
+      });
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <title>Spin the Wheel | Can't Decide Where to Eat? — A Bite of Nutmeg</title>
+    <meta name="description" content="Can't decide where to eat on the CT shoreline? Spin the wheel and let fate pick your cuisine! Choose your towns, spin, and discover restaurants from East Haven to Old Saybrook.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.abiteofnutmeg.com/spin-the-wheel">
+    <meta property="og:title" content="Spin the Wheel | Can't Decide Where to Eat? — A Bite of Nutmeg">
+    <meta property="og:description" content="Can't decide where to eat on the CT shoreline? Spin the wheel and let fate pick your cuisine! Choose your towns, spin, and discover restaurants from East Haven to Old Saybrook.">
+    <meta property="og:image" content="https://www.abiteofnutmeg.com/social-share.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://www.abiteofnutmeg.com/spin-the-wheel">
+    <meta name="twitter:title" content="Spin the Wheel | Can't Decide Where to Eat? — A Bite of Nutmeg">
+    <meta name="twitter:description" content="Can't decide where to eat on the CT shoreline? Spin the wheel and let fate pick your cuisine! Choose your towns, spin, and discover restaurants from East Haven to Old Saybrook.">
+    <meta name="twitter:image" content="https://www.abiteofnutmeg.com/social-share.png">
+    <link rel="canonical" href="https://www.abiteofnutmeg.com/spin-the-wheel">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://www.abiteofnutmeg.com/spin-the-wheel",
+          "name": "Spin the Wheel — Can't Decide Where to Eat?",
+          "description": "An interactive cuisine picker for CT shoreline restaurants. Spin the wheel, pick your towns, and discover where to eat.",
+          "url": "https://www.abiteofnutmeg.com/spin-the-wheel",
+          "isPartOf": { "@id": "https://www.abiteofnutmeg.com/#website" },
+          "breadcrumb": { "@id": "https://www.abiteofnutmeg.com/spin-the-wheel#breadcrumb" }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://www.abiteofnutmeg.com/spin-the-wheel#breadcrumb",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.abiteofnutmeg.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Spin the Wheel" }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How does the Spin the Wheel feature work?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Select one or more CT shoreline towns, spin the wheel, and it lands on a random cuisine category like Pizza, Seafood, or Italian. You'll see matching restaurants from your selected towns, with results shuffled fresh every spin."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I filter by specific towns?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes! You can pick a single town, select multiple towns by clicking their badges, or search all 7 towns at once. The wheel pulls restaurants only from your selected towns."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="branford-styles.css">
+    <link rel="stylesheet" href="spin-wheel.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Spin the Wheel Info Page Styles */
+        .stw-hero {
+            background: linear-gradient(135deg, var(--navy-light) 0%, var(--navy) 50%, var(--navy-dark) 100%);
+            color: var(--white);
+            padding: 4rem 2rem 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .stw-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 0.75rem;
+        }
+
+        .stw-hero p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* How It Works Steps */
+        .stw-steps {
+            padding: 3.5rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .stw-steps h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--navy);
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .stw-step-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .stw-step {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s;
+        }
+
+        .stw-step:hover {
+            transform: translateY(-4px);
+        }
+
+        .stw-step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background: var(--gold);
+            color: var(--navy-dark);
+            font-size: 1.5rem;
+            font-weight: 700;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .stw-step h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--navy);
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .stw-step p {
+            font-family: 'Montserrat', sans-serif;
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Town Selection Detail */
+        .stw-details {
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+
+        .stw-details-inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .stw-details h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--navy);
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .stw-detail-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .stw-detail-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        .stw-detail-card h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--navy);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stw-detail-card p {
+            font-family: 'Montserrat', sans-serif;
+            color: #555;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Inline Wheel Section */
+        .stw-try-it {
+            padding: 3rem 2rem 4rem;
+            background: linear-gradient(135deg, var(--navy-light) 0%, var(--navy) 50%, var(--navy-dark) 100%);
+            text-align: center;
+        }
+
+        .stw-try-it h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--gold);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stw-try-it > p {
+            color: rgba(255, 255, 255, 0.85);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Inline wheel container - reuses spin-wheel.css styles without the modal wrapper */
+        .stw-wheel-inline {
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        .stw-wheel-inline .spin-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .stw-wheel-inline .spin-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Featured Restaurants Info */
+        .stw-featured {
+            padding: 3rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .stw-featured h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--navy);
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .stw-featured-text {
+            font-family: 'Montserrat', sans-serif;
+            color: #444;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .stw-featured-highlight {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-left: 4px solid var(--gold);
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .stw-featured-highlight p {
+            margin: 0;
+            font-size: 1.05rem;
+            color: var(--navy);
+            font-weight: 500;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Restaurant Owner CTA */
+        .stw-owner-cta {
+            background: var(--navy);
+            padding: 3rem 2rem;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .stw-owner-cta h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--gold);
+            font-size: 1.8rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .stw-owner-cta p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.05rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .stw-owner-cta-btn {
+            display: inline-block;
+            padding: 0.85rem 2rem;
+            background: var(--gold);
+            color: var(--navy-dark);
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .stw-owner-cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(240, 179, 35, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .stw-hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .stw-hero p {
+                font-size: 1rem;
+            }
+
+            .stw-step-grid {
+                grid-template-columns: 1fr;
+                gap: 1.25rem;
+            }
+
+            .stw-detail-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .stw-steps h2,
+            .stw-details h2,
+            .stw-featured h2,
+            .stw-try-it h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="branford-page">
+    <!-- Hero -->
+    <section class="stw-hero">
+        <a href="/"><img src="logo-mobile.webp" alt="A Bite of Nutmeg" style="height: 120px; width: auto; margin-bottom: 1.5rem;" width="344" height="315"></a>
+        <h1>Can't Decide Where to Eat?</h1>
+        <p>Spin the wheel and let fate pick your next meal on the CT shoreline. From pizza to seafood, the wheel covers 9 cuisine categories across 7 towns.</p>
+    </section>
+
+    <!-- Town Navigation -->
+    <section class="town-nav-section">
+        <div class="town-nav-badges">
+            <a href="/" class="town-nav-badge home-badge" aria-label="Home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></a>
+            <a href="/restaurants-in-east-haven" class="town-nav-badge"><span class="badge-full">East Haven</span><span class="badge-abbr">EH</span></a>
+            <a href="/restaurants-in-branford" class="town-nav-badge"><span class="badge-full">Branford</span><span class="badge-abbr">B</span></a>
+            <a href="/restaurants-in-guilford" class="town-nav-badge"><span class="badge-full">Guilford</span><span class="badge-abbr">G</span></a>
+            <a href="/restaurants-in-madison" class="town-nav-badge"><span class="badge-full">Madison</span><span class="badge-abbr">M</span></a>
+            <a href="/restaurants-in-clinton" class="town-nav-badge"><span class="badge-full">Clinton</span><span class="badge-abbr">C</span></a>
+            <a href="/restaurants-in-westbrook" class="town-nav-badge"><span class="badge-full">Westbrook</span><span class="badge-abbr">W</span></a>
+            <a href="/restaurants-in-old-saybrook" class="town-nav-badge"><span class="badge-full">Old Saybrook</span><span class="badge-abbr">OS</span></a>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="stw-steps">
+        <h2>How It Works</h2>
+        <div class="stw-step-grid">
+            <div class="stw-step">
+                <div class="stw-step-number">1</div>
+                <h3>Pick Your Towns</h3>
+                <p>Select one town, a few favorites, or all 7 shoreline towns. Use the dropdown or tap the town badges to toggle them on and off.</p>
+            </div>
+            <div class="stw-step">
+                <div class="stw-step-number">2</div>
+                <h3>Spin the Wheel</h3>
+                <p>Hit the spin button and watch the wheel go. It lands on one of 9 cuisine categories: Pizza, Italian, Seafood, American, Asian, Mexican, and more.</p>
+            </div>
+            <div class="stw-step">
+                <div class="stw-step-number">3</div>
+                <h3>Discover Restaurants</h3>
+                <p>The wheel picks the cuisine, then shows you matching restaurants from your selected towns. Results are randomized fresh every spin.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Choosing Your Towns -->
+    <section class="stw-details">
+        <div class="stw-details-inner">
+            <h2>Ways to Choose Your Towns</h2>
+            <div class="stw-detail-cards">
+                <div class="stw-detail-card">
+                    <h3>All Towns</h3>
+                    <p>By default, all 7 towns are selected. You'll see restaurants from East Haven to Old Saybrook, giving you the widest selection possible.</p>
+                </div>
+                <div class="stw-detail-card">
+                    <h3>Single Town</h3>
+                    <p>Use the "Filter by town" dropdown to narrow it down to just one town. Only restaurants from that town will appear in results.</p>
+                </div>
+                <div class="stw-detail-card">
+                    <h3>Mix and Match</h3>
+                    <p>Click the town badges to toggle individual towns on or off. Want Branford and Guilford but not Madison? Just tap the badges.</p>
+                </div>
+                <div class="stw-detail-card">
+                    <h3>On Town Pages</h3>
+                    <p>Visit any town page and spin from there. The wheel automatically filters to that town's restaurants, so every result is local.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Try It Section with Inline Wheel -->
+    <section class="stw-try-it">
+        <h2>Give It a Spin</h2>
+        <p>Go ahead, try it right here. Pick your towns and spin!</p>
+        <div class="stw-wheel-inline" id="spinWheelInline">
+            <!-- Spin wheel will be injected here by spin-wheel.js -->
+        </div>
+    </section>
+
+    <!-- Results & Featured Info -->
+    <section class="stw-featured">
+        <h2>About the Results</h2>
+        <p class="stw-featured-text">Every time you spin, the results are shuffled fresh. No two spins give you the same order. The wheel pulls from our complete database of 330+ restaurants sourced directly from local health departments.</p>
+
+        <div class="stw-featured-highlight">
+            <p>Featured restaurants appear first in their category. These are local restaurants that have partnered with A Bite of Nutmeg, and they'll also show a direct link to their website so you can check out their menu.</p>
+        </div>
+
+        <p class="stw-featured-text">After the featured restaurants, everything else is randomized. The more towns you select, the more options you'll see. If a spin comes up empty for a category in your selected towns, just spin again or add more towns.</p>
+    </section>
+
+    <!-- Restaurant Owner CTA -->
+    <section class="stw-owner-cta">
+        <h2>Own a Restaurant on the Shoreline?</h2>
+        <p>Get your restaurant featured at the top of spin results with a direct link to your website. Stand out when hungry diners are deciding where to eat.</p>
+        <a href="/upgrade" class="stw-owner-cta-btn">Get Featured</a>
+    </section>
+
+    <!-- Upgrade CTA Bar -->
+    <section class="upgrade-cta">
+        <div class="upgrade-cta-content">
+            <span class="upgrade-cta-text">Own a restaurant? Get featured on A Bite of Nutmeg</span>
+            <a href="/upgrade" class="upgrade-cta-btn">Upgrade Your Listing</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="branford-footer">
+        <div class="footer-content">
+            <a href="/">
+                <img src="logo-footer.webp" alt="A Bite of Nutmeg - Powered by Webbersaurus" class="footer-logo">
+            </a>
+            <p>&copy; <span id="copyrightYear"></span> A Bite of Nutmeg. All rights reserved.</p>
+            <script>document.getElementById('copyrightYear').textContent = new Date().getFullYear();</script>
+            <p style="font-size: 0.75rem; margin-top: 4px; opacity: 0.7;">Created by <a href="https://webbersaur.us" target="_blank" rel="noopener" class="footer-link">Webbersaurus</a></p>
+            <a href="/upgrade" class="footer-link">For Restaurants</a>
+            <span class="footer-divider">|</span>
+            <a href="/best-of" class="footer-link">Best Of</a>
+            <span class="footer-divider">|</span>
+            <a href="/spin-the-wheel" class="footer-link">Spin the Wheel</a>
+            <span class="footer-divider">|</span>
+            <a href="/why" class="footer-link">Why This Site</a>
+            <span class="footer-divider">|</span>
+            <a href="/partners" class="footer-link">Partners</a>
+            <span class="footer-divider">|</span>
+            <a href="https://www.facebook.com/abiteofnutmeg/" target="_blank" rel="noopener" class="footer-link">Follow Us on Facebook</a>
+        </div>
+    </footer>
+
+    <script src="spin-wheel.js" data-town="all" data-inline="spinWheelInline" defer></script>
+    <script src="install-prompt.js" defer></script>
+</body>
+</html>
