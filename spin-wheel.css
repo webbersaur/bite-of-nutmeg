@@ -4,22 +4,25 @@
 .spin-trigger-btn {
     display: inline-block;
     margin-top: 0.75rem;
-    background: transparent;
-    color: var(--gold);
+    background: var(--gold);
+    color: #fff;
     border: 2px solid var(--gold);
     padding: 0.5rem 1.5rem;
     font-size: 0.95rem;
     font-weight: 600;
     border-radius: 50px;
     cursor: pointer;
-    transition: background 0.2s, color 0.2s, transform 0.2s;
+    transition: background 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
     letter-spacing: 0.3px;
+    box-shadow: 0 4px 15px rgba(240, 179, 35, 0.3);
 }
 
 .spin-trigger-btn:hover {
-    background: var(--gold);
-    color: var(--navy-dark);
+    background: var(--gold-dark);
+    border-color: var(--gold-dark);
+    color: #fff;
     transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(240, 179, 35, 0.4);
 }
 
 /* Modal overlay */
