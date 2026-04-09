@@ -9,6 +9,13 @@
     const dismissed = localStorage.getItem(DISMISS_KEY);
     if (dismissed && Date.now() - parseInt(dismissed) < DISMISS_DAYS * 86400000) return;
 
+    // Stop showing after 2 visits
+    const VIEW_KEY = 'a2hs_views';
+    const MAX_VIEWS = 2;
+    var views = parseInt(localStorage.getItem(VIEW_KEY) || '0');
+    if (views >= MAX_VIEWS) return;
+    localStorage.setItem(VIEW_KEY, (views + 1).toString());
+
     // Wait for page to settle before showing
     let deferredPrompt = null;
 
@@ -128,10 +135,10 @@
                 .install-banner-close {
                     background: none;
                     border: none;
-                    font-size: 1.5rem;
+                    font-size: 2rem;
                     color: #999;
                     cursor: pointer;
-                    padding: 0 4px;
+                    padding: 8px 12px;
                     line-height: 1;
                 }
 
