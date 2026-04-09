@@ -6,7 +6,9 @@
       "matches": [
         "American",
         "Bar & Grill",
-        "Bar"
+        "Bar",
+        "Greek",
+        "Steakhouse"
       ]
     },
     {
@@ -64,36 +66,14 @@
       ]
     },
     {
-      "label": "Indian & Med.",
+      "label": "Indian & Eur.",
       "color": "#e8a515",
       "matches": [
         "Indian",
         "Mediterranean",
         "European",
-        "Nigerian"
-      ]
-    },
-    {
-      "label": "Fast Food",
-      "color": "#2a4a8a",
-      "matches": [
-        "Fast Food"
-      ]
-    },
-    {
-      "label": "Greek",
-      "color": "#c8930e",
-      "matches": [
-        "Greek"
-      ]
-    },
-    {
-      "label": "Fine Dining",
-      "color": "#152a52",
-      "matches": [
-        "French",
-        "Fine Dining",
-        "Steakhouse"
+        "Nigerian",
+        "French"
       ]
     },
     {

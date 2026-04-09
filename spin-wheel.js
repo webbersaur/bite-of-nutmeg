@@ -18,17 +18,14 @@
 
     // Default categories (used as fallback if config fails to load)
     const DEFAULT_CATEGORIES = [
-        { label: 'American', color: '#1e3a6e', matches: ['American', 'Bar & Grill', 'Bar'] },
+        { label: 'American', color: '#1e3a6e', matches: ['American', 'Bar & Grill', 'Bar', 'Greek', 'Steakhouse'] },
         { label: 'Pizza', color: '#f0b323', matches: ['Pizza'] },
         { label: 'Italian', color: '#2a4a8a', matches: ['Italian'] },
         { label: 'Seafood', color: '#d9a01f', matches: ['Seafood'] },
         { label: 'Asian', color: '#152a52', matches: ['Chinese', 'Japanese', 'Asian', 'Thai', 'Vietnamese', 'Asian Fusion'] },
         { label: 'Mexican & Latin', color: '#f5c94d', matches: ['Mexican', 'Latin American', 'Latin', 'Caribbean'] },
         { label: 'Cafe & Bakery', color: '#1e3a6e', matches: ['Cafe & Bakery', 'Cafe', 'Bakery', 'Dessert', 'Deli'] },
-        { label: 'Indian & Med.', color: '#e8a515', matches: ['Indian', 'Mediterranean', 'European'] },
-        { label: 'Fast Food', color: '#2a4a8a', matches: ['Fast Food'] },
-        { label: 'Greek', color: '#c8930e', matches: ['Greek'] },
-        { label: 'Fine Dining', color: '#152a52', matches: ['French', 'Fine Dining', 'Steakhouse'] },
+        { label: 'Indian & Eur.', color: '#e8a515', matches: ['Indian', 'Mediterranean', 'European', 'French'] },
         { label: 'Brewery & BBQ', color: '#f0b323', matches: ['Wine Bar', 'Brewery', 'BBQ', 'Vegan', 'Vegetarian'] }
     ];
 
@@ -296,11 +293,20 @@
         ctx.lineWidth = 3;
         ctx.stroke();
 
-        // Center text
+        // Center icon - fork & knife
+        ctx.save();
+        ctx.translate(center, center);
+        if (spinning && !stopping) {
+            // Pulse effect while spinning
+            var pulse = 1 + 0.08 * Math.sin(Date.now() / 150);
+            ctx.scale(pulse, pulse);
+        }
         ctx.fillStyle = '#1e3a6e';
-        ctx.font = 'bold 11px sans-serif';
+        ctx.font = '20px serif';
         ctx.textAlign = 'center';
-        ctx.fillText('SPIN', center, center + 4);
+        ctx.textBaseline = 'middle';
+        ctx.fillText('\u{1F374}', 0, 0);
+        ctx.restore();
     }
 
     function isLightColor(hex) {
@@ -350,6 +356,13 @@
         }
 
         animFrameId = requestAnimationFrame(animate);
+
+        // Auto-stop after 5 seconds if user doesn't hit stop
+        setTimeout(function () {
+            if (spinning && !stopping) {
+                stopSpin();
+            }
+        }, 5000);
     }
 
     function stopSpin() {
