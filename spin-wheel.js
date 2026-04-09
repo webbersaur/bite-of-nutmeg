@@ -118,6 +118,7 @@
                             '<button id="spinShowMore" class="spin-again-btn" style="display:none;">Show More</button>' +
                         '</div>' +
                     '</div>' +
+                    '<a href="/buy-this-app" class="spin-buy-app-link">&#9749; Buy This App</a>' +
                 '</div>' +
             '</div>' +
         '</div>';

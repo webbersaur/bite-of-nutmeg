@@ -356,6 +356,21 @@
     to { opacity: 1; }
 }
 
+/* Buy This App link */
+.spin-buy-app-link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.8rem;
+    text-decoration: none;
+    transition: color 0.2s;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.spin-buy-app-link:hover {
+    color: #f0b323;
+}
+
 /* Mobile */
 @media (max-width: 768px) {
     .spin-modal-content {
