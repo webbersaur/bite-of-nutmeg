@@ -66,4 +66,12 @@
     <loc>https://www.abiteofnutmeg.com/partners</loc>
     <priority>0.6</priority>
   </url>
+  <url>
+    <loc>https://www.abiteofnutmeg.com/find-phone-number</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.abiteofnutmeg.com/memory-jogger</loc>
+    <priority>0.6</priority>
+  </url>
 </urlset>
