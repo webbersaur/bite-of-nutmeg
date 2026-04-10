@@ -469,8 +469,7 @@
                 }
 
                 var matches = allRestaurants.filter(function(r) {
-                    var words = r.name.toLowerCase().split(/[\s\u2019'&\-\/]+/);
-                    return words.some(function(w) { return w.indexOf(query) === 0; }) || r.name.toLowerCase().indexOf(query) === 0;
+                    return r.name.toLowerCase().indexOf(query) === 0;
                 });
 
                 matches.sort(function(a, b) { return a.name.localeCompare(b.name); });
