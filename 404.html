@@ -204,8 +204,8 @@
         <div class="error-search">
             <p>Or search for a restaurant directly:</p>
             <div class="error-search-box">
-                <input type="text" id="errorSearchInput" placeholder="Type a restaurant name...">
-                <button type="button" id="errorSearchBtn">Find ›</button>
+                <input type="text" id="searchInput" placeholder="Type a restaurant name...">
+                <button type="button" id="townSearchBtn">Find ›</button>
             </div>
         </div>
 
@@ -242,22 +242,6 @@
         </div>
     </footer>
 
-    <script>
-        document.getElementById('errorSearchBtn').addEventListener('click', function() {
-            var query = document.getElementById('errorSearchInput').value.trim();
-            if (query) {
-                window.location.href = '/?search=' + encodeURIComponent(query);
-            }
-        });
-
-        document.getElementById('errorSearchInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                var query = e.target.value.trim();
-                if (query) {
-                    window.location.href = '/?search=' + encodeURIComponent(query);
-                }
-            }
-        });
-    </script>
+    <script src="phone-search.js"></script>
 </body>
 </html>

@@ -195,107 +195,6 @@
             text-decoration: underline;
         }
 
-        /* Live search results */
-        .live-results {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .live-results-count {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.9rem;
-            color: #888;
-            margin-bottom: 1rem;
-        }
-
-        .live-result {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 20px;
-            background: white;
-            border-radius: 10px;
-            margin-bottom: 10px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-            transition: box-shadow 0.2s;
-        }
-
-        .live-result:hover {
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-        }
-
-        .live-result-info {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .live-result-name {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.15rem;
-            color: #1e3a6e;
-            font-weight: 600;
-            margin: 0 0 4px;
-        }
-
-        .live-result-detail {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem;
-            color: #888;
-            margin: 0;
-        }
-
-        .live-result-phone {
-            flex-shrink: 0;
-            margin-left: 1rem;
-        }
-
-        .live-result-phone a {
-            display: inline-block;
-            background: #f0b323;
-            color: #1e3a6e;
-            padding: 10px 18px;
-            border-radius: 25px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            font-size: 0.95rem;
-            text-decoration: none;
-            white-space: nowrap;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .live-result-phone a:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
-        }
-
-        .live-result-nophone {
-            flex-shrink: 0;
-            margin-left: 1rem;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem;
-            color: #bbb;
-        }
-
-        .live-results-prompt {
-            text-align: center;
-            padding: 30px 20px;
-            font-family: 'Montserrat', sans-serif;
-            color: #999;
-            font-size: 1rem;
-        }
-
-        @media (max-width: 500px) {
-            .live-result {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
-            }
-
-            .live-result-phone {
-                margin-left: 0;
-            }
-        }
     </style>
 </head>
 <body class="branford-page">
@@ -334,11 +233,8 @@
         </div>
     </section>
 
-    <!-- Live Search Results -->
-    <div id="liveResults" class="live-results" style="display:none;"></div>
-
     <!-- Main Content -->
-    <div id="pageContent" class="why-content">
+    <div class="why-content">
         <section class="why-section">
             <h2>The Scenario</h2>
             <p>You're in the car. You want to call ahead for takeout or check if a place is still open. You Google the restaurant name and get a Yelp page, a Facebook page, an outdated blog post, and three ads before you ever see a phone number. By the time you find it, you've passed the exit.</p>
@@ -407,114 +303,11 @@
 
     <script src="near-me.js"></script>
     <script>
-        // Initialize Near Me button
         document.getElementById('townNearMeBtn').addEventListener('click', function() {
-            if (typeof window.openNearMe === 'function') {
-                window.openNearMe();
-            }
+            if (typeof window.openNearMe === 'function') window.openNearMe();
         });
-
-        // Live phone number search
-        (function() {
-            var townFiles = [
-                { file: 'branford-restaurants.json', town: 'Branford' },
-                { file: 'guilford-restaurants.json', town: 'Guilford' },
-                { file: 'easthaven-restaurants.json', town: 'East Haven' },
-                { file: 'madison-restaurants.json', town: 'Madison' },
-                { file: 'clinton-restaurants.json', town: 'Clinton' },
-                { file: 'westbrook-restaurants.json', town: 'Westbrook' },
-                { file: 'old-saybrook-restaurants.json', town: 'Old Saybrook' }
-            ];
-
-            var allRestaurants = [];
-            var loaded = false;
-
-            async function loadAll() {
-                if (loaded) return;
-                loaded = true;
-                var responses = await Promise.all(
-                    townFiles.map(function(t) { return fetch(t.file).then(function(r) { return r.json(); }).catch(function() { return null; }); })
-                );
-                responses.forEach(function(data, i) {
-                    if (!data || !data.restaurants) return;
-                    data.restaurants.forEach(function(r) {
-                        allRestaurants.push({ name: r.name, phone: r.phone || '', category: Array.isArray(r.category) ? r.category.join(' & ') : (r.category || ''), town: townFiles[i].town });
-                    });
-                });
-            }
-
-            var input = document.getElementById('searchInput');
-            var btn = document.getElementById('townSearchBtn');
-            var resultsDiv = document.getElementById('liveResults');
-            var pageContent = document.getElementById('pageContent');
-            var debounceTimer = null;
-
-            function escapeHtml(str) {
-                var div = document.createElement('div');
-                div.textContent = str;
-                return div.innerHTML;
-            }
-
-            async function doSearch() {
-                await loadAll();
-                var query = input.value.trim().toLowerCase();
-
-                if (!query || query.length < 2) {
-                    resultsDiv.style.display = 'none';
-                    pageContent.style.display = '';
-                    return;
-                }
-
-                var matches = allRestaurants.filter(function(r) {
-                    var words = r.name.toLowerCase().split(/[\s''&\-\/]+/);
-                    var nameMatch = words.some(function(w) { return w.indexOf(query) === 0; }) || r.name.toLowerCase().indexOf(query) === 0;
-                    var catWords = r.category.toLowerCase().split(/[\s''&\-\/]+/);
-                    var catMatch = catWords.some(function(w) { return w.indexOf(query) === 0; });
-                    return nameMatch || catMatch;
-                });
-
-                matches.sort(function(a, b) { return a.name.localeCompare(b.name); });
-
-                var html = '<p class="live-results-count">' + matches.length + ' result' + (matches.length !== 1 ? 's' : '') + '</p>';
-
-                if (matches.length === 0) {
-                    html += '<p class="live-results-prompt">No restaurants found. Try a different name.</p>';
-                } else {
-                    matches.forEach(function(r) {
-                        html += '<div class="live-result">';
-                        html += '<div class="live-result-info">';
-                        html += '<p class="live-result-name">' + escapeHtml(r.name) + '</p>';
-                        html += '<p class="live-result-detail">' + escapeHtml(r.category) + ' &middot; ' + escapeHtml(r.town) + '</p>';
-                        html += '</div>';
-                        if (r.phone) {
-                            html += '<div class="live-result-phone"><a href="tel:' + r.phone.replace(/[^0-9]/g, '') + '">' + escapeHtml(r.phone) + '</a></div>';
-                        } else {
-                            html += '<div class="live-result-nophone">No phone listed</div>';
-                        }
-                        html += '</div>';
-                    });
-                }
-
-                resultsDiv.innerHTML = html;
-                resultsDiv.style.display = 'block';
-                pageContent.style.display = 'none';
-            }
-
-            input.addEventListener('input', function() {
-                clearTimeout(debounceTimer);
-                debounceTimer = setTimeout(doSearch, 150);
-            });
-
-            btn.addEventListener('click', doSearch);
-
-            input.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    e.preventDefault();
-                    doSearch();
-                }
-            });
-        })();
     </script>
+    <script src="phone-search.js"></script>
     <script src="install-prompt.js" defer></script>
 </body>
 </html>

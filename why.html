@@ -567,23 +567,8 @@
             }
         });
 
-        // Search redirects to homepage with query
-        document.getElementById('townSearchBtn').addEventListener('click', () => {
-            const query = document.getElementById('searchInput').value.trim();
-            if (query) {
-                window.location.href = '/?search=' + encodeURIComponent(query);
-            }
-        });
-
-        document.getElementById('searchInput').addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                const query = e.target.value.trim();
-                if (query) {
-                    window.location.href = '/?search=' + encodeURIComponent(query);
-                }
-            }
-        });
     </script>
+    <script src="phone-search.js"></script>
     <script src="install-prompt.js" defer></script>
 </body>
 </html>
