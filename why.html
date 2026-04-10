@@ -226,6 +226,42 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
 
+        .feature-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px 20px 0;
+        }
+
+        .feature-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .feature-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .feature-btn-gold {
+            background: #f0b323;
+            color: #1e3a6e;
+        }
+
+        .feature-btn-navy {
+            background: #1e3a6e;
+            color: white;
+        }
+
         .author-photo {
             float: right;
             width: 245px;
@@ -380,6 +416,12 @@
             <a href="/restaurants-in-old-saybrook" class="town-nav-badge"><span class="badge-full">Old Saybrook</span><span class="badge-abbr">OS</span></a>
         </div>
     </section>
+
+    <!-- Feature Buttons -->
+    <div class="feature-buttons">
+        <a href="/find-phone-number" class="feature-btn feature-btn-gold">Find a Phone Number</a>
+        <a href="/memory-jogger" class="feature-btn feature-btn-navy">Restaurant Memory Jogger</a>
+    </div>
 
     <!-- Main Content -->
     <div class="why-content">
