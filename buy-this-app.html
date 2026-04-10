@@ -356,6 +356,23 @@
             }
         });
 
+        // Search redirects to homepage with query
+        document.getElementById('townSearchBtn').addEventListener('click', function() {
+            var query = document.getElementById('searchInput').value.trim();
+            if (query) {
+                window.location.href = '/?search=' + encodeURIComponent(query);
+            }
+        });
+
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                var query = e.target.value.trim();
+                if (query) {
+                    window.location.href = '/?search=' + encodeURIComponent(query);
+                }
+            }
+        });
+
         // Buy Me a Coffee - amount selection and payment links
         (function() {
             var selectedAmount = 5;
@@ -399,7 +416,6 @@
             selectAmount(5);
         })();
     </script>
-    <script src="phone-search.js"></script>
     <script src="install-prompt.js" defer></script>
 </body>
 </html>
