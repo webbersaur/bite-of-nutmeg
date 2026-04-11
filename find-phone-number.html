@@ -310,6 +310,7 @@
                 <div class="town-hero-search-row">
                     <div class="town-hero-search-box">
                         <input type="text" id="searchInput" placeholder="Type a restaurant name...">
+                        <button type="button" id="searchClearBtn" class="search-clear-btn" aria-label="Clear search" style="display:none;">&times;</button>
                         <button type="button" id="townSearchBtn" class="town-search-find-btn">Find ›</button>
                     </div>
                     <button type="button" id="townNearMeBtn" class="town-near-me-btn">
@@ -452,9 +453,22 @@
 
             var input = document.getElementById('searchInput');
             var btn = document.getElementById('townSearchBtn');
+            var clearBtn = document.getElementById('searchClearBtn');
             var resultsDiv = document.getElementById('liveResults');
             var pageContent = document.getElementById('pageContent');
             var debounceTimer = null;
+
+            function updateClearBtn() {
+                clearBtn.style.display = input.value.length > 0 ? '' : 'none';
+            }
+
+            clearBtn.addEventListener('click', function() {
+                input.value = '';
+                updateClearBtn();
+                resultsDiv.style.display = 'none';
+                pageContent.style.display = '';
+                input.focus();
+            });
 
             function escapeHtml(str) {
                 var div = document.createElement('div');
@@ -501,9 +515,15 @@
                 resultsDiv.innerHTML = html;
                 resultsDiv.style.display = 'block';
                 pageContent.style.display = 'none';
+
+                // On mobile, scroll down to results so users don't have to scroll past the hero
+                if (window.innerWidth <= 768) {
+                    resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
             }
 
             input.addEventListener('input', function() {
+                updateClearBtn();
                 clearTimeout(debounceTimer);
                 debounceTimer = setTimeout(doSearch, 150);
             });

@@ -866,6 +866,22 @@
     color: rgba(255, 255, 255, 0.6);
 }
 
+.search-clear-btn {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.4rem;
+    line-height: 1;
+    padding: 0 0.5rem;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: color 0.2s;
+}
+
+.search-clear-btn:hover {
+    color: #fff;
+}
+
 .town-search-find-btn {
     padding: 0.75rem 1.25rem;
     background: #f0b323;
