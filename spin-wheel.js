@@ -385,12 +385,13 @@
 
         animFrameId = requestAnimationFrame(animate);
 
-        // Auto-stop after 5 seconds if user doesn't hit stop
+        // Auto-stop after a random 4–7 seconds if user doesn't hit stop
+        var autoStopDelay = 4000 + Math.random() * 3000;
         setTimeout(function () {
             if (spinning && !stopping) {
                 stopSpin();
             }
-        }, 5000);
+        }, autoStopDelay);
     }
 
     function stopSpin() {
