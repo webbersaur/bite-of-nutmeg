@@ -530,6 +530,10 @@
 
             btn.addEventListener('click', doSearch);
 
+            input.addEventListener('paste', function(e) {
+                e.preventDefault();
+            });
+
             input.addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') {
                     e.preventDefault();
