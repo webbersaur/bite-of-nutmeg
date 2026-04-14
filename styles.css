@@ -1176,7 +1176,8 @@ body {
     }
 
     .hero h1 {
-        display: none;
+        font-size: 1.4rem;
+        text-align: center;
     }
 
     .hero p {
