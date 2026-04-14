@@ -1,5 +1,10 @@
 /* Spin Wheel - "Can't Decide?" Modal */
 
+@keyframes spin-btn-pulse {
+    0%, 100% { box-shadow: 0 4px 15px rgba(240, 179, 35, 0.3); color: #fff; }
+    50% { box-shadow: 0 4px 25px rgba(240, 179, 35, 0.6), 0 0 15px rgba(240, 179, 35, 0.3); color: #fff8e1; }
+}
+
 /* Trigger button in hero */
 .spin-trigger-btn {
     display: inline-block;
@@ -15,6 +20,7 @@
     transition: background 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
     letter-spacing: 0.3px;
     box-shadow: 0 4px 15px rgba(240, 179, 35, 0.3);
+    animation: spin-btn-pulse 2s ease-in-out infinite;
 }
 
 .spin-trigger-btn:hover {
@@ -23,6 +29,11 @@
     color: #fff;
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(240, 179, 35, 0.4);
+    animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .spin-trigger-btn { animation: none; }
 }
 
 /* Modal overlay */
