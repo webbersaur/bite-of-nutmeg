@@ -49,7 +49,7 @@
         if (platform === 'ios') {
             content = `
                 <div class="install-banner-icon">
-                    <img src="/favicon-192.png" alt="" width="40" height="40">
+                    <img src="/favicon-192.png" alt="A Bite of Nutmeg app icon" width="40" height="40">
                 </div>
                 <div class="install-banner-text">
                     <strong>Add Bite of Nutmeg to your phone</strong>
@@ -60,7 +60,7 @@
         } else {
             content = `
                 <div class="install-banner-icon">
-                    <img src="/favicon-192.png" alt="" width="40" height="40">
+                    <img src="/favicon-192.png" alt="A Bite of Nutmeg app icon" width="40" height="40">
                 </div>
                 <div class="install-banner-text">
                     <strong>Add Bite of Nutmeg to your phone</strong>
