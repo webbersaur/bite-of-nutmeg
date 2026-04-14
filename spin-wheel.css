@@ -12,8 +12,8 @@
     background: var(--gold);
     color: #fff;
     border: 2px solid var(--gold);
-    padding: 0.5rem 1.5rem;
-    font-size: 0.95rem;
+    padding: 0.6rem 1.8rem;
+    font-size: 1.14rem;
     font-weight: 600;
     border-radius: 50px;
     cursor: pointer;
@@ -418,7 +418,7 @@
     }
 
     .spin-trigger-btn {
-        font-size: 0.85rem;
-        padding: 0.4rem 1.2rem;
+        font-size: 1.19rem;
+        padding: 0.56rem 1.68rem;
     }
 }
