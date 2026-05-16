@@ -298,6 +298,14 @@
             align-items: center;
         }
 
+        /* Let results flow with the page instead of scrolling inside a fixed-height container.
+           The modal needs the inner scroll; the inline page doesn't — and on mobile the nested
+           scroller intercepts the first tap, requiring a double-tap to scroll the page. */
+        .stw-wheel-inline .spin-result-cards {
+            max-height: none;
+            overflow-y: visible;
+        }
+
         /* Featured Restaurants Info */
         .stw-featured {
             padding: 3rem 2rem;
