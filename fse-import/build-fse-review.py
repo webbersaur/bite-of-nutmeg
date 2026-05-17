@@ -14,6 +14,7 @@ Output: FSE-review.xlsx (written next to this script)
 Run from anywhere:  python3 fse-import/build-fse-review.py
 """
 
+import csv
 import os
 import re
 import openpyxl
@@ -22,6 +23,7 @@ from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
 HERE = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(HERE, "FSE.xlsx")
 OUT = os.path.join(HERE, "FSE-review.xlsx")
+RESEARCH = os.path.join(HERE, "fse-research.csv")
 
 # ---------------------------------------------------------------- towns
 TOWNS = ["New London", "Waterford", "East Lyme", "Old Lyme", "Lyme", "Ledyard",
@@ -255,22 +257,71 @@ def classify(name):
     return ("KEEP", "Restaurant?", True)
 
 
+# ------------------------------------------------------- research cache
+def load_research():
+    """Load fse-research.csv (manual verification + geo).
+
+    CSV columns: permit, name, verified_decision, verified_category,
+                 lat, lng, website, notes
+    Blank cells are ignored so a row can carry just geo, just a category,
+    or both. Returns {"permit": {...}, "name": {...}} -- rows are indexed by
+    permit # and, as a fallback for blank-permit rows, by lowercased name.
+    """
+    cache = {"permit": {}, "name": {}}
+    if not os.path.exists(RESEARCH):
+        return cache
+    with open(RESEARCH, newline="", encoding="utf-8") as f:
+        for r in csv.DictReader(f):
+            entry = {k: clean(v) for k, v in r.items()}
+            permit = clean(r.get("permit"))
+            name = clean(r.get("name")).lower()
+            if permit and permit != "0":
+                cache["permit"][permit] = entry
+            if name:
+                cache["name"][name] = entry
+    return cache
+
+
+def apply_research(rec, cache):
+    """Overlay a record with any matching research-cache entry (in place).
+
+    Matches on permit #; falls back to facility name (some permits are blank).
+    """
+    hit = (cache["permit"].get(clean(rec["permit"]))
+           or cache["name"].get(rec["name"].lower()))
+    if not hit:
+        return
+    if hit.get("verified_decision"):
+        rec["decision"] = hit["verified_decision"].upper()
+    if hit.get("verified_category"):
+        rec["category"] = hit["verified_category"]
+        rec["uncertain"] = False          # verified -> clear the ★
+    rec["lat"] = hit.get("lat", "")
+    rec["lng"] = hit.get("lng", "")
+    rec["website"] = hit.get("website", "")
+
+
 # --------------------------------------------------------------- build
 def main():
     wb = openpyxl.load_workbook(SRC, read_only=True, data_only=True)
     src = wb[wb.sheetnames[0]]
     rows = list(src.iter_rows(values_only=True))[1:]
 
+    cache = load_research()
+
     records = []
     for r in rows:
         name, addr, email, permit = r[0], r[1], r[2], r[3]
         town = parse_town(addr)
         decision, cat, uncertain = classify(name)
-        records.append({
+        rec = {
             "town": town, "decision": decision, "category": cat,
             "uncertain": uncertain, "name": clean(name), "addr": clean(addr),
             "permit": permit, "email": clean(email),
-        })
+            "lat": "", "lng": "", "website": "",
+        }
+        apply_research(rec, cache)
+        records.append(rec)
 
     # sort: town, kept-first, name
     records.sort(key=lambda x: (x["town"], 0 if x["decision"] == "KEEP" else 1,
@@ -337,7 +388,8 @@ def main():
 
     # main table header
     headers = ["Town", "Keep", "Category / Reason", "★",
-               "Facility Name", "Address", "Permit #", "Email"]
+               "Facility Name", "Address", "Permit #", "Email",
+               "Latitude", "Longitude", "Website"]
     hdr_row = row
     for i, h in enumerate(headers, 1):
         cell = ws.cell(row=hdr_row, column=i, value=h)
@@ -349,7 +401,7 @@ def main():
     for r in records:
         vals = [r["town"], r["decision"], r["category"],
                 "★" if r["uncertain"] else "", r["name"], r["addr"],
-                r["permit"], r["email"]]
+                r["permit"], r["email"], r["lat"], r["lng"], r["website"]]
         for i, v in enumerate(vals, 1):
             cell = ws.cell(row=row, column=i, value=v)
             cell.border = border
@@ -361,11 +413,11 @@ def main():
         row += 1
 
     # column widths / freeze / autofilter
-    widths = [16, 9, 22, 4, 36, 46, 9, 30]
+    widths = [16, 9, 22, 4, 36, 46, 9, 30, 11, 11, 34]
     for i, w in enumerate(widths, 1):
         ws.column_dimensions[chr(64 + i)].width = w
     ws.freeze_panes = f"A{hdr_row + 1}"
-    ws.auto_filter.ref = f"A{hdr_row}:H{row - 1}"
+    ws.auto_filter.ref = f"A{hdr_row}:K{row - 1}"
 
     out.save(OUT)
     print(f"Processed {len(records)} records.")
@@ -375,6 +427,8 @@ def main():
         print("   ", r["name"], "|", r["addr"])
     print(f"KEEP: {tot_k}   REMOVE: {tot_r}   "
           f"uncertain: {sum(1 for r in records if r['uncertain'])}")
+    print(f"Research cache: {len(cache['name'])} entries   "
+          f"(geo filled: {sum(1 for r in records if r['lat'])})")
     print(f"Wrote {OUT}")
 
 
