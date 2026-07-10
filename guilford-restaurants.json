@@ -1,17 +1,5 @@
 {
-  "featured": [
-    {
-      "name": "Mexitale",
-      "category": "Mexican",
-      "address": "1080 Boston Post Rd, Guilford",
-      "phone": "203-643-1540",
-      "website": "https://mexitalekitchen.com/",
-      "image": "guilford-logos/Mexitale-web-1.webp",
-      "lat": 41.3080171,
-      "lng": -72.7192757,
-      "description": "A modern Mexican restaurant bringing fresh, creative Mexican cuisine to Guilford. Known for its quality ingredients and contemporary take on traditional Mexican dishes."
-    }
-  ],
+  "featured": [],
   "restaurants": [
     {"name": "Ashley's Ice Cream", "category": "Dessert", "phone": "203-458-3040", "lat": 41.2880508, "lng": -72.6806107, "description": "A beloved ice cream shop offering handcrafted flavors made with quality ingredients. A must-stop in Guilford during warmer months."},
     {"name": "Belle Vie Cafe", "category": "Cafe", "phone": "203-689-5060", "lat": 41.2848395, "lng": -72.682952, "description": "A charming cafe near the Guilford Green offering lighter fare for daytime visits. A popular spot for coffee, pastries, and casual lunch."},
