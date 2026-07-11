@@ -6,9 +6,12 @@
 }
 
 /* Trigger button in hero */
+.town-hero-spin-row {
+    margin-top: 0.75rem;
+}
+
 .spin-trigger-btn {
     display: inline-block;
-    margin-top: 0.75rem;
     background: var(--gold);
     color: #fff;
     border: 2px solid var(--gold);
