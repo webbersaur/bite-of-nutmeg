@@ -1,27 +1,5 @@
 {
-  "featured": [
-    {
-      "name": "Rollin Dough Mobile Wood Fired Apizza",
-      "category": "Pizza",
-      "address": "Guilford, CT",
-      "phone": "203-675-1306",
-      "website": "https://rollindoughct.com",
-      "lat": 41.2839,
-      "lng": -72.6819,
-      "description": "A Guilford-based mobile pizza truck serving hand-stretched, wood-fired New Haven-style apizza, fresh salads, and desserts at events across Connecticut. Signature pies like The Marco and Clams Casino headline a menu with build-your-own and gluten-free options."
-    },
-    {
-      "name": "Mexitale",
-      "category": "Mexican",
-      "address": "1080 Boston Post Rd, Guilford",
-      "phone": "203-643-1540",
-      "website": "https://mexitalekitchen.com/",
-      "image": "guilford-logos/Mexitale-web-1.webp",
-      "lat": 41.3080171,
-      "lng": -72.7192757,
-      "description": "A modern Mexican restaurant bringing fresh, creative Mexican cuisine to Guilford. Known for its quality ingredients and contemporary take on traditional Mexican dishes."
-    }
-  ],
+  "featured": [],
   "restaurants": [
     {"name": "Ashley's Ice Cream", "category": "Dessert", "phone": "203-458-3040", "lat": 41.2880508, "lng": -72.6806107, "description": "A beloved ice cream shop offering handcrafted flavors made with quality ingredients. A must-stop in Guilford during warmer months."},
     {"name": "Belle Vie Cafe", "category": "Cafe", "phone": "203-689-5060", "lat": 41.2848395, "lng": -72.682952, "description": "A charming cafe near the Guilford Green offering lighter fare for daytime visits. A popular spot for coffee, pastries, and casual lunch."},
@@ -48,7 +26,6 @@
     {"name": "Lorenzo's II", "category": "Italian", "phone": "203-457-9111", "lat": 41.3524633, "lng": -72.6954215, "description": "An Italian restaurant in North Guilford serving Italian-American classics in a more rural setting away from the town center. A local staple for pasta, seafood, and traditional entrees."},
     {"name": "Lucky Thai Kitchen", "category": "Thai", "phone": "203-823-2351", "lat": 41.28759027131268, "lng": -72.6848018132021, "description": "A Thai restaurant near the Guilford Green offering a menu of curries, stir-fries, and noodle dishes. A convenient spot for Thai food in the heart of town."},
     {"name": "McDonald's", "category": "Fast Food", "phone": "203-453-2845", "lat": 41.289185, "lng": -72.6689619, "description": "A fast food chain location in Guilford. Open for breakfast, lunch, and dinner with the familiar McDonald's menu."},
-    {"name": "Mexitale", "category": "Mexican", "phone": "203-643-1540", "lat": 41.3080171, "lng": -72.7192757, "website": "https://mexitalekitchen.com/", "description": "A modern Mexican restaurant bringing fresh, creative Mexican cuisine to Guilford. Known for its quality ingredients and contemporary take on traditional Mexican dishes."},
     {"name": "Moon Shots Juice Co.", "category": "Cafe", "phone": "203-689-5332", "lat": 41.2882084, "lng": -72.6852267, "description": "A health-focused juice bar and cafe near the Guilford Green offering fresh-pressed juices, smoothies, and light fare. A popular daytime stop for a healthy boost."},
     {"name": "Mooyah Burgers", "category": "American", "phone": "203-533-5279", "lat": 41.3009469, "lng": -72.7080014, "description": "A build-your-own burger spot in Guilford serving hand-crafted burgers, fries, and shakes. A step up from typical fast food burgers."},
     {"name": "Mr. J Asian Bistro", "category": "Asian", "phone": "203-453-3355", "lat": 41.2885089, "lng": -72.6747531, "description": "An Asian fusion restaurant in Guilford covering a range of Asian cuisines including Chinese, Japanese, and Thai-inspired dishes. A versatile option for Asian food in town."},
