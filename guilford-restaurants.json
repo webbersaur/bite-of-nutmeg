@@ -1,6 +1,16 @@
 {
   "featured": [
     {
+      "name": "Rollin Dough Mobile Wood Fired Apizza",
+      "category": "Pizza",
+      "address": "Guilford, CT",
+      "phone": "203-675-1306",
+      "website": "https://rollindoughct.com",
+      "lat": 41.2839,
+      "lng": -72.6819,
+      "description": "A Guilford-based mobile pizza truck serving hand-stretched, wood-fired New Haven-style apizza, fresh salads, and desserts at events across Connecticut. Signature pies like The Marco and Clams Casino headline a menu with build-your-own and gluten-free options."
+    },
+    {
       "name": "Mexitale",
       "category": "Mexican",
       "address": "1080 Boston Post Rd, Guilford",
