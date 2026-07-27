@@ -1,6 +1,17 @@
 {
   "featured": [
     {
+      "name": "Courtyard Restaurant",
+      "category": "American",
+      "address": "105 Elm St #1, Old Saybrook",
+      "phone": "860-388-1821",
+      "website": "https://courtyardoldsaybrook.com/",
+      "image": "old-saybrook-logos/courtyard.png",
+      "lat": 41.2966307,
+      "lng": -72.3815453,
+      "description": "American restaurant offering a casual dining experience with a varied menu of classic favorites."
+    },
+    {
       "name": "Parthenon Diner Restaurant",
       "category": ["Greek", "American"],
       "address": "809 Boston Post Rd, Old Saybrook",
@@ -23,7 +34,7 @@
     {"name": "Burger King", "category": "Fast Food", "phone": "860-388-5255", "lat": 41.2970193, "lng": -72.3784575, "description": "National fast food chain serving flame-grilled burgers, fries, and classic drive-through fare."},
     {"name": "Cafe Toscana", "category": "Cafe & Bakery", "phone": "860-388-1270", "lat": 41.2960421, "lng": -72.3771239, "description": "Tuscan-inspired cafe serving breakfast, lunch, and baked goods with Italian flair in the town center."},
     {"name": "Comfort Cafe", "category": "Cafe & Bakery", "phone": "860-388-6788", "lat": 41.3176956, "lng": -72.3585357, "description": "A cozy cafe serving breakfast and lunch comfort food in a relaxed, welcoming setting."},
-    {"name": "Courtyard Restaurant", "category": "American", "phone": "860-388-1821", "lat": 41.2966307, "lng": -72.3815453, "description": "American restaurant offering a casual dining experience with a varied menu of classic favorites."},
+    {"name": "Courtyard Restaurant", "category": "American", "phone": "860-388-1821", "website": "https://courtyardoldsaybrook.com/", "image": "old-saybrook-logos/courtyard.png", "lat": 41.2966307, "lng": -72.3815453, "description": "American restaurant offering a casual dining experience with a varied menu of classic favorites."},
     {"name": "Cuckoo's Nest", "category": "Mexican", "phone": "860-399-8189", "lat": 41.285675, "lng": -72.417583, "description": "Mexican restaurant on Old Saybrook's west side, serving tacos, burritos, enchiladas, and other south-of-the-border favorites."},
     {"name": "Curry Queen", "category": "Indian", "phone": "860-510-9803", "lat": 41.295566, "lng": -72.3824677, "description": "Indian restaurant bringing curries, tandoori dishes, and other Indian specialties to Old Saybrook's dining scene."},
     {"name": "Dagmar's Desserts", "category": "Dessert", "phone": "860-661-4661", "lat": 41.2946054, "lng": -72.3771801, "description": "Dedicated dessert shop crafting pastries, cakes, and sweet treats. A town center destination for anyone with a sweet tooth."},
