@@ -578,6 +578,16 @@
     color: #1e3a6e;
 }
 
+.list-badge.closed {
+    background-color: #8a8a8a;
+    color: white;
+}
+
+.list-badge.coming-soon {
+    background-color: #1e3a6e;
+    color: #f0b323;
+}
+
 /* Highlight styles for featured/enhanced items */
 .restaurant-item.featured-highlight {
     border-left: 4px solid #4CAF50;
@@ -585,6 +595,22 @@
 
 .restaurant-item.enhanced-highlight {
     border-left: 4px solid #f0b323;
+}
+
+/* Closed listings stay readable but visibly inactive — the name and the
+   status note are the point, everything else recedes */
+.restaurant-item.status-closed {
+    border-left: 4px solid #c4c4c4;
+    background-color: #fafafa;
+}
+
+.restaurant-item.status-closed .item-header h3,
+.restaurant-item.status-closed .category {
+    color: #8a8a8a;
+}
+
+.restaurant-item.status-coming-soon {
+    border-left: 4px solid #1e3a6e;
 }
 
 /* Item actions for premium/featured */

@@ -36,28 +36,46 @@ def build_restaurant_html(restaurant):
     phone_digits = re.sub(r"[^0-9]", "", phone)
 
     is_enhanced = restaurant.get("enhanced", False)
+    status = restaurant.get("status", "open")
+    is_operating = status == "open"
     item_class = "restaurant-item"
     badge_html = ""
     website_html = ""
 
-    if is_enhanced:
+    if not is_operating:
+        # Mirrors STATUS_BADGES in the town page scripts
+        label = "Coming Soon" if status == "coming-soon" else "Closed"
+        badge_html = f'<span class="list-badge {status}">{label}</span>'
+        item_class += f" status-{status}"
+    elif is_enhanced:
         badge_html = '<span class="list-badge enhanced">Premium</span>'
         item_class += " enhanced-highlight"
         website = restaurant.get("website", "")
         if website:
             website_html = f'<a href="{html.escape(website)}" target="_blank" rel="noopener noreferrer" class="website-link">Visit Website →</a>'
 
+    # No live tel: link for a restaurant that can't answer the phone
+    if is_operating and phone:
+        phone_html = f"""<a href="tel:{phone_digits}" class="phone">
+                    {PHONE_SVG}
+                    {html.escape(phone)}
+                </a>"""
+    else:
+        phone_html = ""
+
+    description = restaurant.get("description", "")
+    note_html = ""
+    if not is_operating and description:
+        note_html = f'\n            <p class="restaurant-description">{html.escape(description)}</p>'
+
     return f"""        <div class="{item_class}">
             <div class="item-header">
                 <h3>{name}</h3>
                 {badge_html}
             </div>
-            <span class="category">{cat_display}</span>
+            <span class="category">{cat_display}</span>{note_html}
             <div class="item-actions">
-                <a href="tel:{phone_digits}" class="phone">
-                    {PHONE_SVG}
-                    {html.escape(phone)}
-                </a>
+                {phone_html}
                 {website_html}
             </div>
         </div>"""
@@ -65,10 +83,15 @@ def build_restaurant_html(restaurant):
 
 def build_static_list(restaurants, featured_names):
     """Build the full static restaurant list HTML."""
-    # Sort: enhanced first, then alphabetical (matching JS "All" category behavior)
+    # Sort: operating first, then enhanced, then alphabetical
+    # (matching JS "All" category behavior)
     sorted_restaurants = sorted(
         restaurants,
-        key=lambda r: (0 if r.get("enhanced") else 1, r["name"])
+        key=lambda r: (
+            0 if r.get("status", "open") == "open" else 1,
+            0 if r.get("enhanced") else 1,
+            r["name"],
+        )
     )
 
     items = "\n".join(build_restaurant_html(r) for r in sorted_restaurants)
@@ -92,7 +115,9 @@ def inject_into_page(html_file, json_file):
     # Replace the restaurantList div content
     # Match: <div class="restaurant-list" id="restaurantList">...content...</div>
     # followed by </section>
-    pattern = r'(<div class="restaurant-list" id="restaurantList">)\s*(?:<!-- Restaurant list loaded via JS -->|<!-- Static restaurant list for SEO.*?-->.*?)(\s*</div>\s*</section>)'
+    # The trailing \s* sits OUTSIDE the capture group so re-running the script
+    # replaces the existing whitespace instead of stacking a blank line onto it
+    pattern = r'(<div class="restaurant-list" id="restaurantList">)\s*(?:<!-- Restaurant list loaded via JS -->|<!-- Static restaurant list for SEO.*?-->.*?)\s*(</div>\s*</section>)'
     replacement = rf'\1\n        <!-- Static restaurant list for SEO (replaced by JS on load) -->\n{static_html}\n    \2'
 
     new_html, count = re.subn(pattern, replacement, page_html, flags=re.DOTALL)

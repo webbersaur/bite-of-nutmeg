@@ -649,6 +649,49 @@ body {
     color: var(--white);
 }
 
+.closed-badge {
+    background-color: #8a8a8a;
+    color: var(--white);
+}
+
+.coming-soon-badge {
+    background-color: var(--navy);
+    color: var(--gold);
+}
+
+/* Closed cards appear in search results so the query gets an answer, but
+   they're visibly inactive and carry no phone/website call to action */
+.restaurant-card.status-closed {
+    background-color: #fafafa;
+    border: 1px solid #e0e0e0;
+    box-shadow: none;
+}
+
+.restaurant-card.status-closed .card-header {
+    background: #ededed;
+}
+
+.restaurant-card.status-closed .card-header h3,
+.restaurant-card.status-closed .card-header .cuisine {
+    color: #8a8a8a;
+}
+
+.restaurant-card.status-closed:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.restaurant-card.status-coming-soon {
+    border: 2px dashed var(--navy);
+}
+
+.restaurant-card .status-note {
+    font-size: 0.85rem;
+    line-height: 1.45;
+    color: #666;
+    margin-top: 0.5rem;
+}
+
 .restaurant-card.premium-card {
     border: 2px solid var(--gold);
     box-shadow: 0 4px 15px rgba(240, 179, 35, 0.2);
