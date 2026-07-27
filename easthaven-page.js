@@ -8,6 +8,19 @@ let map = null;
 let markers = [];
 const townName = 'East Haven';
 
+// Listing status: absent or "open" = operating, "closed", "coming-soon".
+// Non-operating listings still appear in the list (with a badge, sorted last)
+// so searches for them get a real answer, but are kept off the map, the wheel,
+// and Near Me — never send someone to a door that won't open.
+function isOperating(restaurant) {
+    return !restaurant.status || restaurant.status === 'open';
+}
+
+const STATUS_BADGES = {
+    'closed': '<span class="list-badge closed">Closed</span>',
+    'coming-soon': '<span class="list-badge coming-soon">Coming Soon</span>'
+};
+
 // Initialize
 document.addEventListener('DOMContentLoaded', async () => {
     await loadData();
@@ -141,6 +154,11 @@ function renderRestaurantList() {
     // Sort: For specific categories, Featured first, then Premium, then alphabetical
     // For "All", just Premium first, then alphabetical
     filtered.sort((a, b) => {
+        // Closed / coming-soon always sink below operating restaurants
+        const aOpen = isOperating(a) ? 1 : 0;
+        const bOpen = isOperating(b) ? 1 : 0;
+        if (aOpen !== bOpen) return bOpen - aOpen;
+
         const aFeatured = data.featured && data.featured.some(f => f.name === a.name) ? 2 : 0;
         const bFeatured = data.featured && data.featured.some(f => f.name === b.name) ? 2 : 0;
         const aEnhanced = a.enhanced === true ? 1 : 0;
@@ -177,7 +195,10 @@ function renderRestaurantList() {
         let badgeHtml = '';
         let itemClass = 'restaurant-item';
 
-        if (isFeatured) {
+        if (!isOperating(restaurant)) {
+            badgeHtml = STATUS_BADGES[restaurant.status] || '';
+            itemClass += ' status-' + restaurant.status;
+        } else if (isFeatured) {
             badgeHtml = '<span class="list-badge featured">Featured</span>';
             itemClass += ' featured-highlight';
         } else if (isEnhanced) {
@@ -199,11 +220,13 @@ function renderRestaurantList() {
             <span class="category">${Array.isArray(restaurant.category) ? restaurant.category.join(' & ') : restaurant.category}</span>
             ${restaurant.description ? `<p class="restaurant-description">${restaurant.description}</p>` : ''}
             <div class="item-actions">
+                ${isOperating(restaurant) && restaurant.phone ? `
                 <a href="tel:${restaurant.phone.replace(/[^0-9]/g, '')}" class="phone">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="#2EA3F2" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
                     ${restaurant.phone}
                 </a>
-                ${showExtras && website ? `<a href="${website}" target="_blank" rel="noopener noreferrer" class="website-link">Visit Website →</a>` : ''}
+                ` : ''}
+                ${isOperating(restaurant) && showExtras && website ? `<a href="${website}" target="_blank" rel="noopener noreferrer" class="website-link">Visit Website →</a>` : ''}
             </div>
         </div>
     `}).join('');
@@ -332,7 +355,7 @@ function initMap() {
     const mapContainer = document.getElementById('mapContainer');
     if (!mapContainer) return;
 
-    const restaurantsWithCoords = data.restaurants.filter(r => r.lat && r.lng);
+    const restaurantsWithCoords = data.restaurants.filter(r => r.lat && r.lng && isOperating(r));
     if (restaurantsWithCoords.length === 0) return;
 
     const avgLat = restaurantsWithCoords.reduce((sum, r) => sum + r.lat, 0) / restaurantsWithCoords.length;

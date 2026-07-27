@@ -14,6 +14,18 @@ function formatCategory(category) {
     return category || '';
 }
 
+// Listing status: absent or "open" = operating, "closed", "coming-soon".
+// Non-operating listings stay searchable (so "Koi Sushi" returns a real answer)
+// but are kept off the map — see the town page scripts for the same rule.
+function isOperating(restaurant) {
+    return !restaurant.status || restaurant.status === 'open';
+}
+
+const STATUS_BADGES = {
+    'closed': '<span class="card-badge closed-badge">Closed</span>',
+    'coming-soon': '<span class="card-badge coming-soon-badge">Coming Soon</span>'
+};
+
 // Helper function to check if category matches search query
 function categoryMatchesQuery(category, query) {
     if (Array.isArray(category)) {
@@ -232,7 +244,7 @@ function addMarkersToMap(restaurantList) {
     markers = [];
 
     restaurantList.forEach(restaurant => {
-        if (restaurant.lat && restaurant.lng) {
+        if (restaurant.lat && restaurant.lng && isOperating(restaurant)) {
             const featured = isFeaturedRestaurant(restaurant.name);
             const icon = createMarkerIcon(restaurant.town, featured);
             const cuisine = formatCategory(restaurant.category || restaurant.cuisine);
@@ -289,7 +301,9 @@ function renderRestaurants(restaurantList, isSearchResult = false) {
 
     grid.innerHTML = restaurantList.map(restaurant => {
         const cuisine = formatCategory(restaurant.category || restaurant.cuisine);
-        const hasWebsite = restaurant.website;
+        const operating = isOperating(restaurant);
+        // A closed listing's site (if any) is stale — don't make the card clickable
+        const hasWebsite = operating && restaurant.website;
         const isFeatured = isFeaturedRestaurant(restaurant.name);
         const isEnhanced = restaurant.enhanced === true;
 
@@ -297,7 +311,10 @@ function renderRestaurants(restaurantList, isSearchResult = false) {
         let cardClass = 'restaurant-card';
         let badge = '';
         if (hasWebsite) cardClass += ' clickable';
-        if (isEnhanced) {
+        if (!operating) {
+            cardClass += ' status-' + restaurant.status;
+            badge = STATUS_BADGES[restaurant.status] || '';
+        } else if (isEnhanced) {
             cardClass += ' premium-card';
             badge = '<span class="card-badge premium-badge">Premium</span>';
         } else if (isFeatured) {
@@ -320,7 +337,8 @@ function renderRestaurants(restaurantList, isSearchResult = false) {
             <div class="card-body">
                 ${restaurant.town ? `<span class="town">${restaurant.town}</span>` : ''}
                 ${restaurant.address ? `<p class="address">${restaurant.address}</p>` : ''}
-                ${restaurant.phone ? `<p class="phone"><a href="tel:${restaurant.phone.replace(/[^0-9]/g, '')}" onclick="event.stopPropagation()">${restaurant.phone}</a></p>` : ''}
+                ${operating && restaurant.phone ? `<p class="phone"><a href="tel:${restaurant.phone.replace(/[^0-9]/g, '')}" onclick="event.stopPropagation()">${restaurant.phone}</a></p>` : ''}
+                ${!operating && restaurant.description ? `<p class="status-note">${restaurant.description}</p>` : ''}
             </div>
             ${hasWebsite ? `
             <div class="card-footer">
@@ -370,6 +388,11 @@ function initHeroSearch() {
         // Sort: Featured first, then Premium, then alphabetical
         // Match badge display: enhanced shows PREMIUM, else featured shows FEATURED
         filtered.sort((a, b) => {
+            // Closed / coming-soon sink below anything that's actually open
+            const aOpen = isOperating(a) ? 1 : 0;
+            const bOpen = isOperating(b) ? 1 : 0;
+            if (aOpen !== bOpen) return bOpen - aOpen;
+
             const aIsFeatured = isFeaturedRestaurant(a.name);
             const bIsFeatured = isFeaturedRestaurant(b.name);
             const aIsEnhanced = a.enhanced === true;

@@ -56,7 +56,10 @@
             var json = await resp.json();
             var featuredNames = {};
             (json.featured || []).forEach(function (r) { featuredNames[r.name] = true; });
-            var all = (json.restaurants || []).map(function (r) {
+            var all = (json.restaurants || []).filter(function (r) {
+                // Never spin someone onto a closed or not-yet-open restaurant
+                return !r.status || r.status === 'open';
+            }).map(function (r) {
                 var tier = featuredNames[r.name] ? 'featured' : r.enhanced ? 'premium' : 'regular';
                 return Object.assign({}, r, { town: townName, _tier: tier });
             });

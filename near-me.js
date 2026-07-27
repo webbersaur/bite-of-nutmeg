@@ -88,7 +88,10 @@
                     const response = await fetch('/' + file);
                     if (response.ok) {
                         const data = await response.json();
-                        const restaurants = data.restaurants || [];
+                        // Closed / coming-soon listings are excluded — Near Me
+                        // exists to send people somewhere they can eat right now
+                        const restaurants = (data.restaurants || [])
+                            .filter(r => !r.status || r.status === 'open');
                         return restaurants.map(r => ({ ...r, town }));
                     }
                 } catch (e) {

@@ -84,6 +84,15 @@ function updateActiveTabs() {
 function renderFeaturedRestaurants() {
     const grid = document.getElementById('featuredGrid');
 
+    // Hide the entire Featured section when there are no featured restaurants
+    const section = grid.closest('.featured-section');
+    if (!data.featured || data.featured.length === 0) {
+        if (section) section.style.display = 'none';
+        grid.innerHTML = '';
+        return;
+    }
+    if (section) section.style.display = '';
+
     grid.innerHTML = data.featured.map(restaurant => `
         <a href="${restaurant.website || '#'}" class="featured-card" target="_blank" rel="noopener noreferrer">
             <div class="card-image ${restaurant.darkBg ? 'dark-bg' : ''}">

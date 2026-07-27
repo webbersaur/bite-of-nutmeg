@@ -25,18 +25,6 @@
       "lng": -72.85373976256747
     },
     {
-      "name": "Mexitale",
-      "category": "Mexican",
-      "town": "Guilford",
-      "address": "1080 Boston Post Rd, Guilford",
-      "phone": "203-643-1540",
-      "website": "https://mexitalekitchen.com/",
-      "image": "guilford-logos/Mexitale-web-1.webp",
-      "pageLink": "guilford.html",
-      "lat": 41.30850266494618,
-      "lng": -72.7192274202633
-    },
-    {
       "name": "Parthenon Diner Restaurant",
       "category": ["Greek", "American"],
       "town": "Branford",
