@@ -130,9 +130,15 @@ Then visit: http://localhost:8000
 
 ### Deployment
 
+Regenerate before deploying, whenever restaurant data or pages changed:
+
 ```bash
+python3 build-static-lists.py   # static lists + JSON-LD ItemList, all 7 town pages
+python3 build-sitemap.py        # sitemap.xml with git-derived lastmod
 vercel --prod --yes
 ```
+
+Both scripts are idempotent — running them with nothing changed produces no diff.
 
 ## Styling Notes
 
@@ -183,6 +189,18 @@ Set `"status": "closed"` on its `restaurants[]` entry (absent or `"open"` = oper
 sorts last, so a search for it returns a real answer — but it is excluded from Spin the
 Wheel, Near Me, map markers, and the JSON-LD, and its phone/website links are
 suppressed. Never route someone to a door that won't open.
+
+### Sitemap is generated — don't hand-edit it
+
+`python3 build-sitemap.py` writes `sitemap.xml`, taking each `<lastmod>` from the
+last commit that touched that page. Hand-maintained dates went stale (pages kept
+shipping while the sitemap claimed March), which weakens crawl scheduling. Run it
+after `build-static-lists.py` and before deploying.
+
+`PAGES` in that script is an explicit allowlist, not a directory scan — utility and
+admin pages must not be published to search engines just because the file exists.
+Adding a new public page means adding it there; the script prints a NOTE listing
+any `.html` it doesn't recognize so nothing is silently omitted.
 
 ### Structured data (JSON-LD) is generated — don't hand-edit it
 
