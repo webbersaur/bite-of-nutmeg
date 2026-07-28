@@ -11,13 +11,13 @@ import re
 import html
 
 PAGES = [
-    ("restaurants-in-branford.html", "branford-restaurants.json"),
-    ("restaurants-in-guilford.html", "guilford-restaurants.json"),
-    ("restaurants-in-east-haven.html", "easthaven-restaurants.json"),
-    ("restaurants-in-madison.html", "madison-restaurants.json"),
-    ("restaurants-in-clinton.html", "clinton-restaurants.json"),
-    ("restaurants-in-westbrook.html", "westbrook-restaurants.json"),
-    ("restaurants-in-old-saybrook.html", "old-saybrook-restaurants.json"),
+    ("restaurants-in-branford.html", "branford-restaurants.json", "Branford"),
+    ("restaurants-in-guilford.html", "guilford-restaurants.json", "Guilford"),
+    ("restaurants-in-east-haven.html", "easthaven-restaurants.json", "East Haven"),
+    ("restaurants-in-madison.html", "madison-restaurants.json", "Madison"),
+    ("restaurants-in-clinton.html", "clinton-restaurants.json", "Clinton"),
+    ("restaurants-in-westbrook.html", "westbrook-restaurants.json", "Westbrook"),
+    ("restaurants-in-old-saybrook.html", "old-saybrook-restaurants.json", "Old Saybrook"),
 ]
 
 PHONE_SVG = '<svg width="14" height="14" viewBox="0 0 24 24" fill="#2EA3F2" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>'
@@ -98,7 +98,88 @@ def build_static_list(restaurants, featured_names):
     return items
 
 
-def inject_into_page(html_file, json_file):
+# The ItemList node inside the page's single ld+json block. Anchored on
+# "@type": "ItemList" so the BreadcrumbList — which also has positions and its
+# own itemListElement — is never touched. Group 4 is the entry block, which
+# terminates at the first line that is nothing but whitespace and "]".
+ITEMLIST_RE = re.compile(
+    r'("@type":\s*"ItemList".*?"numberOfItems":\s*)\d+'
+    r'(.*?"itemListElement":\s*\[\n).*?(\n([ \t]*)\])',
+    re.DOTALL,
+)
+
+
+def build_postal_address(restaurant, town):
+    """PostalAddress node. Most entries only know their town."""
+    address = {"@type": "PostalAddress"}
+
+    # A few entries carry a full street address, e.g. "688 Foxon Rd, East Haven, CT 06513"
+    raw = restaurant.get("address", "")
+    if raw:
+        parts = [p.strip() for p in raw.split(",")]
+        if len(parts) >= 2:
+            address["streetAddress"] = parts[0]
+        postal = re.search(r"\b(\d{5})\b", raw)
+        address["addressLocality"] = town
+        address["addressRegion"] = "CT"
+        if postal:
+            address["postalCode"] = postal.group(1)
+        return address
+
+    address["addressLocality"] = town
+    address["addressRegion"] = "CT"
+    return address
+
+
+def build_listitem(restaurant, position, town):
+    """One ListItem line, matching the compact one-per-line style already in the pages."""
+    cat = restaurant.get("category", "")
+    if isinstance(cat, list):
+        cat = " & ".join(cat)
+
+    item = {"@type": "Restaurant", "name": restaurant["name"]}
+    if cat:
+        item["servesCuisine"] = cat
+    if restaurant.get("phone"):
+        item["telephone"] = restaurant["phone"]
+    # url tracks the data's website field — no separate tier rule to drift out of sync
+    if restaurant.get("website"):
+        item["url"] = restaurant["website"]
+    item["address"] = build_postal_address(restaurant, town)
+
+    entry = {"@type": "ListItem", "position": position, "item": item}
+    return json.dumps(entry, ensure_ascii=False)
+
+
+def inject_jsonld(page_html, restaurants, town, html_file):
+    """Regenerate the ItemList from the same data that drives the visible list.
+
+    Closed / coming-soon entries are omitted: structured data should not assert a
+    restaurant is operating when the site says it isn't.
+    """
+    operating = sorted(
+        (r for r in restaurants if r.get("status", "open") == "open"),
+        key=lambda r: r["name"],
+    )
+
+    match = ITEMLIST_RE.search(page_html)
+    if not match:
+        print(f"  WARNING: Could not find JSON-LD ItemList in {html_file}")
+        return page_html, False
+
+    entry_indent = match.group(4) + "  "
+    entries = "\n".join(
+        entry_indent + build_listitem(r, i, town) + ("," if i < len(operating) else "")
+        for i, r in enumerate(operating, start=1)
+    )
+
+    def replace(m):
+        return f"{m.group(1)}{len(operating)}{m.group(2)}{entries}{m.group(3)}"
+
+    return ITEMLIST_RE.sub(replace, page_html, count=1), True
+
+
+def inject_into_page(html_file, json_file, town):
     """Read JSON, build static HTML, inject into the page."""
     with open(json_file, "r") as f:
         data = json.load(f)
@@ -126,18 +207,23 @@ def inject_into_page(html_file, json_file):
         print(f"  WARNING: Could not find restaurantList div in {html_file}")
         return False
 
+    new_html, ld_ok = inject_jsonld(new_html, restaurants, town, html_file)
+
     with open(html_file, "w") as f:
         f.write(new_html)
 
-    print(f"  {html_file}: injected {len(restaurants)} restaurants")
+    closed = sum(1 for r in restaurants if r.get("status", "open") != "open")
+    note = f" ({closed} closed, omitted from JSON-LD)" if closed else ""
+    ld_note = "" if ld_ok else " [JSON-LD SKIPPED]"
+    print(f"  {html_file}: injected {len(restaurants)} restaurants{note}{ld_note}")
     return True
 
 
 def main():
     print("Building static restaurant lists for SEO...")
     success = 0
-    for html_file, json_file in PAGES:
-        if inject_into_page(html_file, json_file):
+    for html_file, json_file, town in PAGES:
+        if inject_into_page(html_file, json_file, town):
             success += 1
 
     print(f"\nDone: {success}/{len(PAGES)} pages updated")

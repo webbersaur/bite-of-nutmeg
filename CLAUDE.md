@@ -138,6 +138,40 @@ vercel --prod --yes
 ### Change featured restaurants
 Edit `featured-restaurants.json` - homepage automatically loads these
 
+### Demote a former client (they stopped paying)
+
+**Demote, don't delete.** A former client is still a real restaurant and belongs in
+the guide as an ordinary listing — the same as any other place in that town. Removing
+the row deletes a restaurant from the directory, which is a different decision.
+
+1. Remove from `featured[]` in `[town]-restaurants.json`
+2. Remove from `featured-restaurants.json` and from the featured markup in `index.html`
+3. On the `restaurants[]` entry, drop `enhanced`, `website`, and `image` — **keep the entry**
+4. Run `python3 build-static-lists.py` and commit
+
+Dropping `website` matters functionally, not just cosmetically: `app.js` gates card
+clickability and the "Visit Website" footer on the presence of `website`, **not** on
+tier. Leaving it grants a paid-tier perk to a non-client.
+
+Delete a row only when the place never existed (duplicate, bad import). If it closed,
+use `"status": "closed"` instead — see below.
+
+### Mark a restaurant closed
+
+Set `"status": "closed"` on its `restaurants[]` entry (absent or `"open"` = operating;
+`"coming-soon"` is also supported). The listing stays searchable with a muted badge and
+sorts last, so a search for it returns a real answer — but it is excluded from Spin the
+Wheel, Near Me, map markers, and the JSON-LD, and its phone/website links are
+suppressed. Never route someone to a door that won't open.
+
+### Structured data (JSON-LD) is generated — don't hand-edit it
+
+`build-static-lists.py` owns **both** the static restaurant list and the JSON-LD
+`ItemList` on every town page, from the same `[town]-restaurants.json`. Editing the
+`ItemList` by hand will be overwritten, and hand-maintaining it is what let all seven
+pages drift out of sync with their data. The script leaves `WebPage`, `BreadcrumbList`,
+and `FAQPage` untouched. It is idempotent — a second run produces no diff.
+
 ### Update town page content
 Edit the `<section class="about-dining">` in the town's HTML file
 
