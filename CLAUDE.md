@@ -4,7 +4,12 @@
 
 A static website showcasing restaurants along Connecticut's shoreline from East Haven to Old Saybrook. The site features an interactive map, search functionality, featured restaurant cards with logos, and individual town pages.
 
-**Live Site:** https://bite-ivory.vercel.app
+**Live Site:** https://www.abiteofnutmeg.com
+
+The old `bite-ivory.vercel.app` host 308-redirects here via the first rule in
+`vercel.json` — leave that rule in place. Town pages also have short aliases
+(`/branford`, `/guilford`, `/madison`, `/clinton`, `/westbrook`, `/old-saybrook`,
+`/east-haven`) that redirect to their `restaurants-in-*` URLs.
 
 ## Tech Stack
 
