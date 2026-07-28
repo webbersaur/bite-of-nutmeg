@@ -10,7 +10,7 @@
     {"name": "Dairy Queen", "category": "Fast Food", "phone": "860-669-8768", "lat": 41.2744043, "lng": -72.4835064, "description": "National fast-food chain location serving ice cream treats, burgers, and chicken strips."},
     {"name": "Dunkin'", "category": "Cafe & Bakery", "phone": "860-399-7008", "lat": 41.2903182, "lng": -72.4448469, "description": "Quick-service coffee and breakfast chain with a convenient Westbrook location for morning commuters and beachgoers."},
     {"name": "Edd's Place", "category": "American", "phone": "860-391-8637", "lat": 41.2773304, "lng": -72.4707926, "description": "A beloved breakfast and lunch counter that's been serving Westbrook locals for years."},
-    {"name": "El Rincon Del Sabor", "category": "Latin", "phone": "860-664-9066", "lat": 41.274258, "lng": -72.4842234, "description": "Latin American restaurant bringing authentic flavors and traditional dishes to the Westbrook dining scene."},
+    {"name": "El Rincon Del Sabor", "category": "Latin American", "phone": "860-664-9066", "lat": 41.274258, "lng": -72.4842234, "description": "Latin American restaurant bringing authentic flavors and traditional dishes to the Westbrook dining scene."},
     {"name": "Hartford Giant Grinder", "category": "American", "phone": "860-391-8577", "lat": 41.2864455, "lng": -72.4488751, "description": "Oversized grinders and deli sandwiches served up in generous portions, perfect for a quick and filling lunch."},
     {"name": "Haywire Burger Bar", "category": "American", "phone": "860-391-8479", "lat": 41.2791904, "lng": -72.4621364, "description": "Creative burgers and shakes in a fun, casual atmosphere -- a Westbrook destination for burger lovers."},
     {"name": "Highliner III", "category": "Bar & Grill", "phone": "860-399-5042", "lat": 41.2892189, "lng": -72.4474258, "description": "Neighborhood bar and grill with a full bar, offering pub fare and a laid-back vibe."},
@@ -27,5 +27,5 @@
     {"name": "Water's Edge Sunset Grill", "category": "American", "phone": "860-399-5901", "lat": 41.2794191, "lng": -72.437276, "description": "Resort dining at Water's Edge with panoramic Long Island Sound views, popular for special occasions, Sunday brunch, and summer sunset dinners."},
     {"name": "Westbrook Pizza", "category": "Pizza", "phone": "860-399-7160", "lat": 41.2809976, "lng": -72.4375112, "description": "Neighborhood pizzeria serving classic pies and Italian-American staples to Westbrook residents."}
   ],
-  "categories": ["All", "American", "Bakery", "Bar & Grill", "BBQ", "Brewery", "Cafe & Bakery", "Deli", "Fast Food", "Italian", "Latin", "Mediterranean", "Mexican", "Pizza", "Seafood", "Vegan"]
+  "categories": ["All", "American", "Bar & Grill", "BBQ", "Brewery", "Cafe & Bakery", "Deli", "Fast Food", "Italian", "Latin American", "Mediterranean", "Mexican", "Pizza", "Seafood", "Vegan"]
 }

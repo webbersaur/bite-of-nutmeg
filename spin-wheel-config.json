@@ -6,7 +6,6 @@
       "matches": [
         "American",
         "Bar & Grill",
-        "Bar",
         "Greek",
         "Steakhouse"
       ]
@@ -22,8 +21,7 @@
       "label": "Italian",
       "color": "#2a4a8a",
       "matches": [
-        "Italian",
-        "Italian & Mexican"
+        "Italian"
       ]
     },
     {
@@ -50,7 +48,6 @@
       "matches": [
         "Mexican",
         "Latin American",
-        "Latin",
         "Caribbean"
       ]
     },
@@ -58,9 +55,7 @@
       "label": "Cafe & Bakery",
       "color": "#1e3a6e",
       "matches": [
-        "Cafe",
-        "Café & Bakery",
-        "Bakery",
+        "Cafe & Bakery",
         "Deli"
       ]
     },
@@ -81,7 +76,9 @@
       "matches": [
         "Wine Bar",
         "Brewery",
-        "BBQ"
+        "BBQ",
+        "Vegan",
+        "Vegetarian"
       ]
     },
     {
@@ -95,13 +92,10 @@
   "allRestaurantCategories": [
     "American",
     "Asian",
-    "Bakery",
-    "Bar",
-    "Bar & Grill",
     "BBQ",
+    "Bar & Grill",
     "Brewery",
-    "Cafe",
-    "Café & Bakery",
+    "Cafe & Bakery",
     "Caribbean",
     "Chinese",
     "Deli",
@@ -113,9 +107,7 @@
     "Greek",
     "Indian",
     "Italian",
-    "Italian & Mexican",
     "Japanese",
-    "Latin",
     "Latin American",
     "Mediterranean",
     "Mexican",

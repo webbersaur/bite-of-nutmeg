@@ -250,19 +250,5 @@
       "description": "Located near the Clinton-Westbrook town line, this seafood restaurant offers lobster, fried seafood, and a full raw bar. A popular destination for seafood lovers on the shoreline."
     }
   ],
-  "categories": [
-    "All",
-    "American",
-    "Cafe & Bakery",
-    "Chinese",
-    "Dessert",
-    "Fast Food",
-    "Fine Dining",
-    "Italian",
-    "Japanese",
-    "Mexican",
-    "Pizza",
-    "Seafood",
-    "Thai"
-  ]
+  "categories": ["All", "American", "Cafe & Bakery", "Chinese", "Dessert", "Fast Food", "Fine Dining", "Italian", "Japanese", "Mexican", "Pizza", "Seafood", "Thai"]
 }

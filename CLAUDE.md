@@ -98,6 +98,26 @@ Edit `featured-restaurants.json`. Each entry needs:
 }
 ```
 
+### Category vocabulary is site-wide — reuse an existing label
+
+Categories are shared across all seven towns: homepage search matches on category
+text, so two spellings of one concept silently split the results. `Café & Bakery`
+vs `Cafe & Bakery` once hid 9 restaurants from a search for "cafe" — nobody types
+the accent.
+
+Before inventing a category, check the existing list. Use plain ASCII (`Cafe`, not
+`Café`). A restaurant serving two cuisines takes an **array**, not a combined
+string: `"category": ["Italian", "Mexican"]` — a combined string like
+`"Italian & Mexican"` matches no tab and makes the restaurant reachable only under
+"All".
+
+Each town's `categories` array drives its filter tabs and must equal exactly the
+set its restaurants use — no missing entries (unreachable restaurants), no extras
+(dead tabs). Adding a genuinely new cuisine also means adding it to a segment's
+`matches` in `spin-wheel-config.json` **and** the `DEFAULT_CATEGORIES` fallback in
+`spin-wheel.js`; a category in neither is unreachable from Spin the Wheel.
+`Fast Food` is deliberately excluded from the wheel.
+
 ## Development
 
 ### Local Server

@@ -17,16 +17,18 @@
     var isHomepage = !pageTown || pageTown === 'all';
     var inlineContainerId = scriptEl ? scriptEl.getAttribute('data-inline') : null;
 
-    // Default categories (used as fallback if config fails to load)
+    // Default categories (used as fallback if config fails to load).
+    // Must stay in sync with spin-wheel-config.json, which overrides this at runtime.
+    // Category labels are the normalized site-wide vocabulary — see CLAUDE.md.
     const DEFAULT_CATEGORIES = [
-        { label: 'American', color: '#1e3a6e', matches: ['American', 'Bar & Grill', 'Bar', 'Greek', 'Steakhouse'] },
+        { label: 'American', color: '#1e3a6e', matches: ['American', 'Bar & Grill', 'Greek', 'Steakhouse'] },
         { label: 'Pizza', color: '#f0b323', matches: ['Pizza'] },
         { label: 'Italian', color: '#2a4a8a', matches: ['Italian'] },
         { label: 'Seafood', color: '#d9a01f', matches: ['Seafood'] },
-        { label: 'Asian', color: '#152a52', matches: ['Chinese', 'Japanese', 'Asian', 'Thai', 'Vietnamese', 'Asian Fusion'] },
-        { label: 'Mexican & Latin', color: '#f5c94d', matches: ['Mexican', 'Latin American', 'Latin', 'Caribbean'] },
-        { label: 'Cafe & Bakery', color: '#1e3a6e', matches: ['Cafe & Bakery', 'Cafe', 'Bakery', 'Deli'] },
-        { label: 'Indian & Eur.', color: '#e8a515', matches: ['Indian', 'Mediterranean', 'European', 'French'] },
+        { label: 'Asian', color: '#152a52', matches: ['Chinese', 'Japanese', 'Asian', 'Thai', 'Vietnamese'] },
+        { label: 'Mexican & Latin', color: '#f5c94d', matches: ['Mexican', 'Latin American', 'Caribbean'] },
+        { label: 'Cafe & Bakery', color: '#1e3a6e', matches: ['Cafe & Bakery', 'Deli'] },
+        { label: 'Indian & Eur.', color: '#e8a515', matches: ['Indian', 'Mediterranean', 'European', 'Nigerian', 'French'] },
         { label: 'Brewery & BBQ', color: '#f0b323', matches: ['Wine Bar', 'Brewery', 'BBQ', 'Vegan', 'Vegetarian'] },
         { label: 'Dessert', color: '#e84393', matches: ['Dessert'] }
     ];
