@@ -30,6 +30,7 @@ PAGES = [
     ("best-of", 0.8),
     ("best-lobster-rolls-ct-shoreline", 0.8),
     ("best-brunch-spots-ct-shoreline", 0.8),
+    ("best-indian-restaurants-ct-shoreline", 0.8),
     ("east-haven-restaurant-guide", 0.7),
     ("spin-the-wheel", 0.7),
     ("upgrade", 0.7),
